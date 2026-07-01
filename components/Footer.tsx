@@ -8,10 +8,10 @@ export function Footer() {
         <div className="space-y-3">
           <Link
             href="/"
-            className="flex items-center gap-2 font-display text-lg tracking-widest"
+            className="flex items-center gap-2 font-blackletter text-2xl tracking-wide"
           >
             <Sparkles className="h-5 w-5 text-gold-300" />
-            <span className="gold-text">NUMEN</span>
+            <span className="gold-text">Numen</span>
           </Link>
           <p className="max-w-xs text-sm text-mystic-200/60">
             An esoteric numerology suite. Reveal the hidden architecture of your

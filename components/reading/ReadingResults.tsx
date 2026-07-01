@@ -73,7 +73,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
       <div className="glass-strong relative overflow-hidden p-8 text-center sm:p-12">
         <div className="bg-cosmic-radial pointer-events-none absolute inset-0 opacity-70" />
         <div className="relative flex flex-col items-center gap-6">
-          <div className="animate-pulse-glow rounded-full">
+          <div className="animate-flicker rounded-full">
             <NumberOrb
               value={core.lifePath.value}
               size="xl"

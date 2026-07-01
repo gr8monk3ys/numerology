@@ -10,10 +10,10 @@ export function Chip({
   return (
     <span
       className={clsx(
-        "inline-flex items-center rounded-full px-3 py-1 text-xs font-medium capitalize",
-        tone === "mystic" && "bg-mystic-500/15 text-mystic-100",
-        tone === "gold" && "bg-gold-500/15 text-gold-200",
-        tone === "muted" && "bg-white/5 text-mystic-200/70",
+        "inline-flex items-center rounded-sm border px-2.5 py-0.5 text-xs capitalize tracking-wide",
+        tone === "mystic" && "border-mystic-500/30 bg-mystic-500/10 text-mystic-100",
+        tone === "gold" && "border-gold-500/40 bg-gold-500/10 text-gold-200",
+        tone === "muted" && "border-white/10 bg-white/[0.03] text-mystic-200/70",
       )}
     >
       {children}

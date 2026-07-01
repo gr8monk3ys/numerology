@@ -18,7 +18,7 @@ export interface NumberOrbProps {
   className?: string;
 }
 
-/** A glowing celestial orb displaying a numerology number. */
+/** A gilded manuscript medallion displaying a numerology number. */
 export function NumberOrb({
   value,
   size = "md",
@@ -31,21 +31,28 @@ export function NumberOrb({
       className={clsx(
         "relative flex shrink-0 select-none items-center justify-center rounded-full font-display font-semibold",
         SIZES[size],
+        "bg-[radial-gradient(circle_at_50%_35%,#241a0e,#0c0805)]",
         isMaster
-          ? "bg-gradient-to-br from-gold-200/20 to-gold-500/10 text-gold-200 shadow-glow-gold ring-1 ring-gold-300/50"
-          : "bg-gradient-to-br from-mystic-500/25 to-void-800/40 text-mystic-50 shadow-glow ring-1 ring-mystic-400/40",
+          ? "text-gold-200 ring-2 ring-gold-400/70"
+          : isKarmic
+            ? "text-rose-200 ring-2 ring-blood-500/70"
+            : "text-gold-100 ring-1 ring-gold-500/50",
         className,
       )}
+      style={{
+        boxShadow:
+          "inset 0 0 12px rgba(0,0,0,0.7), 0 6px 16px -8px rgba(0,0,0,0.8)",
+      }}
     >
-      <span className="drop-shadow-[0_0_10px_rgba(255,255,255,0.35)]">
-        {value}
-      </span>
-      {isKarmic && (
-        <span
-          className="absolute -inset-0.5 rounded-full ring-1 ring-rose-400/50"
-          aria-hidden
-        />
-      )}
+      {/* inner gilt hairline */}
+      <span
+        className={clsx(
+          "pointer-events-none absolute rounded-full",
+          isMaster ? "inset-1.5 ring-1 ring-gold-300/40" : "inset-1 ring-1 ring-gold-500/25",
+        )}
+        aria-hidden
+      />
+      <span>{value}</span>
     </div>
   );
 }

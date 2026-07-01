@@ -1,11 +1,7 @@
 import clsx from "clsx";
 
 export function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-300/80">
-      {children}
-    </span>
-  );
+  return <span className="eyebrow">{children}</span>;
 }
 
 export function SectionHeading({
@@ -33,10 +29,11 @@ export function SectionHeading({
       <h2 className="text-3xl font-semibold leading-tight text-mystic-50 sm:text-4xl">
         {title}
       </h2>
+      {align === "center" && (
+        <div className="rule-ornament pt-1 text-sm">❧</div>
+      )}
       {subtitle && (
-        <p className="text-base leading-relaxed text-mystic-200/70">
-          {subtitle}
-        </p>
+        <p className="text-base leading-relaxed text-mystic-200/70">{subtitle}</p>
       )}
     </div>
   );

@@ -20,15 +20,15 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-void-950/70 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-gold-500/20 bg-void-950/95">
       <nav className="container-page flex h-16 items-center justify-between">
         <Link
           href="/"
-          className="flex items-center gap-2 font-display text-lg font-semibold tracking-widest"
+          className="flex items-center gap-2 font-blackletter text-2xl tracking-wide"
           onClick={() => setOpen(false)}
         >
           <Sparkles className="h-5 w-5 text-gold-300" />
-          <span className="gold-text">NUMEN</span>
+          <span className="gold-text">Numen</span>
         </Link>
 
         <div className="hidden items-center gap-7 md:flex">

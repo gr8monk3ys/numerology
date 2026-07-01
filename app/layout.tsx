@@ -1,27 +1,32 @@
 import type { Metadata } from "next";
-import { Cinzel, Cormorant_Garamond, Inter } from "next/font/google";
+import { Grenze_Gotisch, EB_Garamond, UnifrakturMaguntia } from "next/font/google";
 import "./globals.css";
 import { Starfield } from "@/components/Starfield";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
-const cinzel = Cinzel({
+// Gothic display for headings
+const gothic = Grenze_Gotisch({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-gothic",
+  display: "swap",
+});
+
+// Old-style serif for body — an illuminated-manuscript hand
+const garamond = EB_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-cinzel",
+  style: ["normal", "italic"],
+  variable: "--font-garamond",
   display: "swap",
 });
 
-const cormorant = Cormorant_Garamond({
+// Blackletter for the wordmark, drop-caps and initials
+const blackletter = UnifrakturMaguntia({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-cormorant",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400"],
+  variable: "--font-blackletter",
   display: "swap",
 });
 
@@ -60,7 +65,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${cormorant.variable} ${inter.variable}`}
+      className={`${gothic.variable} ${garamond.variable} ${blackletter.variable}`}
     >
       <body className="grain min-h-screen">
         {/* Enable scroll-reveal only when JS is present, so no-JS visitors and

@@ -2,10 +2,8 @@
 
 A fun little calculator site for esoteric numerology calculations — the numbers
 written into your name and birth date, read across the Pythagorean and Chaldean
-systems with a full layer of esoteric correspondences.
-
-Inspired by the [numerologycalc Chrome extension](https://github.com/Takea-nap/numerologycalc-chrome-extension),
-expanded into a complete web app.
+systems with a full layer of esoteric correspondences, styled as a dark gothic
+grimoire.
 
 ## Features
 

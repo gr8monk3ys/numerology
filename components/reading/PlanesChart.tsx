@@ -49,8 +49,8 @@ export function PlanesChart({
                   style={{
                     width: `${Math.max(width, count > 0 ? 4 : 0)}%`,
                     background: isDominant
-                      ? "linear-gradient(90deg, #a175ff, #e6b845)"
-                      : "linear-gradient(90deg, #6d28d9, #a175ff)",
+                      ? "linear-gradient(90deg, #a67e33, #edd694)"
+                      : "linear-gradient(90deg, #4a3517, #a67e33)",
                   }}
                   title={`${content[plane].title}: ${count} letters (${pct}%)`}
                 />
