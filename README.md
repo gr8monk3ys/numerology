@@ -9,6 +9,8 @@ expanded into a complete web app.
 
 ## Features
 
+- **Cosmic profile** — Tarot Birth Card, Western sun sign, Chinese zodiac,
+  Planes of Expression, Life Cycles, Bridge numbers and lucky numbers/days/colors
 - **Full reading** — enter a name + birth date for a complete chart:
   - Core numbers: **Life Path, Expression/Destiny, Soul Urge, Personality,
     Birthday, Maturity, Balance**
@@ -29,17 +31,18 @@ Everything is calculated **client-side** — no data leaves the browser.
 ## Tech
 
 - [Next.js](https://nextjs.org) 15 (App Router) + React 19 + TypeScript
-- Tailwind CSS with a custom cosmic theme
+- [Tailwind CSS v4](https://tailwindcss.com) (CSS-first theme) with a custom cosmic design system
+- [Bun](https://bun.sh) as the package manager & runtime
 - A typed, unit-tested numerology engine in [`lib/numerology`](lib/numerology)
 - Content datasets in [`content/data`](content/data)
 
 ## Development
 
 ```bash
-pnpm install
-pnpm dev        # http://localhost:3000
-pnpm test       # run the engine test suite (vitest)
-pnpm build      # production build
+bun install
+bun run dev     # http://localhost:3000
+bun run test    # run the engine test suite (vitest)
+bun run build   # production build
 ```
 
 ## The engine

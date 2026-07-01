@@ -1,72 +1,227 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+/* ------------------------------------------------------------------ */
+/*  Design tokens (Tailwind v4 CSS-first theme)                       */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Deep cosmic backgrounds */
+  --color-void-950: #050416;
+  --color-void-900: #0a0821;
+  --color-void-850: #0f0c2b;
+  --color-void-800: #120e33;
+  --color-void-700: #1b1548;
+
+  /* Mystic violet / amethyst */
+  --color-mystic-50: #f5f2ff;
+  --color-mystic-100: #ece5ff;
+  --color-mystic-200: #d9ccff;
+  --color-mystic-300: #bfa6ff;
+  --color-mystic-400: #a175ff;
+  --color-mystic-500: #8b4dff;
+  --color-mystic-600: #7c3aed;
+  --color-mystic-700: #6d28d9;
+  --color-mystic-800: #5b21b6;
+  --color-mystic-900: #4c1d95;
+
+  /* Celestial gold */
+  --color-gold-50: #fdf9ec;
+  --color-gold-100: #faf0cf;
+  --color-gold-200: #f4e0a0;
+  --color-gold-300: #eecb6b;
+  --color-gold-400: #e6b845;
+  --color-gold-500: #d99e2b;
+  --color-gold-600: #c07d20;
+  --color-gold-700: #9c5c1e;
+
+  /* Ethereal teal (aura accent) */
+  --color-aura-300: #7ee8d6;
+  --color-aura-400: #43d0bb;
+  --color-aura-500: #1fb6a0;
+
+  /* Fonts (wired to next/font CSS variables) */
+  --font-display: var(--font-cinzel), serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  /* Glows */
+  --shadow-glow: 0 0 40px -8px rgba(139, 77, 255, 0.55);
+  --shadow-glow-gold: 0 0 36px -6px rgba(230, 184, 69, 0.5);
+  --shadow-glow-strong: 0 0 60px -6px rgba(139, 77, 255, 0.7);
+
+  /* Motion */
+  --animate-twinkle: twinkle 4s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-spin-slow: spin-slow 40s linear infinite;
+  --animate-spin-slower: spin-slow 90s linear infinite;
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-pulse-glow: pulse-glow 4.5s ease-in-out infinite;
+  --animate-aurora: aurora 18s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.5s linear infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 24px -6px rgba(139, 77, 255, 0.5); }
+  50% { box-shadow: 0 0 52px 2px rgba(139, 77, 255, 0.8); }
+}
+@keyframes aurora {
+  0%, 100% { transform: translate3d(-4%, -2%, 0) scale(1); opacity: 0.55; }
+  50% { transform: translate3d(4%, 3%, 0) scale(1.15); opacity: 0.8; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Custom gradient utilities                                          */
+/* ------------------------------------------------------------------ */
+@utility bg-gold-sheen {
+  background-image: linear-gradient(135deg, #f8ecc0 0%, #e6b845 45%, #c07d20 100%);
+}
+@utility bg-cosmic-radial {
+  background-image:
+    radial-gradient(ellipse at top, rgba(124, 58, 237, 0.25), transparent 55%),
+    radial-gradient(ellipse at bottom, rgba(31, 182, 160, 0.12), transparent 55%);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
 @layer base {
   :root {
     color-scheme: dark;
   }
-
   html {
     scroll-behavior: smooth;
   }
-
   body {
-    @apply bg-void-950 text-mystic-100 font-sans antialiased;
-    background-image: var(--tw-gradient-cosmic, none);
+    background-color: var(--color-void-950);
+    color: var(--color-mystic-100);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-
   ::selection {
-    @apply bg-mystic-500/40 text-white;
+    background: rgba(139, 77, 255, 0.4);
+    color: #fff;
   }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply font-display tracking-wide;
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+  }
+  /* Native date-picker glyph in dark mode */
+  input[type="date"] {
+    color-scheme: dark;
   }
 }
 
+/* ------------------------------------------------------------------ */
+/*  Components                                                          */
+/* ------------------------------------------------------------------ */
 @layer components {
   .container-page {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
+  /* Frosted panels with a faint top highlight for depth */
   .glass {
-    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm;
+    @apply rounded-2xl border border-white/10 bg-white/[0.035] backdrop-blur-sm;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+  }
+  .glass-strong {
+    @apply rounded-2xl border border-white/10;
+    background:
+      linear-gradient(180deg, rgba(27, 21, 72, 0.55), rgba(10, 8, 33, 0.55));
+    backdrop-filter: blur(14px);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.07),
+      0 30px 60px -30px rgba(0, 0, 0, 0.7);
   }
 
-  .glass-strong {
-    @apply rounded-2xl border border-white/10 bg-void-800/60 backdrop-blur-md;
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+  .card-hover:hover {
+    @apply -translate-y-0.5 border-mystic-400/30;
+    box-shadow: 0 20px 40px -24px rgba(139, 77, 255, 0.5);
   }
 
   .gold-text {
-    @apply bg-gold-sheen bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #f8ecc0 0%, #e6b845 45%, #c9862a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .link-underline {
-    @apply relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-gold-300 after:transition-all hover:after:w-full;
+    @apply relative;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-px w-0 bg-gold-300 transition-all duration-300;
+  }
+  .link-underline:hover::after {
+    @apply w-full;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-sheen px-6 py-3 font-medium text-void-950 shadow-glow-gold transition-transform hover:scale-[1.03] active:scale-95 disabled:opacity-50 disabled:hover:scale-100;
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 font-medium text-void-950 transition-transform duration-200;
+    background-image: linear-gradient(135deg, #f8ecc0 0%, #e6b845 45%, #c07d20 100%);
+    box-shadow: var(--shadow-glow-gold);
+  }
+  .btn-primary:hover {
+    @apply scale-[1.03];
+  }
+  .btn-primary:active {
+    @apply scale-95;
+  }
+  .btn-primary:disabled {
+    @apply scale-100 opacity-50;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-mystic-400/40 px-6 py-3 font-medium text-mystic-100 transition-colors hover:border-mystic-300 hover:bg-mystic-500/10;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-mystic-400/40 px-6 py-3 font-medium text-mystic-100 transition-colors duration-200 hover:border-mystic-300 hover:bg-mystic-500/10;
   }
 
   .input-field {
-    @apply w-full rounded-xl border border-white/10 bg-void-900/70 px-4 py-3 text-mystic-50 placeholder:text-mystic-300/40 outline-none transition-colors focus:border-mystic-400 focus:ring-1 focus:ring-mystic-400;
+    @apply w-full rounded-xl border border-white/10 bg-void-900/70 px-4 py-3 text-mystic-50 outline-none transition-colors duration-200;
+  }
+  .input-field::placeholder {
+    color: rgba(191, 166, 255, 0.4);
+  }
+  .input-field:focus {
+    @apply border-mystic-400 ring-1 ring-mystic-400;
   }
 
   .label-text {
     @apply mb-1.5 block text-sm font-medium text-mystic-200/80;
   }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.3em] text-gold-300/80;
+  }
 }
 
-/* Starfield layers rendered by <Starfield /> */
+/* ------------------------------------------------------------------ */
+/*  Ambient background layers                                          */
+/* ------------------------------------------------------------------ */
 .starfield {
   position: fixed;
   inset: 0;
@@ -74,16 +229,48 @@
   overflow: hidden;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 20% 0%, rgba(124, 58, 237, 0.28), transparent 55%),
-    radial-gradient(ellipse at 80% 100%, rgba(31, 182, 160, 0.12), transparent 55%),
-    linear-gradient(180deg, #05041a 0%, #08071d 50%, #050416 100%);
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124, 58, 237, 0.3), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 85% 110%, rgba(31, 182, 160, 0.14), transparent 55%),
+    linear-gradient(180deg, #05041a 0%, #08071d 55%, #050416 100%);
 }
-
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  mix-blend-mode: screen;
+}
 .star {
   position: absolute;
   border-radius: 9999px;
   background: white;
-  animation: twinkle 4s ease-in-out infinite;
+  animation: var(--animate-twinkle);
+}
+
+/* Fine grain to kill banding and add a tactile, premium feel */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Scroll-reveal (used by <Reveal/>). Content is visible by default; the initial
+   hidden state is only applied once JS marks the document `reveal-ready`, so
+   no-JS visitors and crawlers always see the content. */
+.reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-ready .reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 .thin-scrollbar::-webkit-scrollbar {
@@ -93,4 +280,20 @@
 .thin-scrollbar::-webkit-scrollbar-thumb {
   background: rgba(139, 77, 255, 0.4);
   border-radius: 9999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .star,
+  .aurora,
+  .animate-float,
+  .animate-spin-slow,
+  .animate-spin-slower,
+  .animate-pulse-glow {
+    animation: none !important;
+  }
 }

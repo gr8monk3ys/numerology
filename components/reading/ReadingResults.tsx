@@ -19,6 +19,7 @@ import type { Reading } from "@/lib/numerology";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { Chip } from "@/components/ui/Chip";
 import { NumberCard } from "@/components/reading/NumberCard";
+import { CosmicProfile } from "@/components/reading/CosmicProfile";
 import {
   lifePathMeanings,
   expressionMeanings,
@@ -293,6 +294,9 @@ export function ReadingResults({ reading }: { reading: Reading }) {
           </div>
         </Panel>
       )}
+
+      {/* Cosmic profile — tarot, astrology, planes, cycles, bridges, lucky */}
+      <CosmicProfile reading={reading} />
 
       {/* Forecast */}
       <Panel icon={CalendarClock} title="Your Forecast">

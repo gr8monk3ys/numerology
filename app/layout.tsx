@@ -62,7 +62,14 @@ export default function RootLayout({
       lang="en"
       className={`${cinzel.variable} ${cormorant.variable} ${inter.variable}`}
     >
-      <body className="min-h-screen">
+      <body className="grain min-h-screen">
+        {/* Enable scroll-reveal only when JS is present, so no-JS visitors and
+            crawlers still see all content. Runs before below-fold paint. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('reveal-ready')",
+          }}
+        />
         <Starfield />
         <Navbar />
         <main className="relative">{children}</main>

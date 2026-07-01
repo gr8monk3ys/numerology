@@ -1,0 +1,55 @@
+{
+  "_intro": "Numerology divides a lifetime into three great Life Cycles, or Periods, each carrying its own tone and lessons as the years unfold. The First Cycle is ruled by your reduced birth month, the Second by your reduced birth day, and the Third by your reduced birth year — together tracing the arc from formation, through productivity, into harvest. Knowing which number governs each cycle shows what energy colors your youth, your prime, and your later years.",
+  "positions": {
+    "first": {
+      "title": "The Formative Cycle",
+      "framing": "Ruled by your reduced birth month, this cycle spans childhood and early adulthood, laying the foundation of who you are. It shapes your upbringing, temperament, and the conditions you must grow through before your true path comes clear."
+    },
+    "second": {
+      "title": "The Productive Cycle",
+      "framing": "Ruled by your reduced birth day, this is the long central cycle of adulthood, when you build a family, a career, and a place in the world. Its number describes the arena in which you do your most defining work and reap the fruits of effort."
+    },
+    "third": {
+      "title": "The Harvest Cycle",
+      "framing": "Ruled by your reduced birth year, this final cycle governs the later years, when experience ripens into wisdom. Its number reveals the flavor of your maturity — how you reflect, give back, and inhabit the freedom of a life fully lived."
+    }
+  },
+  "numbers": {
+    "1": {
+      "summary": "A period of independence, initiative, and self-definition, urging you to stand on your own and lead. Circumstances push you to develop courage, originality, and the will to begin things without waiting for permission."
+    },
+    "2": {
+      "summary": "A period of partnership, patience, and sensitivity, where growth comes through cooperation rather than force. You learn diplomacy, timing, and the quiet power of supporting, listening, and building bonds with others."
+    },
+    "3": {
+      "summary": "A period of self-expression, creativity, and social warmth, rich with friendship, art, and joy. Life invites you to communicate, imagine, and share your gifts, though it also asks you to focus scattered enthusiasm."
+    },
+    "4": {
+      "summary": "A period of work, order, and steady building, where security is earned through discipline and effort. You lay foundations brick by brick, learning the value of structure, honesty, and patient, practical labor."
+    },
+    "5": {
+      "summary": "A period of change, freedom, and adventure, full of travel, variety, and unexpected turns. Life broadens through experience and the senses, teaching adaptability while cautioning against restlessness and excess."
+    },
+    "6": {
+      "summary": "A period of responsibility, love, and service centered on home and community. Duty to family and others grows strong, bringing deep rewards through nurturing, harmony, and the healing of those around you."
+    },
+    "7": {
+      "summary": "A period of inner searching, study, and reflection, when you turn from the outer world toward meaning. Solitude, analysis, and spiritual questioning deepen wisdom, though they may bring times of withdrawal."
+    },
+    "8": {
+      "summary": "A period of achievement, ambition, and material mastery, where effort meets tangible reward. You are challenged to handle power, money, and authority with balance, honoring both success and ethics."
+    },
+    "9": {
+      "summary": "A period of completion, compassion, and letting go, calling you to give generously and release what no longer serves. Broad understanding and humanitarian feeling grow as you learn the grace of endings."
+    },
+    "11": {
+      "summary": "A heightened, master vibration of intuition, inspiration, and spiritual awakening. This period charges life with idealism and heightened sensitivity, asking you to illuminate others while managing intense nervous energy."
+    },
+    "22": {
+      "summary": "The master builder vibration, uniting grand vision with practical power to create something of lasting worth. This period offers rare potential to manifest large-scale work that serves the wider world."
+    },
+    "33": {
+      "summary": "The master teacher vibration of selfless love and devoted service. This rare period asks you to uplift and heal through compassion, embodying nurturing wisdom on a broad, almost sacrificial scale."
+    }
+  }
+}

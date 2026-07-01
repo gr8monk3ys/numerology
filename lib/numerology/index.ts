@@ -10,4 +10,5 @@ export * from "./chaldean";
 export * from "./cycles";
 export * from "./compatibility";
 export * from "./angel";
+export * from "./esoteric";
 export * from "./report";

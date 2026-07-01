@@ -28,6 +28,16 @@ import {
 import { reduceNumber, reduceDetail } from "./reduce";
 import { chaldeanNumber } from "./chaldean";
 import { analyzeAngelNumber } from "./angel";
+import {
+  tarotBirthCard,
+  planesOfExpression,
+  lifeCycles,
+  bridgeNumbers,
+  sunSign,
+  chineseZodiac,
+} from "./esoteric";
+import zodiacSignsData from "../../content/data/zodiac_signs.json";
+import chineseZodiacData from "../../content/data/chinese_zodiac.json";
 
 // --- Reduction -------------------------------------------------------------
 describe("reduceNumber", () => {
@@ -261,5 +271,61 @@ describe("Angel numbers", () => {
   });
   it("strips separators", () => {
     expect(analyzeAngelNumber("11:11").input).toBe("1111");
+  });
+});
+
+// --- Esoteric systems ------------------------------------------------------
+describe("Tarot Birth Card", () => {
+  it("1990-05-15 -> The Empress (3)", () => {
+    const t = tarotBirthCard({ year: 1990, month: 5, day: 15 });
+    expect(t.personality).toBe(3); // 5 + 15 + 1990 = 2010 -> 3
+    expect(t.soul).toBe(3);
+    expect(t.same).toBe(true);
+  });
+  it("keeps a two-digit personality card and reduces the soul card", () => {
+    // 12 + 25 + 1980 = 2017 -> 2+0+1+7 = 10 -> 1; construct a two-digit case:
+    const t = tarotBirthCard({ year: 1900, month: 12, day: 6 }); // 12+6+1900=1918 -> 19
+    expect(t.personality).toBe(19); // The Sun
+    expect(t.soul).toBe(1); // 19 -> 1+9 -> 10 -> 1 (The Magician)
+    expect(t.same).toBe(false);
+  });
+});
+
+describe("Planes of Expression", () => {
+  it("Thomas John Hancock -> mental-dominant, counts sum to 17", () => {
+    const p = planesOfExpression("Thomas John Hancock");
+    expect(p.total).toBe(17);
+    expect(p).toMatchObject({ physical: 1, mental: 8, emotional: 5, intuitive: 3 });
+    expect(p.dominant).toBe("mental");
+  });
+});
+
+describe("Life Cycles", () => {
+  it("1990-07-04 -> [7,4,1] with firstEnd 33", () => {
+    const c = lifeCycles({ year: 1990, month: 7, day: 4 });
+    expect(c.map((x) => x.value)).toEqual([7, 4, 1]);
+    expect(c[0].endAge).toBe(33);
+    expect(c[2].endAge).toBeNull();
+  });
+});
+
+describe("Bridge numbers", () => {
+  it("computes absolute reduced differences", () => {
+    const b = bridgeNumbers({ lifePath: 3, expression: 9, soulUrge: 9, personality: 9 });
+    expect(b.lifePathExpression).toBe(6);
+    expect(b.soulUrgePersonality).toBe(0);
+  });
+});
+
+describe("Zodiac lookups", () => {
+  it("sun sign for May 15 is Taurus", () => {
+    expect(sunSign(5, 15, zodiacSignsData as never)?.sign).toBe("Taurus");
+  });
+  it("sun sign wraps for Capricorn (Jan 5)", () => {
+    expect(sunSign(1, 5, zodiacSignsData as never)?.sign).toBe("Capricorn");
+  });
+  it("Chinese zodiac 1990 is Horse, 2000 is Dragon", () => {
+    expect(chineseZodiac(1990, chineseZodiacData as never).animal).toBe("Horse");
+    expect(chineseZodiac(2000, chineseZodiacData as never).animal).toBe("Dragon");
   });
 });

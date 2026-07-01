@@ -1,0 +1,98 @@
+[
+  {
+    "animal": "Rat",
+    "emoji": "🐀",
+    "traits": ["quick-witted", "resourceful", "charming", "thrifty", "adaptable"],
+    "summary": "First of the twelve signs, the Rat is clever, alert, and endlessly resourceful, sensing opportunity where others see none. Sociable and quick to charm, Rats accumulate quietly and adapt to any circumstance, though their caution can shade into worry or opportunism.",
+    "luckyNumbers": ["2", "3"],
+    "element": "Fixed element Water; part of the First Trine with Dragon and Monkey."
+  },
+  {
+    "animal": "Ox",
+    "emoji": "🐂",
+    "traits": ["diligent", "dependable", "patient", "steadfast", "honest"],
+    "summary": "The Ox is the tireless worker of the zodiac, patient and methodical, earning trust through sheer reliability. Calm and principled, Oxen prefer steady effort to shortcuts, though their stubbornness and reserve can make them slow to change or to open up.",
+    "luckyNumbers": ["1", "4"],
+    "element": "Fixed element Earth; part of the Second Trine with Snake and Rooster."
+  },
+  {
+    "animal": "Tiger",
+    "emoji": "🐅",
+    "traits": ["brave", "confident", "charismatic", "competitive", "impulsive"],
+    "summary": "The Tiger is bold, magnetic, and born to lead, charging at challenges with courage and passion. Generous and fiercely independent, Tigers inspire loyalty, yet their intensity and impatience can flare into recklessness or conflict.",
+    "luckyNumbers": ["1", "3", "4"],
+    "element": "Fixed element Wood; part of the Third Trine with Horse and Dog."
+  },
+  {
+    "animal": "Rabbit",
+    "emoji": "🐇",
+    "traits": ["gentle", "elegant", "diplomatic", "kind", "cautious"],
+    "summary": "The Rabbit is refined, gentle, and diplomatic, moving through life with tact and quiet grace. Peace-loving and compassionate, Rabbits value beauty, harmony, and security, though their aversion to conflict can make them evasive or overly cautious.",
+    "luckyNumbers": ["3", "4", "6"],
+    "element": "Fixed element Wood; part of the Fourth Trine with Goat and Pig."
+  },
+  {
+    "animal": "Dragon",
+    "emoji": "🐉",
+    "traits": ["ambitious", "charismatic", "energetic", "confident", "visionary"],
+    "summary": "The Dragon is the most auspicious sign, radiant with vitality, ambition, and natural authority. Charismatic and idealistic, Dragons dream big and command attention, though their pride and headstrong drive can make them impatient with lesser visions.",
+    "luckyNumbers": ["1", "6", "7"],
+    "element": "Fixed element Earth; part of the First Trine with Rat and Monkey."
+  },
+  {
+    "animal": "Snake",
+    "emoji": "🐍",
+    "traits": ["wise", "intuitive", "graceful", "private", "determined"],
+    "summary": "The Snake is deep, intuitive, and enigmatic, gifted with sharp insight and quiet determination. Elegant and self-possessed, Snakes think before they act and keep their own counsel, though their secrecy and pride can read as aloof or possessive.",
+    "luckyNumbers": ["2", "8", "9"],
+    "element": "Fixed element Fire; part of the Second Trine with Ox and Rooster."
+  },
+  {
+    "animal": "Horse",
+    "emoji": "🐎",
+    "traits": ["energetic", "free-spirited", "warm", "adventurous", "sociable"],
+    "summary": "The Horse is spirited, warm, and freedom-loving, always in motion toward the next horizon. Cheerful and quick to make friends, Horses thrive on adventure and independence, though their restlessness and impatience can leave tasks and bonds unfinished.",
+    "luckyNumbers": ["2", "3", "7"],
+    "element": "Fixed element Fire; part of the Third Trine with Tiger and Dog."
+  },
+  {
+    "animal": "Goat",
+    "emoji": "🐐",
+    "traits": ["gentle", "artistic", "compassionate", "creative", "sensitive"],
+    "summary": "The Goat is tender, artistic, and empathetic, drawn to beauty, comfort, and quiet harmony. Kind and imaginative, Goats nurture those they love and create with heartfelt taste, though their sensitivity can tip into worry, dependence, or pessimism.",
+    "luckyNumbers": ["2", "7"],
+    "element": "Fixed element Earth; part of the Fourth Trine with Rabbit and Pig."
+  },
+  {
+    "animal": "Monkey",
+    "emoji": "🐒",
+    "traits": ["clever", "inventive", "playful", "curious", "versatile"],
+    "summary": "The Monkey is brilliant, witty, and inventive, solving problems with playful ingenuity and boundless curiosity. Sociable and versatile, Monkeys learn fast and entertain effortlessly, though their cleverness can slide into mischief, restlessness, or trickery.",
+    "luckyNumbers": ["4", "9"],
+    "element": "Fixed element Metal; part of the First Trine with Rat and Dragon."
+  },
+  {
+    "animal": "Rooster",
+    "emoji": "🐓",
+    "traits": ["observant", "hardworking", "confident", "candid", "meticulous"],
+    "summary": "The Rooster is sharp-eyed, diligent, and proud, taking care with detail and speaking its mind plainly. Confident and dependable, Roosters shine through honest effort and flair, though their frankness and perfectionism can come across as critical or vain.",
+    "luckyNumbers": ["5", "7", "8"],
+    "element": "Fixed element Metal; part of the Second Trine with Ox and Snake."
+  },
+  {
+    "animal": "Dog",
+    "emoji": "🐕",
+    "traits": ["loyal", "honest", "protective", "just", "sincere"],
+    "summary": "The Dog is faithful, honest, and fiercely protective, guided by a strong sense of justice and duty. Warm and dependable, Dogs stand by their people through anything, though their vigilance can turn to anxiety, cynicism, or stubborn worry.",
+    "luckyNumbers": ["3", "4", "9"],
+    "element": "Fixed element Earth; part of the Third Trine with Tiger and Horse."
+  },
+  {
+    "animal": "Pig",
+    "emoji": "🐖",
+    "traits": ["generous", "sincere", "easygoing", "diligent", "compassionate"],
+    "summary": "The Pig is warm-hearted, generous, and sincere, enjoying life's pleasures while giving freely to others. Honest and easygoing, Pigs work hard and forgive readily, though their trusting nature and love of comfort can leave them naive or overindulgent.",
+    "luckyNumbers": ["2", "5", "8"],
+    "element": "Fixed element Water; part of the Fourth Trine with Rabbit and Goat."
+  }
+]

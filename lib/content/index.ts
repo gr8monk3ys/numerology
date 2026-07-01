@@ -13,9 +13,16 @@ import masterKarmicData from "@/content/data/meanings_master_karmic.json";
 import correspondenceData from "@/content/data/correspondences.json";
 import angelData from "@/content/data/angel_numbers.json";
 import compatibilityData from "@/content/data/compatibility.json";
+import tarotData from "@/content/data/tarot_major.json";
+import bridgeData from "@/content/data/bridge_numbers.json";
+import planesData from "@/content/data/planes_of_expression.json";
+import lifeCyclesData from "@/content/data/life_cycles.json";
+import chineseData from "@/content/data/chinese_zodiac.json";
+import zodiacData from "@/content/data/zodiac_signs.json";
 
 import type { AngelEntry } from "@/lib/numerology/angel";
 import type { CompatibilityData } from "@/lib/numerology/compatibility";
+import type { ZodiacSign, ChineseZodiacSign, Plane } from "@/lib/numerology/esoteric";
 
 export interface NumberMeaning {
   title: string;
@@ -102,6 +109,50 @@ export const masterMeanings = (
 export const karmicDebtMeanings = (
   masterKarmicData as { karmicDebt: Record<string, KarmicDebtMeaning> }
 ).karmicDebt;
+
+// --- Esoteric datasets -----------------------------------------------------
+
+export interface TarotCard {
+  name: string;
+  keywords: string[];
+  upright: string;
+  reversed: string;
+  numerology: string;
+  birthCard: string;
+}
+export interface BridgeMeaning {
+  title: string;
+  summary: string;
+  advice: string;
+}
+export interface PlaneContent {
+  title: string;
+  letters: string[];
+  meaning: string;
+  high: string;
+  low: string;
+}
+export interface PlanesContent {
+  _intro: string;
+  physical: PlaneContent;
+  mental: PlaneContent;
+  emotional: PlaneContent;
+  intuitive: PlaneContent;
+}
+export interface LifeCyclesContent {
+  _intro: string;
+  positions: Record<"first" | "second" | "third", { title: string; framing: string }>;
+  numbers: Record<string, { summary: string }>;
+}
+
+export const tarotMajor = tarotData as unknown as Record<string, TarotCard>;
+export const bridgeMeanings = bridgeData as unknown as Record<string, BridgeMeaning>;
+export const planesContent = planesData as unknown as PlanesContent;
+export const lifeCyclesContent = lifeCyclesData as unknown as LifeCyclesContent;
+export const chineseZodiacData = chineseData as unknown as ChineseZodiacSign[];
+export const zodiacSignsData = zodiacData as unknown as ZodiacSign[];
+
+export const planeKeyList: Plane[] = ["physical", "mental", "emotional", "intuitive"];
 
 /** Safe lookup helper. */
 export function pick<T>(map: Record<string, T>, key: number | string): T | undefined {
