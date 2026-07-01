@@ -1,0 +1,86 @@
+{
+  "pythagoreanChart": {
+    "A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "H": 8, "I": 9,
+    "J": 1, "K": 2, "L": 3, "M": 4, "N": 5, "O": 6, "P": 7, "Q": 8, "R": 9,
+    "S": 1, "T": 2, "U": 3, "V": 4, "W": 5, "X": 6, "Y": 7, "Z": 8
+  },
+  "vowels": ["A", "E", "I", "O", "U"],
+  "yRule": "By default treat Y (and always W) as a CONSONANT. In the strict phonetic method used by most traditional numerologists, Y counts as a VOWEL only when it supplies the sole vowel sound of a syllable (e.g. 'Bryan', 'Lynn', 'Terry', 'Kylie') or when it produces a distinct vowel sound not part of a preceding vowel (e.g. 'Nya'); Y is a CONSONANT when it makes a hard 'y' sound (e.g. 'Yoda', 'Yuliana') or when it merely follows another vowel in the same syllable without adding a new sound (e.g. 'Maya', 'Grayson'). W is only counted as a vowel in the rare classical pairing where it follows a vowel to form a single sound (e.g. the 'ew' in some names); virtually all modern calculators treat W as a consonant always. Because the phonetic rule is ambiguous and pronunciation-dependent, most calculators expose a toggle (yAsVowel) and default it to FALSE (Y as consonant) so results are deterministic. When Y is a vowel it contributes to the Soul Urge and is excluded from the Personality; when Y is a consonant it contributes to the Personality and is excluded from the Soul Urge. The Expression number always includes every letter regardless of the toggle, so the toggle never changes the Expression.",
+  "reductionRule": "Repeatedly sum the individual digits of a number until a single digit (1-9) remains, with ONE exception: never reduce the master numbers 11, 22, or 33. Concretely: (1) if the number is 11, 22, or 33, stop and keep it as-is; (2) otherwise, if the number is greater than 9, replace it with the sum of its digits and repeat from step 1; (3) otherwise (1-9) stop. Master numbers are preserved both when they appear as a final total AND, per common practice, when an intermediate component total (e.g. the reduced month, day, or year, or a Soul Urge/Personality/Expression subtotal) equals 11, 22, or 33 before the final reduction. Examples: 12 -> 1+2 = 3; 19 -> 1+9 = 10 -> 1+0 = 1; 11 -> stays 11; 29 -> 2+9 = 11 -> stays 11; 33 -> stays 33; 38 -> 3+8 = 11 -> stays 11; 48 -> 4+8 = 12 -> 1+2 = 3.",
+  "lifePath": {
+    "method": "Reduce the month, the day, and the year EACH to a single digit or master number FIRST, then add those three reduced results and reduce the sum one final time (preserving masters). Month = its calendar number (Jan=1 ... Dec=12, so Oct=10->1, Nov=11 stays 11, Dec=12->3). Day = the day-of-month reduced (e.g. 15->6, 29->2+9=11 stays 11). Year = the sum of all four digits reduced (e.g. 1990 -> 1+9+9+0 = 19 -> 1+0... = 1). Then LifePath = reduce(reducedMonth + reducedDay + reducedYear), keeping 11/22/33 unreduced. The 'reduce components first' method is the accepted standard because summing the entire date string as one long number can either manufacture a master number that is not truly present or erase a master number that should appear; reducing each of the three date components independently is the only method that lets master numbers surface exactly when the month/day/year structure warrants and is the approach documented by Numerology.com, World Numerology (Hans Decoz), Tokenrock and other mainstream authorities.",
+    "worked": "Sample date 1990-05-15. Month = 5. Day = 15 -> 1+5 = 6. Year = 1990 -> 1+9+9+0 = 19 -> 1+9 = 10 -> 1+0 = 1. Sum of components = 5 + 6 + 1 = 12 -> 1+2 = 3. Life Path = 3. (Master-number example 1940-03-12: Month = 3; Day = 12 -> 1+2 = 3; Year = 1940 -> 1+9+4+0 = 14 -> 1+4 = 5; sum = 3+3+5 = 11 -> master number, kept -> Life Path = 11.)"
+  },
+  "birthday": {
+    "method": "The Birthday number is simply the day of the month of birth, reduced to a single digit or master number using the standard reduction rule. Days 1-9 stay as-is; days 10-31 are reduced by summing their digits (e.g. 15 -> 1+5 = 6; 23 -> 2+3 = 5; 30 -> 3+0 = 3), EXCEPT that a day reducing to a master number is kept: the 11th stays 11, the 22nd stays 22, and the 29th (2+9 = 11) stays 11. Some traditions leave the 2-digit day unreduced as a secondary meaning, but the reduced value defined here is the standard single-number Birthday number.",
+    "worked": "Born on the 15th: 15 -> 1+5 = 6, Birthday number = 6. Born on the 29th: 29 -> 2+9 = 11, a master number, kept, Birthday number = 11. Born on the 4th: 4, Birthday number = 4."
+  },
+  "expression": {
+    "method": "Also called the Destiny number. Convert EVERY letter of the full birth name (all given names plus surname, as recorded at birth) to its Pythagorean chart value, sum them all, then reduce the total to a single digit or master number. Spaces and punctuation are ignored; the yAsVowel toggle has NO effect on the Expression because all letters are included regardless.",
+    "worked": "'John Paul Smith': J1 O6 H8 N5 + P7 A1 U3 L3 + S1 M4 I9 T2 H8 = 58. 58 -> 5+8 = 13 -> 1+3 = 4. Expression = 4."
+  },
+  "soulUrge": {
+    "method": "Also called the Heart's Desire number. Sum the Pythagorean chart values of the VOWELS only in the full birth name (A, E, I, O, U always; Y additionally counted here when yAsVowel = true), then reduce to a single digit or master number.",
+    "worked": "'John Paul Smith' (no Y present): vowels O6 (John) + A1 U3 (Paul) + I9 (Smith) = 19. 19 -> 1+9 = 10 -> 1+0 = 1. Soul Urge = 1."
+  },
+  "personality": {
+    "method": "Sum the Pythagorean chart values of the CONSONANTS only in the full birth name (every letter that is not A, E, I, O, U; Y is included here as a consonant when yAsVowel = false, and excluded here when yAsVowel = true), then reduce to a single digit or master number. Note Expression = Soul Urge total + Personality total before final reduction, which is a useful consistency check.",
+    "worked": "'John Paul Smith' (no Y present): consonants J1 H8 N5 (John) + P7 L3 (Paul) + S1 M4 T2 H8 (Smith) = 39. 39 -> 3+9 = 12 -> 1+2 = 3. Personality = 3. Check: SoulUrge subtotal 19 + Personality subtotal 39 = 58 = Expression subtotal. Correct."
+  },
+  "testCases": [
+    {
+      "description": "Life Path for 1990-05-15. Month=5; Day 15->1+5=6; Year 1990->1+9+9+0=19->10->1; sum 5+6+1=12->1+2=3.",
+      "type": "lifePath",
+      "input": {"year": 1990, "month": 5, "day": 15},
+      "expected": 3
+    },
+    {
+      "description": "Life Path master-number case 1978-04-11. Month=4; Day 11 stays 11 (master); Year 1978->1+9+7+8=25->2+5=7; sum 4+11+7=22 stays 22 (master).",
+      "type": "lifePath",
+      "input": {"year": 1978, "month": 4, "day": 11},
+      "expected": 22
+    },
+    {
+      "description": "Life Path master-number 11 case 1940-03-12. Month=3; Day 12->1+2=3; Year 1940->1+9+4+0=14->1+4=5; sum 3+3+5=11 stays 11 (master).",
+      "type": "lifePath",
+      "input": {"year": 1940, "month": 3, "day": 12},
+      "expected": 11
+    },
+    {
+      "description": "Life Path for 1987-07-04. Month=7; Day=4; Year 1987->1+9+8+7=25->2+5=7; sum 7+4+7=18->1+8=9.",
+      "type": "lifePath",
+      "input": {"year": 1987, "month": 7, "day": 4},
+      "expected": 9
+    },
+    {
+      "description": "Birthday number for day 15. 15->1+5=6.",
+      "type": "birthday",
+      "input": {"day": 15},
+      "expected": 6
+    },
+    {
+      "description": "Birthday number master case for day 29. 29->2+9=11, kept as master.",
+      "type": "birthday",
+      "input": {"day": 29},
+      "expected": 11
+    },
+    {
+      "description": "Full name 'John Paul Smith', Y treated as consonant (no Y present so toggle is moot). Expression: all letters 58->13->4. Soul Urge: vowels O6+A1+U3+I9=19->10->1. Personality: consonants J1+H8+N5+P7+L3+S1+M4+T2+H8=39->12->3.",
+      "type": "name",
+      "input": {"name": "John Paul Smith", "yAsVowel": false},
+      "expected": {"expression": 4, "soulUrge": 1, "personality": 3}
+    },
+    {
+      "description": "Full name 'Mary Jane', Y treated as CONSONANT. Letters M4 A1 R9 Y7 J1 A1 N5 E5. Expression: 33 (master, kept). Soul Urge (vowels A1+A1+E5=7). Personality (consonants M4+R9+Y7+J1+N5=26->2+6=8).",
+      "type": "name",
+      "input": {"name": "Mary Jane", "yAsVowel": false},
+      "expected": {"expression": 33, "soulUrge": 7, "personality": 8}
+    },
+    {
+      "description": "Full name 'Mary Jane', Y treated as VOWEL. Expression unchanged at 33. Soul Urge now includes Y: A1+Y7+A1+E5=14->1+4=5. Personality now excludes Y: M4+R9+J1+N5=19->1+9=10->1+0=1.",
+      "type": "name",
+      "input": {"name": "Mary Jane", "yAsVowel": true},
+      "expected": {"expression": 33, "soulUrge": 5, "personality": 1}
+    }
+  ]
+}

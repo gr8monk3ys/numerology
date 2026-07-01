@@ -1,0 +1,133 @@
+{
+  "chaldeanChart": {
+    "A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 8, "G": 3, "H": 5, "I": 1,
+    "J": 1, "K": 2, "L": 3, "M": 4, "N": 5, "O": 7, "P": 8, "Q": 1, "R": 2,
+    "S": 3, "T": 4, "U": 6, "V": 6, "W": 6, "X": 5, "Y": 1, "Z": 7
+  },
+  "chartByNumber": {
+    "1": ["A", "I", "J", "Q", "Y"],
+    "2": ["B", "K", "R"],
+    "3": ["C", "G", "L", "S"],
+    "4": ["D", "M", "T"],
+    "5": ["E", "H", "N", "X"],
+    "6": ["U", "V", "W"],
+    "7": ["O", "Z"],
+    "8": ["F", "P"]
+  },
+  "notes": "CHART VERIFICATION: Every value above was cross-checked against multiple reputable Chaldean/Cheiro sources (professionalnumerology.com, astronumero.org 'Numerology Charts', jcchaudhry.com, numrolab.com, chaldeannumerologycalculator.com, howisyourdaytoday.com Master Table) and ALL sources agree on the standard grouping: 1 = A,I,J,Q,Y; 2 = B,K,R; 3 = C,G,L,S; 4 = D,M,T; 5 = E,H,N,X; 6 = U,V,W; 7 = O,Z; 8 = F,P. NO corrections to the supplied chart were required; the provided values matched the standard chart exactly. VALUE LOGIC: Chaldean numerology is the older Babylonian/Chaldean system popularized in the West by Cheiro (Count Louis Hamon). Unlike Pythagorean, the letters are NOT assigned in simple alphabetical A=1..Z sequence; instead each letter is grouped by the vibrational 'sound' the Chaldeans associated with a single-digit number 1 through 8. THE NUMBER 9 IS DELIBERATELY NOT ASSIGNED TO ANY LETTER: the Chaldeans regarded 9 as holy, sacred and 'the number of God' / the finality of a cycle, so it was held apart and never given to a letter. Nine can therefore only ever appear as a RESULT of adding other letters (e.g. a compound total of 18 or 27 reduces to 9); it is never a direct letter value. COMPOUND (two-digit) NUMBER: the raw sum of all the letter values in a name is the 'compound number' (Cheiro's term is the double/compound number). In Chaldean practice this compound number carries the deeper hidden spiritual meaning and is ALWAYS recorded BEFORE it is reduced. Only after noting the compound number do you reduce it by repeatedly summing its digits to a single 'root' digit 1-9 (the outward/personality number). Example: OPRAH WINFREY = 51 (compound, the meaning of 51 applies) then 5+1 = 6 (root). Master/spiritual numbers 11, 22 and 33 are kept unreduced when they occur as the final total (and, per common practice, when an individual word/component total is 11, 22 or 33 before the final reduction), because they are treated as high-vibration spiritual numbers rather than being flattened to 2, 4 or 6.",
+  "nineIsSacred": "No English letter maps to 9 in Chaldean numerology. The Chaldeans considered 9 the sacred/divine number (the number that, multiplied by any number, always reduces back to 9), so it was reserved and excluded from the letter-to-number assignment. A name can still TOTAL 9 (or reduce to 9) through the sum of its letters; the sacredness only prevents 9 from being a direct letter value.",
+  "differencesFromPythagorean": "1) LETTER VALUES: Pythagorean assigns letters in plain alphabetical order A=1,B=2,...,I=9,J=1,... cycling 1-9. Chaldean assigns letters by sound/vibration into groups and only uses 1-8 (see chart). Concretely the two systems disagree for most letters: e.g. F is 6 in Pythagorean but 8 in Chaldean; H is 8 vs 5; O is 6 vs 7; P is 7 vs 8; V is 4 vs 6; X is 6 vs 5; Z is 8 vs 7; and so on. 2) THE DIGIT 9: Pythagorean uses 9 as a normal letter value (I and R are 9). Chaldean never assigns 9 to a letter because 9 is sacred. 3) COMPOUND NUMBER EMPHASIS: Chaldean treats the two-digit compound total as spiritually primary (each compound 10-52 has its own distinct meaning) and reduces it to a root only for the outer/surface reading; Pythagorean is primarily interested in the reduced single digit (plus master numbers). 4) NAME USED: Chaldean is traditionally applied to the name a person is CURRENTLY KNOWN BY / uses in daily life (the name that has accumulated vibration), whereas Pythagorean core numbers (Expression, Soul Urge) are classically taken from the FULL BIRTH-CERTIFICATE name. 5) MASTER NUMBERS: both preserve 11/22/33, but Chaldean practitioners often speak of the full ladder of compound numbers rather than just the three master numbers.",
+  "compoundNumbers": {
+    "10": "The Wheel of Fortune. Honour, faith and self-confidence; rise and fall; one's name becomes known for good or evil per one's desires. A fortunate number for the carrying out of plans.",
+    "11": "A Clenched Hand / a Lion Muzzled. An ominous, warning number: hidden dangers, trial, treachery and difficulties from others; one must rely on self.",
+    "12": "The Sacrifice / the Victim. Suffering and anxiety of mind; the person tends to be sacrificed for the plans or intrigues of others; foreshadows being deceived by friends.",
+    "13": "Upheaval and destruction of the old to make way for the new; a number of change, warning of the unknown. Not 'unlucky' as popularly supposed, but a number of power that must be used rightly or it turns destructive.",
+    "14": "Movement, combination of people and things, risk from natural forces (storms, water, danger through partnerships and speculation). Fortunate for dealings with money if the person is not reckless. Also linked to media, publicity and travel.",
+    "15": "The Magician. Deep occult/magnetic significance, personal charm, eloquence and a 'gift of tongues'; good for gaining money, gifts and favours, but if joined to a poor single number it can be used for self-serving or dark ends.",
+    "16": "The Shattered Tower / a Tower struck by Lightning. Warning of accidents, sudden fall of fortune and defeat of plans; calls for care and forethought to avoid a fated collapse.",
+    "17": "The Star of the Magi. A highly spiritual and fortunate number of immortality; the person rises superior to trials and difficulties and leaves a lasting name. A number of peace, love and lasting success after struggle.",
+    "18": "Materialism striving to destroy the spiritual. A difficult number of conflict, quarrels, treachery, deception and danger from the elements (storms, explosions, social upheaval). Warns of bitter conflict and family strife.",
+    "19": "The Prince of Heaven / the Sun. One of the most fortunate numbers: promise of success, happiness, honour and fulfilment of plans; triumph over difficulties.",
+    "20": "The Awakening / the Judgement. A call to action for a great purpose, new plans and ambitions; not concerned with material gain but with an inner awakening. Delays and obstacles can be overcome by patience.",
+    "21": "The Crown of the Magi / the Universe. Advancement, honours, elevation and success after long initiation, struggle and tests of determination. A most fortunate number of victory.",
+    "22": "Submission / a good man blind and deceived. A warning of illusion and delusion, of good judgment overcome by others; the person may be led astray or misled by false friends. (As a master number a total of 22 is also read as high spiritual potential; see reductionRule.)",
+    "23": "The Royal Star of the Lion. Success, help and protection from those in high places; a promise that plans will be carried out. One of the most fortunate numbers.",
+    "24": "Also fortunate: gain and assistance from those of rank and position; gain through love and the opposite sex; a favourable number for future events.",
+    "25": "Strength gained through experience and the observation of people and things; success comes through strife and trials in earlier life. Favourable, but its gains are hard-won.",
+    "26": "Grave warnings for the future: disaster brought about by bad advice, association with others, or unfortunate partnerships; danger of ruin through speculation. A person of this number should rely on their own good judgment.",
+    "27": "The Sceptre. A good and fortunate number of authority, power and command; reward from the productive intellect and creative faculties. Promises that good work will bear fruit; a person should carry out their own ideas.",
+    "28": "A number full of contradictions: great promise and possibility that is likely to be swept away unless the person provides carefully for the future. Loss through trust in others, opposition and competition, danger of loss through law; the road of life may have to be begun over again.",
+    "29": "Uncertainties, treachery and deception by others; trials, tribulation and unexpected dangers, unreliable friends, and grief or deception caused by the opposite sex. Demands faith and caution.",
+    "30": "Thoughtful deduction, retrospection and mental superiority; the person stands apart, neither fortunate nor unfortunate, wholly governed by their own mind and choices. A number of mental attainment rather than material gain.",
+    "31": "Similar to 30: self-contained, lonely, isolated from fellows; great mental power turned inward. More unfortunate for worldly or material success.",
+    "32": "Similar in magic and power to 14 and 23. Fortunate if the person holds to their own judgment; if they yield to the persuasion of others, plans may be ruined. Associated with combinations of people and nations.",
+    "33": "Has no potency of its own and simply repeats the meaning of the number 24. (As a master number a total of 33 is also read as high spiritual/teaching potential; see reductionRule.)",
+    "34": "Has the same meaning as the number 25.",
+    "35": "Has the same meaning as the number 26.",
+    "36": "Has the same meaning as the number 27.",
+    "37": "A number of good and fortunate friendships, in love and in partnerships with the opposite sex; a fortunate indication for good partnerships of all kinds.",
+    "38": "Has the same meaning as the number 29.",
+    "39": "Has the same meaning as the number 30.",
+    "40": "Has the same meaning as the number 31.",
+    "41": "Has the same meaning as the number 32.",
+    "42": "Has the same meaning as the number 24.",
+    "43": "An unfortunate number symbolised by revolution, upheaval, strife, failure and prevention; a warning number not to be used as a name-number if it can be avoided.",
+    "44": "Has the same meaning as the number 26.",
+    "45": "Has the same meaning as the number 27.",
+    "46": "Has the same meaning as the number 28.",
+    "47": "Has the same meaning as the number 29.",
+    "48": "Has the same meaning as the number 30.",
+    "49": "Has the same meaning as the number 31.",
+    "50": "Has the same meaning as the number 32.",
+    "51": "The nature of the Warrior. Sudden advancement in whatever is undertaken; especially favourable for those in military or naval life and for leaders. It also threatens enemies, danger and the risk of assassination, so power must be guarded.",
+    "52": "Has the same meaning as the number 43.",
+    "note": "Cheiro's compound-number series is defined from 10 to 52 (the 52 weeks of the year). Compound numbers of 9 (e.g. 18, 27, 36, 45) and higher two-digit numbers beyond 52 are read by their reduced single-digit meaning or by the lower compound number they repeat. Single digits 1-9 are read as their own root-number meaning."
+  },
+  "method": "CHALDEAN NAME CALCULATION. (1) Take the name the person is COMMONLY KNOWN BY / uses in everyday life (spell it exactly as normally written); Chaldean tradition weights the name in current use rather than only the birth-certificate name. (2) Convert every LETTER to its Chaldean value using chaldeanChart (spaces, hyphens, apostrophes and punctuation are ignored; only A-Z letters count; the system uses only values 1-8 and never assigns 9). (3) Sum all the letter values to obtain the COMPOUND NUMBER (the raw two-digit-or-more total). Record and interpret this compound number FIRST using compoundNumbers (10-52), because in Chaldean numerology the compound number carries the deeper/hidden spiritual meaning. (4) Reduce the compound number to a single-digit ROOT (1-9) by repeatedly summing its digits; this root is the outward/surface number. (5) MASTER-NUMBER EXCEPTION: keep 11, 22 or 33 UNREDUCED when it appears as the final total, and (per common practice) preserve an individual word/component total of 11, 22 or 33 before the final reduction. For a multi-word name, sum each word to its own compound total (noting any word whose total is itself a master or notable compound number), then add the word totals to the grand compound total, then reduce. Higher-level derived numbers (only the vowels for the Soul number, only the consonants for the Personality number) can be computed the same way using this chart if desired, but the primary Chaldean 'name number' is the full-name compound and its root.",
+  "reductionRule": "Repeatedly sum the digits of the compound total to a single digit 1-9 (the ROOT), with ONE exception: if the number is 11, 22 or 33 stop and keep it (master/spiritual number). Concretely: (a) if n is 11, 22 or 33 -> keep it; (b) else if n > 9 -> replace n with the sum of its digits and repeat; (c) else (1-9) -> stop. Master numbers are kept both as a FINAL total and when a word/component subtotal equals 11, 22 or 33 before the final reduction. The COMPOUND number (the pre-reduction total) is always retained and interpreted alongside the root, even when it is not a master number (e.g. compound 51 -> root 6, but the 51 'Warrior' meaning still applies). Examples: 18 -> 1+8 = 9; 51 -> 5+1 = 6; 46 -> 4+6 = 10 -> 1+0 = 1; 11 stays 11; 22 stays 22; 33 stays 33.",
+  "testCases": [
+    {
+      "description": "JOHN. J1 O7 H5 N5 = 18 (compound). 18 -> 1+8 = 9. Not a master number.",
+      "type": "chaldeanName",
+      "input": {"name": "John"},
+      "expected": {"compound": 18, "root": 9, "isMaster": false}
+    },
+    {
+      "description": "DAVID. D4 A1 V6 I1 D4 = 16 (compound, the Shattered Tower warning). 16 -> 1+6 = 7.",
+      "type": "chaldeanName",
+      "input": {"name": "David"},
+      "expected": {"compound": 16, "root": 7, "isMaster": false}
+    },
+    {
+      "description": "MARY. M4 A1 R2 Y1 = 8 (compound already a single digit). Root = 8.",
+      "type": "chaldeanName",
+      "input": {"name": "Mary"},
+      "expected": {"compound": 8, "root": 8, "isMaster": false}
+    },
+    {
+      "description": "OPRAH WINFREY. OPRAH = O7 P8 R2 A1 H5 = 23; WINFREY = W6 I1 N5 F8 R2 E5 Y1 = 28; grand compound = 23+28 = 51 (the Warrior). 51 -> 5+1 = 6.",
+      "type": "chaldeanName",
+      "input": {"name": "Oprah Winfrey"},
+      "expected": {"compound": 51, "root": 6, "isMaster": false, "wordCompounds": {"OPRAH": 23, "WINFREY": 28}}
+    },
+    {
+      "description": "ALBERT EINSTEIN. ALBERT = A1 L3 B2 E5 R2 T4 = 17; EINSTEIN = E5 I1 N5 S3 T4 E5 I1 N5 = 29; grand compound = 17+29 = 46. 46 -> 4+6 = 10 -> 1+0 = 1. Demonstrates multi-step reduction.",
+      "type": "chaldeanName",
+      "input": {"name": "Albert Einstein"},
+      "expected": {"compound": 46, "root": 1, "isMaster": false, "wordCompounds": {"ALBERT": 17, "EINSTEIN": 29}}
+    },
+    {
+      "description": "ABEL. A1 B2 E5 L3 = 11 (compound). 11 is a MASTER number, kept unreduced -> final = 11 (root would otherwise be 1+1 = 2).",
+      "type": "chaldeanName",
+      "input": {"name": "Abel"},
+      "expected": {"compound": 11, "root": 11, "isMaster": true, "reducedIfNotMaster": 2}
+    },
+    {
+      "description": "HANNAH. H5 A1 N5 N5 A1 H5 = 22 (compound). 22 is a MASTER number, kept unreduced -> final = 22 (root would otherwise be 2+2 = 4).",
+      "type": "chaldeanName",
+      "input": {"name": "Hannah"},
+      "expected": {"compound": 22, "root": 22, "isMaster": true, "reducedIfNotMaster": 4}
+    },
+    {
+      "description": "LEO JOHN. LEO = L3 E5 O7 = 15; JOHN = J1 O7 H5 N5 = 18; grand compound = 15+18 = 33, a MASTER number, kept unreduced -> final = 33 (root would otherwise be 3+3 = 6). Exercises the master-number total from summing two word compounds.",
+      "type": "chaldeanName",
+      "input": {"name": "Leo John"},
+      "expected": {"compound": 33, "root": 33, "isMaster": true, "reducedIfNotMaster": 6, "wordCompounds": {"LEO": 15, "JOHN": 18}}
+    },
+    {
+      "description": "MARY GRACE. MARY = M4 A1 R2 Y1 = 8; GRACE = G3 R2 A1 C3 E5 = 14; grand compound = 8+14 = 22, a MASTER number, kept unreduced -> final = 22 (root would otherwise be 4).",
+      "type": "chaldeanName",
+      "input": {"name": "Mary Grace"},
+      "expected": {"compound": 22, "root": 22, "isMaster": true, "reducedIfNotMaster": 4, "wordCompounds": {"MARY": 8, "GRACE": 14}}
+    }
+  ],
+  "sources": [
+    "https://www.professionalnumerology.com/chaldeansystem.html",
+    "https://www.astronumero.org/numerology-charts/",
+    "https://www.astronumero.org/compound-numbers/",
+    "https://www.jcchaudhry.com/chaldean-numerology-chart",
+    "https://numrolab.com/articles/numerology-alphabet",
+    "https://www.astroccult.net/compoundnumbers.html",
+    "Cheiro (Count Louis Hamon), 'Book of Numbers' (1926) - compound numbers 10-52"
+  ]
+}

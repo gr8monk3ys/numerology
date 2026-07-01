@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-void-950 text-mystic-100 font-sans antialiased;
+    background-image: var(--tw-gradient-cosmic, none);
+  }
+
+  ::selection {
+    @apply bg-mystic-500/40 text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-wide;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .glass {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm;
+  }
+
+  .glass-strong {
+    @apply rounded-2xl border border-white/10 bg-void-800/60 backdrop-blur-md;
+  }
+
+  .gold-text {
+    @apply bg-gold-sheen bg-clip-text text-transparent;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-gold-300 after:transition-all hover:after:w-full;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-sheen px-6 py-3 font-medium text-void-950 shadow-glow-gold transition-transform hover:scale-[1.03] active:scale-95 disabled:opacity-50 disabled:hover:scale-100;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-mystic-400/40 px-6 py-3 font-medium text-mystic-100 transition-colors hover:border-mystic-300 hover:bg-mystic-500/10;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-white/10 bg-void-900/70 px-4 py-3 text-mystic-50 placeholder:text-mystic-300/40 outline-none transition-colors focus:border-mystic-400 focus:ring-1 focus:ring-mystic-400;
+  }
+
+  .label-text {
+    @apply mb-1.5 block text-sm font-medium text-mystic-200/80;
+  }
+}
+
+/* Starfield layers rendered by <Starfield /> */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(124, 58, 237, 0.28), transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(31, 182, 160, 0.12), transparent 55%),
+    linear-gradient(180deg, #05041a 0%, #08071d 50%, #050416 100%);
+}
+
+.star {
+  position: absolute;
+  border-radius: 9999px;
+  background: white;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(139, 77, 255, 0.4);
+  border-radius: 9999px;
+}

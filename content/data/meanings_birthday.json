@@ -1,0 +1,157 @@
+{
+  "1": {
+    "title": "The Self-Starter",
+    "summary": "Born on the 1st, you carry an innate spark of leadership and the courage to begin. You are wired to stand on your own, trust your instincts, and move first while others hesitate.",
+    "traits": ["Independent and self-reliant", "A natural initiator who acts before others dare", "Determined, ambitious, and original", "Confident in your own judgment"]
+  },
+  "2": {
+    "title": "The Gentle Diplomat",
+    "summary": "Born on the 2nd, you are gifted with sensitivity and an intuitive read on people and moods. Your talent is bringing others together and smoothing what is jagged.",
+    "traits": ["Deeply empathetic and perceptive", "A skilled mediator and peacemaker", "Cooperative and patient in partnership", "Attuned to the unspoken feelings of a room"]
+  },
+  "3": {
+    "title": "The Bright Voice",
+    "summary": "Born on the 3rd, you are blessed with creative expression, charm, and an uplifting spirit. Words, art, and imagination flow through you with unusual ease.",
+    "traits": ["Naturally creative and expressive", "Charming, sociable, and quick-witted", "Optimistic with a gift for lifting others", "Imaginative and playfully inventive"]
+  },
+  "4": {
+    "title": "The Steady Builder",
+    "summary": "Born on the 4th, you possess a rare capacity for discipline, order, and honest work. You turn ideas into solid, lasting foundations that others can rely on.",
+    "traits": ["Reliable, grounded, and hardworking", "Methodical and practical in all you do", "Loyal and trustworthy to the core", "Patient enough to build for the long haul"]
+  },
+  "5": {
+    "title": "The Free Spirit",
+    "summary": "Born on the 5th, you carry a gift for adaptability, curiosity, and fearless engagement with life. Change energizes you, and you thrive where others feel unsettled.",
+    "traits": ["Versatile and quick to adapt", "Magnetic, witty, and full of vitality", "Adventurous and endlessly curious", "Comfortable embracing change and freedom"]
+  },
+  "6": {
+    "title": "The Nurturer",
+    "summary": "Born on the 6th, you are gifted with a caring heart and a natural sense of responsibility for those you love. Home, harmony, and service call to you deeply.",
+    "traits": ["Warm, nurturing, and devoted", "A natural caretaker of family and community", "Responsible and dependable", "Drawn to beauty, harmony, and healing"]
+  },
+  "7": {
+    "title": "The Seeker",
+    "summary": "Born on the 7th, you possess a reflective, analytical mind and a hunger for deeper truth. You see beneath surfaces and are drawn to mystery and meaning.",
+    "traits": ["Introspective and deeply thoughtful", "Analytical with sharp intuition", "Drawn to knowledge and hidden truths", "Comfortable in solitude and reflection"]
+  },
+  "8": {
+    "title": "The Achiever",
+    "summary": "Born on the 8th, you are endowed with ambition, executive vision, and a talent for material mastery. You understand power, money, and results, and can wield them well.",
+    "traits": ["Ambitious and results-driven", "A natural leader with executive instincts", "Skilled with money, structure, and strategy", "Resilient and capable of large-scale achievement"]
+  },
+  "9": {
+    "title": "The Humanitarian",
+    "summary": "Born on the 9th, you carry a broad, compassionate heart and an old-soul wisdom. You feel the wider world's needs and are moved to give generously.",
+    "traits": ["Compassionate and broad-minded", "Generous, idealistic, and giving", "Wise beyond your years", "Moved to serve a cause larger than yourself"]
+  },
+  "10": {
+    "title": "The Determined Leader",
+    "summary": "Born on the 10th, you carry the pioneering fire of the 1 refined by resilience. You lead with confidence and recover quickly from setbacks, always beginning again.",
+    "traits": ["Independent and strongly self-directed", "Confident, ambitious, and original", "Resilient in the face of obstacles", "A capable leader who trusts their own path"]
+  },
+  "11": {
+    "title": "The Inspired Visionary",
+    "summary": "Born on the 11th, you are gifted with heightened intuition and a channel to inspiration that borders on the visionary. You sense what others cannot yet see.",
+    "traits": ["Intuitive and spiritually attuned", "Inspiring and quietly charismatic", "Sensitive to subtle energies and ideas", "Idealistic with a visionary imagination"]
+  },
+  "12": {
+    "title": "The Creative Soul",
+    "summary": "Born on the 12th, you blend imagination with charm and a gift for self-expression. You bring originality and warmth to everything you touch.",
+    "traits": ["Creative and expressive", "Sociable, charming, and optimistic", "Independent with an artistic streak", "Skilled at communicating ideas vividly"]
+  },
+  "13": {
+    "title": "The Diligent Craftsman",
+    "summary": "Born on the 13th, you possess discipline, focus, and a talent for transforming effort into tangible results. Through steady work you build things of lasting value.",
+    "traits": ["Hardworking and determined", "Practical, organized, and grounded", "Capable of deep concentration and follow-through", "Reliable in building solid foundations"]
+  },
+  "14": {
+    "title": "The Adaptable Adventurer",
+    "summary": "Born on the 14th, you carry a versatile mind and a love of freedom balanced by hard-won focus. You thrive amid variety and learn quickly from experience.",
+    "traits": ["Versatile and adaptable", "Curious, energetic, and freedom-loving", "Quick-thinking and resourceful", "Able to turn change into opportunity"]
+  },
+  "15": {
+    "title": "The Loving Guardian",
+    "summary": "Born on the 15th, you combine a nurturing heart with creativity and a magnetic warmth. You care deeply and draw people toward your generous presence.",
+    "traits": ["Warm, caring, and responsible", "Creative and artistically inclined", "Devoted to family and loved ones", "Naturally charismatic and generous"]
+  },
+  "16": {
+    "title": "The Intuitive Analyst",
+    "summary": "Born on the 16th, you pair a searching intellect with strong intuition and a reflective nature. You seek truth beneath appearances and grow through inner insight.",
+    "traits": ["Thoughtful, analytical, and introspective", "Intuitive with a spiritual curiosity", "Independent and self-examining", "Drawn to depth, study, and meaning"]
+  },
+  "17": {
+    "title": "The Ambitious Strategist",
+    "summary": "Born on the 17th, you unite vision with organizational power and a drive to achieve. You are built to lead, plan, and turn ambition into lasting success.",
+    "traits": ["Ambitious and goal-oriented", "Strategic and capable in business", "Resilient, confident, and self-disciplined", "A natural organizer of people and resources"]
+  },
+  "18": {
+    "title": "The Compassionate Leader",
+    "summary": "Born on the 18th, you blend humanitarian feeling with executive strength. You are moved to lead in service of others and to make a broad, tangible difference.",
+    "traits": ["Compassionate yet strong-willed", "Capable, ambitious, and generous", "Drawn to leadership with a larger purpose", "Wise, worldly, and broad-minded"]
+  },
+  "19": {
+    "title": "The Independent Achiever",
+    "summary": "Born on the 19th, you carry self-reliant drive tempered by hard-earned wisdom. You stand on your own and learn to balance ambition with compassion.",
+    "traits": ["Strongly independent and determined", "Resilient and self-sufficient", "Ambitious with a compassionate core", "Capable of leading and standing alone"]
+  },
+  "20": {
+    "title": "The Sensitive Companion",
+    "summary": "Born on the 20th, you are gifted with heightened sensitivity, tact, and a talent for partnership. Your quiet cooperation holds relationships and teams together.",
+    "traits": ["Highly empathetic and intuitive", "Gentle, diplomatic, and cooperative", "Devoted and supportive in relationships", "Attentive to detail and the needs of others"]
+  },
+  "21": {
+    "title": "The Expressive Charmer",
+    "summary": "Born on the 21st, you radiate creativity, warmth, and social ease. You uplift others with your optimism and have a natural gift for self-expression.",
+    "traits": ["Creative, charming, and sociable", "Optimistic and emotionally expressive", "Imaginative and inspiring to others", "Blessed with a natural gift for communication"]
+  },
+  "22": {
+    "title": "The Master Builder",
+    "summary": "Born on the 22nd, you carry the rare capacity to turn grand visions into concrete reality. You dream large and possess the discipline to build on a monumental scale.",
+    "traits": ["Visionary yet intensely practical", "Capable of large-scale accomplishment", "Disciplined, grounded, and far-seeing", "Able to unite idealism with hard results"]
+  },
+  "23": {
+    "title": "The Versatile Communicator",
+    "summary": "Born on the 23rd, you combine adaptability, charm, and a quick mind. You thrive on freedom and variety and connect easily with people of all kinds.",
+    "traits": ["Versatile, adaptable, and quick-witted", "Sociable and naturally persuasive", "Freedom-loving and adventurous", "Skilled at communication and connection"]
+  },
+  "24": {
+    "title": "The Devoted Homemaker",
+    "summary": "Born on the 24th, you unite a caring, responsible heart with practical steadiness. You create harmony and provide reliable support for those you love.",
+    "traits": ["Nurturing, loyal, and dependable", "Practical and family-oriented", "Warm, harmonious, and responsible", "Steady in caring for home and community"]
+  },
+  "25": {
+    "title": "The Reflective Explorer",
+    "summary": "Born on the 25th, you blend an inquisitive, analytical mind with intuition and a love of learning. You seek understanding through both study and experience.",
+    "traits": ["Analytical, intuitive, and thoughtful", "Curious and quietly independent", "Drawn to knowledge and inner truth", "Perceptive and reflective by nature"]
+  },
+  "26": {
+    "title": "The Capable Provider",
+    "summary": "Born on the 26th, you pair executive ability with a caring sense of responsibility. You achieve materially while looking after the well-being of others.",
+    "traits": ["Ambitious yet nurturing", "Practical, dependable, and organized", "A capable leader with a caring heart", "Balanced between achievement and service"]
+  },
+  "27": {
+    "title": "The Wise Humanitarian",
+    "summary": "Born on the 27th, you carry compassion, creativity, and an old-soul understanding of the world. You are moved to give and to inspire on a broad scale.",
+    "traits": ["Compassionate, generous, and idealistic", "Wise, intuitive, and broad-minded", "Creative with a humanitarian purpose", "Drawn to serving the greater good"]
+  },
+  "28": {
+    "title": "The Independent Trailblazer",
+    "summary": "Born on the 28th, you unite leadership and ambition with a cooperative, relational instinct. You forge your own path while working well alongside others.",
+    "traits": ["Independent, ambitious, and determined", "A natural leader who values partnership", "Confident, capable, and original", "Balanced between self-reliance and teamwork"]
+  },
+  "29": {
+    "title": "The Intuitive Idealist",
+    "summary": "Born on the 29th, you are gifted with powerful intuition, sensitivity, and visionary idealism. You feel deeply and are drawn to inspire and uplift others.",
+    "traits": ["Intuitive and spiritually sensitive", "Idealistic, compassionate, and inspiring", "Empathetic and attuned to others", "Guided by inner vision and higher purpose"]
+  },
+  "30": {
+    "title": "The Radiant Creative",
+    "summary": "Born on the 30th, you possess a vivid imagination and a magnetic gift for expression. Your creativity and optimism bring color and joy to those around you.",
+    "traits": ["Highly creative and imaginative", "Charismatic, expressive, and warm", "Optimistic and socially gifted", "A natural artist and communicator"]
+  },
+  "31": {
+    "title": "The Grounded Visionary",
+    "summary": "Born on the 31st, you blend disciplined practicality with creative vision. You bring imaginative ideas down to earth and build them into something enduring.",
+    "traits": ["Disciplined, practical, and reliable", "Creative with a grounded, orderly approach", "Determined and hardworking", "Able to turn imaginative ideas into real structures"]
+  }
+}

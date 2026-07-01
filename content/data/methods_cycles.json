@@ -1,0 +1,111 @@
+{
+  "reductionRule": "Repeatedly sum the individual digits of a number until a single digit (1-9) remains, with ONE exception: never reduce the master numbers 11, 22, or 33. Concretely: (1) if the number is 11, 22, or 33, stop and keep it as-is; (2) otherwise, if the number is greater than 9, replace it with the sum of its digits and repeat from step 1; (3) otherwise (1-9) stop. Master numbers are preserved when they appear as a final total and, per common practice, when an intermediate component total equals 11, 22, or 33 before a final reduction. IMPORTANT SCOPE NOTE FOR CYCLES: the forecasting cycles below follow the most-common convention where Personal Year / Month / Day are ALWAYS reduced to a single digit 1-9 (masters NOT preserved), Pinnacles DO preserve master numbers, and Challenges are reduced to plain single digits with NO master preservation and can equal 0.",
+  "personalYear": {
+    "method": "reduce(reducedBirthMonth + reducedBirthDay + reducedCurrentYear). Reduce the birth month, the birth day, and the CURRENT (forecast) calendar year each to a single digit first, add them, then reduce the sum. Birth month = calendar number reduced (Jan=1 ... Sep=9, Oct=10->1, Nov=11->2, Dec=12->3). Birth day = day-of-month reduced (e.g. 15->6, 29->2+9=11->2). Current year = sum of its four digits reduced (2026 -> 2+0+2+6 = 10 -> 1+0 = 1).",
+    "masterConvention": "COMMON CONVENTION (used here): the Personal Year is ALWAYS reduced to a single digit 1-9; master numbers are NOT preserved at any step of the Personal Year (nor its Month/Day descendants). This is the mainstream convention for annual forecasting because the personal-year runs a repeating 1-9 cycle. A minority of numerologists preserve 11/22/33 in the Personal Year; if a product wants that variant it should be an explicit opt-in flag, but the default and the test cases here reduce fully to 1-9.",
+    "worked": "For birth May 15, forecast year 2026: birth month = 5; birth day = 15 -> 1+5 = 6; year 2026 -> 2+0+2+6 = 10 -> 1+0 = 1. Sum = 5 + 6 + 1 = 12 -> 1+2 = 3. Personal Year = 3."
+  },
+  "personalMonth": {
+    "method": "reduce(personalYear + reducedCalendarMonth). Take the Personal Year number (already reduced to 1-9) for the year that the target calendar month falls in, add the reduced calendar-month number (Jan=1 ... Dec=12->3), and reduce the sum to a single digit 1-9. Master numbers are NOT preserved (same convention as Personal Year).",
+    "masterConvention": "Always reduced to a single digit 1-9; masters not preserved.",
+    "worked": "For birth May 15 in June 2026: Personal Year 2026 = 3 (see personalYear). Calendar month June = 6. Sum = 3 + 6 = 9 -> already single digit. Personal Month = 9. (A reducing example, October: month Oct = 10 -> 1; 3 + 1 = 4, Personal Month = 4.)"
+  },
+  "personalDay": {
+    "method": "reduce(personalMonth + reducedCalendarDay). Take the Personal Month number (reduced 1-9) for the month the target date falls in, add the reduced calendar day-of-month (e.g. the 21st -> 2+1 = 3), and reduce the sum to a single digit 1-9. Equivalent one-shot form: reduce(personalYear + reducedCalendarMonth + reducedCalendarDay). Master numbers are NOT preserved.",
+    "masterConvention": "Always reduced to a single digit 1-9; masters not preserved.",
+    "worked": "For birth May 15 on June 21 2026: Personal Month (June 2026) = 9 (see personalMonth). Calendar day 21 -> 2+1 = 3. Sum = 9 + 3 = 12 -> 1+2 = 3. Personal Day = 3."
+  },
+  "pinnacles": {
+    "method": "Four pinnacle cycles derived from the birth date's month, day, and year, each first reduced to a single digit or master number (call them M, D, Y). P1 (First Pinnacle) = reduce(M + D). P2 (Second Pinnacle) = reduce(D + Y). P3 (Third Pinnacle) = reduce(P1 + P2). P4 (Fourth Pinnacle) = reduce(M + Y). Pinnacles DO preserve master numbers 11, 22, 33 (both in the M/D/Y components and in the pinnacle totals), consistent with the Life Path treatment.",
+    "masterConvention": "Master numbers 11/22/33 ARE preserved for pinnacles (unlike Personal Year/Month/Day and unlike Challenges).",
+    "timing": "The pinnacle timing is anchored to the Life Path number reduced to a single digit 1-9 (if the Life Path is a master 11/22/33, reduce it: 11->2, 22->4, 33->6). Let L = that single-digit Life Path. The FIRST Pinnacle runs from birth (age 0) through the year the person turns (36 - L); that final age (36 - L) is the age at which P1 ends and P2 begins. Each of the Second and Third Pinnacles lasts exactly 9 years. The Fourth Pinnacle begins after the Third ends and continues for the rest of life. Precisely, with endAge1 = 36 - L: P1 = ages 0 to endAge1; P2 = ages (endAge1) to (endAge1 + 9); P3 = ages (endAge1 + 9) to (endAge1 + 18); P4 = ages (endAge1 + 18) onward. (The boundary ages are transition years shared by the adjacent pinnacles; presenting them as P1: 0..endAge1, P2: endAge1+1..endAge1+9, P3: endAge1+10..endAge1+18, P4: endAge1+19+ is the common inclusive-range display.)",
+    "worked": "Birth July 4, 1990 (1990-07-04). Reduce components: M = 7; D = 4; Y = 1990 -> 1+9+9+0 = 19 -> 1+9 = 10 -> 1+0 = 1. P1 = reduce(7 + 4) = reduce(11) = 11 (master, kept). P2 = reduce(4 + 1) = 5. P3 = reduce(P1 + P2) = reduce(11 + 5) = reduce(16) = 1+6 = 7. P4 = reduce(7 + 1) = 8. So P1=11, P2=5, P3=7, P4=8. Life Path = reduce(7 + 4 + 1) = reduce(12) = 3, so L = 3 and endAge1 = 36 - 3 = 33: P1 ends at 33, P2 = 34-42, P3 = 43-51, P4 = 52+."
+  },
+  "challenges": {
+    "method": "Four challenge numbers via ABSOLUTE DIFFERENCES of the birth date's month, day, and year AFTER each is reduced to a single digit (plain reduction, NO master preservation, so M, D, Y are each 1-9). C1 (First Challenge) = |M - D|. C2 (Second Challenge) = |D - Y|. C3 (Third/Main Challenge) = |C1 - C2|. C4 (Fourth Challenge) = |M - Y|. Because these are absolute differences of single digits 1-9, each challenge is in the range 0-8; a value of 0 is valid and meaningful, and 9 can never occur.",
+    "masterConvention": "Challenges are NOT reduced to master numbers. Reduce M, D, Y to plain single digits (11->2, 22->4, 29->2, etc.) before differencing. The result 0 is possible (when the two values are equal); the max possible is 8.",
+    "worked": "Birth July 4, 1990 (1990-07-04). Reduce components (plain): M = 7; D = 4; Y = 1990 -> 19 -> 10 -> 1. C1 = |7 - 4| = 3. C2 = |4 - 1| = 3. C3 = |C1 - C2| = |3 - 3| = 0 (a valid zero challenge). C4 = |7 - 1| = 6. So C1=3, C2=3, C3=0, C4=6."
+  },
+  "testCases": [
+    {
+      "description": "Personal Year for birth May 15 (month 5, day 15) in forecast year 2026. Month=5; Day 15->1+5=6; Year 2026->2+0+2+6=10->1; sum 5+6+1=12->1+2=3.",
+      "type": "personalYear",
+      "input": {"birthMonth": 5, "birthDay": 15, "year": 2026},
+      "expected": 3
+    },
+    {
+      "description": "Personal Month for birth May 15 in June 2026. Personal Year 2026 = 3; calendar month June = 6; sum 3+6=9.",
+      "type": "personalMonth",
+      "input": {"birthMonth": 5, "birthDay": 15, "year": 2026, "calendarMonth": 6},
+      "expected": 9
+    },
+    {
+      "description": "Personal Day for birth May 15 on June 21 2026. Personal Month (June 2026) = 9; calendar day 21->2+1=3; sum 9+3=12->1+2=3.",
+      "type": "personalDay",
+      "input": {"birthMonth": 5, "birthDay": 15, "year": 2026, "calendarMonth": 6, "calendarDay": 21},
+      "expected": 3
+    },
+    {
+      "description": "Personal Year for birth November 29 (month 11, day 29) in forecast year 2026, showing full reduction (no masters). Month 11->1+1=2; Day 29->2+9=11->1+1=2; Year 2026->10->1; sum 2+2+1=5.",
+      "type": "personalYear",
+      "input": {"birthMonth": 11, "birthDay": 29, "year": 2026},
+      "expected": 5
+    },
+    {
+      "description": "Personal Month for birth November 29 in January 2026. Personal Year 2026 = 5; calendar month Jan = 1; sum 5+1=6.",
+      "type": "personalMonth",
+      "input": {"birthMonth": 11, "birthDay": 29, "year": 2026, "calendarMonth": 1},
+      "expected": 6
+    },
+    {
+      "description": "Personal Day for birth November 29 on January 1 2026. Personal Month (Jan 2026) = 6; calendar day 1 = 1; sum 6+1=7.",
+      "type": "personalDay",
+      "input": {"birthMonth": 11, "birthDay": 29, "year": 2026, "calendarMonth": 1, "calendarDay": 1},
+      "expected": 7
+    },
+    {
+      "description": "Pinnacles for birth July 4, 1990. M=7, D=4, Y=1990->19->10->1. P1=|reduce(7+4)|=reduce(11)=11 (master kept); P2=reduce(4+1)=5; P3=reduce(11+5)=reduce(16)=7; P4=reduce(7+1)=8.",
+      "type": "pinnacles",
+      "input": {"year": 1990, "month": 7, "day": 4},
+      "expected": {"P1": 11, "P2": 5, "P3": 7, "P4": 8}
+    },
+    {
+      "description": "Pinnacle timing for birth July 4, 1990. Life Path = reduce(7+4+1)=reduce(12)=3, so L=3; endAge1 = 36-3 = 33. Inclusive display ranges: P1 0-33, P2 34-42, P3 43-51, P4 52+.",
+      "type": "pinnacleTiming",
+      "input": {"year": 1990, "month": 7, "day": 4},
+      "expected": {"lifePathReduced": 3, "endAge1": 33, "P1": "0-33", "P2": "34-42", "P3": "43-51", "P4": "52+"}
+    },
+    {
+      "description": "Challenges for birth July 4, 1990. M=7, D=4, Y=1990->1 (plain). C1=|7-4|=3; C2=|4-1|=3; C3=|3-3|=0 (valid zero); C4=|7-1|=6.",
+      "type": "challenges",
+      "input": {"year": 1990, "month": 7, "day": 4},
+      "expected": {"C1": 3, "C2": 3, "C3": 0, "C4": 6}
+    },
+    {
+      "description": "Pinnacles for birth December 25, 1988. M=12->1+2=3, D=25->2+5=7, Y=1988->1+9+8+8=26->2+6=8. P1=reduce(3+7)=reduce(10)=1; P2=reduce(7+8)=reduce(15)=6; P3=reduce(1+6)=7; P4=reduce(3+8)=reduce(11)=11 (master kept).",
+      "type": "pinnacles",
+      "input": {"year": 1988, "month": 12, "day": 25},
+      "expected": {"P1": 1, "P2": 6, "P3": 7, "P4": 11}
+    },
+    {
+      "description": "Pinnacle timing for birth December 25, 1988. Life Path = reduce(3+7+8)=reduce(18)=9, so L=9; endAge1 = 36-9 = 27. Inclusive display ranges: P1 0-27, P2 28-36, P3 37-45, P4 46+.",
+      "type": "pinnacleTiming",
+      "input": {"year": 1988, "month": 12, "day": 25},
+      "expected": {"lifePathReduced": 9, "endAge1": 27, "P1": "0-27", "P2": "28-36", "P3": "37-45", "P4": "46+"}
+    },
+    {
+      "description": "Challenges for birth December 25, 1988. M=12->3, D=25->7, Y=1988->26->8 (plain). C1=|3-7|=4; C2=|7-8|=1; C3=|4-1|=3; C4=|3-8|=5.",
+      "type": "challenges",
+      "input": {"year": 1988, "month": 12, "day": 25},
+      "expected": {"C1": 4, "C2": 1, "C3": 3, "C4": 5}
+    }
+  ],
+  "sources": [
+    "https://www.almanac.com/whats-your-personal-year-number-numerology-guide-2026",
+    "https://affinitynumerology.com/using-numerology/your-personal-years-months-and-days.php",
+    "https://www.worldnumerology.com/numerology-pinnacles/",
+    "https://feliciabender.com/numerology/numerology-age-timing-for-pinnacles/",
+    "https://www.worldnumerology.com/numerology-challenges/",
+    "https://numerologist.com/calculators/challenge-numbers-calculator"
+  ]
+}
