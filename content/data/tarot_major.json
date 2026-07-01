@@ -1,0 +1,178 @@
+{
+  "0": {
+    "name": "The Fool",
+    "keywords": ["beginnings", "innocence", "spontaneity", "faith", "adventure", "potential"],
+    "upright": "A leap of faith into the unknown, taken with open-hearted trust and a beginner's freedom. The Fool marks fresh starts, unlimited potential, and the courage to follow your own path.",
+    "reversed": "Reckless naivety, hesitation at the cliff's edge, or ignoring real risks in the rush to escape.",
+    "numerology": "Numbered zero, the Fool is the empty circle before all things, pure unformed potential that holds every possibility at once. Zero is the cosmic egg, the space from which the numbered journey of the Arcana is born.",
+    "birthCard": "With the Fool as your Birth Card you are a perennial beginner, wired to explore, trust, and start again wherever life stalls. Your gift is faith in the unseen and a lightness others find contagious. Your work is to keep some ground beneath your feet so your leaps land well."
+  },
+  "1": {
+    "name": "The Magician",
+    "keywords": ["manifestation", "willpower", "focus", "skill", "action", "resourcefulness"],
+    "upright": "All the tools are on the table and you have the power to shape raw potential into reality through focused will. The Magician channels heaven and earth to turn intention into concrete result.",
+    "reversed": "Scattered energy, manipulation, untapped talent, or grand promises with no follow-through.",
+    "numerology": "As number one, the Magician is the primal spark, the singular 'I am' that initiates all creation. One is the origin point of action, leadership, and the concentrated will to begin.",
+    "birthCard": "As a Magician you are a natural creator and communicator, born to manifest ideas into form with confidence and skill. You hold unusual power to influence your world, which makes integrity your lifelong companion. Learn to align your considerable will with a worthy purpose and you become unstoppable."
+  },
+  "2": {
+    "name": "The High Priestess",
+    "keywords": ["intuition", "mystery", "the subconscious", "stillness", "wisdom", "the veil"],
+    "upright": "A summons inward to the quiet knowing that lies beneath thought, where intuition and dream speak more truly than logic. The High Priestess guards hidden knowledge and asks you to trust what you sense before you can prove it.",
+    "reversed": "Secrets kept too long, disconnection from intuition, or surface noise drowning the inner voice.",
+    "numerology": "As number two, she embodies duality, receptivity, and the sacred pause between opposites. Two is the partner to one's action, the reflective stillness in which meaning gathers.",
+    "birthCard": "With the High Priestess as your Birth Card you carry deep intuitive intelligence and a natural pull toward the mysteries beneath the surface. People confide in you because you hold space and hear the unspoken. Your path is to honor your inner voice as much as the outer world and to let stillness be your source of power."
+  },
+  "3": {
+    "name": "The Empress",
+    "keywords": ["abundance", "nurturing", "creativity", "fertility", "sensuality", "nature"],
+    "upright": "A blossoming of creativity, comfort, and material and emotional abundance, ripe as a summer garden. The Empress invites you to nurture what you love and to receive pleasure and plenty without guilt.",
+    "reversed": "Creative block, smothering care, dependence, or neglect of your own needs and the body.",
+    "numerology": "As number three, the Empress expresses the joyful creativity born when one and two unite and produce a third. Three is growth, fertility, and the abundant overflow of self-expression.",
+    "birthCard": "As an Empress you are a natural nurturer and creator whose presence helps people, projects, and ideas grow. You thrive when you tend beauty, comfort, and connection and share your abundance freely. Remember to pour that same care back into yourself so your well never runs dry."
+  },
+  "4": {
+    "name": "The Emperor",
+    "keywords": ["structure", "authority", "stability", "leadership", "discipline", "protection"],
+    "upright": "Order, structure, and steady authority built to last, the firm hand that turns vision into lasting institutions. The Emperor rules through discipline, boundaries, and reliable protection of what he governs.",
+    "reversed": "Rigidity, domination, control for its own sake, or authority that has grown cold and inflexible.",
+    "numerology": "As number four, the Emperor is the square, the four walls and four directions that give the world a stable foundation. Four is order, security, and the disciplined structure that makes lasting achievement possible.",
+    "birthCard": "With the Emperor as your Birth Card you are a natural builder and leader, drawn to create order, security, and systems others can rely on. You steady the people around you and honor commitment and structure. Your growth lies in wielding authority with warmth and knowing when to loosen your grip."
+  },
+  "5": {
+    "name": "The Hierophant",
+    "keywords": ["tradition", "wisdom", "teaching", "belief", "conformity", "guidance"],
+    "upright": "A bridge to established wisdom, tradition, and shared belief, and the mentors or institutions that transmit them. The Hierophant offers spiritual guidance, ritual, and the reassurance of belonging to something larger.",
+    "reversed": "Dogma questioned, rebellion against convention, or freeing yourself from beliefs that no longer fit.",
+    "numerology": "As number five, the Hierophant channels humanity's search for meaning through change, learning, and communication. Five sits at the heart of the single digits, mediating between the material below and the spiritual above.",
+    "birthCard": "As a Hierophant you are a natural teacher and keeper of meaning, drawn to tradition, mentorship, and shared values. You help others find belonging and moral footing, and you carry wisdom worth passing on. Your task is to honor tradition while staying open enough to let your own truth evolve."
+  },
+  "6": {
+    "name": "The Lovers",
+    "keywords": ["love", "union", "choice", "harmony", "values", "alignment"],
+    "upright": "A meeting of hearts and a meaningful choice made from the deepest values, blessed by harmony and mutual understanding. The Lovers speak of union, alignment, and decisions that must come from who you truly are.",
+    "reversed": "Disharmony, misalignment of values, avoidance of a choice, or a relationship out of balance.",
+    "numerology": "As number six, the Lovers embody harmony, devotion, and the responsibilities of love and relationship. Six is the number of union and care, seeking balance and beauty between self and other.",
+    "birthCard": "With the Lovers as your Birth Card you are wired for connection, harmony, and choices guided by the heart. Relationships are your teachers, and you grow through learning what and whom you truly value. Your path is to choose from authentic alignment rather than fear of losing love."
+  },
+  "7": {
+    "name": "The Chariot",
+    "keywords": ["willpower", "victory", "determination", "control", "drive", "focus"],
+    "upright": "Momentum and hard-won victory achieved by harnessing opposing forces and driving them in one direction. The Chariot rewards discipline, determination, and the will to master yourself and your circumstances.",
+    "reversed": "Loss of direction, forces pulling apart, aggression without aim, or a wheel-spinning lack of control.",
+    "numerology": "As number seven, the Chariot pairs inner focus with outward mastery, the mind steering the self toward its goal. Seven carries a searching, strategic quality that here is bent toward triumph through discipline.",
+    "birthCard": "As a Chariot you are a driven achiever with the willpower to overcome obstacles that stop others cold. You succeed by uniting your conflicting impulses behind a single clear aim. Your lesson is to steer with self-mastery rather than sheer force and to let your direction be guided by purpose, not ego."
+  },
+  "8": {
+    "name": "Strength",
+    "keywords": ["courage", "inner strength", "patience", "compassion", "self-control", "resilience"],
+    "upright": "Quiet, unshakeable strength that tames the wild through gentleness rather than force. Strength is courage married to compassion, the calm power to soothe your own fears and meet difficulty with grace.",
+    "reversed": "Self-doubt, raw impulse unmastered, forced control, or inner strength that has run low.",
+    "numerology": "As number eight, Strength channels power, endurance, and the balanced command of material and instinctual forces. Eight is the number of sustained inner authority, mastering energy through poise rather than domination.",
+    "birthCard": "With Strength as your Birth Card you possess deep reserves of courage, patience, and emotional resilience. You lead through calm and compassion, taming difficult situations by staying soft yet unbreakable. Your journey is to trust your gentle power and to meet your own inner beasts with kindness rather than combat."
+  },
+  "9": {
+    "name": "The Hermit",
+    "keywords": ["introspection", "solitude", "guidance", "wisdom", "searching", "inner light"],
+    "upright": "A withdrawal from the noise to seek truth by your own lantern, where solitude becomes a source of profound wisdom. The Hermit lights the way inward and, once found, holds that light up to guide others.",
+    "reversed": "Isolation, loneliness, withdrawal that has become avoidance, or refusing wise counsel.",
+    "numerology": "As number nine, the Hermit reflects the wisdom, completion, and universal compassion of the final single digit. Nine has traveled the whole cycle and turns its hard-won understanding into a lamp for the road.",
+    "birthCard": "As a Hermit you are a natural seeker and wise one, drawn to reflection, meaning, and the truth beneath appearances. Solitude restores you and sharpens the insight you eventually share as guidance. Your path is to balance your need for retreat with connection, letting your inner light serve the world."
+  },
+  "10": {
+    "name": "Wheel of Fortune",
+    "keywords": ["cycles", "change", "fate", "turning points", "luck", "destiny"],
+    "upright": "The great wheel turns and a new cycle begins, bringing fortune, fated encounters, and change beyond your control. The Wheel reminds you that life moves in cycles and invites you to ride its rhythm rather than resist it.",
+    "reversed": "Resistance to change, a run of bad luck, or feeling stuck as the wheel seems to grind against you.",
+    "numerology": "As number ten, the Wheel reduces to one, closing the first cycle of the Arcana and opening a new octave. Ten marks completion becoming fresh beginning, the eternal turn from ending back to origin.",
+    "birthCard": "With the Wheel of Fortune as your Birth Card your life moves in vivid cycles of expansion and change, and you have a knack for landing where fate needs you. You grow by trusting timing and flowing with turning points rather than clutching at control. Your gift is resilience and an instinct for the opportunity hidden in every turn."
+  },
+  "11": {
+    "name": "Justice",
+    "keywords": ["fairness", "truth", "accountability", "balance", "cause and effect", "clarity"],
+    "upright": "Truth weighed on level scales, where fairness prevails and every action meets its honest consequence. Justice calls for accountability, clear decisions, and alignment between your choices and their outcomes.",
+    "reversed": "Unfairness, dishonesty, avoided accountability, or judgment clouded by bias.",
+    "numerology": "As number eleven, Justice carries the visionary, illuminating charge of a master number applied to truth and integrity. Eleven's heightened awareness here demands rigorous honesty and the balance of higher law with earthly consequence.",
+    "birthCard": "As a Justice you are a natural arbiter with a strong compass for truth, fairness, and personal responsibility. People trust your judgment because you weigh things honestly and own your part. Your path is to seek balance, act with integrity, and understand that the fairness you give returns to you in kind."
+  },
+  "12": {
+    "name": "The Hanged Man",
+    "keywords": ["surrender", "new perspective", "pause", "letting go", "sacrifice", "suspension"],
+    "upright": "A willing pause and a reversal of view, where surrender and stillness reveal what striving could not. The Hanged Man gains wisdom by letting go, sacrificing the old vantage point to see the world anew.",
+    "reversed": "Stalling, needless martyrdom, resistance to letting go, or a pause that has become paralysis.",
+    "numerology": "As number twelve, the Hanged Man reduces to three, turning creative energy inward into reflection and release. Twelve suspends the outward flow so that a deeper, upside-down kind of understanding can form.",
+    "birthCard": "With the Hanged Man as your Birth Card you see the world from unusual angles and grow through surrender rather than force. Your wisdom comes in the pauses, when you release control and let a new perspective arrive. Your lesson is to trust the value of waiting and to know the difference between sacred surrender and simply being stuck."
+  },
+  "13": {
+    "name": "Death",
+    "keywords": ["endings", "transformation", "transition", "release", "rebirth", "renewal"],
+    "upright": "A profound ending that clears the ground for rebirth, sweeping away what has run its course. Death is transformation, the necessary close of one chapter so a truer one can begin.",
+    "reversed": "Clinging to what is over, fear of change, or a transition stalled and refusing to complete.",
+    "numerology": "As number thirteen, Death reduces to four, grounding radical change into a new and more solid structure. Thirteen breaks down the old form so that four's lasting order can be rebuilt on cleaner foundations.",
+    "birthCard": "As a Death card person you are a natural agent of transformation, unafraid of endings that others fear and skilled at helping things be reborn. You move through life in chapters, shedding old skins to become more authentically yourself. Your path is to trust the cycle of release and renewal, knowing that every ending you accept makes room for new life."
+  },
+  "14": {
+    "name": "Temperance",
+    "keywords": ["balance", "moderation", "patience", "synthesis", "harmony", "flow"],
+    "upright": "The art of blending opposites into something finer, guided by patience, moderation, and a steady inner flow. Temperance heals through balance, mixing the extremes of life into a calm and healthful whole.",
+    "reversed": "Excess, impatience, imbalance, or a lack of harmony between competing parts of your life.",
+    "numerology": "As number fourteen, Temperance reduces to five, seeking dynamic equilibrium amid change and movement. Fourteen tempers five's restlessness, finding the middle path that keeps motion in graceful balance.",
+    "birthCard": "With Temperance as your Birth Card you are a natural healer and peacemaker, gifted at blending extremes and bringing harmony to what is divided. You thrive through patience, moderation, and the quiet alchemy of finding the middle way. Your path is to trust the flow, avoid extremes, and let your balancing presence steady both yourself and others."
+  },
+  "15": {
+    "name": "The Devil",
+    "keywords": ["attachment", "temptation", "materialism", "shadow", "bondage", "desire"],
+    "upright": "The pull of desire, attachment, and the comfortable chains we forget we can remove. The Devil exposes where you feel bound, whether by craving, fear, or unexamined shadow, and hints the locks are looser than they appear.",
+    "reversed": "Breaking free, reclaiming power, confronting the shadow, or releasing an unhealthy attachment.",
+    "numerology": "As number fifteen, the Devil reduces to six, twisting love and pleasure into possession and dependence. Fifteen shows the shadow side of six's devotion, where care hardens into attachment and desire into bondage.",
+    "birthCard": "As a Devil card person you feel life's pleasures, passions, and material power intensely, which is both your magnetism and your challenge. You are here to master desire rather than be mastered by it and to face your shadow honestly. Your freedom comes from recognizing that the chains you feel are largely of your own making and yours to loosen."
+  },
+  "16": {
+    "name": "The Tower",
+    "keywords": ["upheaval", "revelation", "sudden change", "awakening", "collapse", "truth"],
+    "upright": "A sudden lightning-strike that topples false structures and reveals the truth in a flash. The Tower's upheaval feels like destruction, but it clears away what was built on illusion and frees you for something real.",
+    "reversed": "Delaying an inevitable collapse, fear of change, or clinging to crumbling foundations.",
+    "numerology": "As number sixteen, the Tower reduces to seven, shattering false certainty to force a deeper spiritual awakening. Sixteen breaks the illusions of the mind so that seven's genuine truth can be seen.",
+    "birthCard": "With the Tower as your Birth Card your life is punctuated by dramatic awakenings that clear away what is false and rebuild you truer. You have a rare capacity to survive upheaval and emerge stronger and more free. Your path is to embrace sudden change as liberation and to build your life on foundations solid enough to withstand the lightning."
+  },
+  "17": {
+    "name": "The Star",
+    "keywords": ["hope", "healing", "renewal", "inspiration", "serenity", "faith"],
+    "upright": "After the storm comes the calm of open sky and guiding starlight, restoring hope, healing, and quiet faith. The Star renews your spirit and reminds you that you are held, inspired, and gently guided toward what is possible.",
+    "reversed": "Loss of hope, discouragement, disconnection from faith, or feeling spiritually depleted.",
+    "numerology": "As number seventeen, the Star reduces to eight, giving lasting form to renewed hope and inner abundance. Seventeen channels eight's power into serene faith, a strength that flows quietly rather than forcefully.",
+    "birthCard": "As a Star card person you are a natural source of hope and healing, radiating calm faith that helps others believe again. You recover from hardship with grace and see the light on the horizon even in dark times. Your path is to keep faith with your dreams, share your inspiration generously, and trust that you are guided."
+  },
+  "18": {
+    "name": "The Moon",
+    "keywords": ["intuition", "illusion", "dreams", "the unconscious", "uncertainty", "mystery"],
+    "upright": "A walk through moonlit half-truths where dreams, intuition, and the unconscious speak in shadow and symbol. The Moon asks you to trust your instincts through uncertainty and to face the fears that surface in the dark.",
+    "reversed": "Confusion clearing, hidden truths surfacing, or being released from fear and illusion.",
+    "numerology": "As number eighteen, the Moon reduces to nine, plumbing the depths of the collective unconscious and old fears. Eighteen carries nine's completion into the dreamworld, surfacing what must be felt and understood before release.",
+    "birthCard": "With the Moon as your Birth Card you are richly intuitive and imaginative, at home in dreams, symbols, and the emotional undercurrents others miss. You navigate uncertainty by feel and are drawn to explore the mysteries within. Your path is to trust your intuition while learning to tell true inner guidance from fear and illusion."
+  },
+  "19": {
+    "name": "The Sun",
+    "keywords": ["joy", "success", "vitality", "clarity", "positivity", "warmth"],
+    "upright": "Pure sunlight after the Moon's shadows, radiating joy, vitality, success, and warm clarity. The Sun blesses you with confidence and life force, illuminating everything with optimism and truth.",
+    "reversed": "Temporary clouds over your joy, dimmed confidence, or blocked enthusiasm, still bright underneath.",
+    "numerology": "As number nineteen, the Sun reduces to one, returning to radiant selfhood after the whole journey of experience. Nineteen carries one's bright, individual light, now warmed and matured into wholehearted joy.",
+    "birthCard": "As a Sun card person you carry natural warmth, optimism, and vitality that lift the people around you. You shine when you are authentically yourself and share your joy without holding back. Your path is to trust your inner light, radiate confidence, and let your success come from being wholeheartedly, unapologetically you."
+  },
+  "20": {
+    "name": "Judgement",
+    "keywords": ["awakening", "reckoning", "rebirth", "calling", "absolution", "renewal"],
+    "upright": "A clarion call to rise, reckon honestly with your past, and answer a higher calling. Judgement brings awakening and absolution, the moment you forgive, integrate your history, and step into a renewed self.",
+    "reversed": "Self-doubt, avoiding a calling, harsh self-judgment, or refusing to release the past.",
+    "numerology": "As number twenty, Judgement reduces to two, harmonizing inner and outer selves in a moment of higher reckoning. Twenty carries two's reflective sensitivity into a collective awakening, balancing conscience with compassion.",
+    "birthCard": "With Judgement as your Birth Card you experience life as a series of awakenings and reckonings that call you toward your true purpose. You are gifted at forgiveness, renewal, and helping others rise into who they are meant to be. Your path is to answer your calling, make peace with your past, and trust the deeper voice that asks you to become more."
+  },
+  "21": {
+    "name": "The World",
+    "keywords": ["completion", "fulfillment", "wholeness", "integration", "accomplishment", "harmony"],
+    "upright": "The great journey comes full circle in triumphant completion, wholeness, and well-earned fulfillment. The World marks accomplishment and integration, the sense of everything coming together in harmony before the next cycle begins.",
+    "reversed": "Near-completion, loose ends, delayed closure, or a goal that needs one more push to fulfill.",
+    "numerology": "As number twenty-one, the World reduces to three, celebrating creative fulfillment and the joyful whole made from all its parts. Twenty-one closes the Major Arcana, gathering the entire journey into three's expressive completeness.",
+    "birthCard": "As a World card person you are here to integrate your experiences into wholeness and to complete meaningful journeys with grace. You have a gift for bringing things full circle and helping disparate parts come together. Your path is to honor each cycle's completion, celebrate how far you have come, and step confidently into the wider world you are meant to embrace."
+  }
+}

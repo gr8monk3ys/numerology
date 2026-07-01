@@ -1,0 +1,32 @@
+{
+  "_intro": "The Planes of Expression sort every letter of your full birth name into four modes of being — Physical, Mental, Emotional, and Intuitive — revealing the channels through which you most naturally meet the world. By tallying which planes dominate and which run thin, they show whether you lead with the body, the mind, the heart, or the inner knowing, and where your expression may be lopsided or blocked. Together they paint a portrait of how energy actually moves from your inner self into action.",
+  "_source": "Hans Decoz / Juno Jordan four-plane classification (Physical, Mental, Emotional, Intuitive), consistent with the World Numerology 'Creative / Vacillating / Grounded' grid.",
+  "physical": {
+    "title": "Physical",
+    "letters": ["D", "E", "M", "W"],
+    "meaning": "The physical plane governs the body, the material world, and the doing of things — labor, endurance, craftsmanship, money, health, and tangible results. A strong physical plane makes you practical and hands-on, someone who trusts what can be built, touched, and measured, and who turns ideas into concrete form.",
+    "high": "When balanced, physical energy grounds you in reliable, productive action: you show up, follow through, and create real and lasting results without losing sight of comfort and well-being.",
+    "low": "When lacking or overloaded, it tips into either restless materialism and workaholism, or a disconnection from the body and practical follow-through — good intentions that never quite take physical shape."
+  },
+  "mental": {
+    "title": "Mental",
+    "letters": ["A", "G", "H", "J", "L", "N", "P"],
+    "meaning": "The mental plane governs reason, analysis, planning, and the will — how you think, organize, decide, and impose order on experience. A strong mental plane makes you a strategist and problem-solver who values logic, structure, and ambition, seeing life as something to be understood and directed.",
+    "high": "When balanced, mental energy gives clear, disciplined thinking and sound judgment: you weigh facts, form a plan, and act on conviction while staying open to new information.",
+    "low": "When lacking or overloaded, it becomes over-analysis, cold detachment, or stubborn opinion — living so much in the head that feeling, instinct, and action are crowded out."
+  },
+  "emotional": {
+    "title": "Emotional",
+    "letters": ["B", "I", "O", "R", "S", "T", "X", "Z"],
+    "meaning": "The emotional plane governs feeling, empathy, artistry, and relationship — the tides of love, passion, sensitivity, and creative expression. A strong emotional plane makes you warm, responsive, and deeply attuned to the moods of people and of art, living life through the heart.",
+    "high": "When balanced, emotional energy brings compassion, creativity, and genuine connection: you feel deeply yet channel that feeling into empathy, beauty, and heartfelt bonds.",
+    "low": "When lacking or overloaded, it swings toward moodiness, drama, and being ruled by sentiment, or toward emotional coolness and difficulty letting others in."
+  },
+  "intuitive": {
+    "title": "Intuitive",
+    "letters": ["C", "F", "K", "Q", "U", "V", "Y"],
+    "meaning": "The intuitive plane governs inner knowing, imagination, faith, and spiritual insight — the flashes of understanding that arrive without reasoning. A strong intuitive plane makes you perceptive and inspired, guided by hunches, dreams, and a sense of meaning beyond the visible.",
+    "high": "When balanced, intuitive energy grants inspired vision and quiet wisdom: you trust your inner voice, sense what lies beneath the surface, and let insight guide practical choices.",
+    "low": "When lacking or overloaded, it becomes either a dismissal of instinct in favor of pure logic, or an ungrounded drift into fantasy, superstition, and impractical dreaming."
+  }
+}

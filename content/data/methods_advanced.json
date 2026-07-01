@@ -1,0 +1,223 @@
+{
+  "system": "Pythagorean (Western) numerology",
+  "sources": [
+    "https://www.worldnumerology.com/numerology-chart-calculator/",
+    "https://www.worldnumerology.com/numerology-karmic-debt-numbers/",
+    "https://www.worldnumerology.com/numerology-balance-number/",
+    "https://numerologist.com/numerology/calculating-interpreting-maturity-number",
+    "https://numerology.com/articles/your-numerology-chart/life-path-number-meanings/",
+    "https://astropush.com/numerology/rational-thought"
+  ],
+  "letterChart": {
+    "description": "Pythagorean chart. Letters map to 1-9 cycling A..I=1..9, J..R=1..9, S..Z=1..8. Case-insensitive; ignore spaces, hyphens, apostrophes and any non-letter characters.",
+    "map": {
+      "A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "H": 8, "I": 9,
+      "J": 1, "K": 2, "L": 3, "M": 4, "N": 5, "O": 6, "P": 7, "Q": 8, "R": 9,
+      "S": 1, "T": 2, "U": 3, "V": 4, "W": 5, "X": 6, "Y": 7, "Z": 8
+    },
+    "vowels": ["A", "E", "I", "O", "U"],
+    "consonants": ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"],
+    "note": "Y is treated as a consonant for the letter-value chart used by Karmic Lessons, Hidden Passion, Subconscious Self, Balance, Cornerstone, Capstone, Expression, and Rational Thought. (Soul Urge / Personality vowel-vs-consonant splitting has its own Y rules and is out of scope for this file.)"
+  },
+  "reductionRule": {
+    "reduceToSingleDigit": "Repeatedly sum the digits of a number until a single digit (1-9) is reached.",
+    "masterNumbers": [11, 22, 33],
+    "preserveMasters": "When reducing, STOP if the running value equals 11, 22, or 33 and return it unreduced. This applies both to the final total AND to any component subtotal (e.g. reduced month/day/year, reduced Life Path or Expression) before it is combined further.",
+    "algorithm": "function reduceMaster(n){ while(n>9 && n!==11 && n!==22 && n!==33){ let s=0,x=n; while(x>0){ s+=x%10; x=Math.floor(x/10);} n=s;} return n; }",
+    "plainReduce": "function reducePlain(n){ while(n>9){ let s=0,x=n; while(x>0){ s+=x%10; x=Math.floor(x/10);} n=s;} return n; }  // used only where masters are explicitly NOT preserved (Balance)"
+  },
+  "maturity": {
+    "method": "Life Path + Expression, reduced (preserve masters)",
+    "algorithm": "maturity = reduceMaster(reduceMaster(lifePathTotalOrMaster) + reduceMaster(expressionTotalOrMaster)); i.e. take the already-reduced Life Path value and the already-reduced Expression value (each may itself be a master 11/22/33), add them, then reduceMaster the sum.",
+    "worked": "Life Path = 7, Expression = 4. Sum = 7+4 = 11 -> 11 is a master number, keep it. Maturity = 11. Second example: Life Path = 11, Expression = 22 (both masters kept). Sum = 33 -> master. Maturity = 33. Third example: Life Path = 5, Expression = 8. Sum = 13 -> 1+3 = 4. Maturity = 4."
+  },
+  "balance": {
+    "method": "sum of the initials of each name, reduced",
+    "algorithm": "Take the first letter (initial) of the first, middle, and last birth names. Convert each with the Pythagorean chart, add them, then reduce. Balance conventionally reduces master numbers to a single digit (does NOT preserve them): use reducePlain to 1-9.",
+    "worked": "Name = Thomas John Hancock. Initials T, J, H -> values 2, 1, 8. Sum = 2+1+8 = 11. Balance reduces masters: 11 -> 1+1 = 2. Balance = 2. Second example: Katherine Mary Smith. Initials K, M, S -> 2, 4, 1. Sum = 7 (already single digit). Balance = 7."
+  },
+  "karmicDebt": {
+    "method": "Detect karmic debt numbers 13,14,16,19 when they appear as the two-digit total BEFORE final reduction of Life Path / Expression / Soul Urge / Personality / Birthday.",
+    "numbers": [13, 14, 16, 19],
+    "algorithm": "For each core number, capture the raw two-digit total that exists immediately BEFORE the last single-digit reduction step. If that total equals 13, 14, 16, or 19, flag a karmic debt (written 13/4, 14/5, 16/7, 19/1). For the Birthday number the 'total' is simply the day of birth (born on the 13th/14th/16th/19th). Detection is on the pre-final-reduction value only: e.g. a total of 40 that reduces via 40->4 is NOT karmic debt even though it ends in 4.",
+    "worked": "Life Path for 1979-07-04: month=7, day=4, year=1979(1+9+7+9=26->8). Pre-final total = 7+4+8 = 19 -> KARMIC DEBT 19/1 (Life Path reduces to 1). Life Path for 1988-01-04: month=1, day=4, year=1988(1+9+8+8=26->8). Pre-final total = 1+4+8 = 13 -> KARMIC DEBT 13/4. Expression for first name LUCY: L3+U3+C3+Y7 = 16 -> KARMIC DEBT 16/7. Birthday for someone born on the 14th: day total = 14 -> KARMIC DEBT 14/5. A person born on the 4th: day = 4, single digit, NO karmic debt."
+  },
+  "karmicLessons": {
+    "method": "Which numbers 1-9 are MISSING from the letters of the full name (via Pythagorean chart). Each missing number is a karmic lesson.",
+    "algorithm": "Convert every letter of the full birth name to its Pythagorean value (1-9). Collect the SET of values that occur. Karmic lessons = {1,2,3,4,5,6,7,8,9} minus that set. If no numbers are missing there are no karmic lessons.",
+    "worked": "Full name Thomas John Hancock -> letter values present: {1,2,3,4,5,6,8}. Missing from 1-9: 7 and 9. Karmic lessons = [7, 9]. Full name Katherine Mary Smith -> values present {1,2,4,5,7,8,9}. Missing: 3 and 6. Karmic lessons = [3, 6]."
+  },
+  "hiddenPassion": {
+    "method": "The number 1-9 that appears MOST frequently among the name's letters (ties => multiple).",
+    "algorithm": "Tally how many times each value 1-9 occurs across all letters of the full birth name. The hidden passion is the value(s) with the highest count. If several values share the maximum count, all of them are hidden passion numbers.",
+    "worked": "Thomas John Hancock counts: 1x4, 2x2, 3x2, 4x1, 5x2, 6x3, 8x3. Highest count = 4 (the value 1). Hidden Passion = 1. Katherine Mary Smith counts: 1x3, 2x3, 4x2, 5x3, 7x1, 8x2, 9x4. Highest = 4 (the value 9). Hidden Passion = 9."
+  },
+  "subconsciousSelf": {
+    "method": "9 minus the count of distinct karmic lesson numbers (i.e., how many of 1-9 are present in the name).",
+    "algorithm": "subconsciousSelf = 9 - (number of karmic lesson numbers) = number of DISTINCT values among 1-9 that actually appear in the full name. Range is typically 3 to 9.",
+    "worked": "Thomas John Hancock has 2 karmic lessons (7,9) -> 9-2 = 7. Subconscious Self = 7. Equivalently, 7 distinct values {1,2,3,4,5,6,8} appear. Katherine Mary Smith has 2 karmic lessons (3,6) -> 9-2 = 7. Subconscious Self = 7."
+  },
+  "rationalThought": {
+    "method": "reduce (sum of letters of first name) + (birth day number), reduced",
+    "algorithm": "rationalThought = reduceMaster(sumOfFirstNameLetterValues + dayOfBirth). Use the raw sum of the first name's letters (NOT pre-reduced) plus the calendar day of birth (1-31), then reduce preserving masters.",
+    "worked": "First name JOHN = J1+O6+H8+N5 = 20; born on the 15th -> 20+15 = 35 -> 3+5 = 8. Rational Thought = 8. First name MARY = M4+A1+R9+Y7 = 21; born on the 7th -> 21+7 = 28 -> 2+8 = 10 -> 1. Rational Thought = 1."
+  },
+  "cornerstone": {
+    "method": "first letter of first name -> its trait",
+    "algorithm": "cornerstone = uppercase first letter of the first name. Interpret the letter itself (its energy). Optionally its Pythagorean value gives a supporting number.",
+    "worked": "First name THOMAS -> Cornerstone letter 'T' (value 2): a builder/organizer energy, approaches life practically and sees things through. First name JOHN -> Cornerstone 'J' (value 1): initiating, self-directed."
+  },
+  "capstone": {
+    "method": "last letter of first name -> its trait",
+    "algorithm": "capstone = uppercase last letter of the first name. It shows how a person completes tasks and follows through.",
+    "worked": "First name THOMAS -> Capstone 'S' (value 1): finishes with drive and independence but can be emotionally guarded at the finish line. First name JOHN -> Capstone 'N' (value 5): completes things with flexibility and openness to change."
+  },
+  "firstVowel": {
+    "method": "first vowel of first name -> inner self glimpse",
+    "algorithm": "firstVowel = the first vowel (A, E, I, O, U) encountered scanning the first name left-to-right. Reveals an instinctive inner-self glimpse. (If the first name contains no A/E/I/O/U, fall back to the first Y.)",
+    "worked": "First name THOMAS -> first vowel 'O' (value 6): inwardly caring and responsibility-driven. First name JOHN -> first vowel 'O' (value 6): same nurturing inner note. First name MARY -> first vowel 'A' (value 1): inwardly independent and pioneering."
+  },
+  "testCases": [
+    {
+      "id": "TC1-thomas-john-hancock-name-numbers",
+      "input": {"fullName": "Thomas John Hancock"},
+      "letterValues": "T2 H8 O6 M4 A1 S1 | J1 O6 H8 N5 | H8 A1 N5 C3 O6 C3 K2",
+      "expected": {
+        "expressionTotal": 70,
+        "expression": 7,
+        "soulUrgeTotal": 20,
+        "soulUrge": 2,
+        "personalityTotal": 50,
+        "personality": 5,
+        "counts": {"1": 4, "2": 2, "3": 2, "4": 1, "5": 2, "6": 3, "8": 3},
+        "karmicLessons": [7, 9],
+        "hiddenPassion": [1],
+        "subconsciousSelf": 7,
+        "balanceInitials": {"T": 2, "J": 1, "H": 8, "sum": 11, "balance": 2},
+        "cornerstone": "T",
+        "capstone": "S",
+        "firstVowel": "O"
+      }
+    },
+    {
+      "id": "TC2-katherine-mary-smith-name-numbers",
+      "input": {"fullName": "Katherine Mary Smith"},
+      "letterValues": "K2 A1 T2 H8 E5 R9 I9 N5 E5 | M4 A1 R9 Y7 | S1 M4 I9 T2 H8",
+      "expected": {
+        "expressionTotal": 91,
+        "expression": 1,
+        "soulUrgeTotal": 30,
+        "soulUrge": 3,
+        "personalityTotal": 61,
+        "personality": 7,
+        "counts": {"1": 3, "2": 3, "4": 2, "5": 3, "7": 1, "8": 2, "9": 4},
+        "karmicLessons": [3, 6],
+        "hiddenPassion": [9],
+        "subconsciousSelf": 7,
+        "balanceInitials": {"K": 2, "M": 4, "S": 1, "sum": 7, "balance": 7},
+        "cornerstone": "K",
+        "capstone": "E",
+        "firstVowel": "A"
+      }
+    },
+    {
+      "id": "TC3-lifepath-karmic-debt-19",
+      "input": {"birthDate": "1979-07-04"},
+      "steps": {
+        "month": 7,
+        "day": 4,
+        "yearReduced": "1+9+7+9 = 26 -> 2+6 = 8",
+        "preFinalTotal": "7 + 4 + 8 = 19"
+      },
+      "expected": {
+        "lifePathTotalBeforeFinalReduction": 19,
+        "karmicDebt": 19,
+        "karmicDebtNotation": "19/1",
+        "lifePath": 1
+      }
+    },
+    {
+      "id": "TC4-lifepath-karmic-debt-13",
+      "input": {"birthDate": "1988-01-04"},
+      "steps": {
+        "month": 1,
+        "day": 4,
+        "yearReduced": "1+9+8+8 = 26 -> 8",
+        "preFinalTotal": "1 + 4 + 8 = 13"
+      },
+      "expected": {
+        "lifePathTotalBeforeFinalReduction": 13,
+        "karmicDebt": 13,
+        "karmicDebtNotation": "13/4",
+        "lifePath": 4
+      }
+    },
+    {
+      "id": "TC5-lifepath-master-and-no-debt",
+      "input": {"birthDate": "1992-11-29"},
+      "steps": {
+        "monthReduced": "11 -> master 11 (kept)",
+        "dayReduced": "29 -> 2+9 = 11 -> master 11 (kept)",
+        "yearReduced": "1+9+9+2 = 21 -> 2+1 = 3",
+        "preFinalTotal": "11 + 11 + 3 = 25"
+      },
+      "expected": {
+        "lifePathTotalBeforeFinalReduction": 25,
+        "karmicDebt": null,
+        "lifePath": 7,
+        "note": "25 is not a karmic-debt number and not a master; reduces 2+5=7. Master components 11 were preserved during the intermediate step."
+      }
+    },
+    {
+      "id": "TC6-expression-karmic-debt-16-LUCY",
+      "input": {"firstName": "Lucy"},
+      "steps": {"letters": "L3 U3 C3 Y7", "total": "3+3+3+7 = 16"},
+      "expected": {
+        "expressionTotalBeforeFinalReduction": 16,
+        "karmicDebt": 16,
+        "karmicDebtNotation": "16/7",
+        "expression": 7
+      }
+    },
+    {
+      "id": "TC7-birthday-karmic-debt-14",
+      "input": {"dayOfBirth": 14},
+      "expected": {
+        "birthdayTwoDigit": 14,
+        "karmicDebt": 14,
+        "karmicDebtNotation": "14/5",
+        "birthday": 5
+      }
+    },
+    {
+      "id": "TC8-rational-thought-JOHN-15th",
+      "input": {"firstName": "John", "dayOfBirth": 15},
+      "steps": {"firstNameSum": "J1+O6+H8+N5 = 20", "add": "20 + 15 = 35", "reduce": "3+5 = 8"},
+      "expected": {"rationalThought": 8}
+    },
+    {
+      "id": "TC9-rational-thought-MARY-7th",
+      "input": {"firstName": "Mary", "dayOfBirth": 7},
+      "steps": {"firstNameSum": "M4+A1+R9+Y7 = 21", "add": "21 + 7 = 28", "reduce": "2+8 = 10 -> 1"},
+      "expected": {"rationalThought": 1}
+    },
+    {
+      "id": "TC10-maturity-master-result",
+      "input": {"lifePath": 7, "expression": 4},
+      "steps": {"sum": "7 + 4 = 11"},
+      "expected": {"maturityTotal": 11, "maturity": 11, "note": "11 is a master number, preserved."}
+    },
+    {
+      "id": "TC11-maturity-double-master",
+      "input": {"lifePath": 11, "expression": 22},
+      "steps": {"sum": "11 + 22 = 33"},
+      "expected": {"maturityTotal": 33, "maturity": 33, "note": "33 is a master number, preserved."}
+    },
+    {
+      "id": "TC12-maturity-plain",
+      "input": {"lifePath": 5, "expression": 8},
+      "steps": {"sum": "5 + 8 = 13", "reduce": "1+3 = 4"},
+      "expected": {"maturityTotal": 13, "maturity": 4, "note": "13 here is an intermediate maturity sum, not a core-number karmic-debt slot."}
+    }
+  ]
+}

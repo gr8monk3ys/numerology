@@ -1,0 +1,86 @@
+{
+  "1": {
+    "summary": "The 1 loves the way it lives: boldly, directly, and with the whole of its will. In relationship it is fiercely loyal, protective, and generous, but it needs a partner who respects its autonomy and never tries to lead the leader. The 1 shows love through action and initiative rather than endless words, and it thrives beside someone who has their own fire yet can let the 1 shine without competing for the spotlight.",
+    "bestMatches": ["3", "5", "6"],
+    "goodMatches": ["1", "7", "9", "8"],
+    "challengingMatches": ["2", "4", "22"],
+    "advice": "Your strength can shade into dominance, so choose a partner who feels like a teammate, not a rival or a follower. Practice sharing decisions and softening your directness into tenderness. The relationships that last for you are the ones where you lead together, not where one of you must always yield."
+  },
+  "2": {
+    "summary": "The 2 loves through devotion, attentiveness, and a near-psychic reading of a partner's moods. It is the most naturally romantic of the numbers, longing for a deep, secure, one-to-one bond where it can pour out its tenderness. The 2 gives generously and asks mainly for reassurance and gentleness in return, blooming beside a partner who values emotional intimacy and offers steady, spoken affection.",
+    "bestMatches": ["6", "8", "9"],
+    "goodMatches": ["2", "4", "3", "11"],
+    "challengingMatches": ["1", "5", "7"],
+    "advice": "Your gift for harmony can slide into self-erasure, so learn to voice your needs before quiet resentment builds. Choose a partner whose warmth matches your own and who will not mistake your gentleness for weakness. You flourish where you feel safe enough to stop earning love and simply receive it."
+  },
+  "3": {
+    "summary": "The 3 loves playfully, expressively, and with contagious warmth, turning romance into an ongoing creative adventure. It wants a partner it can laugh with, talk to for hours, and dazzle with affection, and it fades in relationships that feel heavy or joyless. The 3 gives color, optimism, and social sparkle, and it needs someone who appreciates its expressiveness rather than trying to contain it.",
+    "bestMatches": ["1", "5", "7"],
+    "goodMatches": ["3", "9", "2", "6"],
+    "challengingMatches": ["4", "8", "22"],
+    "advice": "Your charm draws people in easily, but lasting love asks for depth beneath the sparkle and follow-through beyond the honeymoon. Resist scattering your affection or skating over hard conversations with humor. When you pair your joy with commitment and choose a partner who values both, your relationships become as substantial as they are delightful."
+  },
+  "4": {
+    "summary": "The 4 loves the way it does everything: steadily, faithfully, and for the long haul. It is not flashy in romance but profoundly dependable, showing devotion through loyalty, provision, and quiet acts of care rather than grand gestures. The 4 seeks a stable, committed partnership it can build a life upon, and it gives its whole heart to a partner who values security, honesty, and a shared foundation.",
+    "bestMatches": ["2", "8", "6"],
+    "goodMatches": ["4", "1", "7", "22"],
+    "challengingMatches": ["3", "5", "9"],
+    "advice": "Your reliability is a rare gift, but rigidity and over-seriousness can starve a relationship of spontaneity and warmth. Let your partner draw you into play, and express your love in words as well as deeds. Choose someone who shares your longing for stability, then loosen your grip enough to let the relationship breathe and grow."
+  },
+  "5": {
+    "summary": "The 5 loves with adventure, passion, and an electric hunger for experience, bringing excitement and variety to every bond. It needs freedom and stimulation more than reassurance, and it withers under possessiveness or dull routine. The 5 is magnetic, sensual, and endlessly curious about its partner, thriving beside someone who shares its love of change and gives it room to roam without fear of losing the connection.",
+    "bestMatches": ["1", "3", "7"],
+    "goodMatches": ["5", "9", "6", "11"],
+    "challengingMatches": ["2", "4", "8"],
+    "advice": "Your craving for freedom is real, but so is your capacity for deep devotion once you choose it. Guard against restlessness that flees the moment things get serious. Seek a partner who is a fellow adventurer rather than an anchor, and discover that commitment, chosen freely, can be the greatest adventure of all."
+  },
+  "6": {
+    "summary": "The 6 loves nurturingly, protectively, and with a devotion that makes home wherever it stands. It is the natural caretaker of the numbers, pouring itself into a partner's wellbeing and building warmth, beauty, and belonging. The 6 seeks a committed, harmonious partnership where it can give and be cherished in equal measure, and it flourishes beside someone who values family, loyalty, and heartfelt tenderness.",
+    "bestMatches": ["2", "4", "9"],
+    "goodMatches": ["6", "1", "3", "8"],
+    "challengingMatches": ["5", "7", "22"],
+    "advice": "Your generous heart can tip into over-giving, control, or martyrdom when love goes unreturned. Let yourself be cared for, and offer support without needing to fix or manage your partner. Choose someone who matches your devotion, so the nurturing flows both ways and your home becomes a sanctuary rather than a duty."
+  },
+  "7": {
+    "summary": "The 7 loves quietly, deeply, and with a soul that craves a meeting of minds more than a whirlwind of passion. It needs solitude and space to think, and it gives its heart to a partner who respects its inner world and never demands constant closeness. The 7 offers a rare, contemplative intimacy and a loyalty that runs bone-deep, thriving with someone who is a true companion of spirit and intellect.",
+    "bestMatches": ["3", "5", "7"],
+    "goodMatches": ["1", "4", "9", "11"],
+    "challengingMatches": ["2", "6", "8"],
+    "advice": "Your need for solitude can drift into emotional distance that leaves a partner guessing. Practice letting someone into the private sanctuary of your inner life and voicing the feelings you tend to keep hidden. Seek a partner who honors your depth and independence, and let intimacy become a place of trust rather than intrusion."
+  },
+  "8": {
+    "summary": "The 8 loves with power, ambition, and a protective devotion expressed through building a secure and prosperous shared life. It is drawn to strength and success, giving its partner loyalty, provision, and a formidable will bent toward their mutual good. The 8 seeks a substantial, respectful partnership between equals, and it flourishes beside someone who can match its drive or ground its intensity with warmth and emotional depth.",
+    "bestMatches": ["2", "4", "6"],
+    "goodMatches": ["8", "1", "9", "22"],
+    "challengingMatches": ["3", "5", "7"],
+    "advice": "Your focus on achievement and control can crowd out the vulnerability that intimacy requires. Remember that a partner is not a project to manage, and let tenderness be as important as success. Choose someone who respects your strength yet draws out your softer heart, so power and love can share the same house."
+  },
+  "9": {
+    "summary": "The 9 loves expansively, compassionately, and with an idealism that seeks a soulful, meaningful union. It is generous and warm-hearted, often loving humanity as much as any single person, and it needs a partner who shares its higher values and tolerates its dreamy, self-sacrificing nature. The 9 gives romance, depth, and a wide embrace, thriving beside someone who is both a lover and a fellow seeker of a better world.",
+    "bestMatches": ["2", "6", "3"],
+    "goodMatches": ["9", "1", "5", "7"],
+    "challengingMatches": ["4", "8", "22"],
+    "advice": "Your idealism is beautiful, but it can leave you giving everything while quietly neglecting your own needs or clinging to an image of the perfect partner. Practice loving the real person in front of you, flaws and all, and let yourself receive as freely as you give. Choose a partner who shares your compassion so your love can serve something larger than itself."
+  },
+  "11": {
+    "summary": "The 11 loves with heightened sensitivity, intuition, and a longing for a spiritually resonant connection that touches the soul. As the master vibration of the 2, it is deeply romantic and emotionally attuned, yet it also carries a visionary intensity that seeks a partner who can share its inner life. The 11 gives inspiration, tenderness, and a rare depth of feeling, flourishing beside someone patient enough to hold its sensitivity and grounded enough to steady its nerves.",
+    "bestMatches": ["2", "6", "22"],
+    "goodMatches": ["11", "9", "8", "7"],
+    "challengingMatches": ["1", "4", "5"],
+    "advice": "Your sensitivity is a gift and a burden, and your nervous, high-strung energy needs a calm and reassuring partner. Guard against absorbing your partner's moods until you lose yourself, and give voice to your inner visions rather than expecting to be understood without words. Seek a bond that feels like a spiritual home, then let it ground you."
+  },
+  "22": {
+    "summary": "The 22 loves with the same grand vision it brings to everything, seeking a partner who can share and support the building of something lasting. As the master vibration of the 4, it offers deep loyalty and stability, yet its ambitions are vast enough to demand real understanding and space. The 22 gives steadfast devotion and a future worth believing in, thriving beside a partner who is both an anchor and a co-builder of dreams.",
+    "bestMatches": ["4", "8", "11"],
+    "goodMatches": ["22", "2", "6", "1"],
+    "challengingMatches": ["3", "5", "9"],
+    "advice": "Your immense drive to build can swallow the intimacy right in front of you, leaving a partner feeling like part of the project rather than the point of it. Make time for tenderness that has no purpose beyond connection. Choose a partner who believes in your vision yet reminds you that love, too, is a masterwork worth your full presence."
+  },
+  "33": {
+    "summary": "The 33 loves with a rare, almost boundless compassion, offering healing, devotion, and unconditional care to those it holds dear. As the master vibration of the 6, it is the great nurturer raised to its highest expression, seeking a partnership rooted in service, tenderness, and shared purpose. The 33 gives selflessly and profoundly, and it flourishes beside a partner who can receive such abundant love and gently ensure the caretaker is also cared for.",
+    "bestMatches": ["6", "2", "9"],
+    "goodMatches": ["33", "4", "8", "11"],
+    "challengingMatches": ["1", "5", "7"],
+    "advice": "Your capacity to give is nearly limitless, which makes over-sacrifice and burnout your greatest romantic risk. Let your partner tend to you, and set gentle boundaries so your love does not curdle into martyrdom. Choose someone who shares your devotion to others yet insists on filling your cup too, so your compassion is sustained rather than spent."
+  }
+}

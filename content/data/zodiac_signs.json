@@ -1,0 +1,134 @@
+[
+  {
+    "sign": "Aries",
+    "symbol": "♈",
+    "start": {"month": 3, "day": 21},
+    "end": {"month": 4, "day": 19},
+    "element": "Fire",
+    "modality": "Cardinal",
+    "rulingPlanet": "Mars",
+    "traits": ["bold", "energetic", "pioneering", "impulsive", "competitive"],
+    "numerologyNote": "As the initiating fire sign, Aries resonates with the number 1 — leadership, independence, and the courage to begin."
+  },
+  {
+    "sign": "Taurus",
+    "symbol": "♉",
+    "start": {"month": 4, "day": 20},
+    "end": {"month": 5, "day": 20},
+    "element": "Earth",
+    "modality": "Fixed",
+    "rulingPlanet": "Venus",
+    "traits": ["steadfast", "sensual", "patient", "practical", "loyal"],
+    "numerologyNote": "Taurus echoes the grounded 4, building lasting security through patience, stability, and devotion to the tangible."
+  },
+  {
+    "sign": "Gemini",
+    "symbol": "♊",
+    "start": {"month": 5, "day": 21},
+    "end": {"month": 6, "day": 20},
+    "element": "Air",
+    "modality": "Mutable",
+    "rulingPlanet": "Mercury",
+    "traits": ["curious", "communicative", "witty", "versatile", "restless"],
+    "numerologyNote": "Gemini vibrates with the expressive 3 and 5 — quicksilver communication, curiosity, and a love of variety."
+  },
+  {
+    "sign": "Cancer",
+    "symbol": "♋",
+    "start": {"month": 6, "day": 21},
+    "end": {"month": 7, "day": 22},
+    "element": "Water",
+    "modality": "Cardinal",
+    "rulingPlanet": "Moon",
+    "traits": ["nurturing", "intuitive", "protective", "sensitive", "loyal"],
+    "numerologyNote": "Cancer aligns with the nurturing 6, ruling home, family, and the deep tides of emotional care."
+  },
+  {
+    "sign": "Leo",
+    "symbol": "♌",
+    "start": {"month": 7, "day": 23},
+    "end": {"month": 8, "day": 22},
+    "element": "Fire",
+    "modality": "Fixed",
+    "rulingPlanet": "Sun",
+    "traits": ["confident", "generous", "charismatic", "dramatic", "proud"],
+    "numerologyNote": "Leo shines with the solar 1 — radiant selfhood, creative leadership, and the will to be seen."
+  },
+  {
+    "sign": "Virgo",
+    "symbol": "♍",
+    "start": {"month": 8, "day": 23},
+    "end": {"month": 9, "day": 22},
+    "element": "Earth",
+    "modality": "Mutable",
+    "rulingPlanet": "Mercury",
+    "traits": ["analytical", "meticulous", "helpful", "modest", "discerning"],
+    "numerologyNote": "Virgo reflects the disciplined 4 and the introspective 7, perfecting through analysis, service, and careful order."
+  },
+  {
+    "sign": "Libra",
+    "symbol": "♎",
+    "start": {"month": 9, "day": 23},
+    "end": {"month": 10, "day": 22},
+    "element": "Air",
+    "modality": "Cardinal",
+    "rulingPlanet": "Venus",
+    "traits": ["diplomatic", "harmonious", "fair-minded", "charming", "indecisive"],
+    "numerologyNote": "Libra embodies the partnering 2 — balance, cooperation, and the pursuit of harmony and beauty."
+  },
+  {
+    "sign": "Scorpio",
+    "symbol": "♏",
+    "start": {"month": 10, "day": 23},
+    "end": {"month": 11, "day": 21},
+    "element": "Water",
+    "modality": "Fixed",
+    "rulingPlanet": "Pluto",
+    "traits": ["intense", "passionate", "magnetic", "secretive", "transformative"],
+    "numerologyNote": "Scorpio carries the probing 7 and the powerful 8, driving transformation through depth, will, and hidden strength."
+  },
+  {
+    "sign": "Sagittarius",
+    "symbol": "♐",
+    "start": {"month": 11, "day": 22},
+    "end": {"month": 12, "day": 21},
+    "element": "Fire",
+    "modality": "Mutable",
+    "rulingPlanet": "Jupiter",
+    "traits": ["adventurous", "optimistic", "philosophical", "freedom-loving", "blunt"],
+    "numerologyNote": "Sagittarius resonates with the freedom-seeking 5 and the expansive 3, questing for meaning, travel, and truth."
+  },
+  {
+    "sign": "Capricorn",
+    "symbol": "♑",
+    "start": {"month": 12, "day": 22},
+    "end": {"month": 1, "day": 19},
+    "element": "Earth",
+    "modality": "Cardinal",
+    "rulingPlanet": "Saturn",
+    "traits": ["ambitious", "disciplined", "responsible", "patient", "reserved"],
+    "numerologyNote": "Capricorn aligns with the achieving 8, mastering the material world through discipline, structure, and enduring ambition."
+  },
+  {
+    "sign": "Aquarius",
+    "symbol": "♒",
+    "start": {"month": 1, "day": 20},
+    "end": {"month": 2, "day": 18},
+    "element": "Air",
+    "modality": "Fixed",
+    "rulingPlanet": "Uranus",
+    "traits": ["innovative", "independent", "humanitarian", "unconventional", "detached"],
+    "numerologyNote": "Aquarius vibrates with the visionary 11 and the humanitarian 9, championing progress, ideals, and the collective good."
+  },
+  {
+    "sign": "Pisces",
+    "symbol": "♓",
+    "start": {"month": 2, "day": 19},
+    "end": {"month": 3, "day": 20},
+    "element": "Water",
+    "modality": "Mutable",
+    "rulingPlanet": "Neptune",
+    "traits": ["compassionate", "imaginative", "intuitive", "dreamy", "empathic"],
+    "numerologyNote": "Pisces flows with the spiritual 7 and the compassionate master 33, dissolving boundaries through empathy, imagination, and faith."
+  }
+]
