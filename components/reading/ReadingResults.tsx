@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { memo, useState } from "react";
 import { loShuGrid, type Reading } from "@/lib/numerology";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { Chip } from "@/components/ui/Chip";
@@ -77,7 +77,9 @@ function FolioActions({
   );
 }
 
-export function ReadingResults({
+// Memoized: the folio lives beside a controlled form, and its props are
+// referentially stable between keystrokes — no reason to re-render it.
+export const ReadingResults = memo(function ReadingResults({
   reading,
   currentName,
 }: {
@@ -311,7 +313,11 @@ export function ReadingResults({
       {/* Interlude — the name in daily use, when it differs */}
       {currentName && (
         <NameNowBorne
-          birthName={reading.fullName}
+          birth={{
+            expression: core.expression,
+            soulUrge: core.soulUrge,
+            personality: core.personality,
+          }}
           currentName={currentName}
           yAsVowel={reading.yAsVowel}
         />
@@ -429,7 +435,7 @@ export function ReadingResults({
       </div>
     </div>
   );
-}
+});
 
 function LetterStat({
   label,

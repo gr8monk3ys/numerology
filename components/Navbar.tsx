@@ -4,15 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
-
-const NAV_LINKS = [
-  { href: "/reading", label: "The Reading" },
-  { href: "/compatibility", label: "Concordance" },
-  { href: "/forecast", label: "Almanac" },
-  { href: "/angel-numbers", label: "Portents" },
-  { href: "/numbers", label: "Lexicon" },
-  { href: "/about", label: "The Method" },
-];
+import { SITE_NAV as NAV_LINKS } from "@/lib/site";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -33,7 +25,7 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gold-500/25 bg-void-950/95">
+    <header className="no-print sticky top-0 z-50 border-b border-gold-500/25 bg-void-950/95">
       <nav
         aria-label="Primary"
         className="container-page flex h-16 items-center justify-between"

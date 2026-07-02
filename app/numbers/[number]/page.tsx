@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { MeaningBlock } from "@/components/numbers/MeaningBlock";
+import { isMaster as isMasterNumber } from "@/lib/numerology";
 import {
   lifePathMeanings,
   expressionMeanings,
@@ -41,7 +42,7 @@ export default async function NumberDetailPage({
     notFound();
   }
 
-  const isMaster = number === "11" || number === "22" || number === "33";
+  const isMaster = isMasterNumber(Number(number));
   const primary = pick(lifePathMeanings, number);
   const corr = pick(correspondences, number);
   const master = isMaster ? pick(masterMeanings, number) : undefined;

@@ -65,6 +65,7 @@ function castReading(
 /** A current name only matters if it is usable and differs from the birth name. */
 function usableCurrentName(current: string, birthName: string): string | undefined {
   const clean = current.trim().slice(0, NAME_MAX);
+  if (!NAME_CHARSET.test(clean)) return undefined;
   if (clean.replace(/[^a-zA-Z]/g, "").length < 2) return undefined;
   if (clean.toLowerCase() === birthName.trim().toLowerCase()) return undefined;
   return clean;
@@ -127,20 +128,20 @@ export function ReadingForm() {
   }, []);
 
   function recordCasting(entry: Casting) {
-    const next = [
-      entry,
-      ...readLedger().filter(
-        (c) => !(c.name === entry.name && c.dob === entry.dob),
-      ),
-    ].slice(0, LEDGER_MAX);
-    writeLedger(next);
-    setLedger(next);
+    setLedger((prev) => {
+      const next = [
+        entry,
+        ...prev.filter((c) => !(c.name === entry.name && c.dob === entry.dob)),
+      ].slice(0, LEDGER_MAX);
+      writeLedger(next);
+      return next;
+    });
   }
 
   function cast(name: string, dob: string, y: boolean, now?: string) {
     const result = castReading(name, dob, y);
     if (!result) {
-      setError("That date could not be read.");
+      setError("The casting could not be made from what was given.");
       return;
     }
     const usableNow = now ? usableCurrentName(now, name) : undefined;
@@ -165,6 +166,12 @@ export function ReadingForm() {
 
     if (fullName.trim().replace(/[^a-zA-Z]/g, "").length < 2) {
       setError("Enter the full name as it was given at birth.");
+      return;
+    }
+    if (!NAME_CHARSET.test(fullName.trim())) {
+      setError(
+        "The name may hold only letters, spaces, apostrophes, periods and hyphens.",
+      );
       return;
     }
     if (!birthDate) {

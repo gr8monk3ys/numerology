@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import {
   lifePathNumber,
   computeCompatibility,
+  isMaster,
   type CompatibilityResult,
 } from "@/lib/numerology";
 import { NumberOrb } from "@/components/ui/NumberOrb";
@@ -236,6 +237,3 @@ function MatchRow({
   );
 }
 
-function isMaster(n: number) {
-  return n === 11 || n === 22 || n === 33;
-}

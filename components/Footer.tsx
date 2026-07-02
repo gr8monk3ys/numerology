@@ -1,13 +1,5 @@
 import Link from "next/link";
-
-const LINKS = [
-  { href: "/reading", label: "The Reading" },
-  { href: "/compatibility", label: "Concordance" },
-  { href: "/forecast", label: "Almanac" },
-  { href: "/angel-numbers", label: "Portents" },
-  { href: "/numbers", label: "Lexicon" },
-  { href: "/about", label: "The Method" },
-];
+import { SITE_NAV as LINKS } from "@/lib/site";
 
 /** Colophon — set as the closing page of the book. */
 export function Footer() {

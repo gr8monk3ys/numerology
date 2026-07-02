@@ -20,7 +20,9 @@ export interface NumberOrbProps {
 
 /**
  * An engraved seal bearing a number: double gilt ring, four cardinal ticks,
- * ink ground. Master numbers take a brighter ring; karmic numbers an oxblood one.
+ * ink ground. Master numbers take a brighter ring; karmic numbers an oxblood
+ * one. Rendered as a <span> so it is valid phrasing content inside buttons
+ * and headings.
  */
 export function NumberOrb({
   value,
@@ -30,7 +32,7 @@ export function NumberOrb({
   className,
 }: NumberOrbProps) {
   return (
-    <div
+    <span
       className={clsx(
         "seal relative flex shrink-0 select-none items-center justify-center rounded-full font-display font-semibold",
         SIZES[size],
@@ -77,6 +79,6 @@ export function NumberOrb({
         ))}
       </span>
       <span className="relative">{value}</span>
-    </div>
+    </span>
   );
 }

@@ -4,12 +4,16 @@
  * scripts/styles first-party. `unsafe-inline` remains for script/style because
  * Next.js hydration and next/font emit inline tags on static exports.
  */
+// next dev serves webpack eval source maps; without 'unsafe-eval' in dev the
+// site never hydrates. Production stays eval-free.
+const isDev = process.env.NODE_ENV === "development";
+
 const securityHeaders = [
   {
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'",
+      `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data:",
       "font-src 'self'",

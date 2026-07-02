@@ -11,21 +11,27 @@ import {
   type NumberMeaning,
 } from "@/lib/content";
 
+interface BirthNameNumbers {
+  expression: NumberInsight;
+  soulUrge: NumberInsight;
+  personality: NumberInsight;
+}
+
 /**
  * An interlude comparing the birth name against the name now in daily use.
  * The birth name is held to fix the chart; the used name colours how that
- * chart is expressed in the world.
+ * chart is expressed in the world. The birth-side numbers arrive from the
+ * reading's core rather than being recomputed here.
  */
 export function NameNowBorne({
-  birthName,
+  birth,
   currentName,
   yAsVowel,
 }: {
-  birthName: string;
+  birth: BirthNameNumbers;
   currentName: string;
   yAsVowel: boolean;
 }) {
-  const birth = nameNumbers(birthName, yAsVowel);
   const now = nameNumbers(currentName, yAsVowel);
 
   const rows: Array<{

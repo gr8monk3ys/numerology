@@ -66,11 +66,15 @@ export function NumberCard({
         </button>
       </h3>
 
-      {open && (
-        <div
-          id={panelId}
-          className="space-y-4 border-t border-gold-500/20 px-5 pb-6 pt-4"
-        >
+      {/* Kept in the DOM when closed so the printed folio carries every card. */}
+      <div
+        id={panelId}
+        className={clsx(
+          !open && "hidden",
+          "print:block",
+          "space-y-4 border-t border-gold-500/20 px-5 pb-6 pt-4",
+        )}
+      >
           {meaning?.keywords && (
             <div className="term-row">
               {meaning.keywords.map((k) => (
@@ -129,7 +133,6 @@ export function NumberCard({
               : ""}
           </p>
         </div>
-      )}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { isMaster } from "@/lib/numerology";
 import {
   lifePathMeanings,
   correspondences,
@@ -32,20 +33,20 @@ export default function NumbersIndexPage() {
           {CORE_NUMBER_KEYS.map((key) => {
             const meaning = pick(lifePathMeanings, key);
             const corr = pick(correspondences, key);
-            const isMaster = key === "11" || key === "22" || key === "33";
+            const master = isMaster(Number(key));
             return (
               <li key={key}>
                 <Link
                   href={`/numbers/${key}`}
                   className="group flex items-center gap-5 px-2 py-5 transition-colors hover:bg-gold-500/[0.04] sm:gap-7 sm:px-4"
                 >
-                  <NumberOrb value={key} size="sm" isMaster={isMaster} />
+                  <NumberOrb value={key} size="sm" isMaster={master} />
                   <div className="min-w-0 flex-1">
                     <p className="flex flex-wrap items-baseline gap-x-3">
                       <span className="font-display text-2xl text-mystic-50 transition-colors group-hover:text-gold-200">
                         {meaning?.title ?? `Number ${key}`}
                       </span>
-                      {isMaster && (
+                      {master && (
                         <span className="eyebrow">master number</span>
                       )}
                     </p>
