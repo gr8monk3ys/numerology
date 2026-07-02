@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { NumberOrb } from "@/components/ui/NumberOrb";
-import { Chip } from "@/components/ui/Chip";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
   lifePathMeanings,
@@ -12,56 +10,66 @@ import {
 } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Number Meanings",
+  title: "A Lexicon of the Numbers",
   description:
-    "An encyclopedia of numerology number meanings — 1 through 9 plus the master numbers 11, 22 and 33, with tarot and astrological correspondences.",
+    "The meanings of the numbers one through nine and the master numbers 11, 22 and 33, with their tarot, planetary and elemental correspondences.",
 };
 
 export default function NumbersIndexPage() {
   return (
     <div className="container-page py-16">
       <SectionHeading
-        eyebrow="The encyclopedia"
-        title="Meanings of the numbers"
-        subtitle="Every number is an archetype with its own personality, gifts and shadows. Explore the single digits and the sacred master numbers."
+        eyebrow="Chapter the Fifth"
+        title="A Lexicon of the Numbers"
+        subtitle="Nine digits and three master numbers, each an archetype with its own character, virtues and trials. Turn to any entry."
         align="center"
         className="mb-14"
       />
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {CORE_NUMBER_KEYS.map((key) => {
-          const meaning = pick(lifePathMeanings, key);
-          const corr = pick(correspondences, key);
-          const isMaster = key === "11" || key === "22" || key === "33";
-          return (
-            <Link
-              key={key}
-              href={`/numbers/${key}`}
-              className="glass group relative flex flex-col gap-4 p-6 transition-colors hover:border-mystic-400/30"
-            >
-              <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-mystic-300/40 transition-colors group-hover:text-gold-300" />
-              <div className="flex items-center gap-4">
-                <NumberOrb value={key} size="md" isMaster={isMaster} />
-                <div>
-                  <h3 className="font-display text-xl text-mystic-50">
-                    {meaning?.title ?? `Number ${key}`}
-                  </h3>
-                  {isMaster && <Chip tone="gold">Master Number</Chip>}
-                </div>
-              </div>
-              {meaning?.summary && (
-                <p className="line-clamp-3 text-sm leading-relaxed text-mystic-200/70">
-                  {meaning.summary}
-                </p>
-              )}
-              {corr?.tarot && (
-                <span className="mt-auto text-xs text-mystic-300/50">
-                  Tarot · {corr.tarot}
-                </span>
-              )}
-            </Link>
-          );
-        })}
+      <div className="mx-auto max-w-3xl">
+        <ol className="divide-y divide-gold-500/15 border-y border-gold-500/25">
+          {CORE_NUMBER_KEYS.map((key) => {
+            const meaning = pick(lifePathMeanings, key);
+            const corr = pick(correspondences, key);
+            const isMaster = key === "11" || key === "22" || key === "33";
+            return (
+              <li key={key}>
+                <Link
+                  href={`/numbers/${key}`}
+                  className="group flex items-center gap-5 px-2 py-5 transition-colors hover:bg-gold-500/[0.04] sm:gap-7 sm:px-4"
+                >
+                  <NumberOrb value={key} size="sm" isMaster={isMaster} />
+                  <div className="min-w-0 flex-1">
+                    <p className="flex flex-wrap items-baseline gap-x-3">
+                      <span className="font-display text-2xl text-mystic-50 transition-colors group-hover:text-gold-200">
+                        {meaning?.title ?? `Number ${key}`}
+                      </span>
+                      {isMaster && (
+                        <span className="eyebrow">master number</span>
+                      )}
+                    </p>
+                    {meaning?.summary && (
+                      <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-mystic-300/75">
+                        {meaning.summary}
+                      </p>
+                    )}
+                    {corr?.tarot && (
+                      <p className="term term-muted mt-1.5 block">
+                        tarot · {corr.tarot}
+                      </p>
+                    )}
+                  </div>
+                  <span
+                    className="text-gold-400/60 transition-transform group-hover:translate-x-1"
+                    aria-hidden
+                  >
+                    ❧
+                  </span>
+                </Link>
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </div>
   );

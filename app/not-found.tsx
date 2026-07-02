@@ -7,15 +7,15 @@ export default function NotFound() {
       <div className="animate-float">
         <NumberOrb value="?" size="xl" />
       </div>
-      <h1 className="font-display text-3xl text-mystic-50">
-        This path isn&apos;t written in the stars
+      <h1 className="font-display text-4xl text-mystic-50">
+        This folio is wanting
       </h1>
-      <p className="max-w-md text-mystic-200/70">
-        The page you seek has drifted beyond the veil. Let the numbers guide you
-        home.
+      <p className="max-w-md leading-relaxed text-mystic-200/75">
+        The page you seek was never bound into this volume, or has been cut
+        from it. Return to the frontispiece and take another way.
       </p>
       <Link href="/" className="btn-primary">
-        Return to Numen
+        Return to the book
       </Link>
     </div>
   );

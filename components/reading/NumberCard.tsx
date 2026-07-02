@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import clsx from "clsx";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { Chip } from "@/components/ui/Chip";
@@ -30,7 +29,7 @@ export function NumberCard({
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center gap-4 p-5 text-left transition-colors hover:bg-white/[0.02]"
+        className="flex w-full items-center gap-4 p-5 text-left transition-colors hover:bg-gold-500/[0.04]"
       >
         <NumberOrb
           value={insight.value}
@@ -39,29 +38,32 @@ export function NumberCard({
           isKarmic={insight.karmicDebt !== null}
         />
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-widest text-gold-300/80">
-              {label}
-            </span>
-            {insight.isMaster && <Chip tone="gold">Master</Chip>}
-            {insight.karmicDebt && <Chip tone="muted">Karmic {insight.karmicDebt}</Chip>}
-          </div>
-          <h3 className="mt-0.5 truncate font-display text-lg text-mystic-50">
+          <p className="term-row">
+            <span className="eyebrow">{label}</span>
+            {insight.isMaster && <Chip tone="gold">master number</Chip>}
+            {insight.karmicDebt && (
+              <Chip tone="muted">karmic {insight.karmicDebt}</Chip>
+            )}
+          </p>
+          <h3 className="mt-0.5 truncate font-display text-xl text-mystic-50">
             {meaning?.title ?? blurb ?? `Number ${insight.value}`}
           </h3>
         </div>
-        <ChevronDown
+        <span
           className={clsx(
-            "h-5 w-5 shrink-0 text-mystic-300/60 transition-transform",
+            "shrink-0 text-gold-400/70 transition-transform duration-300",
             open && "rotate-180",
           )}
-        />
+          aria-hidden
+        >
+          ▾
+        </span>
       </button>
 
       {open && (
-        <div className="space-y-4 border-t border-white/5 px-5 pb-6 pt-4">
+        <div className="space-y-4 border-t border-gold-500/20 px-5 pb-6 pt-4">
           {meaning?.keywords && (
-            <div className="flex flex-wrap gap-2">
+            <div className="term-row">
               {meaning.keywords.map((k) => (
                 <Chip key={k}>{k}</Chip>
               ))}
@@ -81,13 +83,13 @@ export function NumberCard({
             <div className="grid gap-4 sm:grid-cols-2">
               {meaning?.strengths && (
                 <div>
-                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-aura-400">
-                    Strengths
-                  </h4>
+                  <p className="term mb-2 block text-aura-400">Virtues</p>
                   <ul className="space-y-1 text-sm text-mystic-200/80">
                     {meaning.strengths.map((s) => (
                       <li key={s} className="flex gap-2">
-                        <span className="text-aura-400">✦</span>
+                        <span className="text-aura-400/80" aria-hidden>
+                          ✦
+                        </span>
                         {s}
                       </li>
                     ))}
@@ -96,13 +98,13 @@ export function NumberCard({
               )}
               {meaning?.challenges && (
                 <div>
-                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-rose-300/80">
-                    Challenges
-                  </h4>
+                  <p className="term mb-2 block text-blood-300">Trials</p>
                   <ul className="space-y-1 text-sm text-mystic-200/80">
                     {meaning.challenges.map((c) => (
                       <li key={c} className="flex gap-2">
-                        <span className="text-rose-300/70">◇</span>
+                        <span className="text-blood-300/80" aria-hidden>
+                          ◇
+                        </span>
                         {c}
                       </li>
                     ))}
@@ -111,9 +113,11 @@ export function NumberCard({
               )}
             </div>
           )}
-          <p className="pt-1 text-xs text-mystic-300/40">
-            Reduction: {insight.steps.join(" → ")}
-            {insight.karmicDebt ? `  ·  carries karmic debt ${insight.karmicDebt}` : ""}
+          <p className="pt-1 text-xs italic text-mystic-400/60">
+            The reckoning: {insight.steps.join(" → ")}
+            {insight.karmicDebt
+              ? `; carrying the karmic debt ${insight.karmicDebt}`
+              : ""}
           </p>
         </div>
       )}

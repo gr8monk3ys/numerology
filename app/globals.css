@@ -1,51 +1,52 @@
 @import "tailwindcss";
 
 /* ================================================================== */
-/*  NUMEN — dark gothic-manuscript / grimoire design tokens           */
+/*  NUMEN · LIBER NUMERORUM — gothic-manuscript design tokens          */
 /* ================================================================== */
 @theme {
-  /* Ink-black / aged-leather backgrounds (warm, not blue) */
+  /* Ink-black / aged-leather grounds (warm, never blue) */
   --color-void-950: #0a0705;
   --color-void-900: #100c07;
   --color-void-850: #16110a;
   --color-void-800: #1e170e;
   --color-void-700: #2a2015;
 
-  /* "mystic" is repurposed as aged parchment / bone ink for text */
-  --color-mystic-50: #f5ecd4;
-  --color-mystic-100: #ecdcb8;
-  --color-mystic-200: #dcc79a;
-  --color-mystic-300: #c3a870;
-  --color-mystic-400: #a3854e;
-  --color-mystic-500: #836838;
-  --color-mystic-600: #6b542b;
-  --color-mystic-700: #544120;
-  --color-mystic-800: #40331a;
-  --color-mystic-900: #2d2413;
+  /* Aged parchment / bone ink (text) */
+  --color-mystic-50: #f2e9d3;
+  --color-mystic-100: #e8d9ba;
+  --color-mystic-200: #d6c299;
+  --color-mystic-300: #bda371;
+  --color-mystic-400: #9d8050;
+  --color-mystic-500: #7e653a;
+  --color-mystic-600: #66512c;
+  --color-mystic-700: #503f21;
+  --color-mystic-800: #3d311b;
+  --color-mystic-900: #2b2313;
 
   /* Gilt / gold-leaf */
-  --color-gold-50: #fbf3d7;
-  --color-gold-100: #f3e4b2;
-  --color-gold-200: #e8d190;
-  --color-gold-300: #d6b566;
-  --color-gold-400: #c39c47;
-  --color-gold-500: #a67e33;
-  --color-gold-600: #856127;
-  --color-gold-700: #654824;
+  --color-gold-50: #faf2d6;
+  --color-gold-100: #f1e2b0;
+  --color-gold-200: #e6cf8e;
+  --color-gold-300: #d4b365;
+  --color-gold-400: #c19a46;
+  --color-gold-500: #a37c32;
+  --color-gold-600: #826026;
+  --color-gold-700: #634723;
 
-  /* "aura" repurposed as antique ink-green (strengths) */
-  --color-aura-300: #adb783;
-  --color-aura-400: #8c9a5a;
-  --color-aura-500: #6a763f;
+  /* Antique ink-green (virtues / strengths) */
+  --color-aura-300: #a9b37f;
+  --color-aura-400: #879557;
+  --color-aura-500: #66713d;
 
-  /* Rubric / oxblood (medieval red ink) — overrides default rose */
-  --color-rose-200: #d8a89d;
-  --color-rose-300: #c6887b;
-  --color-rose-400: #a8443b;
-  --color-rose-500: #8a2f28;
-  --color-blood-400: #a8342e;
-  --color-blood-500: #8a2c26;
-  --color-blood-600: #6d211d;
+  /* Rubric / oxblood (the red ink of the scriptorium) */
+  --color-rose-200: #d6a69b;
+  --color-rose-300: #c48579;
+  --color-rose-400: #a5433a;
+  --color-rose-500: #872e27;
+  --color-blood-300: #bc5a50;
+  --color-blood-400: #a5332d;
+  --color-blood-500: #872b25;
+  --color-blood-600: #6a211c;
 
   /* Fonts */
   --font-display: var(--font-gothic), "Times New Roman", serif;
@@ -53,48 +54,48 @@
   --font-sans: var(--font-garamond), Georgia, serif;
   --font-blackletter: var(--font-blackletter), serif;
 
-  /* Framed shadows (no neon glow) */
+  /* Shadows: candle-cast, never neon */
   --shadow-glow: 0 18px 40px -26px rgba(0, 0, 0, 0.9);
-  --shadow-glow-gold: 0 0 0 1px rgba(198, 158, 74, 0.35), 0 12px 28px -18px rgba(0, 0, 0, 0.8);
+  --shadow-glow-gold: 0 0 0 1px rgba(193, 154, 70, 0.35), 0 12px 28px -18px rgba(0, 0, 0, 0.8);
   --shadow-glow-strong: 0 28px 60px -30px rgba(0, 0, 0, 0.95);
 
-  /* Motion (subtle, candlelit) */
+  /* Motion: candlelit, restrained */
   --animate-float: float 7s ease-in-out infinite;
   --animate-spin-slow: spin-slow 60s linear infinite;
   --animate-spin-slower: spin-slow 120s linear infinite;
   --animate-fade-up: fade-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  --animate-flicker: flicker 5s ease-in-out infinite;
+  --animate-flicker: flicker 6s ease-in-out infinite;
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-8px); }
 }
 @keyframes spin-slow {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(18px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes flicker {
-  0%, 100% { opacity: 0.85; }
-  45% { opacity: 1; }
-  55% { opacity: 0.78; }
-  70% { opacity: 0.95; }
+  0%, 100% { opacity: 0.88; }
+  46% { opacity: 1; }
+  54% { opacity: 0.82; }
+  71% { opacity: 0.96; }
 }
 
 /* ------------------------------------------------------------------ */
 /*  Gilt utilities                                                     */
 /* ------------------------------------------------------------------ */
 @utility bg-gold-sheen {
-  background-image: linear-gradient(165deg, #efdca0 0%, #cba04a 48%, #8a6122 100%);
+  background-image: linear-gradient(165deg, #eeda9c 0%, #c19a46 48%, #7e5a20 100%);
 }
 @utility bg-cosmic-radial {
   background-image:
-    radial-gradient(ellipse at top, rgba(168, 52, 46, 0.1), transparent 60%),
-    radial-gradient(ellipse at bottom, rgba(198, 158, 74, 0.08), transparent 60%);
+    radial-gradient(ellipse at top, rgba(165, 51, 45, 0.08), transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(193, 154, 70, 0.07), transparent 60%);
 }
 
 /* ------------------------------------------------------------------ */
@@ -111,13 +112,14 @@
     background-color: var(--color-void-950);
     color: var(--color-mystic-100);
     font-family: var(--font-serif);
-    font-size: 1.02rem;
+    font-size: 1.05rem;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    font-feature-settings: "liga", "kern";
   }
   ::selection {
-    background: rgba(168, 52, 46, 0.45);
-    color: #f5ecd4;
+    background: rgba(165, 51, 45, 0.45);
+    color: #f2e9d3;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
@@ -125,43 +127,46 @@
     font-weight: 500;
     color: var(--color-mystic-50);
   }
+  em, i {
+    font-style: italic;
+  }
   input[type="date"] {
     color-scheme: dark;
   }
 }
 
 /* ------------------------------------------------------------------ */
-/*  Components — ruled manuscript frames, gilt & rubric                */
+/*  Components                                                          */
 /* ------------------------------------------------------------------ */
 @layer components {
   .container-page {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
-  /* A framed manuscript panel: solid, ruled, no blur, faint inner rule */
+  /* Ruled manuscript panel: solid ink, hairline gilt rule, inner rule */
   .glass {
     position: relative;
-    border-radius: 3px;
-    border: 1px solid rgba(198, 158, 74, 0.26);
-    background-color: rgba(18, 13, 8, 0.72);
-    box-shadow: inset 0 1px 0 rgba(198, 158, 74, 0.06);
+    border-radius: 2px;
+    border: 1px solid rgba(193, 154, 70, 0.26);
+    background-color: rgba(18, 13, 8, 0.74);
+    box-shadow: inset 0 1px 0 rgba(193, 154, 70, 0.06);
   }
   .glass::before {
     content: "";
     position: absolute;
     inset: 6px;
-    border: 1px solid rgba(198, 158, 74, 0.1);
+    border: 1px solid rgba(193, 154, 70, 0.1);
     border-radius: 1px;
     pointer-events: none;
   }
 
-  /* A heavier "page" — darker, thicker rule, aged-paper wash */
+  /* A heavier illuminated "plate" */
   .glass-strong {
     position: relative;
-    border-radius: 3px;
-    border: 1px solid rgba(198, 158, 74, 0.4);
+    border-radius: 2px;
+    border: 1px solid rgba(193, 154, 70, 0.4);
     background:
-      radial-gradient(120% 100% at 50% 0%, rgba(42, 32, 21, 0.7), rgba(12, 9, 5, 0.92));
+      radial-gradient(120% 100% at 50% 0%, rgba(42, 32, 21, 0.66), rgba(12, 9, 5, 0.94));
     box-shadow:
       0 30px 60px -30px rgba(0, 0, 0, 0.95),
       inset 0 0 80px rgba(0, 0, 0, 0.55);
@@ -170,7 +175,7 @@
     content: "";
     position: absolute;
     inset: 9px;
-    border: 1px solid rgba(198, 158, 74, 0.22);
+    border: 1px solid rgba(193, 154, 70, 0.22);
     border-radius: 1px;
     pointer-events: none;
   }
@@ -180,31 +185,49 @@
   }
   .card-hover:hover {
     transform: translateY(-2px);
-    border-color: rgba(214, 181, 102, 0.55);
+    border-color: rgba(212, 179, 101, 0.55);
     box-shadow: 0 22px 44px -26px rgba(0, 0, 0, 0.9);
   }
 
   .gold-text {
-    background-image: linear-gradient(165deg, #f0dca0 0%, #cba04a 52%, #8a6122 100%);
+    background-image: linear-gradient(165deg, #efdd9e 0%, #c19a46 52%, #7e5a20 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
-  /* Rubric — the red ink used for headings/initials in old manuscripts */
-  .rubric {
-    color: var(--color-blood-400);
-    text-transform: uppercase;
-    letter-spacing: 0.28em;
-    font-size: 0.7rem;
-    font-weight: 600;
-  }
+  /* Rubric: the red ink used for headings in the scriptorium */
   .eyebrow {
-    color: var(--color-blood-400);
+    color: var(--color-blood-300);
     text-transform: uppercase;
     letter-spacing: 0.3em;
     font-size: 0.7rem;
     font-weight: 600;
+    font-family: var(--font-serif);
+  }
+
+  /* Small-caps term — replaces pill "chips" */
+  .term {
+    font-family: var(--font-serif);
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+  .term-gold { color: var(--color-gold-200); }
+  .term-ink { color: rgba(232, 217, 186, 0.9); }
+  .term-muted { color: rgba(189, 163, 113, 0.75); }
+
+  /* Dot-separated term lists: · between items */
+  .term-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 0.4rem;
+  }
+  .term-row > * + *::before {
+    content: "· ";
+    color: rgba(193, 154, 70, 0.55);
   }
 
   .link-underline {
@@ -225,28 +248,21 @@
     justify-content: center;
     gap: 0.5rem;
     border-radius: 2px;
-    padding: 0.7rem 1.6rem;
+    padding: 0.7rem 1.7rem;
     font-family: var(--font-display);
     font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    font-size: 0.95rem;
     color: #241a0b;
-    border: 1px solid rgba(120, 90, 30, 0.7);
-    background-image: linear-gradient(180deg, #edd694 0%, #cba04a 55%, #9c7a30 100%);
+    border: 1px solid rgba(110, 82, 28, 0.75);
+    background-image: linear-gradient(180deg, #ecd48f 0%, #c19a46 55%, #96742c 100%);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 10px 24px -14px rgba(0, 0, 0, 0.85);
     transition: filter 0.2s ease, transform 0.2s ease;
   }
-  .btn-primary:hover {
-    filter: brightness(1.06);
-    transform: translateY(-1px);
-  }
-  .btn-primary:active {
-    transform: translateY(0);
-  }
-  .btn-primary:disabled {
-    opacity: 0.5;
-    transform: none;
-  }
+  .btn-primary:hover { filter: brightness(1.06); transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-primary:disabled { opacity: 0.5; transform: none; }
 
   .btn-ghost {
     display: inline-flex;
@@ -254,77 +270,124 @@
     justify-content: center;
     gap: 0.5rem;
     border-radius: 2px;
-    padding: 0.7rem 1.6rem;
+    padding: 0.7rem 1.7rem;
     font-family: var(--font-display);
     font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    font-size: 0.95rem;
     color: var(--color-mystic-100);
-    border: 1px solid rgba(198, 158, 74, 0.45);
+    border: 1px solid rgba(193, 154, 70, 0.45);
     background: transparent;
     transition: background-color 0.2s ease, border-color 0.2s ease;
   }
   .btn-ghost:hover {
-    border-color: rgba(214, 181, 102, 0.75);
-    background: rgba(198, 158, 74, 0.08);
+    border-color: rgba(212, 179, 101, 0.75);
+    background: rgba(193, 154, 70, 0.08);
+  }
+
+  /* Quiet inline action: small caps, hairline underline */
+  .action-quiet {
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    font-size: 0.95rem;
+    color: rgba(212, 179, 101, 0.85);
+    border-bottom: 1px solid rgba(193, 154, 70, 0.35);
+    transition: color 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+  }
+  .action-quiet:hover {
+    color: var(--color-gold-200);
+    border-color: rgba(212, 179, 101, 0.7);
   }
 
   .input-field {
     width: 100%;
     border-radius: 2px;
-    border: 1px solid rgba(198, 158, 74, 0.28);
+    border: 1px solid rgba(193, 154, 70, 0.28);
     background: rgba(8, 6, 4, 0.7);
     padding: 0.7rem 1rem;
     color: var(--color-mystic-50);
+    font-family: var(--font-serif);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   .input-field::placeholder {
-    color: rgba(195, 168, 112, 0.4);
+    color: rgba(189, 163, 113, 0.45);
+    font-style: italic;
   }
   .input-field:focus {
     outline: none;
     border-color: var(--color-gold-400);
-    box-shadow: 0 0 0 1px rgba(198, 158, 74, 0.4);
+    box-shadow: 0 0 0 1px rgba(193, 154, 70, 0.4);
   }
 
   .label-text {
-    @apply mb-1.5 block text-sm font-medium;
-    color: rgba(220, 199, 154, 0.85);
+    @apply mb-1.5 block text-sm;
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+    color: rgba(214, 194, 153, 0.85);
   }
 
-  /* Ornamental centred divider (use with a ❧ / ✦ glyph) */
+  /* Ornamental centred divider */
   .rule-ornament {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    color: rgba(198, 158, 74, 0.6);
+    color: rgba(193, 154, 70, 0.6);
   }
   .rule-ornament::before,
   .rule-ornament::after {
     content: "";
     height: 1px;
-    width: 4rem;
-    background: linear-gradient(90deg, transparent, rgba(198, 158, 74, 0.5));
+    width: 4.5rem;
+    background: linear-gradient(90deg, transparent, rgba(193, 154, 70, 0.5));
   }
   .rule-ornament::after {
-    background: linear-gradient(90deg, rgba(198, 158, 74, 0.5), transparent);
+    background: linear-gradient(90deg, rgba(193, 154, 70, 0.5), transparent);
   }
 
   /* Illuminated drop-cap */
   .dropcap::first-letter {
     font-family: var(--font-blackletter);
     float: left;
-    font-size: 3.4rem;
-    line-height: 0.8;
-    padding: 0.1em 0.12em 0 0;
-    color: var(--color-blood-400);
+    font-size: 3.6rem;
+    line-height: 0.78;
+    padding: 0.08em 0.14em 0 0;
+    color: var(--color-blood-300);
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  /* Table-of-contents entry with dotted leaders */
+  .toc-entry {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    width: 100%;
+  }
+  .toc-leader {
+    flex: 1;
+    min-width: 2rem;
+    border-bottom: 1px dotted rgba(193, 154, 70, 0.4);
+    transform: translateY(-0.28em);
+  }
+
+  /* Chapter heading: numeral · rule · glyph */
+  .chapter-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .chapter-glyph {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    line-height: 1;
+    color: rgba(212, 179, 101, 0.8);
   }
 }
 
 /* ------------------------------------------------------------------ */
-/*  Ambient backdrop — aged vellum, candle vignette, no blue glow      */
+/*  Ambient backdrop — candle vignette, page frame, aged grain         */
 /* ------------------------------------------------------------------ */
 .starfield {
   position: fixed;
@@ -333,11 +396,10 @@
   overflow: hidden;
   pointer-events: none;
   background:
-    radial-gradient(60% 45% at 50% 8%, rgba(120, 84, 30, 0.16), transparent 70%),
-    radial-gradient(80% 60% at 50% 120%, rgba(90, 22, 20, 0.14), transparent 70%),
+    radial-gradient(60% 45% at 50% 8%, rgba(118, 82, 29, 0.15), transparent 70%),
+    radial-gradient(80% 60% at 50% 120%, rgba(88, 22, 19, 0.13), transparent 70%),
     linear-gradient(180deg, #0c0805 0%, #0a0705 55%, #070503 100%);
 }
-/* Heavy vignette to frame the "page" */
 .starfield::after {
   content: "";
   position: absolute;
@@ -345,7 +407,25 @@
   box-shadow: inset 0 0 260px 60px rgba(0, 0, 0, 0.85);
 }
 
-/* Aged-paper grain over everything */
+/* Fixed manuscript margin-frame around the viewport */
+.page-frame {
+  position: fixed;
+  inset: 10px;
+  z-index: 40;
+  pointer-events: none;
+  border: 1px solid rgba(193, 154, 70, 0.16);
+}
+.page-frame::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(193, 154, 70, 0.07);
+}
+@media (max-width: 640px) {
+  .page-frame { display: none; }
+}
+
+/* Aged-paper grain */
 .grain::before {
   content: "";
   position: fixed;
@@ -357,10 +437,10 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Scroll-reveal (visible by default; hidden only when JS marks reveal-ready) */
+/* Scroll-reveal (visible by default; hidden only once JS marks reveal-ready) */
 .reveal-ready .reveal {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(20px);
   transition:
     opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
     transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -371,25 +451,53 @@
   transform: none;
 }
 
-.thin-scrollbar::-webkit-scrollbar {
-  height: 6px;
-  width: 6px;
-}
+.thin-scrollbar::-webkit-scrollbar { height: 6px; width: 6px; }
 .thin-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(198, 158, 74, 0.4);
+  background: rgba(193, 154, 70, 0.4);
   border-radius: 9999px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal-ready .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+  .reveal-ready .reveal { opacity: 1; transform: none; transition: none; }
   .animate-float,
   .animate-spin-slow,
   .animate-spin-slower,
-  .animate-flicker {
-    animation: none !important;
+  .animate-flicker { animation: none !important; }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Print — the folio, set in dark ink on parchment                    */
+/* ------------------------------------------------------------------ */
+@media print {
+  :root { color-scheme: light; }
+  body {
+    background: #f6efdd !important;
+    color: #241c10 !important;
   }
+  .starfield, .grain::before, .page-frame, header, footer, nav,
+  .no-print {
+    display: none !important;
+  }
+  h1, h2, h3, h4, .gold-text {
+    -webkit-text-fill-color: initial;
+    background: none !important;
+    color: #241c10 !important;
+  }
+  .glass, .glass-strong {
+    background: transparent !important;
+    border-color: #8a744a !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+  .eyebrow { color: #872b25 !important; }
+  p, li, span, div { color: #2d2416; }
+  a { color: #2d2416; text-decoration: none; }
+  /* Seals print as ruled medallions, not ink blots */
+  .seal {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 1.5px solid #8a744a;
+    color: #241c10 !important;
+  }
+  .seal span { color: #241c10 !important; }
 }

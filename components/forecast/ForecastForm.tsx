@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { CalendarClock, Mountain, Swords } from "lucide-react";
 import {
   personalCycles,
   pinnacles,
@@ -50,12 +49,12 @@ export function ForecastForm() {
     e.preventDefault();
     setError(null);
     if (!birthDate) {
-      setError("Please enter your date of birth.");
+      setError("Enter the date of birth.");
       return;
     }
     const [y, m, d] = birthDate.split("-").map(Number);
     if (!y || !m || !d) {
-      setError("That date doesn't look right.");
+      setError("That date could not be read.");
       return;
     }
     const birth: BirthDate = { year: y, month: m, day: d };
@@ -74,17 +73,19 @@ export function ForecastForm() {
     });
   }
 
-  const py = state ? pick(personalYearMeanings, state.personal.year.value) : undefined;
+  const py = state
+    ? pick(personalYearMeanings, state.personal.year.value)
+    : undefined;
 
   return (
     <div>
       <form
         onSubmit={handleSubmit}
-        className="glass-strong mx-auto flex max-w-xl flex-col gap-4 p-6 sm:flex-row sm:items-end sm:p-8"
+        className="glass-strong mx-auto flex max-w-xl flex-col gap-4 px-6 py-8 sm:flex-row sm:items-end sm:px-10"
       >
         <div className="flex-1">
           <label htmlFor="fc-date" className="label-text">
-            Your date of birth
+            The date of birth
           </label>
           <input
             id="fc-date"
@@ -93,23 +94,22 @@ export function ForecastForm() {
             min="1900-01-01"
             max="2099-12-31"
             onChange={(e) => setBirthDate(e.target.value)}
-            className="input-field [color-scheme:dark]"
+            className="input-field"
           />
         </div>
         <button type="submit" className="btn-primary shrink-0">
-          <CalendarClock className="h-4 w-4" />
-          Reveal cycles
+          Consult the Almanac
         </button>
       </form>
       {error && (
-        <p className="mx-auto mt-3 max-w-xl text-center text-sm text-rose-300">
+        <p className="mx-auto mt-3 max-w-xl text-center text-sm text-rose-200">
           {error}
         </p>
       )}
 
       {state && (
-        <div className="mt-12 space-y-12">
-          {/* Personal cycles */}
+        <div className="mt-14 space-y-14">
+          {/* The present vibrations */}
           <div>
             <div className="grid gap-4 sm:grid-cols-3">
               {[
@@ -120,11 +120,9 @@ export function ForecastForm() {
                 <div key={label} className="glass flex items-center gap-4 p-5">
                   <NumberOrb value={ins.value} size="md" />
                   <div>
-                    <span className="text-xs font-semibold uppercase tracking-widest text-gold-300/80">
-                      {label}
-                    </span>
-                    <p className="text-sm text-mystic-200/60">
-                      Current vibration
+                    <p className="eyebrow">{label}</p>
+                    <p className="text-sm text-mystic-300/70">
+                      the present vibration
                     </p>
                   </div>
                 </div>
@@ -132,15 +130,15 @@ export function ForecastForm() {
             </div>
             {py && (
               <div className="glass mt-4 p-6">
-                <span className="text-xs font-semibold uppercase tracking-widest text-gold-300/80">
-                  A {py.theme} Year
-                </span>
-                <p className="mt-2 text-sm text-mystic-100/85">{py.summary}</p>
-                <p className="mt-2 text-sm text-mystic-200/70">
-                  <span className="text-gold-300">Guidance: </span>
+                <p className="eyebrow">A {py.theme} year</p>
+                <p className="mt-2 text-sm leading-relaxed text-mystic-100/85">
+                  {py.summary}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-mystic-200/75">
+                  <span className="text-gold-300">Counsel: </span>
                   {py.advice}
                 </p>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="term-row mt-3">
                   {py.keywords.map((k) => (
                     <Chip key={k}>{k}</Chip>
                   ))}
@@ -152,9 +150,12 @@ export function ForecastForm() {
           {/* Pinnacles & Challenges */}
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-mystic-100">
-                <Mountain className="h-5 w-5 text-gold-300" />
-                <h3 className="font-display text-xl">Pinnacles</h3>
+              <div className="chapter-head">
+                <h3 className="font-display text-2xl text-mystic-50">
+                  The Four Pinnacles
+                </h3>
+                <span className="h-px flex-1 bg-gradient-to-r from-gold-500/40 to-transparent" />
+                <span className="chapter-glyph" aria-hidden>▵</span>
               </div>
               {state.pinnacles.map((p) => {
                 const active = inRange(state.age, p);
@@ -163,20 +164,22 @@ export function ForecastForm() {
                   <div
                     key={p.index}
                     className={`glass flex items-start gap-4 p-4 ${
-                      active ? "ring-1 ring-gold-300/50" : ""
+                      active ? "border-gold-400/60" : ""
                     }`}
                   >
                     <NumberOrb value={p.value} size="sm" isMaster={p.isMaster} />
                     <div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-sm text-mystic-50">
-                          Pinnacle {p.index}
+                      <p className="flex flex-wrap items-baseline gap-x-3 text-sm text-mystic-50">
+                        Pinnacle {p.index}
+                        <span className="text-mystic-400/70">
+                          ages {p.label}
                         </span>
-                        <Chip tone="muted">ages {p.label}</Chip>
-                        {active && <Chip tone="gold">Now</Chip>}
-                      </div>
+                        {active && (
+                          <span className="term term-gold">at present</span>
+                        )}
+                      </p>
                       {pm?.summary && (
-                        <p className="mt-1 text-sm text-mystic-200/70">
+                        <p className="mt-1 text-sm leading-relaxed text-mystic-200/70">
                           {pm.summary}
                         </p>
                       )}
@@ -186,9 +189,12 @@ export function ForecastForm() {
               })}
             </div>
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-mystic-100">
-                <Swords className="h-5 w-5 text-gold-300" />
-                <h3 className="font-display text-xl">Challenges</h3>
+              <div className="chapter-head">
+                <h3 className="font-display text-2xl text-mystic-50">
+                  The Four Challenges
+                </h3>
+                <span className="h-px flex-1 bg-gradient-to-r from-gold-500/40 to-transparent" />
+                <span className="chapter-glyph" aria-hidden>†</span>
               </div>
               {state.challenges.map((c) => {
                 const active = inRange(state.age, c);
@@ -197,20 +203,22 @@ export function ForecastForm() {
                   <div
                     key={c.index}
                     className={`glass flex items-start gap-4 p-4 ${
-                      active ? "ring-1 ring-gold-300/50" : ""
+                      active ? "border-gold-400/60" : ""
                     }`}
                   >
                     <NumberOrb value={c.value} size="sm" />
                     <div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-sm text-mystic-50">
-                          Challenge {c.index}
+                      <p className="flex flex-wrap items-baseline gap-x-3 text-sm text-mystic-50">
+                        Challenge {c.index}
+                        <span className="text-mystic-400/70">
+                          ages {c.label}
                         </span>
-                        <Chip tone="muted">ages {c.label}</Chip>
-                        {active && <Chip tone="gold">Now</Chip>}
-                      </div>
+                        {active && (
+                          <span className="term term-gold">at present</span>
+                        )}
+                      </p>
                       {cm?.summary && (
-                        <p className="mt-1 text-sm text-mystic-200/70">
+                        <p className="mt-1 text-sm leading-relaxed text-mystic-200/70">
                           {cm.summary}
                         </p>
                       )}

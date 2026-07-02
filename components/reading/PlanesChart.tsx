@@ -34,9 +34,7 @@ export function PlanesChart({
                 <span className="flex items-center gap-2 text-mystic-100">
                   {content[plane].title}
                   {isDominant && (
-                    <span className="rounded-full bg-gold-500/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-gold-200">
-                      Dominant
-                    </span>
+                    <span className="term term-gold text-sm">· the ruling plane</span>
                   )}
                 </span>
                 <span className="tabular-nums text-mystic-200/70">

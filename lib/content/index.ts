@@ -19,6 +19,7 @@ import planesData from "@/content/data/planes_of_expression.json";
 import lifeCyclesData from "@/content/data/life_cycles.json";
 import chineseData from "@/content/data/chinese_zodiac.json";
 import zodiacData from "@/content/data/zodiac_signs.json";
+import loShuData from "@/content/data/lo_shu.json";
 
 import type { AngelEntry } from "@/lib/numerology/angel";
 import type { CompatibilityData } from "@/lib/numerology/compatibility";
@@ -153,6 +154,21 @@ export const chineseZodiacData = chineseData as unknown as ChineseZodiacSign[];
 export const zodiacSignsData = zodiacData as unknown as ZodiacSign[];
 
 export const planeKeyList: Plane[] = ["physical", "mental", "emotional", "intuitive"];
+
+export interface LoShuArrow {
+  line: number[];
+  presentName: string;
+  present: string;
+  absentName: string;
+  absent: string;
+}
+export interface LoShuContent {
+  _intro: string;
+  _method: string;
+  arrows: LoShuArrow[];
+  digitCounts: Record<string, Record<string, string>>;
+}
+export const loShuContent = loShuData as unknown as LoShuContent;
 
 /** Safe lookup helper. */
 export function pick<T>(map: Record<string, T>, key: number | string): T | undefined {

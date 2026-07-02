@@ -3,18 +3,18 @@ import { ReadingForm } from "@/components/reading/ReadingForm";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Full Numerology Reading",
+  title: "The Reading",
   description:
-    "Enter your name and birth date for a complete numerology reading: Life Path, Expression, Soul Urge, Personality, karmic debts, pinnacles, forecasts and esoteric correspondences.",
+    "The full chart cast from name and birth date: Life Path, Expression, Soul Urge, Personality, the karmic record, the Lo Shu grid, cycles, and the correspondences of tarot, planet and stone.",
 };
 
 export default function ReadingPage() {
   return (
     <div className="container-page py-16">
       <SectionHeading
-        eyebrow="Your complete chart"
-        title="Cast your numerology reading"
-        subtitle="Everything is calculated privately in your browser — nothing you enter ever leaves your device."
+        eyebrow="Chapter the First"
+        title="The Reading"
+        subtitle="Give the name as it was written at birth, and the date. The reckoning is worked entirely within your own device; nothing you enter leaves it."
         align="center"
         className="mb-12"
       />

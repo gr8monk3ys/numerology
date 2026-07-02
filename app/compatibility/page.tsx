@@ -3,18 +3,18 @@ import { CompatibilityForm } from "@/components/compatibility/CompatibilityForm"
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Numerology Compatibility",
+  title: "The Concordance of Two Souls",
   description:
-    "Compare two Life Path numbers to reveal your numerological compatibility — harmony score, strengths, and relationship guidance.",
+    "Two Life Path numbers weighed against one another: the concord between them, and counsel for the pairing.",
 };
 
 export default function CompatibilityPage() {
   return (
     <div className="container-page py-16">
       <SectionHeading
-        eyebrow="Two souls, two numbers"
-        title="Numerology compatibility"
-        subtitle="Enter two birth dates to compare Life Paths and reveal the harmony — and the growth — written between you."
+        eyebrow="Chapter the Second"
+        title="The Concordance of Two Souls"
+        subtitle="Set down two dates of birth, and the Life Paths will be weighed one against the other — the harmony found, and the schooling."
         align="center"
         className="mb-12"
       />

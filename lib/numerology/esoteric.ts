@@ -143,6 +143,66 @@ export function bridgeNumbers(core: {
 }
 
 // ---------------------------------------------------------------------------
+// Lo Shu grid & the Arrows of Pythagoras
+// ---------------------------------------------------------------------------
+
+/** The eight lines of the Lo Shu square, keyed by their digits. */
+export const LO_SHU_LINES: ReadonlyArray<readonly [number, number, number]> = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [1, 4, 7],
+  [2, 5, 8],
+  [3, 6, 9],
+  [1, 5, 9],
+  [3, 5, 7],
+];
+
+/** The traditional Lo Shu arrangement, row by row (top to bottom). */
+export const LO_SHU_SQUARE: ReadonlyArray<readonly [number, number, number]> = [
+  [4, 9, 2],
+  [3, 5, 7],
+  [8, 1, 6],
+];
+
+export interface LoShuResult {
+  /** How many times each digit 1-9 appears in the birth date (0s ignored). */
+  counts: Record<number, number>;
+  /** Lines whose three digits are all present — arrows of strength. */
+  strengths: Array<[number, number, number]>;
+  /** Lines whose three digits are all absent — arrows of weakness. */
+  weaknesses: Array<[number, number, number]>;
+  /** Digits absent from the birth date. */
+  missing: number[];
+}
+
+/**
+ * Places the digits of the full birth date (day, month, year; zeros are not
+ * placed) into the Lo Shu square and reads the completed and empty lines.
+ */
+export function loShuGrid(date: BirthDate): LoShuResult {
+  const counts: Record<number, number> = {};
+  const digitsOf = (n: number) => String(Math.abs(Math.trunc(n))).split("").map(Number);
+  for (const d of [...digitsOf(date.day), ...digitsOf(date.month), ...digitsOf(date.year)]) {
+    if (d >= 1 && d <= 9) counts[d] = (counts[d] ?? 0) + 1;
+  }
+
+  const has = (d: number) => (counts[d] ?? 0) > 0;
+  const strengths: Array<[number, number, number]> = [];
+  const weaknesses: Array<[number, number, number]> = [];
+  for (const line of LO_SHU_LINES) {
+    const present = line.filter(has).length;
+    if (present === 3) strengths.push([...line]);
+    else if (present === 0) weaknesses.push([...line]);
+  }
+
+  const missing: number[] = [];
+  for (let d = 1; d <= 9; d++) if (!has(d)) missing.push(d);
+
+  return { counts, strengths, weaknesses, missing };
+}
+
+// ---------------------------------------------------------------------------
 // Zodiac lookups (data-driven so the engine stays free of content imports)
 // ---------------------------------------------------------------------------
 

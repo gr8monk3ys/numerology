@@ -1,160 +1,139 @@
 import Link from "next/link";
-import {
-  Sparkles,
-  Star,
-  Moon,
-  Heart,
-  Compass,
-  BookOpen,
-  Wand2,
-  Gem,
-  ArrowRight,
-  Calendar,
-  Sun,
-} from "lucide-react";
-import { NumberOrb } from "@/components/ui/NumberOrb";
-import { SectionHeading, Eyebrow } from "@/components/ui/SectionHeading";
 import { NumerologyWheel } from "@/components/ui/NumerologyWheel";
 import { Reveal } from "@/components/ui/Reveal";
 
-const CORE_NUMBERS = [
-  { n: "Life Path", desc: "The master lesson and direction of your entire life, drawn from your birth date.", icon: Compass },
-  { n: "Expression", desc: "Your natural talents and the destiny encoded in your full birth name.", icon: Star },
-  { n: "Soul Urge", desc: "Your heart's deepest desire — what your soul secretly longs for.", icon: Heart },
-  { n: "Personality", desc: "The self you show the world; the first impression others receive.", icon: Moon },
-];
-
-const ESOTERIC = [
-  { title: "Tarot Birth Card", desc: "The Major Arcana card that carries the theme of your whole life.", icon: Sparkles },
-  { title: "Sun & Chinese Zodiac", desc: "Your astrological signs, read in harmony with your numbers.", icon: Sun },
-  { title: "Karmic Debt & Lessons", desc: "The 13/14/16/19 debts and the numbers missing from your name.", icon: Wand2 },
-  { title: "Pinnacles & Cycles", desc: "The four great cycles and three life periods that shape each era.", icon: Calendar },
-  { title: "Planes of Expression", desc: "How physical, mental, emotional and intuitive energy divide in you.", icon: Gem },
-  { title: "Angel Numbers", desc: "Decode 111, 222, 1234 and the synchronicities the universe sends.", icon: Star },
+const CONTENTS = [
+  {
+    numeral: "I",
+    href: "/reading",
+    title: "The Reading",
+    gloss:
+      "The full chart cast from name and birth date: the core numbers, the karmic record, the letters, the correspondences.",
+  },
+  {
+    numeral: "II",
+    href: "/compatibility",
+    title: "The Concordance of Two Souls",
+    gloss: "Two Life Paths weighed against one another, with counsel for the pairing.",
+  },
+  {
+    numeral: "III",
+    href: "/forecast",
+    title: "The Almanac of Cycles",
+    gloss: "The Personal Year, Month and Day; the Pinnacles and Challenges of a lifetime.",
+  },
+  {
+    numeral: "IV",
+    href: "/angel-numbers",
+    title: "An Index of Portents",
+    gloss: "Repeating numbers — 111, 222, 11:11 — read as omens and their meanings.",
+  },
+  {
+    numeral: "V",
+    href: "/numbers",
+    title: "A Lexicon of the Numbers",
+    gloss: "The nine digits and the three master numbers, each with its arcana, planet and stone.",
+  },
+  {
+    numeral: "VI",
+    href: "/about",
+    title: "On the Method",
+    gloss: "How the reckoning is done: reduction, the master numbers, the two alphabets.",
+  },
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="container-page relative overflow-hidden pt-16 pb-24 sm:pt-24">
-        <div className="pointer-events-none absolute left-1/2 top-[46%] -z-10 aspect-square w-[min(620px,120vw)] -translate-x-1/2 -translate-y-1/2 opacity-40">
+      {/* Frontispiece */}
+      <section className="container-page relative overflow-hidden pb-20 pt-20 sm:pt-28">
+        <div className="pointer-events-none absolute left-1/2 top-[44%] -z-10 aspect-square w-[min(640px,120vw)] -translate-x-1/2 -translate-y-1/2 opacity-35">
           <NumerologyWheel className="h-full w-full" />
         </div>
 
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="animate-fade-up">
-            <Eyebrow>Pythagorean · Chaldean · Esoteric</Eyebrow>
-          </div>
-          <h1 className="mt-5 animate-fade-up font-display text-5xl font-bold leading-[1.05] tracking-wide text-mystic-50 sm:text-6xl">
-            The numbers written into
-            <span className="block gold-text">your name &amp; birth</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-xl animate-fade-up text-lg leading-relaxed text-mystic-200/75">
-            Numen is a complete esoteric numerology suite. Enter your name and
-            birth date to reveal your Life Path, Soul Urge, karmic debts, tarot
-            birth card, life-cycle forecasts, and the astrological energies woven
-            through every number.
-          </p>
-          <div className="mt-9 flex animate-fade-up flex-wrap items-center justify-center gap-4">
-            <Link href="/reading" className="btn-primary">
-              Cast my reading
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link href="/numbers" className="btn-ghost">
-              Explore the numbers
-            </Link>
-          </div>
-        </div>
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="eyebrow animate-fade-up">Liber Numerorum</p>
 
-        <div className="pointer-events-none mt-16 flex items-center justify-center gap-4 sm:gap-8">
-          {[3, 7, 1, 11, 5].map((n, i) => (
-            <div key={n} className="animate-float" style={{ animationDelay: `${i * 0.7}s` }}>
-              <NumberOrb value={n} size={i === 2 ? "lg" : "md"} isMaster={n === 11} />
-            </div>
-          ))}
+          <h1 className="mt-6 animate-fade-up font-blackletter text-7xl leading-none sm:text-8xl">
+            <span className="gold-text">Numen</span>
+          </h1>
+
+          <p className="mt-4 animate-fade-up font-display text-xl italic text-mystic-200/85 sm:text-2xl">
+            or, The Numbers Written into Your Name &amp; Birth
+          </p>
+
+          <div className="rule-ornament mt-8 animate-fade-up text-base">❧</div>
+
+          <p className="mx-auto mt-8 max-w-xl animate-fade-up text-left leading-relaxed text-mystic-100/85 dropcap">
+            Wherein the seeker may reckon the Life Path, the Expression and the
+            Urge of the Soul; take account of the Debts of Karma and the
+            Pinnacles of a lifetime; and consult the correspondences of tarot,
+            planet, element and stone. Every reckoning is worked within your
+            own device, and nothing you enter leaves it.
+          </p>
+
+          <div className="mt-10 flex animate-fade-up flex-col items-center gap-4">
+            <Link href="/reading" className="btn-primary">
+              Begin the Reading
+            </Link>
+            <Link href="/numbers" className="action-quiet no-underline">
+              or consult the Lexicon of Numbers
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Core numbers */}
-      <Reveal as="section" className="container-page py-12">
-        <SectionHeading
-          eyebrow="Your core chart"
-          title="Five numbers, one soul"
-          subtitle="Numerology distills a person into a handful of vibrations. These are the pillars of your chart — the rest of the reading builds on them."
-          align="center"
-        />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {CORE_NUMBERS.map(({ n, desc, icon: Icon }) => (
-            <div key={n} className="glass card-hover p-6">
-              <Icon className="h-7 w-7 text-gold-300" />
-              <h3 className="mt-4 font-display text-xl text-mystic-50">{n}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-mystic-200/70">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </Reveal>
-
-      {/* Esoteric layer */}
-      <Reveal as="section" className="container-page py-16">
-        <div className="glass-strong relative overflow-hidden p-8 sm:p-12">
-          <div className="bg-cosmic-radial pointer-events-none absolute inset-0 opacity-60" />
-          <div className="relative">
-            <SectionHeading
-              eyebrow="Beyond the basics"
-              title="The full esoteric toolkit"
-              subtitle="Numen doesn't stop at the core numbers. It reads the hidden architecture — the debts you carry, the cycles you move through, and the symbols that resonate with each vibration."
-            />
-            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {ESOTERIC.map(({ title, desc, icon: Icon }) => (
-                <div key={title} className="flex gap-4 rounded-xl border border-white/5 bg-void-900/40 p-5">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-mystic-500/15 text-gold-300">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-lg text-mystic-50">{title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-mystic-200/70">{desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Reveal>
-
-      {/* How it works */}
-      <Reveal as="section" className="container-page py-12">
-        <SectionHeading eyebrow="How it works" title="Ancient math, instant insight" align="center" />
-        <div className="mt-12 grid gap-8 sm:grid-cols-3">
-          {[
-            { step: "01", title: "Enter your details", body: "Your full birth name and date of birth are all the cosmos needs. Everything is computed privately in your browser." },
-            { step: "02", title: "The numbers reduce", body: "Letters and dates collapse into single digits — preserving the sacred master numbers 11, 22 and 33." },
-            { step: "03", title: "Your chart unfolds", body: "Read a complete portrait: core numbers, karmic patterns, forecasts and symbolic correspondences." },
-          ].map(({ step, title, body }, i) => (
-            <Reveal key={step} delay={i * 120}>
-              <span className="gold-text font-display text-4xl font-bold">{step}</span>
-              <h3 className="mt-3 font-display text-xl text-mystic-50">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-mystic-200/70">{body}</p>
-            </Reveal>
-          ))}
-        </div>
-      </Reveal>
-
-      {/* CTA */}
-      <Reveal as="section" className="container-page py-16">
-        <div className="glass-strong flex flex-col items-center gap-6 overflow-hidden p-10 text-center sm:p-14">
-          <BookOpen className="h-8 w-8 text-gold-300" />
-          <h2 className="max-w-xl font-display text-3xl font-semibold text-mystic-50 sm:text-4xl">
-            Your chart is waiting to be read
+      {/* Table of Contents */}
+      <Reveal as="section" className="container-page pb-24 pt-6">
+        <div className="glass-strong mx-auto max-w-3xl px-6 py-10 sm:px-12 sm:py-14">
+          <h2 className="text-center font-display text-3xl">
+            Table of Contents
           </h2>
-          <p className="max-w-md text-mystic-200/70">
-            It takes less than a minute. Discover the numbers that have been with
-            you since the moment you were named.
+          <div className="rule-ornament mt-4 text-sm">☙</div>
+
+          <ol className="mt-10 space-y-7">
+            {CONTENTS.map((entry) => (
+              <li key={entry.numeral}>
+                <Link href={entry.href} className="group block">
+                  <span className="toc-entry">
+                    <span className="font-display text-lg text-blood-300">
+                      {entry.numeral}.
+                    </span>
+                    <span className="font-display text-xl text-mystic-50 transition-colors group-hover:text-gold-200">
+                      {entry.title}
+                    </span>
+                    <span className="toc-leader" aria-hidden />
+                    <span className="term term-gold whitespace-nowrap">
+                      turn to
+                    </span>
+                  </span>
+                  <span className="mt-1 block pl-8 text-sm leading-relaxed text-mystic-300/75">
+                    {entry.gloss}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </Reveal>
+
+      {/* Of the method, briefly */}
+      <Reveal as="section" className="container-page pb-28">
+        <div className="mx-auto max-w-2xl">
+          <p className="eyebrow text-center">Of the Method, Briefly</p>
+          <p className="dropcap mt-6 leading-relaxed text-mystic-100/85">
+            Numerology holds that every letter and date carries a number, and
+            every number a character. To read a name, its letters are summed
+            and reduced — digit added to digit — until a single figure remains;
+            only the master numbers 11, 22 and 33 are left unreduced, for they
+            are held to carry a higher octave. The birth date is worked the
+            same way. From these few figures the whole chart unfolds.
           </p>
-          <Link href="/reading" className="btn-primary">
-            Begin your reading
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          <p className="mt-4 text-center">
+            <Link href="/about" className="action-quiet no-underline">
+              Read the method in full
+            </Link>
+          </p>
         </div>
       </Reveal>
     </>

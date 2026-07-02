@@ -1,0 +1,127 @@
+{
+  "_intro": "The Lo Shu birth grid places every digit of your birth date into the ancient 3x3 magic square said to have been carried from the River Lo on the shell of a divine turtle, each of its lines summing to fifteen. Where digits cluster, gather strength; where cells stand empty, energy is unlearned. When all three numbers of a row, column, or diagonal are present — or all three are missing — they form an Arrow: a fixed current of strength or of weakness first charted for the modern West by Hettie Templeton in the 1930s and elaborated by David A. Phillips.",
+  "_method": "Take every digit of the full birth date — day, month, and year — and inscribe each into its own cell of the square, arranged 4-9-2 across the top, 3-5-7 through the middle, and 8-1-6 along the base; zeros hold no cell and are never placed. A digit may appear once or many times, and both its count and the completed or empty lines of three are read.",
+  "arrows": [
+    {
+      "line": [1, 2, 3],
+      "presentName": "Arrow of the Planner",
+      "present": "With 1, 2, and 3 all inscribed in the chart, the bearer possesses an innate love of order and method: every undertaking is mapped before the first step is taken. Such people organise life with quiet competence, though they must beware of loving the plan more than the living of it.",
+      "absentName": "Arrow of Confusion",
+      "absent": "When 1, 2, and 3 are all absent, the thread between intention and execution frays: affairs pile up unsorted, and life is met moment to moment rather than by design. The remedy lies in borrowed structure — lists, routines, and trusted counsel — until orderliness is learned as a discipline rather than inherited as a gift."
+    },
+    {
+      "line": [4, 5, 6],
+      "presentName": "Arrow of the Will",
+      "present": "The full line of 4, 5, and 6 confers formidable willpower: once the bearer has fixed upon a purpose, neither delay nor discouragement will loosen the grip. This is a great engine for achievement, yet it can harden into stubbornness, so the strong-willed must learn when yielding is wiser than winning.",
+      "absentName": "Arrow of Frustration",
+      "absent": "With 4, 5, and 6 all empty, the chart is cleft in two, and the bearer knows frustration intimately — hopes pinned on people and outcomes that do not arrive as expected. The old teaching names its cure precisely: frustration is unfulfilled expectation, and peace returns when expectation is released and gratitude is practised for what actually is."
+    },
+    {
+      "line": [7, 8, 9],
+      "presentName": "Arrow of Activity",
+      "present": "When 7, 8, and 9 are all present, the bearer is charged with restless, practical energy that must find an outlet in work, movement, and enterprise. These are the doers of the world, though they burn out if they mistake perpetual motion for purpose and never permit themselves stillness.",
+      "absentName": "Arrow of Inertia",
+      "absent": "The absence of 7, 8, and 9 inclines the bearer to passivity: energy gathers slowly, and comfort whispers more persuasively than ambition. Such people are not lazy by nature but must deliberately kindle momentum, for once set in motion by genuine interest they sustain effort as well as any."
+    },
+    {
+      "line": [1, 4, 7],
+      "presentName": "Arrow of Practicality",
+      "present": "The complete line of 1, 4, and 7 grounds the bearer firmly in the material world: hands that build, eyes that appraise, and a sound instinct for what will actually work. Practical to the bone, they excel wherever tangible results are demanded, though they should guard against dismissing what cannot be touched or counted.",
+      "absentName": "Arrow of Impracticality",
+      "absent": "When 1, 4, and 7 are all missing, the bearer dwells more comfortably among ideas and ideals than among tools, budgets, and timetables. Their visions are genuine, but they must apprentice themselves to the concrete — or ally with practical companions — lest fine plans forever hover unbuilt."
+    },
+    {
+      "line": [2, 5, 8],
+      "presentName": "Arrow of Emotional Balance",
+      "present": "With 2, 5, and 8 all present, feeling flows through the chart in a steady, governed current: the bearer is sensitive to others yet not capsized by them. This equilibrium makes them natural confidants and peacemakers, able to hold another's storm without being swept into it.",
+      "absentName": "Arrow of Hypersensitivity",
+      "absent": "The empty line of 2, 5, and 8 leaves the feelings unshielded: slights cut deep, criticism echoes for days, and much is suffered in silence behind a composed face. The lesson of this arrow is to give sensitivity a voice early — spoken gently, hurt loses its power to fester into withdrawal or resentment."
+    },
+    {
+      "line": [3, 6, 9],
+      "presentName": "Arrow of Intellect",
+      "present": "The full line of 3, 6, and 9 lights the upper storey of the chart: a bright, retentive mind, quick comprehension, and a memory that serves faithfully. Such bearers are lifelong learners and natural teachers, though intellectual pride is their besetting shadow and humility their finest ornament.",
+      "absentName": "Arrow of Poor Memory",
+      "absent": "When 3, 6, and 9 stand empty, the memory and the imaginative faculties are the chart's weak vessels, and unless exercised they dim noticeably from the middle years onward. The counsel is deliberate cultivation — reading, recollection, and the daily rehearsal of names and details — for a trained memory holds where an idle one leaks."
+    },
+    {
+      "line": [1, 5, 9],
+      "presentName": "Arrow of Determination",
+      "present": "The great diagonal of 1, 5, and 9 is the spine of the chart: persistence that outlasts every obstacle and returns to the task as often as it is thrown down. Bearers of this arrow achieve by sheer continuance, though they must take care that determination does not calcify into an inability to abandon what deserves abandoning.",
+      "absentName": "Arrow of Procrastination",
+      "absent": "With 1, 5, and 9 all vacant, resolve arrives readily but ripens slowly: tasks are deferred to a tomorrow that keeps receding. The discipline of small, immediate beginnings is this bearer's medicine, for each act completed on time quietly rebuilds the diagonal that birth left empty."
+    },
+    {
+      "line": [3, 5, 7],
+      "presentName": "Arrow of Spirituality",
+      "present": "The diagonal of 3, 5, and 7 — also called the Arrow of Compassion — bestows a serene inner faith, usually deepened through trials met and absorbed with grace. Its bearers carry an unshakable calm that others instinctively seek out, and their understanding of sorrow makes their comfort worth having.",
+      "absentName": "Arrow of the Sceptic",
+      "absent": "When 3, 5, and 7 are all absent, nothing is accepted on authority: the bearer must weigh, test, and prove every claim before granting it belief. This scepticism is no flaw but a method — once a truth has survived their scrutiny, no one holds it more firmly or defends it more ably."
+    }
+  ],
+  "digitCounts": {
+    "1": {
+      "0": "A birth date without a single 1 — possible only for those born after the year 1999 — leaves the voice of the self unformed: the bearer struggles to assert needs, state opinions, or say the plain word 'I'. Self-expression must be consciously practised until speaking up no longer feels like trespass.",
+      "1": "A single 1 grants balanced self-expression: the bearer can speak their view fairly, argue without wounding, and put their own case when it matters. It is the comfortable middle measure of the ego — present, but not clamorous.",
+      "2": "Two 1s sharpen the gift of expression into insight: such bearers see both sides of any question and often voice others' feelings more fluently than their own. The task is to turn that eloquence inward and grant their private heart the same articulation.",
+      "3": "Three 1s divide their bearers into two camps: the ceaseless talkers who fill every silence, and the deeply reticent who reveal almost nothing. In either case the inner self runs strong, and the work is to bring speech and feeling into honest proportion.",
+      "4+": "Four or more 1s turn the current of self inward with such force that verbal expression falters; these bearers feel intensely yet are chronically misunderstood. Writing, art, and craft offer the truer channels, and patience must be asked of those who love them."
+    },
+    "2": {
+      "0": "Without a 2, sensitivity and intuition are the unlearned lessons: the bearer may bruise feelings without noticing and trusts only what logic can certify. Empathy comes with deliberate schooling — listening longer, asking more, judging later.",
+      "1": "One 2 confers a sound intuitive sense and natural tact: the bearer reads people accurately, senses the mood of a room, and rarely misjudges character. Feeling and reason sit in easy partnership.",
+      "2": "Two 2s heighten perception to a fine instrument — moods, motives, and unspoken tensions register at once. Such sensitivity is a genuine gift, provided the bearer learns to observe what they perceive without absorbing it.",
+      "3": "Three 2s tip perception into vulnerability: the bearer feels everything at doubled volume and may retreat, sulk, or strike out when the world presses too loudly. Solitude, boundaries, and gentle company are needful medicine.",
+      "4+": "Four or more 2s render the nerves almost skinless — impatience, irritability, and sudden emotional weather afflict a nature that senses far more than it can comfortably carry. Calm surroundings and disciplined rest are not luxuries for this bearer but necessities."
+    },
+    "3": {
+      "0": "A chart without a 3 wants for easy imagination: the bearer thinks in the literal and the proven, and mental pictures come slowly. Creativity is not denied them, but it must be fed deliberately through books, art, and the company of dreamers.",
+      "1": "One 3 gives a lively, well-tempered imagination and an agile mind that delights in ideas, wordplay, and possibility. Thought here is a bright servant that knows its master.",
+      "2": "Two 3s mark the born writer, storyteller, or inventor: the inner theatre never closes, and imagination outruns the day's demands. The bearer's craft is to harvest that abundance rather than merely wander in it.",
+      "3": "Three 3s set imagination loose from its moorings: daydream rivals reality, and the bearer may live more richly in the head than in the world. Grounding habits — schedules, exercise, finished projects — keep the gift from becoming an escape.",
+      "4+": "Four or more 3s flood the mind with images until fancy breeds fear as easily as invention; such bearers may be scattered, anxious, or lost in worlds of their own making. Their salvation is embodiment: one imagined thing, made real, at a time."
+    },
+    "4": {
+      "0": "Missing its 4, the chart lacks the love of order and manual patience: details bore the bearer, routines chafe, and practical follow-through is the recurring lesson. Method must be adopted as a chosen tool, never expected as an instinct.",
+      "1": "A single 4 bestows honest practicality: the bearer is orderly, dependable with material things, and skilled at giving ideas working form. What their hands undertake is generally finished, and finished well.",
+      "2": "Two 4s deepen practicality into method and craft — precision work, organisation, and the patient mastery of detail come naturally. The shadow is literal-mindedness: not everything of worth can be measured or filed.",
+      "3": "Three 4s bind the bearer closely to labour and the material plane; work multiplies, and life can narrow to toil and its tally. They must be reminded, often, that rest is not idleness and that the body they drive so hard has limits.",
+      "4+": "Four or more 4s press the nature into relentless drudgery — an existence of effort upon effort in which the physical is overworked and the spirit underfed. Deliberate leisure, delegation, and lifted eyes are the corrective disciplines."
+    },
+    "5": {
+      "0": "Without the central 5, the chart lacks its emotional keystone: drive wavers, purposes shift, and the bearer can drift between enthusiasms without a steadying core. Stability is built from without — commitments kept, one aim pursued to its end — until it takes root within.",
+      "1": "One 5 at the heart of the grid grants emotional balance and a healthy hunger for life: feeling is strong yet governed, and freedom is loved without being worshipped. It is the best-tempered position of this restless number.",
+      "2": "Two 5s double the inner intensity: passions run hot, freedom is non-negotiable, and confinement of any kind breeds rebellion. Rightly harnessed, this is tremendous motive power; unharnessed, it is a storm looking for a coastline.",
+      "3": "Three 5s make excitement a craving — risk, change, and sensation call louder than prudence, and the bearer may leap before any looking is done. Adventure suits them, but they must choose adventures that do not spend what cannot be repaid.",
+      "4+": "Four or more 5s push impulse toward recklessness: sudden decisions, abrupt departures, and appetites that resist all bridling. Such bearers live vividly but dangerously, and their great work is to place a deliberate pause between the urge and the act."
+    },
+    "6": {
+      "0": "Lacking a 6, the chart carries little instinct for hearth and domestic duty: home may be merely where one sleeps, and family obligation is honoured by decision rather than by pull. The lesson is to build belonging consciously, for even the self-sufficient wither without it.",
+      "1": "A single 6 warms the chart with love of home, family, and creative comfort: the bearer nurtures naturally, beautifies whatever dwelling holds them, and shoulders responsibility without complaint. Domestic peace is their quiet masterpiece.",
+      "2": "Two 6s intensify the protective instinct — loved ones are watched over closely, sometimes anxiously, and the bearer worries as an act of devotion. They must learn that care which hovers too near becomes a cage for the cared-for.",
+      "3": "Three 6s bind identity to the family's welfare so tightly that the bearer may live others' lives instead of their own, smothering where they mean to shelter. Their freedom, and their household's, begins when they permit those they love to stumble.",
+      "4+": "Four or more 6s make responsibility a consuming weight: the bearer becomes the perpetual caretaker, indispensable and exhausted, resentful of burdens they nonetheless refuse to set down. They must be taught to receive care as graciously as they give it."
+    },
+    "7": {
+      "0": "Without a 7, the deeper schoolroom of loss stands unentered: the bearer has been spared sacrifice but also its wisdom, and may skate over life's spiritual questions untroubled. Depth, when it is wanted, must be sought through study, silence, and honest self-examination.",
+      "1": "One 7 marks a soul that learns by experience, and chiefly by loss — in love, health, or means — each surrender leaving understanding in its place. Such bearers grow steadily wiser and more compassionate, philosophers shaped by their own history.",
+      "2": "Two 7s deepen the curriculum: significant sacrifices recur until their teaching is received, and the bearer is drawn strongly toward the inner life, intuition, and matters unseen. What they lose in comfort they are repaid in insight, if they consent to the exchange.",
+      "3": "Three 7s lay a heavy syllabus of renunciation, and melancholy shadows the bearer who resists its lessons. Met with acceptance, however, this count forges rare spiritual depth — the healer's wisdom that only the wounded reliably possess.",
+      "4+": "Four or more 7s mark a life threaded with sorrow and surrender beyond the common measure; the peril is withdrawal into grief or bitterness. The bearer's redemption lies in turning outward — making of their losses a lantern carried for others walking the same dark road."
+    },
+    "8": {
+      "0": "Missing its 8, the chart handles money and method carelessly: sums slip away, details go unminded, and order must be imposed by rule rather than by inclination. Learning to count, keep, and complete is this bearer's unglamorous but liberating apprenticeship.",
+      "1": "A single 8 grants a methodical mind and a sound hand with money and detail: the bearer assesses shrewdly, finishes what is begun, and carries a restless wish to leave things better organised than they were found. Prosperity tends to follow such habits.",
+      "2": "Two 8s sharpen assessment into penetrating judgment of worth — of goods, ventures, and people alike — often accompanied by marked changes of direction as each mastered field is traded for a larger one. Restlessness is the tax on this talent.",
+      "3": "Three 8s fix the gaze firmly on the material scoreboard: acquisition, position, and control are pursued with formidable thoroughness. The bearer prospers but must watch that the ledger does not become the measure of every human thing.",
+      "4+": "Four or more 8s harden order into compulsion — money, systems, and control gripped so tightly that spontaneity and warmth are squeezed out. This bearer's freedom begins with the deliberate practice of generosity and the occasional gloriously unplanned day."
+    },
+    "9": {
+      "0": "A chart without a 9 — again the mark of birth after 1999 — starts life with ambition and humanitarian idealism unkindled: the bearer may ask 'why strive?' where others simply strive. Purpose must be chosen and cultivated, and once chosen it is often held more consciously than any inherited drive.",
+      "1": "One 9 endows the chart with ambition joined to idealism: an intelligent, humane drive to improve one's own lot and the common one together. Such bearers work toward a world slightly better than the one they were given.",
+      "2": "Two 9s heighten both intellect and expectation: the bearer holds themselves and others to exacting standards and grows impatient with mediocrity or slowness. Their critical eye is valuable, but it must learn to praise as precisely as it faults.",
+      "3": "Three 9s lift idealism toward the visionary and away from the practicable: grand causes and sweeping judgments come easily, compromises hardly at all. The bearer serves their ideals best by wedding them, however reluctantly, to the possible.",
+      "4+": "Four or more 9s fill the head with dreams at the expense of the ground beneath the feet — a nervous, high-strung idealism that scorns the ordinary steps by which ideals are actually reached. This bearer's discipline is descent: one modest, completed act of service at a time."
+    }
+  }
+}

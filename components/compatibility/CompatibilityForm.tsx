@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { HeartHandshake } from "lucide-react";
 import {
   lifePathNumber,
   computeCompatibility,
@@ -47,13 +46,13 @@ export function CompatibilityForm() {
     const aLP = lifePathOf(a);
     const bLP = lifePathOf(b);
     if (aLP === null || bLP === null) {
-      setError("Please enter both birth dates.");
+      setError("Both dates of birth are required for the weighing.");
       return;
     }
     setOutcome({
       result: computeCompatibility(aLP, bLP, compatibilityProfiles),
-      aLabel: a.name.trim() || "Person A",
-      bLabel: b.name.trim() || "Person B",
+      aLabel: a.name.trim() || "The first",
+      bLabel: b.name.trim() || "The second",
     });
   }
 
@@ -61,22 +60,22 @@ export function CompatibilityForm() {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="glass-strong mx-auto max-w-3xl space-y-6 p-6 sm:p-8"
+        className="glass-strong mx-auto max-w-3xl space-y-6 px-6 py-8 sm:px-10"
       >
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-8 sm:grid-cols-2">
           {[
-            { p: a, set: setA, title: "First person" },
-            { p: b, set: setB, title: "Second person" },
+            { p: a, set: setA, title: "The first soul" },
+            { p: b, set: setB, title: "The second soul" },
           ].map(({ p, set, title }, i) => (
             <div key={i} className="space-y-3">
-              <h3 className="font-display text-lg text-gold-200">{title}</h3>
+              <h3 className="font-display text-xl text-gold-200">{title}</h3>
               <div>
-                <label className="label-text">Name (optional)</label>
+                <label className="label-text">Name, if you wish</label>
                 <input
                   type="text"
                   value={p.name}
                   onChange={(e) => set({ ...p, name: e.target.value })}
-                  placeholder="Name"
+                  placeholder="a name to write beside the number"
                   className="input-field"
                   autoComplete="off"
                 />
@@ -89,7 +88,7 @@ export function CompatibilityForm() {
                   min="1900-01-01"
                   max="2099-12-31"
                   onChange={(e) => set({ ...p, date: e.target.value })}
-                  className="input-field [color-scheme:dark]"
+                  className="input-field"
                 />
               </div>
             </div>
@@ -97,20 +96,19 @@ export function CompatibilityForm() {
         </div>
 
         {error && (
-          <p className="text-center text-sm text-rose-300">{error}</p>
+          <p className="border-l-2 border-blood-500 bg-blood-600/10 px-4 py-2.5 text-center text-sm text-rose-200">
+            {error}
+          </p>
         )}
 
         <div className="text-center">
           <button type="submit" className="btn-primary">
-            <HeartHandshake className="h-4 w-4" />
-            Reveal compatibility
+            Weigh the Concordance
           </button>
         </div>
       </form>
 
-      {outcome && (
-        <CompatibilityReport outcome={outcome} />
-      )}
+      {outcome && <CompatibilityReport outcome={outcome} />}
     </div>
   );
 }
@@ -121,36 +119,43 @@ function CompatibilityReport({ outcome }: { outcome: Outcome }) {
   const bProfile = pick(compatibilityProfiles, result.b);
 
   return (
-    <div className="mt-12 space-y-8">
-      <div className="glass-strong relative overflow-hidden p-8 text-center sm:p-10">
+    <div className="mt-14 space-y-8">
+      <div className="glass-strong relative overflow-hidden px-6 py-10 text-center sm:px-10 sm:py-12">
         <div className="bg-cosmic-radial pointer-events-none absolute inset-0 opacity-70" />
         <div className="relative">
-          <div className="flex items-center justify-center gap-6">
+          <div className="flex items-center justify-center gap-8">
             <div className="text-center">
               <NumberOrb value={result.a} size="lg" isMaster={isMaster(result.a)} />
-              <p className="mt-2 text-sm text-mystic-200/70">{aLabel}</p>
+              <p className="term term-ink mt-2 block">{aLabel}</p>
             </div>
-            <span className="font-display text-2xl text-gold-300">✦</span>
+            <span className="font-serif text-2xl text-gold-400/70" aria-hidden>
+              ❦
+            </span>
             <div className="text-center">
               <NumberOrb value={result.b} size="lg" isMaster={isMaster(result.b)} />
-              <p className="mt-2 text-sm text-mystic-200/70">{bLabel}</p>
+              <p className="term term-ink mt-2 block">{bLabel}</p>
             </div>
           </div>
 
-          <div className="mx-auto mt-8 max-w-md">
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-mystic-200/70">Harmony</span>
-              <span className="font-display text-gold-200">{result.score}%</span>
-            </div>
-            <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-void-900">
-              <div
-                className="h-full rounded-full bg-gold-sheen transition-all"
-                style={{ width: `${result.score}%` }}
-              />
-            </div>
-            <p className="mt-4 font-display text-xl text-mystic-50">
-              {result.headline}
-            </p>
+          <div className="rule-ornament mt-8 text-sm">☙</div>
+
+          <h2 className="mt-5 font-display text-3xl text-mystic-50">
+            {result.headline}
+          </h2>
+          <p className="term term-gold mt-2 block">
+            a concord of {result.score} parts in the hundred
+          </p>
+
+          <div className="mx-auto mt-5 h-1.5 max-w-sm border border-gold-500/30 p-px">
+            <div
+              className="h-full bg-gold-sheen"
+              style={{ width: `${result.score}%` }}
+              role="meter"
+              aria-valuenow={result.score}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label="Concord"
+            />
           </div>
         </div>
       </div>
@@ -161,30 +166,32 @@ function CompatibilityReport({ outcome }: { outcome: Outcome }) {
           { lp: result.b, label: bLabel, profile: bProfile },
         ].map(({ lp, label, profile }) => (
           <div key={label} className="glass p-6">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <NumberOrb value={lp} size="sm" isMaster={isMaster(lp)} />
               <div>
-                <span className="text-xs font-semibold uppercase tracking-widest text-gold-300/80">
+                <p className="eyebrow">
                   {label} · Life Path {lp}
-                </span>
-                <h3 className="font-display text-lg text-mystic-50">
+                </p>
+                <h3 className="font-display text-xl text-mystic-50">
                   {pick(lifePathMeanings, lp)?.title}
                 </h3>
               </div>
             </div>
             {profile?.summary && (
-              <p className="mt-3 text-sm text-mystic-200/75">{profile.summary}</p>
+              <p className="mt-3 text-sm leading-relaxed text-mystic-200/75">
+                {profile.summary}
+              </p>
             )}
             {profile && (
-              <div className="mt-4 space-y-2 text-sm">
-                <MatchRow label="Best" tone="gold" items={profile.bestMatches} />
-                <MatchRow label="Good" tone="mystic" items={profile.goodMatches} />
-                <MatchRow label="Growth" tone="muted" items={profile.challengingMatches} />
+              <div className="mt-4 space-y-1.5 text-sm">
+                <MatchRow label="Happiest with" tone="gold" items={profile.bestMatches} />
+                <MatchRow label="At ease with" tone="mystic" items={profile.goodMatches} />
+                <MatchRow label="Schooled by" tone="muted" items={profile.challengingMatches} />
               </div>
             )}
             {profile?.advice && (
-              <p className="mt-4 text-sm text-mystic-100/80">
-                <span className="text-gold-300">Advice: </span>
+              <p className="mt-4 text-sm leading-relaxed text-mystic-100/85">
+                <span className="text-gold-300">Counsel: </span>
                 {profile.advice}
               </p>
             )}
@@ -206,18 +213,16 @@ function MatchRow({
 }) {
   if (!items?.length) return null;
   return (
-    <div className="flex items-center gap-2">
-      <span className="w-16 shrink-0 text-xs uppercase tracking-widest text-mystic-300/60">
-        {label}
-      </span>
-      <div className="flex flex-wrap gap-1.5">
+    <p className="flex items-baseline gap-3">
+      <span className="term term-muted w-28 shrink-0">{label}</span>
+      <span className="term-row">
         {items.map((n) => (
           <Chip key={n} tone={tone}>
             {n}
           </Chip>
         ))}
-      </div>
-    </div>
+      </span>
+    </p>
   );
 }
 

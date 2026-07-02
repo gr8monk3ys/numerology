@@ -1,5 +1,10 @@
 import clsx from "clsx";
 
+/**
+ * A quiet small-caps term. Deliberately not a pill/badge: keywords in the
+ * grimoire read as set text, separated by middle dots when placed in a
+ * `.term-row` container.
+ */
 export function Chip({
   children,
   tone = "mystic",
@@ -10,10 +15,10 @@ export function Chip({
   return (
     <span
       className={clsx(
-        "inline-flex items-center rounded-sm border px-2.5 py-0.5 text-xs capitalize tracking-wide",
-        tone === "mystic" && "border-mystic-500/30 bg-mystic-500/10 text-mystic-100",
-        tone === "gold" && "border-gold-500/40 bg-gold-500/10 text-gold-200",
-        tone === "muted" && "border-white/10 bg-white/[0.03] text-mystic-200/70",
+        "term",
+        tone === "gold" && "term-gold",
+        tone === "mystic" && "term-ink",
+        tone === "muted" && "term-muted",
       )}
     >
       {children}

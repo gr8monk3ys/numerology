@@ -3,18 +3,18 @@ import { ForecastForm } from "@/components/forecast/ForecastForm";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Personal Year Forecast",
+  title: "The Almanac of Cycles",
   description:
-    "Discover your Personal Year, Month and Day, plus the four Pinnacles and Challenges that shape the seasons of your life.",
+    "The Personal Year, Month and Day now in force, and the four Pinnacles and Challenges that shape the seasons of a life.",
 };
 
 export default function ForecastPage() {
   return (
     <div className="container-page py-16">
       <SectionHeading
-        eyebrow="Timing & cycles"
-        title="Where you are in your cycle"
-        subtitle="Numerology moves in rhythms. See the energy of your current Personal Year, and map the great Pinnacles and Challenges across your lifetime."
+        eyebrow="Chapter the Third"
+        title="The Almanac of Cycles"
+        subtitle="Numerology moves in nines. Find the vibration now in force, and the great Pinnacles and Challenges laid across your years."
         align="center"
         className="mb-12"
       />

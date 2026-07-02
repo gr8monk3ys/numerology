@@ -76,6 +76,7 @@ export default function RootLayout({
           }}
         />
         <Starfield />
+        <div className="page-frame" aria-hidden="true" />
         <Navbar />
         <main className="relative">{children}</main>
         <Footer />

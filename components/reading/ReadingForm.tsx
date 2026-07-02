@@ -1,9 +1,30 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { Sparkles, RotateCcw } from "lucide-react";
+import { useEffect, useState, type FormEvent } from "react";
 import { buildReading, type Reading } from "@/lib/numerology";
 import { ReadingResults } from "@/components/reading/ReadingResults";
+
+function castReading(
+  fullName: string,
+  birthDate: string,
+  yAsVowel: boolean,
+): Reading | null {
+  const cleanName = fullName.trim();
+  if (cleanName.replace(/[^a-zA-Z]/g, "").length < 2) return null;
+  const [y, m, d] = birthDate.split("-").map(Number);
+  if (!y || !m || !d) return null;
+  const now = new Date();
+  return buildReading({
+    fullName: cleanName,
+    birth: { year: y, month: m, day: d },
+    yAsVowel,
+    today: {
+      year: now.getFullYear(),
+      month: now.getMonth() + 1,
+      day: now.getDate(),
+    },
+  });
+}
 
 export function ReadingForm() {
   const [fullName, setFullName] = useState("");
@@ -12,39 +33,41 @@ export function ReadingForm() {
   const [reading, setReading] = useState<Reading | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // A shared link carries the reading in its query string; cast it on arrival.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const dob = params.get("dob");
+    if (!name || !dob) return;
+    const y = params.get("y") === "1";
+    const result = castReading(name, dob, y);
+    if (result) {
+      setFullName(name);
+      setBirthDate(dob);
+      setYAsVowel(y);
+      setReading(result);
+    }
+  }, []);
+
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setError(null);
 
-    const cleanName = fullName.trim();
-    if (cleanName.replace(/[^a-zA-Z]/g, "").length < 2) {
-      setError("Please enter your full birth name.");
+    if (fullName.trim().replace(/[^a-zA-Z]/g, "").length < 2) {
+      setError("Enter the full name as it was given at birth.");
       return;
     }
     if (!birthDate) {
-      setError("Please enter your date of birth.");
+      setError("Enter the date of birth.");
       return;
     }
-    const [y, m, d] = birthDate.split("-").map(Number);
-    if (!y || !m || !d) {
-      setError("That date doesn't look right.");
+    const result = castReading(fullName, birthDate, yAsVowel);
+    if (!result) {
+      setError("That date could not be read.");
       return;
     }
-
-    const now = new Date();
-    const result = buildReading({
-      fullName: cleanName,
-      birth: { year: y, month: m, day: d },
-      yAsVowel,
-      today: {
-        year: now.getFullYear(),
-        month: now.getMonth() + 1,
-        day: now.getDate(),
-      },
-    });
     setReading(result);
 
-    // Reveal results
     requestAnimationFrame(() => {
       document
         .getElementById("reading-results")
@@ -55,35 +78,35 @@ export function ReadingForm() {
   function reset() {
     setReading(null);
     setError(null);
+    if (window.location.search) {
+      window.history.replaceState(null, "", window.location.pathname);
+    }
   }
 
   return (
     <div>
       <form
         onSubmit={handleSubmit}
-        className="glass-strong mx-auto max-w-2xl space-y-5 p-6 sm:p-8"
+        className="glass-strong no-print mx-auto max-w-2xl space-y-5 px-6 py-8 sm:px-10"
       >
         <div>
           <label htmlFor="fullName" className="label-text">
-            Full birth name
+            The name given at birth
           </label>
           <input
             id="fullName"
             type="text"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-            placeholder="e.g. Ada Augusta Byron"
+            placeholder="as it was first written, e.g. Ada Augusta Byron"
             className="input-field"
             autoComplete="off"
           />
-          <p className="mt-1.5 text-xs text-mystic-300/50">
-            Use the full name given at birth for the most accurate reading.
-          </p>
         </div>
 
         <div>
           <label htmlFor="birthDate" className="label-text">
-            Date of birth
+            The date of birth
           </label>
           <input
             id="birthDate"
@@ -92,7 +115,7 @@ export function ReadingForm() {
             min="1900-01-01"
             max="2099-12-31"
             onChange={(e) => setBirthDate(e.target.value)}
-            className="input-field [color-scheme:dark]"
+            className="input-field"
           />
         </div>
 
@@ -101,26 +124,25 @@ export function ReadingForm() {
             type="checkbox"
             checked={yAsVowel}
             onChange={(e) => setYAsVowel(e.target.checked)}
-            className="h-4 w-4 rounded border-white/20 bg-void-900 accent-mystic-500"
+            className="h-4 w-4 accent-gold-500"
           />
-          Treat “Y” as a vowel (affects Soul Urge &amp; Personality)
+          Count &ldquo;Y&rdquo; among the vowels (alters the Soul Urge and
+          Personality)
         </label>
 
         {error && (
-          <p className="rounded-lg border border-rose-400/30 bg-rose-500/10 px-4 py-2.5 text-sm text-rose-200">
+          <p className="border-l-2 border-blood-500 bg-blood-600/10 px-4 py-2.5 text-sm text-rose-200">
             {error}
           </p>
         )}
 
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap items-center gap-5">
           <button type="submit" className="btn-primary">
-            <Sparkles className="h-4 w-4" />
-            {reading ? "Recalculate" : "Cast my reading"}
+            {reading ? "Cast it anew" : "Cast the Reading"}
           </button>
           {reading && (
-            <button type="button" onClick={reset} className="btn-ghost">
-              <RotateCcw className="h-4 w-4" />
-              Clear
+            <button type="button" onClick={reset} className="action-quiet">
+              clear the page
             </button>
           )}
         </div>

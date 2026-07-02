@@ -2,7 +2,6 @@
 
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
-import { Search, Sparkles } from "lucide-react";
 import {
   analyzeAngelNumber,
   findAngelEntry,
@@ -10,17 +9,16 @@ import {
   type AngelEntry,
 } from "@/lib/numerology";
 import { NumberOrb } from "@/components/ui/NumberOrb";
-import { Chip } from "@/components/ui/Chip";
 import { angelNumbers } from "@/lib/content";
 
 const PATTERN_LABELS: Record<string, string> = {
-  triple: "Triple sequence — amplified, urgent message",
-  quadruple: "Quadruple sequence — a powerful, unmistakable sign",
-  "repeating-pair": "Repeating pair — a doubled, balanced message",
-  mirror: "Mirror hour — a portal of alignment and reflection",
-  ascending: "Ascending sequence — forward momentum and growth",
-  descending: "Descending sequence — release and letting go",
-  sequence: "A patterned sequence carrying guidance",
+  triple: "a triple — the message amplified and urgent",
+  quadruple: "a quadruple — a sign not to be mistaken",
+  "repeating-pair": "a doubled pair — a balanced, twofold message",
+  mirror: "a mirror — a portal of alignment and reflection",
+  ascending: "an ascending stair — momentum and growth",
+  descending: "a descending stair — release and letting go",
+  sequence: "a patterned sequence bearing guidance",
 };
 
 export function AngelLookup() {
@@ -45,55 +43,55 @@ export function AngelLookup() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <form onSubmit={handleSubmit} className="glass-strong flex gap-3 p-4">
+      <form
+        onSubmit={handleSubmit}
+        className="glass-strong flex gap-3 p-4 sm:p-5"
+      >
         <input
           type="text"
           inputMode="numeric"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          placeholder="See a repeating number? e.g. 1111, 444, 12:12"
+          placeholder="the number that keeps appearing — 1111, 444, 12:12"
           className="input-field"
         />
         <button type="submit" className="btn-primary shrink-0">
-          <Search className="h-4 w-4" />
-          <span className="hidden sm:inline">Decode</span>
+          Consult
         </button>
       </form>
 
       {searched && !analysis && (
-        <p className="mt-4 text-center text-sm text-rose-300">
-          Enter a number sequence to decode.
+        <p className="mt-4 text-center text-sm text-rose-200">
+          Write a number sequence to consult the index.
         </p>
       )}
 
       {analysis && (
-        <div className="glass mt-6 p-6 sm:p-8">
+        <div className="glass mt-8 p-6 sm:p-8">
           <div className="flex flex-col items-center gap-4 text-center">
             <NumberOrb value={analysis.input} size="lg" />
             <div>
-              <h3 className="font-display text-2xl text-mystic-50">
-                {entry?.title ?? `The message of ${analysis.input}`}
+              <h3 className="font-display text-3xl text-mystic-50">
+                {entry?.title ?? `The sign of ${analysis.input}`}
               </h3>
-              <p className="mt-1 text-sm text-mystic-200/60">
-                Root vibration{" "}
+              <p className="mt-1 text-sm text-mystic-300/75">
+                its root vibration is{" "}
                 <Link
                   href={`/numbers/${analysis.root}`}
-                  className="text-gold-200 link-underline"
+                  className="action-quiet no-underline"
                 >
-                  {analysis.root}
+                  the number {analysis.root}
                 </Link>
               </p>
             </div>
           </div>
 
           {analysis.patterns.length > 0 && (
-            <div className="mt-4 flex flex-wrap justify-center gap-2">
-              {analysis.patterns.map((p) => (
-                <Chip key={p} tone="gold">
-                  {PATTERN_LABELS[p] ?? p}
-                </Chip>
-              ))}
-            </div>
+            <p className="mt-4 text-center text-sm italic text-gold-200/85">
+              {analysis.patterns
+                .map((p) => PATTERN_LABELS[p] ?? p)
+                .join("; ")}
+            </p>
           )}
 
           {entry ? (
@@ -101,20 +99,23 @@ export function AngelLookup() {
               <p className="text-sm leading-relaxed text-mystic-100/90">
                 {entry.meaning}
               </p>
-              <div className="grid gap-3 sm:grid-cols-3">
-                <MiniCard label="In Love" value={entry.love} />
-                <MiniCard label="In Career" value={entry.career} />
-                <MiniCard label="Spiritual" value={entry.spiritual} />
+              <div className="grid gap-3 border-t border-gold-500/20 pt-4 sm:grid-cols-3">
+                <MiniCol label="In love" value={entry.love} />
+                <MiniCol label="In work" value={entry.career} />
+                <MiniCol label="In spirit" value={entry.spiritual} />
               </div>
             </div>
           ) : (
-            <p className="mt-6 text-center text-sm text-mystic-200/70">
-              This exact sequence isn&rsquo;t in our library yet, but its energy flows
-              from the root number{" "}
-              <Link href={`/numbers/${analysis.root}`} className="text-gold-200">
+            <p className="mt-6 text-center text-sm leading-relaxed text-mystic-200/75">
+              This sequence is not yet written in our index, but its power
+              flows from the root number{" "}
+              <Link
+                href={`/numbers/${analysis.root}`}
+                className="action-quiet no-underline"
+              >
                 {analysis.root}
               </Link>
-              . Explore that number&rsquo;s meaning for guidance.
+              — consult that entry for its counsel.
             </p>
           )}
         </div>
@@ -123,13 +124,11 @@ export function AngelLookup() {
   );
 }
 
-function MiniCard({ label, value }: { label: string; value: string }) {
+function MiniCol({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-white/5 bg-void-900/40 p-4">
-      <span className="text-xs font-semibold uppercase tracking-widest text-gold-300/70">
-        {label}
-      </span>
-      <p className="mt-1 text-sm text-mystic-200/80">{value}</p>
+    <div>
+      <p className="eyebrow">{label}</p>
+      <p className="mt-1 text-sm leading-relaxed text-mystic-200/80">{value}</p>
     </div>
   );
 }

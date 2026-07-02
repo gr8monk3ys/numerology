@@ -35,6 +35,7 @@ import {
   bridgeNumbers,
   sunSign,
   chineseZodiac,
+  loShuGrid,
 } from "./esoteric";
 import zodiacSignsData from "../../content/data/zodiac_signs.json";
 import chineseZodiacData from "../../content/data/chinese_zodiac.json";
@@ -314,6 +315,37 @@ describe("Bridge numbers", () => {
     const b = bridgeNumbers({ lifePath: 3, expression: 9, soulUrge: 9, personality: 9 });
     expect(b.lifePathExpression).toBe(6);
     expect(b.soulUrgePersonality).toBe(0);
+  });
+});
+
+describe("Lo Shu grid", () => {
+  it("1990-05-15 -> counts {1:2,5:2,9:2}, strength 1-5-9 only", () => {
+    const g = loShuGrid({ year: 1990, month: 5, day: 15 });
+    expect(g.counts).toEqual({ 1: 2, 5: 2, 9: 2 });
+    expect(g.strengths).toEqual([[1, 5, 9]]);
+    expect(g.weaknesses).toEqual([]);
+    expect(g.missing).toEqual([2, 3, 4, 6, 7, 8]);
+  });
+  it("1988-12-25 -> strengths 2-5-8 and 1-5-9, no weaknesses", () => {
+    const g = loShuGrid({ year: 1988, month: 12, day: 25 });
+    // digits: 2,5 (day 25) + 1,2 (month 12) + 1,9,8,8 (year 1988)
+    expect(g.counts).toEqual({ 1: 2, 2: 2, 5: 1, 8: 2, 9: 1 });
+    expect(g.strengths).toEqual([
+      [2, 5, 8],
+      [1, 5, 9],
+    ]);
+    expect(g.weaknesses).toEqual([]);
+  });
+  it("2000-01-01 -> four weakness arrows, no strengths (zeros ignored)", () => {
+    const g = loShuGrid({ year: 2000, month: 1, day: 1 });
+    expect(g.counts).toEqual({ 1: 2, 2: 1 });
+    expect(g.strengths).toEqual([]);
+    expect(g.weaknesses).toEqual([
+      [4, 5, 6],
+      [7, 8, 9],
+      [3, 6, 9],
+      [3, 5, 7],
+    ]);
   });
 });
 

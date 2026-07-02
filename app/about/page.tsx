@@ -15,15 +15,18 @@ function LetterGrid({ table }: { table: Record<string, number> }) {
     (byNumber[value] ??= []).push(letter);
   }
   return (
-    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-3">
+    <div className="border-y border-gold-500/25">
       {Object.entries(byNumber)
         .sort((a, b) => Number(a[0]) - Number(b[0]))
         .map(([num, letters]) => (
-          <div key={num} className="glass flex items-center gap-3 p-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-mystic-500/20 font-display text-gold-200">
+          <div
+            key={num}
+            className="flex items-baseline gap-4 border-b border-gold-500/10 px-2 py-2 last:border-b-0"
+          >
+            <span className="w-6 shrink-0 text-right font-display text-lg text-gold-300">
               {num}
             </span>
-            <span className="text-sm tracking-widest text-mystic-100/80">
+            <span className="font-serif text-sm tracking-[0.3em] text-mystic-100/85">
               {letters.join(" ")}
             </span>
           </div>
@@ -36,9 +39,10 @@ export default function AboutPage() {
   return (
     <div className="container-page max-w-4xl py-16">
       <SectionHeading
-        eyebrow="How it works"
-        title="The mathematics of meaning"
-        subtitle="Numerology is the ancient practice of finding significance in numbers. Names and dates are reduced to their essential vibrations, each carrying an archetypal meaning."
+        eyebrow="Chapter the Sixth"
+        title="On the Method"
+        subtitle="Numerology is the old practice of finding character in number. Names and dates are reduced to their essential figures, and each figure is read as an archetype."
+        align="center"
       />
 
       <div className="mt-12 space-y-14">
@@ -131,19 +135,16 @@ export default function AboutPage() {
           </ul>
         </section>
 
-        <div className="glass-strong flex flex-col items-center gap-5 p-10 text-center">
-          <h2 className="font-display text-2xl text-mystic-50">
-            Ready to see yours?
-          </h2>
-          <Link href="/reading" className="btn-primary">
-            Cast my reading
+        <div className="pt-6 text-center">
+          <div className="rule-ornament text-sm">❧</div>
+          <p className="mx-auto mt-5 max-w-md text-sm italic leading-relaxed text-mystic-300/75">
+            So much for the method. The proof of it is in the casting.
+          </p>
+          <Link href="/reading" className="btn-primary mt-6">
+            Cast the Reading
           </Link>
         </div>
       </div>
-
-      <p className="mt-10 text-center text-xs text-mystic-300/40">
-        Numen is offered for reflection, inspiration and entertainment.
-      </p>
     </div>
   );
 }
