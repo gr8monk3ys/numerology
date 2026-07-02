@@ -34,9 +34,12 @@ export function NumberOrb({
   return (
     <span
       className={clsx(
-        "seal relative flex shrink-0 select-none items-center justify-center rounded-full font-display font-semibold",
+        "relative flex shrink-0 select-none items-center justify-center rounded-full font-display font-semibold",
         SIZES[size],
         "bg-[radial-gradient(circle_at_50%_38%,#221809,#0b0805_72%)]",
+        "shadow-[inset_0_0_14px_rgba(0,0,0,0.75),0_6px_16px_-8px_rgba(0,0,0,0.8)]",
+        // In print the seal becomes a ruled medallion: parchment ground, ink glyph.
+        "print:bg-none print:shadow-none print:ring-0 print:border print:border-[#8a744a] print:text-[#241c10]",
         isMaster
           ? "text-gold-100 ring-2 ring-gold-400/75"
           : isKarmic
@@ -44,10 +47,6 @@ export function NumberOrb({
             : "text-gold-200 ring-1 ring-gold-500/50",
         className,
       )}
-      style={{
-        boxShadow:
-          "inset 0 0 14px rgba(0,0,0,0.75), 0 6px 16px -8px rgba(0,0,0,0.8)",
-      }}
     >
       {/* inner hairline ring */}
       <span

@@ -3,6 +3,14 @@
 import { useEffect, useState, type FormEvent } from "react";
 import dynamic from "next/dynamic";
 import { buildReading, type Reading } from "@/lib/numerology";
+import {
+  NAME_MAX,
+  NAME_CHARSET,
+  isUsableName,
+  parseBirthDate,
+  decodeCastingParams,
+  type Casting,
+} from "@/lib/casting";
 
 // The results carry nearly every meaning dataset; load them only when a
 // reading is actually cast so the empty form is interactive immediately.
@@ -20,18 +28,8 @@ const ReadingResults = dynamic(
   },
 );
 
-const NAME_MAX = 80;
-/** Letters (any alphabet), marks, spaces, apostrophes, periods and hyphens. */
-const NAME_CHARSET = /^[\p{L}\p{M}\s'’.–-]+$/u;
 const LEDGER_KEY = "numen.castings";
 const LEDGER_MAX = 5;
-
-interface Casting {
-  name: string;
-  dob: string;
-  y?: boolean;
-  now?: string;
-}
 
 function castReading(
   fullName: string,
@@ -39,20 +37,13 @@ function castReading(
   yAsVowel: boolean,
 ): Reading | null {
   const cleanName = fullName.trim().slice(0, NAME_MAX);
-  if (!NAME_CHARSET.test(cleanName)) return null;
-  if (cleanName.replace(/[^a-zA-Z]/g, "").length < 2) return null;
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(birthDate)) return null;
-  const [y, m, d] = birthDate.split("-").map(Number);
-  if (y < 1000 || y > 2999 || m < 1 || m > 12 || d < 1 || d > 31) return null;
-  // Reject impossible calendar dates (e.g. February 30th).
-  const roundTrip = new Date(Date.UTC(y, m - 1, d));
-  if (roundTrip.getUTCMonth() !== m - 1 || roundTrip.getUTCDate() !== d) {
-    return null;
-  }
+  if (!isUsableName(cleanName)) return null;
+  const birth = parseBirthDate(birthDate);
+  if (!birth) return null;
   const now = new Date();
   return buildReading({
     fullName: cleanName,
-    birth: { year: y, month: m, day: d },
+    birth,
     yAsVowel,
     today: {
       year: now.getFullYear(),
@@ -65,8 +56,7 @@ function castReading(
 /** A current name only matters if it is usable and differs from the birth name. */
 function usableCurrentName(current: string, birthName: string): string | undefined {
   const clean = current.trim().slice(0, NAME_MAX);
-  if (!NAME_CHARSET.test(clean)) return undefined;
-  if (clean.replace(/[^a-zA-Z]/g, "").length < 2) return undefined;
+  if (!isUsableName(clean)) return undefined;
   if (clean.toLowerCase() === birthName.trim().toLowerCase()) return undefined;
   return clean;
 }
@@ -110,19 +100,15 @@ export function ReadingForm() {
   useEffect(() => {
     setLedger(readLedger());
 
-    const params = new URLSearchParams(window.location.search);
-    const name = params.get("name")?.slice(0, NAME_MAX);
-    const dob = params.get("dob")?.slice(0, 10);
-    if (!name || !dob) return;
-    const y = params.get("y") === "1";
-    const nowParam = params.get("now")?.slice(0, NAME_MAX) ?? "";
-    const result = castReading(name, dob, y);
+    const shared = decodeCastingParams(window.location.search);
+    if (!shared) return;
+    const result = castReading(shared.name, shared.dob, !!shared.y);
     if (result) {
-      setFullName(name);
-      setBirthDate(dob);
-      setYAsVowel(y);
-      setCurrentName(nowParam);
-      setShownCurrentName(usableCurrentName(nowParam, name));
+      setFullName(shared.name);
+      setBirthDate(shared.dob);
+      setYAsVowel(!!shared.y);
+      setCurrentName(shared.now ?? "");
+      setShownCurrentName(usableCurrentName(shared.now ?? "", shared.name));
       setReading(result);
     }
   }, []);

@@ -3,6 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { MeaningBlock } from "@/components/numbers/MeaningBlock";
+import { ChapterHead } from "@/components/reading/Chapter";
+import { CorrGrid } from "@/components/ui/CorrGrid";
+import { TraitColumns } from "@/components/ui/TraitColumns";
 import { isMaster as isMasterNumber } from "@/lib/numerology";
 import {
   lifePathMeanings,
@@ -80,29 +83,11 @@ export default async function NumberDetailPage({
           <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-mystic-100/85">
             {master.detailed}
           </p>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            <div>
-              <p className="term mb-2 block text-aura-400">Gifts</p>
-              <ul className="space-y-1 text-sm text-mystic-200/80">
-                {master.gifts.map((g) => (
-                  <li key={g} className="flex gap-2">
-                    <span className="text-aura-400/80" aria-hidden>✦</span>
-                    {g}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="term mb-2 block text-blood-300">Trials</p>
-              <ul className="space-y-1 text-sm text-mystic-200/80">
-                {master.challenges.map((c) => (
-                  <li key={c} className="flex gap-2">
-                    <span className="text-blood-300/80" aria-hidden>◇</span>
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="mt-5">
+            <TraitColumns
+              virtues={{ label: "Gifts", items: master.gifts }}
+              trials={{ label: "Trials", items: master.challenges }}
+            />
           </div>
         </div>
       )}
@@ -118,24 +103,9 @@ export default async function NumberDetailPage({
       {/* Correspondences */}
       {corr && (
         <div className="mt-12">
-          <div className="chapter-head">
-            <h2 className="font-display text-3xl text-mystic-50">
-              The Correspondences
-            </h2>
-            <span className="h-px flex-1 bg-gradient-to-r from-gold-500/40 to-transparent" />
-            <span className="chapter-glyph" aria-hidden>♃</span>
-          </div>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            <CorrCell label="Tarot" value={corr.tarot} />
-            <CorrCell label="Ruling Planet" value={corr.rulingPlanet} />
-            <CorrCell label="Zodiac" value={corr.zodiac} />
-            <CorrCell label="Element" value={corr.element} />
-            <CorrCell label="Chakra" value={corr.chakra} />
-            <CorrCell label="Day of the Week" value={corr.dayOfWeek} />
-            <CorrCell label="Colours" value={corr.colors?.join(", ")} />
-            <CorrCell label="Stones" value={corr.gemstones?.join(", ")} />
-            <CorrCell label="Metal" value={corr.metal} />
-            <CorrCell label="Musical Note" value={corr.musicalNote} />
+          <ChapterHead title="The Correspondences" glyph="♃" />
+          <div className="mt-5">
+            <CorrGrid corr={corr} />
           </div>
         </div>
       )}
@@ -177,15 +147,5 @@ function PageTurn({ current }: { current: string }) {
         <span />
       )}
     </nav>
-  );
-}
-
-function CorrCell({ label, value }: { label: string; value?: string }) {
-  if (!value) return null;
-  return (
-    <div className="glass p-4">
-      <p className="eyebrow">{label}</p>
-      <p className="mt-1 font-display text-lg text-mystic-50">{value}</p>
-    </div>
   );
 }

@@ -9,8 +9,9 @@ import {
 } from "@/lib/numerology";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { Chip } from "@/components/ui/Chip";
+import { parseBirthDate } from "@/lib/casting";
 import { compatibilityProfiles } from "@/lib/content/compat";
-import { lifePathMeanings } from "@/lib/content/lifepath";
+import { lifePathTitles } from "@/lib/content/lifepathTitles";
 import { pick } from "@/lib/content/core";
 
 interface Person {
@@ -33,10 +34,8 @@ export function CompatibilityForm() {
   const [outcome, setOutcome] = useState<Outcome | null>(null);
 
   function lifePathOf(p: Person): number | null {
-    if (!p.date) return null;
-    const [y, m, d] = p.date.split("-").map(Number);
-    if (!y || !m || !d) return null;
-    return lifePathNumber({ year: y, month: m, day: d }).value;
+    const birth = parseBirthDate(p.date);
+    return birth ? lifePathNumber(birth).value : null;
   }
 
   function handleSubmit(e: FormEvent) {
@@ -184,12 +183,12 @@ function CompatibilityReport({ outcome }: { outcome: Outcome }) {
                   {label} · Life Path {lp}
                 </p>
                 <h3 className="font-display text-xl text-mystic-50">
-                  {pick(lifePathMeanings, lp)?.title}
+                  {lifePathTitles[String(lp)]}
                 </h3>
               </div>
             </div>
             {profile?.summary && (
-              <p className="mt-3 text-sm leading-relaxed text-mystic-200/75">
+              <p className="mt-3 text-note">
                 {profile.summary}
               </p>
             )}

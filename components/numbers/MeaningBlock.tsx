@@ -1,4 +1,5 @@
 import { Chip } from "@/components/ui/Chip";
+import { TraitColumns } from "@/components/ui/TraitColumns";
 import type { NumberMeaning } from "@/lib/content";
 
 export function MeaningBlock({
@@ -23,29 +24,11 @@ export function MeaningBlock({
           {meaning.detailed}
         </p>
       )}
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        <div>
-          <p className="term mb-2 block text-aura-400">Virtues</p>
-          <ul className="space-y-1 text-sm text-mystic-200/80">
-            {meaning.strengths.map((s) => (
-              <li key={s} className="flex gap-2">
-                <span className="text-aura-400/80" aria-hidden>✦</span>
-                {s}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p className="term mb-2 block text-blood-300">Trials</p>
-          <ul className="space-y-1 text-sm text-mystic-200/80">
-            {meaning.challenges.map((c) => (
-              <li key={c} className="flex gap-2">
-                <span className="text-blood-300/80" aria-hidden>◇</span>
-                {c}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="mt-4">
+        <TraitColumns
+          virtues={{ label: "Virtues", items: meaning.strengths }}
+          trials={{ label: "Trials", items: meaning.challenges }}
+        />
       </div>
       <div className="term-row mt-4">
         {meaning.keywords.map((k) => (

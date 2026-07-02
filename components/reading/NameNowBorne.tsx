@@ -60,7 +60,7 @@ export function NameNowBorne({
           The Name Now Borne
         </h2>
         <div className="rule-ornament mt-3 text-sm">☙</div>
-        <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-mystic-200/75">
+        <p className="mx-auto mt-3 max-w-2xl text-note">
           The name given at birth fixes the chart; the name{" "}
           <span className="italic text-gold-200">{currentName}</span>, borne in
           daily use, colours how that chart is worn.{" "}
@@ -83,7 +83,7 @@ export function NameNowBorne({
                 </span>
                 <NumberOrb value={r.to.value} size="sm" isMaster={r.to.isMaster} />
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-mystic-200/75">
+              <p className="mt-3 text-note">
                 {changed ? (
                   <>
                     from{" "}
@@ -117,7 +117,7 @@ export function NameNowBorne({
           <h3 className="mt-1 font-display text-lg text-mystic-50">
             {bridge.title}
           </h3>
-          <p className="mt-2 text-sm leading-relaxed text-mystic-200/75">
+          <p className="mt-2 text-note">
             {bridge.summary}
           </p>
           <p className="mt-2 text-sm leading-relaxed text-mystic-100/85">

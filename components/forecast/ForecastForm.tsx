@@ -9,13 +9,14 @@ import {
   type PersonalCycles,
   type CyclePeriod,
 } from "@/lib/numerology";
-import { NumberOrb } from "@/components/ui/NumberOrb";
-import { Chip } from "@/components/ui/Chip";
+import { parseBirthDate, ageOn } from "@/lib/casting";
+import { ChapterHead } from "@/components/reading/Chapter";
 import {
-  personalYearMeanings,
-  pinnacleMeanings,
-  challengeMeanings,
-} from "@/lib/content/cyclesContent";
+  PersonalCyclesRow,
+  PersonalYearCard,
+  PeriodList,
+} from "@/components/cycles/AlmanacPanels";
+import { personalYearMeanings } from "@/lib/content/cyclesContent";
 import { pick } from "@/lib/content/core";
 
 interface ForecastState {
@@ -25,20 +26,6 @@ interface ForecastState {
   challenges: CyclePeriod[];
   age: number;
 }
-
-function computeAge(birth: BirthDate, today: BirthDate): number {
-  let age = today.year - birth.year;
-  if (
-    today.month < birth.month ||
-    (today.month === birth.month && today.day < birth.day)
-  ) {
-    age -= 1;
-  }
-  return age;
-}
-
-const inRange = (age: number, p: CyclePeriod) =>
-  age >= p.startAge && (p.endAge === null || age <= p.endAge);
 
 export function ForecastForm() {
   const [birthDate, setBirthDate] = useState("");
@@ -52,12 +39,11 @@ export function ForecastForm() {
       setError("Enter the date of birth.");
       return;
     }
-    const [y, m, d] = birthDate.split("-").map(Number);
-    if (!y || !m || !d) {
+    const birth = parseBirthDate(birthDate);
+    if (!birth) {
       setError("That date could not be read.");
       return;
     }
-    const birth: BirthDate = { year: y, month: m, day: d };
     const now = new Date();
     const today: BirthDate = {
       year: now.getFullYear(),
@@ -69,7 +55,7 @@ export function ForecastForm() {
       personal: personalCycles(birth, today),
       pinnacles: pinnacles(birth),
       challenges: challenges(birth),
-      age: computeAge(birth, today),
+      age: ageOn(birth, today),
     });
   }
 
@@ -112,123 +98,19 @@ export function ForecastForm() {
 
       {state && (
         <div className="mt-14 space-y-14">
-          {/* The present vibrations */}
-          <div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {[
-                { label: "Personal Year", ins: state.personal.year },
-                { label: "Personal Month", ins: state.personal.month },
-                { label: "Personal Day", ins: state.personal.day },
-              ].map(({ label, ins }) => (
-                <div key={label} className="glass flex items-center gap-4 p-5">
-                  <NumberOrb value={ins.value} size="md" />
-                  <div>
-                    <p className="eyebrow">{label}</p>
-                    <p className="text-sm text-mystic-300/80">
-                      the present vibration
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            {py && (
-              <div className="glass mt-4 p-6">
-                <p className="eyebrow">A {py.theme} year</p>
-                <p className="mt-2 text-sm leading-relaxed text-mystic-100/85">
-                  {py.summary}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-mystic-200/75">
-                  <span className="text-gold-300">Counsel: </span>
-                  {py.advice}
-                </p>
-                <div className="term-row mt-3">
-                  {py.keywords.map((k) => (
-                    <Chip key={k}>{k}</Chip>
-                  ))}
-                </div>
-              </div>
-            )}
+          <div className="space-y-4">
+            <PersonalCyclesRow personal={state.personal} />
+            {py && <PersonalYearCard py={py} />}
           </div>
 
-          {/* Pinnacles & Challenges */}
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="space-y-3">
-              <div className="chapter-head">
-                <h3 className="font-display text-2xl text-mystic-50">
-                  The Four Pinnacles
-                </h3>
-                <span className="h-px flex-1 bg-gradient-to-r from-gold-500/40 to-transparent" />
-                <span className="chapter-glyph" aria-hidden>▵</span>
-              </div>
-              {state.pinnacles.map((p) => {
-                const active = inRange(state.age, p);
-                const pm = pick(pinnacleMeanings, p.value);
-                return (
-                  <div
-                    key={p.index}
-                    className={`glass flex items-start gap-4 p-4 ${
-                      active ? "border-gold-400/60" : ""
-                    }`}
-                  >
-                    <NumberOrb value={p.value} size="sm" isMaster={p.isMaster} />
-                    <div>
-                      <p className="flex flex-wrap items-baseline gap-x-3 text-sm text-mystic-50">
-                        Pinnacle {p.index}
-                        <span className="text-mystic-300/85">
-                          ages {p.label}
-                        </span>
-                        {active && (
-                          <span className="term term-gold">at present</span>
-                        )}
-                      </p>
-                      {pm?.summary && (
-                        <p className="mt-1 text-sm leading-relaxed text-mystic-200/70">
-                          {pm.summary}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
+              <ChapterHead as="h3" className="text-2xl" title="The Four Pinnacles" glyph="▵" />
+              <PeriodList kind="Pinnacle" periods={state.pinnacles} age={state.age} />
             </div>
             <div className="space-y-3">
-              <div className="chapter-head">
-                <h3 className="font-display text-2xl text-mystic-50">
-                  The Four Challenges
-                </h3>
-                <span className="h-px flex-1 bg-gradient-to-r from-gold-500/40 to-transparent" />
-                <span className="chapter-glyph" aria-hidden>†</span>
-              </div>
-              {state.challenges.map((c) => {
-                const active = inRange(state.age, c);
-                const cm = pick(challengeMeanings, c.value);
-                return (
-                  <div
-                    key={c.index}
-                    className={`glass flex items-start gap-4 p-4 ${
-                      active ? "border-gold-400/60" : ""
-                    }`}
-                  >
-                    <NumberOrb value={c.value} size="sm" />
-                    <div>
-                      <p className="flex flex-wrap items-baseline gap-x-3 text-sm text-mystic-50">
-                        Challenge {c.index}
-                        <span className="text-mystic-300/85">
-                          ages {c.label}
-                        </span>
-                        {active && (
-                          <span className="term term-gold">at present</span>
-                        )}
-                      </p>
-                      {cm?.summary && (
-                        <p className="mt-1 text-sm leading-relaxed text-mystic-200/70">
-                          {cm.summary}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
+              <ChapterHead as="h3" className="text-2xl" title="The Four Challenges" glyph="†" />
+              <PeriodList kind="Challenge" periods={state.challenges} age={state.age} />
             </div>
           </div>
         </div>

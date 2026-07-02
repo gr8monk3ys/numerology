@@ -21,7 +21,7 @@ export function PlanesChart({
 
   return (
     <div className="glass p-6">
-      <p className="text-sm leading-relaxed text-mystic-200/75">{content._intro}</p>
+      <p className="text-note">{content._intro}</p>
       <div className="mt-6 space-y-4">
         {ORDER.map((plane) => {
           const count = result[plane];

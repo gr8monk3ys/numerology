@@ -113,7 +113,7 @@ export function AngelLookup() {
               </div>
             </div>
           ) : (
-            <p className="mt-6 text-center text-sm leading-relaxed text-mystic-200/75">
+            <p className="mt-6 text-center text-note">
               This sequence is not yet written in our index, but its power
               flows from the root number{" "}
               <Link

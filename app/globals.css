@@ -207,6 +207,14 @@
     font-family: var(--font-serif);
   }
 
+  /* Muted body note — the one voice for supporting prose. Retune it here,
+     not instance by instance. (mystic-200 at 75%.) */
+  .text-note {
+    font-size: 0.875rem;
+    line-height: 1.625;
+    color: rgba(214, 194, 153, 0.75);
+  }
+
   /* Small-caps term — replaces pill "chips" */
   .term {
     font-family: var(--font-serif);
@@ -489,12 +497,4 @@
   .eyebrow { color: #872b25 !important; }
   p, li, span, div { color: #2d2416; }
   a { color: #2d2416; text-decoration: none; }
-  /* Seals print as ruled medallions, not ink blots */
-  .seal {
-    background: transparent !important;
-    box-shadow: none !important;
-    border: 1.5px solid #8a744a;
-    color: #241c10 !important;
-  }
-  .seal span { color: #241c10 !important; }
 }

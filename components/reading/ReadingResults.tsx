@@ -6,9 +6,17 @@ import { NumberOrb } from "@/components/ui/NumberOrb";
 import { Chip } from "@/components/ui/Chip";
 import { NumberCard } from "@/components/reading/NumberCard";
 import { Chapter } from "@/components/reading/Chapter";
+import { chapterNumeral } from "@/components/reading/chapters";
 import { LoShuGrid } from "@/components/reading/LoShuGrid";
 import { NameNowBorne } from "@/components/reading/NameNowBorne";
 import { CosmicProfile } from "@/components/reading/CosmicProfile";
+import { CorrGrid } from "@/components/ui/CorrGrid";
+import {
+  PersonalCyclesRow,
+  PersonalYearCard,
+  PeriodList,
+} from "@/components/cycles/AlmanacPanels";
+import { encodeCastingParams, ageOn } from "@/lib/casting";
 import {
   lifePathMeanings,
   expressionMeanings,
@@ -18,8 +26,6 @@ import {
   personalYearMeanings,
   correspondences,
   karmicDebtMeanings,
-  pinnacleMeanings,
-  challengeMeanings,
   pick,
 } from "@/lib/content";
 
@@ -47,10 +53,13 @@ function FolioActions({
   function copyLink() {
     const { birth } = reading;
     const dob = `${birth.year}-${String(birth.month).padStart(2, "0")}-${String(birth.day).padStart(2, "0")}`;
-    const params = new URLSearchParams({ name: reading.fullName, dob });
-    if (reading.yAsVowel) params.set("y", "1");
-    if (currentName) params.set("now", currentName);
-    const url = `${window.location.origin}/reading?${params.toString()}`;
+    const query = encodeCastingParams({
+      name: reading.fullName,
+      dob,
+      y: reading.yAsVowel || undefined,
+      now: currentName,
+    });
+    const url = `${window.location.origin}/reading?${query}`;
     navigator.clipboard?.writeText(url).then(
       () => {
         setCopied(true);
@@ -93,6 +102,12 @@ export const ReadingResults = memo(function ReadingResults({
   const py = pick(personalYearMeanings, forecast.personal.year.value);
   const bday = pick(birthdayMeanings, birth.day);
   const loShu = loShuGrid(birth);
+  const now = new Date();
+  const age = ageOn(birth, {
+    year: now.getFullYear(),
+    month: now.getMonth() + 1,
+    day: now.getDate(),
+  });
 
   return (
     <div className="mt-14 space-y-20">
@@ -151,7 +166,7 @@ export const ReadingResults = memo(function ReadingResults({
       </div>
 
       {/* I — The Core Numbers */}
-      <Chapter numeral="I" glyph="☉" title="The Core Numbers">
+      <Chapter numeral={chapterNumeral("core")} glyph="☉" title="The Core Numbers">
         <div className="grid gap-4 lg:grid-cols-2">
           <NumberCard label="Life Path" insight={core.lifePath} meaning={lifePathMeaning} defaultOpen />
           <NumberCard label="Expression, or Destiny" insight={core.expression} meaning={pick(expressionMeanings, core.expression.value)} />
@@ -170,7 +185,7 @@ export const ReadingResults = memo(function ReadingResults({
             <h3 className="mt-1 font-display text-xl text-mystic-50">
               {bday.title}
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-mystic-200/75">
+            <p className="mt-2 text-note">
               {bday.summary}
             </p>
             <div className="term-row mt-3">
@@ -185,7 +200,7 @@ export const ReadingResults = memo(function ReadingResults({
       </Chapter>
 
       {/* II — The Karmic Record */}
-      <Chapter numeral="II" glyph="♄" title="The Karmic Record">
+      <Chapter numeral={chapterNumeral("karmic")} glyph="♄" title="The Karmic Record">
         {advanced.karmicDebts.length > 0 ? (
           <div className="grid gap-4">
             {advanced.karmicDebts.map((hit) => {
@@ -204,7 +219,7 @@ export const ReadingResults = memo(function ReadingResults({
                     </div>
                   </div>
                   {km?.summary && (
-                    <p className="mt-3 text-sm leading-relaxed text-mystic-200/75">
+                    <p className="mt-3 text-note">
                       {km.summary}
                     </p>
                   )}
@@ -219,7 +234,7 @@ export const ReadingResults = memo(function ReadingResults({
             })}
           </div>
         ) : (
-          <p className="glass p-6 text-sm leading-relaxed text-mystic-200/75">
+          <p className="glass p-6 text-note">
             No karmic debt — neither 13, 14, 16 nor 19 — appears in your core
             chart. The ledger you carry into this life is a light one.
           </p>
@@ -228,7 +243,7 @@ export const ReadingResults = memo(function ReadingResults({
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="glass p-5">
             <p className="eyebrow">Karmic Lessons</p>
-            <p className="mt-2 text-sm leading-relaxed text-mystic-200/75">
+            <p className="mt-2 text-note">
               Numbers absent from your name; energies to be learned deliberately.
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -243,7 +258,7 @@ export const ReadingResults = memo(function ReadingResults({
           </div>
           <div className="glass p-5">
             <p className="eyebrow">Hidden Passion</p>
-            <p className="mt-2 text-sm leading-relaxed text-mystic-200/75">
+            <p className="mt-2 text-note">
               The number most often written in your name; an instinctive talent.
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -254,7 +269,7 @@ export const ReadingResults = memo(function ReadingResults({
           </div>
           <div className="glass p-5">
             <p className="eyebrow">Subconscious Self</p>
-            <p className="mt-2 text-sm leading-relaxed text-mystic-200/75">
+            <p className="mt-2 text-note">
               The composure with which you meet sudden circumstance.
             </p>
             <div className="mt-3">
@@ -265,7 +280,7 @@ export const ReadingResults = memo(function ReadingResults({
       </Chapter>
 
       {/* III — The Letters of the Name */}
-      <Chapter numeral="III" glyph="☿" title="The Letters of the Name">
+      <Chapter numeral={chapterNumeral("letters")} glyph="☿" title="The Letters of the Name">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <LetterStat label="Cornerstone" trait={advanced.cornerstone} note="How you set to work" />
           <LetterStat label="Capstone" trait={advanced.capstone} note="How you bring things to an end" />
@@ -278,7 +293,7 @@ export const ReadingResults = memo(function ReadingResults({
                 size="sm"
                 isMaster={advanced.rationalThought.isMaster}
               />
-              <p className="text-sm leading-relaxed text-mystic-200/75">
+              <p className="text-note">
                 The cast of your reasoning.
               </p>
             </div>
@@ -287,7 +302,7 @@ export const ReadingResults = memo(function ReadingResults({
       </Chapter>
 
       {/* IV — The Chaldean Reckoning */}
-      <Chapter numeral="IV" glyph="✶" title="The Chaldean Reckoning">
+      <Chapter numeral={chapterNumeral("chaldean")} glyph="✶" title="The Chaldean Reckoning">
         <div className="glass flex flex-col items-center gap-6 p-8 text-center sm:flex-row sm:text-left">
           <NumberOrb value={chaldean.root} size="lg" />
           <div>
@@ -324,27 +339,17 @@ export const ReadingResults = memo(function ReadingResults({
       )}
 
       {/* V — The Lo Shu Grid */}
-      <Chapter numeral="V" glyph="※" title="The Lo Shu Grid">
+      <Chapter numeral={chapterNumeral("loShu")} glyph="※" title="The Lo Shu Grid">
         <LoShuGrid result={loShu} />
       </Chapter>
 
       {/* VI — The Correspondences */}
       {corr && (
-        <Chapter numeral="VI" glyph="♃" title="The Correspondences">
-          <p className="text-sm leading-relaxed text-mystic-200/75">
+        <Chapter numeral={chapterNumeral("correspondences")} glyph="♃" title="The Correspondences">
+          <p className="text-note">
             The symbols held to answer to your Life Path {core.lifePath.value}.
           </p>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            <Corr label="Tarot" value={corr.tarot} />
-            <Corr label="Ruling Planet" value={corr.rulingPlanet} />
-            <Corr label="Zodiac" value={corr.zodiac} />
-            <Corr label="Element" value={corr.element} />
-            <Corr label="Chakra" value={corr.chakra} />
-            <Corr label="Day of the Week" value={corr.dayOfWeek} />
-            <Corr label="Colours" value={corr.colors?.join(", ")} />
-            <Corr label="Stones" value={corr.gemstones?.join(", ")} />
-            <Corr label="Metal" value={corr.metal} />
-          </div>
+          <CorrGrid corr={corr} />
         </Chapter>
       )}
 
@@ -352,76 +357,17 @@ export const ReadingResults = memo(function ReadingResults({
       <CosmicProfile reading={reading} />
 
       {/* XIII — The Almanac */}
-      <Chapter numeral="XIII" glyph="✷" title="The Almanac of the Present">
-        <div className="grid gap-4 sm:grid-cols-3">
-          <ForecastStat label="Personal Year" value={forecast.personal.year.value} />
-          <ForecastStat label="Personal Month" value={forecast.personal.month.value} />
-          <ForecastStat label="Personal Day" value={forecast.personal.day.value} />
-        </div>
-        {py && (
-          <div className="glass p-6">
-            <p className="eyebrow">A {py.theme} year</p>
-            <p className="mt-2 text-sm leading-relaxed text-mystic-100/85">
-              {py.summary}
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-mystic-200/75">
-              <span className="text-gold-300">Counsel: </span>
-              {py.advice}
-            </p>
-            <div className="term-row mt-3">
-              {py.focus.map((f) => (
-                <Chip key={f} tone="muted">
-                  {f}
-                </Chip>
-              ))}
-            </div>
-          </div>
-        )}
-
+      <Chapter numeral={chapterNumeral("almanac")} glyph="✷" title="The Almanac of the Present">
+        <PersonalCyclesRow personal={forecast.personal} />
+        {py && <PersonalYearCard py={py} />}
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="space-y-3">
             <p className="term term-gold">The Four Pinnacles</p>
-            {forecast.pinnacles.map((p) => {
-              const pm = pick(pinnacleMeanings, p.value);
-              return (
-                <div key={p.index} className="glass flex items-start gap-4 p-4">
-                  <NumberOrb value={p.value} size="sm" isMaster={p.isMaster} />
-                  <div>
-                    <p className="text-sm text-mystic-50">
-                      Pinnacle {p.index}{" "}
-                      <span className="text-mystic-300/85">· ages {p.label}</span>
-                    </p>
-                    {pm?.summary && (
-                      <p className="mt-1 text-sm leading-relaxed text-mystic-200/70">
-                        {pm.summary}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+            <PeriodList kind="Pinnacle" periods={forecast.pinnacles} age={age} />
           </div>
           <div className="space-y-3">
             <p className="term term-gold">The Four Challenges</p>
-            {forecast.challenges.map((c) => {
-              const cm = pick(challengeMeanings, c.value);
-              return (
-                <div key={c.index} className="glass flex items-start gap-4 p-4">
-                  <NumberOrb value={c.value} size="sm" />
-                  <div>
-                    <p className="text-sm text-mystic-50">
-                      Challenge {c.index}{" "}
-                      <span className="text-mystic-300/85">· ages {c.label}</span>
-                    </p>
-                    {cm?.summary && (
-                      <p className="mt-1 text-sm leading-relaxed text-mystic-200/70">
-                        {cm.summary}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+            <PeriodList kind="Challenge" periods={forecast.challenges} age={age} />
           </div>
         </div>
       </Chapter>
@@ -453,30 +399,9 @@ function LetterStat({
         <span className="font-blackletter text-4xl text-gold-200">
           {trait?.letter ?? "—"}
         </span>
-        <p className="text-sm leading-relaxed text-mystic-200/75">{note}</p>
+        <p className="text-note">{note}</p>
       </div>
     </div>
   );
 }
 
-function Corr({ label, value }: { label: string; value?: string }) {
-  if (!value) return null;
-  return (
-    <div className="glass p-4">
-      <p className="eyebrow">{label}</p>
-      <p className="mt-1 font-display text-lg text-mystic-50">{value}</p>
-    </div>
-  );
-}
-
-function ForecastStat({ label, value }: { label: string; value: number }) {
-  return (
-    <div className="glass flex items-center gap-4 p-5">
-      <NumberOrb value={value} size="sm" />
-      <div>
-        <p className="eyebrow">{label}</p>
-        <p className="text-sm text-mystic-300/80">the present vibration</p>
-      </div>
-    </div>
-  );
-}

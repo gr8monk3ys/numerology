@@ -5,6 +5,7 @@ import { buildCosmicProfile } from "@/lib/content/cosmic";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { Chip } from "@/components/ui/Chip";
 import { Chapter } from "@/components/reading/Chapter";
+import { chapterNumeral } from "@/components/reading/chapters";
 import { PlanesChart } from "@/components/reading/PlanesChart";
 
 const ROMAN: Record<number, string> = {
@@ -68,7 +69,7 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
   return (
     <div className="space-y-20">
       {/* VII — The Tarot Birth Card */}
-      <Chapter numeral="VII" glyph="✠" title="The Tarot Birth Card">
+      <Chapter numeral={chapterNumeral("tarot")} glyph="✠" title="The Tarot Birth Card">
         <div className="glass flex flex-col items-center gap-8 p-8 md:flex-row md:items-start">
           <div className="flex gap-5">
             {p.tarot.personality && (
@@ -93,7 +94,7 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
               {p.tarot.personality?.birthCard}
             </p>
             {!p.tarot.card.same && p.tarot.soul && (
-              <p className="text-sm leading-relaxed text-mystic-200/75">
+              <p className="text-note">
                 <span className="text-gold-300">
                   {p.tarot.soul.name}, the soul card:{" "}
                 </span>
@@ -105,7 +106,7 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
       </Chapter>
 
       {/* VIII — Written in the Stars */}
-      <Chapter numeral="VIII" glyph="☽" title="Written in the Stars">
+      <Chapter numeral={chapterNumeral("stars")} glyph="☽" title="Written in the Stars">
         <div className="grid gap-4 md:grid-cols-2">
           {p.sun && (
             <div className="glass p-6">
@@ -125,7 +126,7 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
                 <Chip tone="muted">{p.sun.modality}</Chip>
                 <Chip tone="muted">ruled by {p.sun.rulingPlanet}</Chip>
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-mystic-200/75">
+              <p className="mt-3 text-note">
                 {p.sun.numerologyNote}
               </p>
             </div>
@@ -152,7 +153,7 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
                 </Chip>
               ))}
             </p>
-            <p className="mt-3 text-sm leading-relaxed text-mystic-200/75">
+            <p className="mt-3 text-note">
               {p.chinese.summary}
             </p>
           </div>
@@ -160,12 +161,12 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
       </Chapter>
 
       {/* IX — The Planes of Expression */}
-      <Chapter numeral="IX" glyph="⁂" title="The Planes of Expression">
+      <Chapter numeral={chapterNumeral("planes")} glyph="⁂" title="The Planes of Expression">
         <PlanesChart result={p.planes.result} content={p.planes.content} />
       </Chapter>
 
       {/* X — The Three Cycles of a Life */}
-      <Chapter numeral="X" glyph="◐" title="The Three Cycles of a Life">
+      <Chapter numeral={chapterNumeral("cycles")} glyph="◐" title="The Three Cycles of a Life">
         <div className="grid gap-4 md:grid-cols-3">
           {p.cycles.map((c) => (
             <div key={c.index} className="glass p-6">
@@ -182,7 +183,7 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
                 ruled by the birth {c.ruler}
               </p>
               {c.meaning && (
-                <p className="mt-2 text-sm leading-relaxed text-mystic-200/75">
+                <p className="mt-2 text-note">
                   {c.meaning}
                 </p>
               )}
@@ -192,7 +193,7 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
       </Chapter>
 
       {/* XI — The Bridges */}
-      <Chapter numeral="XI" glyph="‡" title="The Bridges">
+      <Chapter numeral={chapterNumeral("bridges")} glyph="‡" title="The Bridges">
         <div className="grid gap-4 md:grid-cols-2">
           {p.bridges.map((b) => (
             <div key={b.key} className="glass p-6">
@@ -205,7 +206,7 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
                   </h3>
                 </div>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-mystic-200/75">
+              <p className="mt-3 text-note">
                 Between {b.between}. {b.meaning?.summary}
               </p>
               {b.meaning?.advice && (
@@ -220,7 +221,7 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
       </Chapter>
 
       {/* XII — The Fortunate Signatures */}
-      <Chapter numeral="XII" glyph="❧" title="The Fortunate Signatures">
+      <Chapter numeral={chapterNumeral("fortunate")} glyph="❧" title="The Fortunate Signatures">
         <div className="glass grid gap-6 p-6 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="eyebrow">Fortunate Numbers</p>

@@ -44,7 +44,7 @@ export function UniversalToday() {
       <div className="glass flex flex-col items-center gap-5 p-6 sm:flex-row sm:justify-between sm:px-8">
         <div>
           <p className="eyebrow">The Day at Hand</p>
-          <p className="mt-1 text-sm leading-relaxed text-mystic-200/75">
+          <p className="mt-1 text-note">
             The calendar carries its own vibration, common to all the world
             {theme ? (
               <>

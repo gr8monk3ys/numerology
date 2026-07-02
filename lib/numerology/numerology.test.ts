@@ -42,6 +42,8 @@ import {
 } from "./esoteric";
 import zodiacSignsData from "../../content/data/zodiac_signs.json";
 import chineseZodiacData from "../../content/data/chinese_zodiac.json";
+import lifePathData from "../../content/data/meanings_lifepath.json";
+import { lifePathTitles } from "../content/lifepathTitles";
 
 // --- Reduction -------------------------------------------------------------
 describe("reduceNumber", () => {
@@ -365,6 +367,16 @@ describe("Lo Shu grid", () => {
       [3, 6, 9],
       [3, 5, 7],
     ]);
+  });
+});
+
+describe("Life path titles module", () => {
+  it("stays identical to meanings_lifepath.json", () => {
+    const full = lifePathData as Record<string, { title: string }>;
+    expect(Object.keys(lifePathTitles).sort()).toEqual(Object.keys(full).sort());
+    for (const [key, title] of Object.entries(lifePathTitles)) {
+      expect(title).toBe(full[key].title);
+    }
   });
 });
 

@@ -43,7 +43,7 @@ export default function AngelNumbersPage() {
                   {a.title}
                 </span>
               </dt>
-              <dd className="mt-2 text-sm leading-relaxed text-mystic-200/75">
+              <dd className="mt-2 text-note">
                 {a.meaning}
               </dd>
               <dd className="mt-2 text-sm italic leading-relaxed text-mystic-300/80">

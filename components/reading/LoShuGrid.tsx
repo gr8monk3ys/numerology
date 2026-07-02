@@ -17,7 +17,7 @@ function arrowFor(line: [number, number, number]): LoShuArrow | undefined {
 export function LoShuGrid({ result }: { result: LoShuResult }) {
   return (
     <div className="space-y-6">
-      <p className="text-sm leading-relaxed text-mystic-200/75">
+      <p className="text-note">
         {loShuContent._intro} {loShuContent._method}
       </p>
 
@@ -113,7 +113,7 @@ export function LoShuGrid({ result }: { result: LoShuResult }) {
           )}
 
           {result.strengths.length === 0 && result.weaknesses.length === 0 && (
-            <p className="text-sm leading-relaxed text-mystic-200/75">
+            <p className="text-note">
               Your grid completes no full line and empties none: a chart of
               scattered talents rather than single arrows, free to lean where
               it will.

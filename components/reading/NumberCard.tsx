@@ -4,6 +4,7 @@ import { useId, useState } from "react";
 import clsx from "clsx";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { Chip } from "@/components/ui/Chip";
+import { TraitColumns } from "@/components/ui/TraitColumns";
 import type { NumberInsight } from "@/lib/numerology";
 import type { NumberMeaning } from "@/lib/content";
 
@@ -92,40 +93,18 @@ export function NumberCard({
               {meaning.detailed}
             </p>
           )}
-          {(meaning?.strengths || meaning?.challenges) && (
-            <div className="grid gap-4 sm:grid-cols-2">
-              {meaning?.strengths && (
-                <div>
-                  <p className="term mb-2 block text-aura-400">Virtues</p>
-                  <ul className="space-y-1 text-sm text-mystic-200/80">
-                    {meaning.strengths.map((s) => (
-                      <li key={s} className="flex gap-2">
-                        <span className="text-aura-400/80" aria-hidden>
-                          ✦
-                        </span>
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {meaning?.challenges && (
-                <div>
-                  <p className="term mb-2 block text-blood-300">Trials</p>
-                  <ul className="space-y-1 text-sm text-mystic-200/80">
-                    {meaning.challenges.map((c) => (
-                      <li key={c} className="flex gap-2">
-                        <span className="text-blood-300/80" aria-hidden>
-                          ◇
-                        </span>
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          )}
+          <TraitColumns
+            virtues={
+              meaning?.strengths
+                ? { label: "Virtues", items: meaning.strengths }
+                : undefined
+            }
+            trials={
+              meaning?.challenges
+                ? { label: "Trials", items: meaning.challenges }
+                : undefined
+            }
+          />
           <p className="pt-1 text-xs italic text-mystic-300/85">
             The reckoning: {insight.steps.join(" → ")}
             {insight.karmicDebt
