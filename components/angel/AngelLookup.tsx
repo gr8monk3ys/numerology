@@ -9,7 +9,7 @@ import {
   type AngelEntry,
 } from "@/lib/numerology";
 import { NumberOrb } from "@/components/ui/NumberOrb";
-import { angelNumbers } from "@/lib/content";
+import { angelNumbers } from "@/lib/content/angel";
 
 const PATTERN_LABELS: Record<string, string> = {
   triple: "a triple — the message amplified and urgent",
@@ -47,13 +47,20 @@ export function AngelLookup() {
         onSubmit={handleSubmit}
         className="glass-strong flex gap-3 p-4 sm:p-5"
       >
+        <label htmlFor="angel-number" className="sr-only">
+          The number that keeps appearing, for example 1111 or 12:12
+        </label>
         <input
+          id="angel-number"
           type="text"
           inputMode="numeric"
+          maxLength={16}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder="the number that keeps appearing — 1111, 444, 12:12"
           className="input-field"
+          aria-invalid={searched && !analysis}
+          aria-describedby={searched && !analysis ? "angel-error" : undefined}
         />
         <button type="submit" className="btn-primary shrink-0">
           Consult
@@ -61,7 +68,7 @@ export function AngelLookup() {
       </form>
 
       {searched && !analysis && (
-        <p className="mt-4 text-center text-sm text-rose-200">
+        <p id="angel-error" role="alert" className="mt-4 text-center text-sm text-rose-200">
           Write a number sequence to consult the index.
         </p>
       )}

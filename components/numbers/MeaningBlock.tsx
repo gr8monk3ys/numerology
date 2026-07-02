@@ -13,7 +13,7 @@ export function MeaningBlock({
     <div className="glass p-6 sm:p-7">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <p className="eyebrow">In the office of {context}</p>
-        <h3 className="font-display text-xl text-mystic-50">{meaning.title}</h3>
+        <h2 className="font-display text-xl text-mystic-50">{meaning.title}</h2>
       </div>
       <p className="mt-3 text-sm leading-relaxed text-mystic-100/85">
         {meaning.summary}

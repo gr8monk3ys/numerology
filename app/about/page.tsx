@@ -39,6 +39,7 @@ export default function AboutPage() {
   return (
     <div className="container-page max-w-4xl py-16">
       <SectionHeading
+        as="h1"
         eyebrow="Chapter the Sixth"
         title="On the Method"
         subtitle="Numerology is the old practice of finding character in number. Names and dates are reduced to their essential figures, and each figure is read as an archetype."

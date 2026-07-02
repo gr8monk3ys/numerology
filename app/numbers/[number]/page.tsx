@@ -144,7 +144,38 @@ export default async function NumberDetailPage({
           Find your own numbers
         </Link>
       </div>
+
+      {/* Turn the page */}
+      <PageTurn current={number} />
     </div>
+  );
+}
+
+function PageTurn({ current }: { current: string }) {
+  const idx = (CORE_NUMBER_KEYS as readonly string[]).indexOf(current);
+  const prev = idx > 0 ? CORE_NUMBER_KEYS[idx - 1] : null;
+  const next = idx < CORE_NUMBER_KEYS.length - 1 ? CORE_NUMBER_KEYS[idx + 1] : null;
+
+  return (
+    <nav
+      aria-label="Turn the page"
+      className="mt-14 flex items-baseline justify-between border-t border-gold-500/20 pt-6"
+    >
+      {prev ? (
+        <Link href={`/numbers/${prev}`} className="action-quiet no-underline">
+          ← {prev} · {pick(lifePathMeanings, prev)?.title}
+        </Link>
+      ) : (
+        <span />
+      )}
+      {next ? (
+        <Link href={`/numbers/${next}`} className="action-quiet no-underline">
+          {next} · {pick(lifePathMeanings, next)?.title} →
+        </Link>
+      ) : (
+        <span />
+      )}
+    </nav>
   );
 }
 

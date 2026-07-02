@@ -105,8 +105,10 @@
   :root {
     color-scheme: dark;
   }
-  html {
-    scroll-behavior: smooth;
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
   body {
     background-color: var(--color-void-950);
@@ -132,6 +134,13 @@
   }
   input[type="date"] {
     color-scheme: dark;
+  }
+
+  /* Keyboard focus: a gilt ring, visible on the ink ground */
+  :focus-visible {
+    outline: 2px solid rgba(212, 179, 101, 0.85);
+    outline-offset: 2px;
+    border-radius: 1px;
   }
 }
 
@@ -312,7 +321,7 @@
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   .input-field::placeholder {
-    color: rgba(189, 163, 113, 0.45);
+    color: rgba(214, 194, 153, 0.65);
     font-style: italic;
   }
   .input-field:focus {
@@ -407,6 +416,25 @@
   box-shadow: inset 0 0 260px 60px rgba(0, 0, 0, 0.85);
 }
 
+/* Skip-to-content: hidden until focused */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid rgba(193, 154, 70, 0.6);
+  background: #16110a;
+  color: var(--color-gold-200);
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  transition: top 0.2s ease;
+}
+.skip-link:focus-visible {
+  top: 12px;
+}
+
 /* Fixed manuscript margin-frame around the viewport */
 .page-frame {
   position: fixed;
@@ -425,15 +453,15 @@
   .page-frame { display: none; }
 }
 
-/* Aged-paper grain */
+/* Aged-paper grain. No blend-mode: whole-page blending forces the compositor
+   to re-blend on every frame; a faint opacity overlay reads the same. */
 .grain::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.08;
-  mix-blend-mode: soft-light;
+  opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -462,7 +490,8 @@
   .animate-float,
   .animate-spin-slow,
   .animate-spin-slower,
-  .animate-flicker { animation: none !important; }
+  .animate-flicker,
+  .animate-fade-up { animation: none !important; }
 }
 
 /* ------------------------------------------------------------------ */

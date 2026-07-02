@@ -24,6 +24,9 @@ import {
   personalDay,
   pinnacles,
   challenges,
+  universalYear,
+  universalMonth,
+  universalDay,
 } from "./cycles";
 import { reduceNumber, reduceDetail } from "./reduce";
 import { chaldeanNumber } from "./chaldean";
@@ -219,6 +222,22 @@ describe("Personal cycles (methods_cycles)", () => {
   });
   it("Personal Day: Nov 29, Jan 1 2026 -> 7", () => {
     expect(personalDay(11, 29, 2026, 1, 1).value).toBe(7);
+  });
+});
+
+describe("Universal cycles", () => {
+  it("2026 -> 1 (2+0+2+6=10->1)", () => {
+    expect(universalYear(2026)).toBe(1);
+  });
+  it("July 2026 -> 8 (1+7)", () => {
+    expect(universalMonth(2026, 7)).toBe(8);
+  });
+  it("July 2, 2026 -> 1 (8+2=10->1)", () => {
+    expect(universalDay(2026, 7, 2)).toBe(1);
+  });
+  it("December 29, 2033 reduces month and day first", () => {
+    // UY 2033 -> 8; Dec=12->3 => UM 8+3=11->2; day 29->11->2 => UD 2+2=4
+    expect(universalDay(2033, 12, 29)).toBe(4);
   });
 });
 

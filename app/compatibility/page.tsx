@@ -12,6 +12,7 @@ export default function CompatibilityPage() {
   return (
     <div className="container-page py-16">
       <SectionHeading
+        as="h1"
         eyebrow="Chapter the Second"
         title="The Concordance of Two Souls"
         subtitle="Set down two dates of birth, and the Life Paths will be weighed one against the other — the harmony found, and the schooling."

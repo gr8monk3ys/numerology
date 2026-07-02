@@ -15,8 +15,8 @@ import {
   personalYearMeanings,
   pinnacleMeanings,
   challengeMeanings,
-  pick,
-} from "@/lib/content";
+} from "@/lib/content/cyclesContent";
+import { pick } from "@/lib/content/core";
 
 interface ForecastState {
   birth: BirthDate;
@@ -102,7 +102,10 @@ export function ForecastForm() {
         </button>
       </form>
       {error && (
-        <p className="mx-auto mt-3 max-w-xl text-center text-sm text-rose-200">
+        <p
+          role="alert"
+          className="mx-auto mt-3 max-w-xl text-center text-sm text-rose-200"
+        >
           {error}
         </p>
       )}
@@ -121,7 +124,7 @@ export function ForecastForm() {
                   <NumberOrb value={ins.value} size="md" />
                   <div>
                     <p className="eyebrow">{label}</p>
-                    <p className="text-sm text-mystic-300/70">
+                    <p className="text-sm text-mystic-300/80">
                       the present vibration
                     </p>
                   </div>
@@ -171,7 +174,7 @@ export function ForecastForm() {
                     <div>
                       <p className="flex flex-wrap items-baseline gap-x-3 text-sm text-mystic-50">
                         Pinnacle {p.index}
-                        <span className="text-mystic-400/70">
+                        <span className="text-mystic-300/85">
                           ages {p.label}
                         </span>
                         {active && (
@@ -210,7 +213,7 @@ export function ForecastForm() {
                     <div>
                       <p className="flex flex-wrap items-baseline gap-x-3 text-sm text-mystic-50">
                         Challenge {c.index}
-                        <span className="text-mystic-400/70">
+                        <span className="text-mystic-300/85">
                           ages {c.label}
                         </span>
                         {active && (

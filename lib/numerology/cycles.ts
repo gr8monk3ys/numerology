@@ -72,6 +72,25 @@ export function personalCycles(
 }
 
 // ---------------------------------------------------------------------------
+// Universal cycles — the vibration of the calendar itself, no birth date needed
+// ---------------------------------------------------------------------------
+
+/** Universal Year — the calendar year's digits, reduced to 1-9. */
+export function universalYear(year: number): number {
+  return plain(year);
+}
+
+/** Universal Month — reduce(universal year + calendar month), 1-9. */
+export function universalMonth(year: number, month: number): number {
+  return plain(universalYear(year) + plain(month));
+}
+
+/** Universal Day — reduce(universal month + calendar day), 1-9. */
+export function universalDay(year: number, month: number, day: number): number {
+  return plain(universalMonth(year, month) + plain(day));
+}
+
+// ---------------------------------------------------------------------------
 // Pinnacles & Challenges
 // ---------------------------------------------------------------------------
 

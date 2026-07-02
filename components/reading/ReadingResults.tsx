@@ -7,6 +7,7 @@ import { Chip } from "@/components/ui/Chip";
 import { NumberCard } from "@/components/reading/NumberCard";
 import { Chapter } from "@/components/reading/Chapter";
 import { LoShuGrid } from "@/components/reading/LoShuGrid";
+import { NameNowBorne } from "@/components/reading/NameNowBorne";
 import { CosmicProfile } from "@/components/reading/CosmicProfile";
 import {
   lifePathMeanings,
@@ -34,7 +35,13 @@ function ordinal(n: number): string {
 }
 
 /** Quiet actions: copy a shareable link, print the folio. */
-function FolioActions({ reading }: { reading: Reading }) {
+function FolioActions({
+  reading,
+  currentName,
+}: {
+  reading: Reading;
+  currentName?: string;
+}) {
   const [copied, setCopied] = useState(false);
 
   function copyLink() {
@@ -42,6 +49,7 @@ function FolioActions({ reading }: { reading: Reading }) {
     const dob = `${birth.year}-${String(birth.month).padStart(2, "0")}-${String(birth.day).padStart(2, "0")}`;
     const params = new URLSearchParams({ name: reading.fullName, dob });
     if (reading.yAsVowel) params.set("y", "1");
+    if (currentName) params.set("now", currentName);
     const url = `${window.location.origin}/reading?${params.toString()}`;
     navigator.clipboard?.writeText(url).then(
       () => {
@@ -54,7 +62,12 @@ function FolioActions({ reading }: { reading: Reading }) {
 
   return (
     <p className="no-print term-row justify-center text-sm">
-      <button type="button" onClick={copyLink} className="action-quiet">
+      <button
+        type="button"
+        onClick={copyLink}
+        className="action-quiet"
+        aria-live="polite"
+      >
         {copied ? "the link is copied" : "copy a link to this reading"}
       </button>
       <button type="button" onClick={() => window.print()} className="action-quiet">
@@ -64,7 +77,14 @@ function FolioActions({ reading }: { reading: Reading }) {
   );
 }
 
-export function ReadingResults({ reading }: { reading: Reading }) {
+export function ReadingResults({
+  reading,
+  currentName,
+}: {
+  reading: Reading;
+  /** The name in daily use, when it differs from the birth name. */
+  currentName?: string;
+}) {
   const { core, advanced, forecast, chaldean, name, birth } = reading;
   const lifePathMeaning = pick(lifePathMeanings, core.lifePath.value);
   const corr = pick(correspondences, core.lifePath.value);
@@ -79,9 +99,9 @@ export function ReadingResults({ reading }: { reading: Reading }) {
         <div className="bg-cosmic-radial pointer-events-none absolute inset-0 opacity-70" />
         <div className="relative flex flex-col items-center gap-6">
           <p className="eyebrow">Here beginneth the reading of</p>
-          <h1 className="font-display text-4xl text-mystic-50 sm:text-5xl">
+          <h2 className="font-display text-4xl text-mystic-50 sm:text-5xl">
             {name.all.join(" ")}
-          </h1>
+          </h2>
           <p className="font-serif italic text-mystic-200/80">
             born the {birth.day}
             {ordinal(birth.day)} day of {MONTHS[birth.month - 1]},{" "}
@@ -104,9 +124,9 @@ export function ReadingResults({ reading }: { reading: Reading }) {
                 ? ` · bearing the karmic debt ${core.lifePath.karmicDebt}`
                 : ""}
             </p>
-            <h2 className="mt-1 font-display text-3xl text-mystic-50">
+            <h3 className="mt-1 font-display text-3xl text-mystic-50">
               {lifePathMeaning?.title ?? `Life Path ${core.lifePath.value}`}
-            </h2>
+            </h3>
           </div>
 
           {lifePathMeaning?.summary && (
@@ -124,7 +144,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
             </div>
           )}
 
-          <FolioActions reading={reading} />
+          <FolioActions reading={reading} currentName={currentName} />
         </div>
       </div>
 
@@ -279,7 +299,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
               , which roots into{" "}
               <span className="font-display text-gold-200">{chaldean.root}</span>.
             </p>
-            <p className="mt-2 text-sm leading-relaxed text-mystic-300/70">
+            <p className="mt-2 text-sm leading-relaxed text-mystic-300/80">
               The Chaldean alphabet assigns only the values one through eight;
               nine, held sacred, is never given to a letter. The compound number
               is read first, the root after.
@@ -287,6 +307,15 @@ export function ReadingResults({ reading }: { reading: Reading }) {
           </div>
         </div>
       </Chapter>
+
+      {/* Interlude — the name in daily use, when it differs */}
+      {currentName && (
+        <NameNowBorne
+          birthName={reading.fullName}
+          currentName={currentName}
+          yAsVowel={reading.yAsVowel}
+        />
+      )}
 
       {/* V — The Lo Shu Grid */}
       <Chapter numeral="V" glyph="※" title="The Lo Shu Grid">
@@ -354,7 +383,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
                   <div>
                     <p className="text-sm text-mystic-50">
                       Pinnacle {p.index}{" "}
-                      <span className="text-mystic-400/70">· ages {p.label}</span>
+                      <span className="text-mystic-300/85">· ages {p.label}</span>
                     </p>
                     {pm?.summary && (
                       <p className="mt-1 text-sm leading-relaxed text-mystic-200/70">
@@ -376,7 +405,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
                   <div>
                     <p className="text-sm text-mystic-50">
                       Challenge {c.index}{" "}
-                      <span className="text-mystic-400/70">· ages {c.label}</span>
+                      <span className="text-mystic-300/85">· ages {c.label}</span>
                     </p>
                     {cm?.summary && (
                       <p className="mt-1 text-sm leading-relaxed text-mystic-200/70">
@@ -394,7 +423,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
       {/* Explicit */}
       <div className="pt-4 text-center">
         <div className="rule-ornament text-sm">❧</div>
-        <p className="mx-auto mt-4 max-w-md text-sm italic leading-relaxed text-mystic-300/70">
+        <p className="mx-auto mt-4 max-w-md text-sm italic leading-relaxed text-mystic-300/80">
           Here endeth the reading. May these numbers illuminate, never confine.
         </p>
       </div>
@@ -440,7 +469,7 @@ function ForecastStat({ label, value }: { label: string; value: number }) {
       <NumberOrb value={value} size="sm" />
       <div>
         <p className="eyebrow">{label}</p>
-        <p className="text-sm text-mystic-300/70">the present vibration</p>
+        <p className="text-sm text-mystic-300/80">the present vibration</p>
       </div>
     </div>
   );

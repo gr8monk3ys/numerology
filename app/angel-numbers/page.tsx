@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { AngelLookup } from "@/components/angel/AngelLookup";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { angelNumbers } from "@/lib/content";
+import { angelNumbers } from "@/lib/content/angel";
 
 export const metadata: Metadata = {
   title: "An Index of Portents",
@@ -13,6 +13,7 @@ export default function AngelNumbersPage() {
   return (
     <div className="container-page py-16">
       <SectionHeading
+        as="h1"
         eyebrow="Chapter the Fourth"
         title="An Index of Portents"
         subtitle="When the same number appears again and again — on clocks, doors, receipts — tradition reads it as a sign. Consult the index below."
@@ -45,7 +46,7 @@ export default function AngelNumbersPage() {
               <dd className="mt-2 text-sm leading-relaxed text-mystic-200/75">
                 {a.meaning}
               </dd>
-              <dd className="mt-2 text-sm italic leading-relaxed text-mystic-300/70">
+              <dd className="mt-2 text-sm italic leading-relaxed text-mystic-300/80">
                 In love, {lowerFirst(a.love)} In work, {lowerFirst(a.career)}
               </dd>
             </div>

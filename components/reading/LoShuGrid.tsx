@@ -22,34 +22,44 @@ export function LoShuGrid({ result }: { result: LoShuResult }) {
       </p>
 
       <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-start">
-        {/* The square */}
-        <div
-          className="grid shrink-0 grid-cols-3"
-          role="table"
-          aria-label="Lo Shu birth grid"
-        >
-          {LO_SHU_SQUARE.flat().map((digit, i) => {
-            const count = result.counts[digit] ?? 0;
-            return (
-              <div
-                key={i}
-                className="flex h-24 w-24 flex-col items-center justify-center border border-gold-500/30 sm:h-28 sm:w-28"
-                style={{ background: "rgba(14,10,6,0.7)" }}
-              >
-                {count > 0 ? (
-                  <span className="font-display text-2xl tracking-[0.2em] text-gold-200 sm:text-3xl">
-                    {String(digit).repeat(Math.min(count, 4))}
-                    {count > 4 ? "⁺" : ""}
+        {/* The square — decorative for AT; the sr-only summary below carries the data. */}
+        <div className="shrink-0">
+          <p className="sr-only">
+            The Lo Shu grid of this birth date:{" "}
+            {LO_SHU_SQUARE.flat()
+              .map((digit) => {
+                const count = result.counts[digit] ?? 0;
+                return count > 0
+                  ? `the digit ${digit} appears ${count} ${count === 1 ? "time" : "times"}`
+                  : `the digit ${digit} is absent`;
+              })
+              .join("; ")}
+            .
+          </p>
+          <div className="grid grid-cols-3" aria-hidden="true">
+            {LO_SHU_SQUARE.flat().map((digit, i) => {
+              const count = result.counts[digit] ?? 0;
+              return (
+                <div
+                  key={i}
+                  className="flex h-24 w-24 flex-col items-center justify-center border border-gold-500/30 sm:h-28 sm:w-28"
+                  style={{ background: "rgba(14,10,6,0.7)" }}
+                >
+                  {count > 0 ? (
+                    <span className="font-display text-2xl tracking-[0.2em] text-gold-200 sm:text-3xl">
+                      {String(digit).repeat(Math.min(count, 4))}
+                      {count > 4 ? "⁺" : ""}
+                    </span>
+                  ) : (
+                    <span className="text-lg text-mystic-700">·</span>
+                  )}
+                  <span className="mt-1 text-xs uppercase tracking-[0.2em] text-mystic-300/85">
+                    {digit}
                   </span>
-                ) : (
-                  <span className="text-lg text-mystic-700">·</span>
-                )}
-                <span className="mt-1 text-[10px] uppercase tracking-[0.2em] text-mystic-400/60">
-                  {digit}
-                </span>
-              </div>
-            );
-          })}
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* The arrows */}
@@ -66,7 +76,7 @@ export function LoShuGrid({ result }: { result: LoShuResult }) {
                       <span className="font-display text-base text-mystic-50">
                         {a.presentName}
                       </span>{" "}
-                      <span className="text-mystic-400/70">
+                      <span className="text-mystic-300/85">
                         ({line.join(" · ")})
                       </span>
                       <span className="block text-mystic-200/75">{a.present}</span>
@@ -91,7 +101,7 @@ export function LoShuGrid({ result }: { result: LoShuResult }) {
                       <span className="font-display text-base text-mystic-50">
                         {a.absentName}
                       </span>{" "}
-                      <span className="text-mystic-400/70">
+                      <span className="text-mystic-300/85">
                         ({line.join(" · ")})
                       </span>
                       <span className="block text-mystic-200/75">{a.absent}</span>

@@ -12,6 +12,7 @@ export default function ReadingPage() {
   return (
     <div className="container-page py-16">
       <SectionHeading
+        as="h1"
         eyebrow="Chapter the First"
         title="The Reading"
         subtitle="Give the name as it was written at birth, and the date. The reckoning is worked entirely within your own device; nothing you enter leaves it."

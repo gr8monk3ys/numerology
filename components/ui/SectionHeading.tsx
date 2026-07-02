@@ -9,12 +9,15 @@ export function SectionHeading({
   title,
   subtitle,
   align = "left",
+  as: Tag = "h2",
   className,
 }: {
   eyebrow?: string;
   title: React.ReactNode;
   subtitle?: React.ReactNode;
   align?: "left" | "center";
+  /** Heading level — pass "h1" when this is the page title. */
+  as?: "h1" | "h2";
   className?: string;
 }) {
   return (
@@ -26,9 +29,9 @@ export function SectionHeading({
       )}
     >
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 className="text-3xl font-semibold leading-tight text-mystic-50 sm:text-4xl">
+      <Tag className="text-3xl font-semibold leading-tight text-mystic-50 sm:text-4xl">
         {title}
-      </h2>
+      </Tag>
       {align === "center" && (
         <div className="rule-ornament pt-1 text-sm">❧</div>
       )}

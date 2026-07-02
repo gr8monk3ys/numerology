@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
 const NAV_LINKS = [
@@ -17,10 +17,27 @@ const NAV_LINKS = [
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  // Escape dismisses the open menu and returns focus to the toggle.
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-gold-500/25 bg-void-950/95">
-      <nav className="container-page flex h-16 items-center justify-between">
+      <nav
+        aria-label="Primary"
+        className="container-page flex h-16 items-center justify-between"
+      >
         <Link
           href="/"
           className="font-blackletter text-[1.7rem] leading-none tracking-wide"
@@ -47,17 +64,20 @@ export function Navbar() {
         </div>
 
         <button
+          ref={toggleRef}
           type="button"
           className="text-xl leading-none text-gold-300 md:hidden"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle contents"
+          aria-label="Menu"
+          aria-expanded={open}
+          aria-controls="mobile-nav"
         >
-          {open ? "✕" : "☰"}
+          <span aria-hidden>{open ? "✕" : "☰"}</span>
         </button>
       </nav>
 
       {open && (
-        <div className="border-t border-gold-500/20 bg-void-900/95 md:hidden">
+        <div id="mobile-nav" className="border-t border-gold-500/20 bg-void-900/95 md:hidden">
           <div className="container-page flex flex-col py-3">
             {NAV_LINKS.map((link) => (
               <Link

@@ -4,11 +4,12 @@ import "./globals.css";
 import { Starfield } from "@/components/Starfield";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 
-// Gothic display for headings
+// Gothic display for headings (only the weights actually set in CSS)
 const gothic = Grenze_Gotisch({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600"],
   variable: "--font-gothic",
   display: "swap",
 });
@@ -16,7 +17,7 @@ const gothic = Grenze_Gotisch({
 // Old-style serif for body — an illuminated-manuscript hand
 const garamond = EB_Garamond({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-garamond",
   display: "swap",
@@ -31,13 +32,12 @@ const blackletter = UnifrakturMaguntia({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://numerology.example.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Numen · Esoteric Numerology Calculator",
-    template: "%s · Numen Numerology",
+    default: SITE_TITLE,
+    template: `%s · ${SITE_NAME}`,
   },
-  description:
-    "Reveal the hidden numbers of your name and birth date. A complete esoteric numerology suite — Life Path, Expression, Soul Urge, Karmic Debt, Pinnacles, angel numbers, tarot & astrological correspondences, and more.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "numerology",
     "life path number",
@@ -46,15 +46,39 @@ export const metadata: Metadata = {
     "angel numbers",
     "chaldean numerology",
     "pythagorean numerology",
+    "lo shu grid",
+    "tarot birth card",
     "esoteric",
     "numerology calculator",
   ],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Numen · Esoteric Numerology Calculator",
-    description:
-      "Reveal the hidden numbers of your name and birth date with a complete esoteric numerology suite.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     type: "website",
+    locale: "en_US",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  robots: { index: true, follow: true },
+};
+
+/** Structured data: the site as a free client-side web application. */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: SITE_NAME,
+  alternateName: SITE_TITLE,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  applicationCategory: "LifestyleApplication",
+  operatingSystem: "Any",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
 };
 
 export default function RootLayout({
@@ -68,6 +92,9 @@ export default function RootLayout({
       className={`${gothic.variable} ${garamond.variable} ${blackletter.variable}`}
     >
       <body className="grain min-h-screen">
+        <a href="#content" className="skip-link">
+          Pass over the ornament, to the matter itself
+        </a>
         {/* Enable scroll-reveal only when JS is present, so no-JS visitors and
             crawlers still see all content. Runs before below-fold paint. */}
         <script
@@ -75,10 +102,16 @@ export default function RootLayout({
             __html: "document.documentElement.classList.add('reveal-ready')",
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Starfield />
         <div className="page-frame" aria-hidden="true" />
         <Navbar />
-        <main className="relative">{children}</main>
+        <main id="content" tabIndex={-1} className="relative outline-none">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

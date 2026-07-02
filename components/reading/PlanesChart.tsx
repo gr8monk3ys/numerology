@@ -38,7 +38,7 @@ export function PlanesChart({
                   )}
                 </span>
                 <span className="tabular-nums text-mystic-200/70">
-                  {count} <span className="text-mystic-300/50">· {pct}%</span>
+                  {count} <span className="text-mystic-300/85">· {pct}%</span>
                 </span>
               </div>
               <div className="h-2.5 w-full overflow-hidden rounded-full bg-white/[0.06]">

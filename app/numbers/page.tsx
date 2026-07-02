@@ -19,6 +19,7 @@ export default function NumbersIndexPage() {
   return (
     <div className="container-page py-16">
       <SectionHeading
+        as="h1"
         eyebrow="Chapter the Fifth"
         title="A Lexicon of the Numbers"
         subtitle="Nine digits and three master numbers, each an archetype with its own character, virtues and trials. Turn to any entry."

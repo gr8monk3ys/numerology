@@ -25,7 +25,7 @@ export function Footer() {
           <p className="mt-1 term term-muted">Liber Numerorum</p>
         </div>
 
-        <nav className="term-row justify-center text-mystic-200/75">
+        <nav aria-label="Footer" className="term-row justify-center text-mystic-200/75">
           {LINKS.map((l) => (
             <Link key={l.href} href={l.href} className="term link-underline">
               {l.label}
@@ -33,7 +33,7 @@ export function Footer() {
           ))}
         </nav>
 
-        <div className="max-w-xl space-y-2 text-sm leading-relaxed text-mystic-300/70">
+        <div className="max-w-xl space-y-2 text-sm leading-relaxed text-mystic-300/80">
           <p>
             Compiled from the Pythagorean and Chaldean systems, with the
             correspondences of tarot, planet and stone. All reckonings are made
@@ -45,7 +45,7 @@ export function Footer() {
           </p>
         </div>
 
-        <p className="text-xs tracking-wide text-mystic-400/60">
+        <p className="text-xs tracking-wide text-mystic-300/85">
           Set in Grenze Gotisch, EB Garamond &amp; Unifraktur ·{" "}
           {new Date().getFullYear()}
         </p>

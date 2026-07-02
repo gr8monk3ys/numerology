@@ -1,18 +1,54 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
+import dynamic from "next/dynamic";
 import { buildReading, type Reading } from "@/lib/numerology";
-import { ReadingResults } from "@/components/reading/ReadingResults";
+
+// The results carry nearly every meaning dataset; load them only when a
+// reading is actually cast so the empty form is interactive immediately.
+const ReadingResults = dynamic(
+  () =>
+    import("@/components/reading/ReadingResults").then(
+      (m) => m.ReadingResults,
+    ),
+  {
+    loading: () => (
+      <p className="mt-14 text-center italic text-mystic-300/80">
+        The folio is being prepared…
+      </p>
+    ),
+  },
+);
+
+const NAME_MAX = 80;
+/** Letters (any alphabet), marks, spaces, apostrophes, periods and hyphens. */
+const NAME_CHARSET = /^[\p{L}\p{M}\s'’.–-]+$/u;
+const LEDGER_KEY = "numen.castings";
+const LEDGER_MAX = 5;
+
+interface Casting {
+  name: string;
+  dob: string;
+  y?: boolean;
+  now?: string;
+}
 
 function castReading(
   fullName: string,
   birthDate: string,
   yAsVowel: boolean,
 ): Reading | null {
-  const cleanName = fullName.trim();
+  const cleanName = fullName.trim().slice(0, NAME_MAX);
+  if (!NAME_CHARSET.test(cleanName)) return null;
   if (cleanName.replace(/[^a-zA-Z]/g, "").length < 2) return null;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(birthDate)) return null;
   const [y, m, d] = birthDate.split("-").map(Number);
-  if (!y || !m || !d) return null;
+  if (y < 1000 || y > 2999 || m < 1 || m > 12 || d < 1 || d > 31) return null;
+  // Reject impossible calendar dates (e.g. February 30th).
+  const roundTrip = new Date(Date.UTC(y, m - 1, d));
+  if (roundTrip.getUTCMonth() !== m - 1 || roundTrip.getUTCDate() !== d) {
+    return null;
+  }
   const now = new Date();
   return buildReading({
     fullName: cleanName,
@@ -26,28 +62,102 @@ function castReading(
   });
 }
 
+/** A current name only matters if it is usable and differs from the birth name. */
+function usableCurrentName(current: string, birthName: string): string | undefined {
+  const clean = current.trim().slice(0, NAME_MAX);
+  if (clean.replace(/[^a-zA-Z]/g, "").length < 2) return undefined;
+  if (clean.toLowerCase() === birthName.trim().toLowerCase()) return undefined;
+  return clean;
+}
+
+function readLedger(): Casting[] {
+  try {
+    const raw = window.localStorage.getItem(LEDGER_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .filter(
+        (c): c is Casting =>
+          !!c && typeof c.name === "string" && typeof c.dob === "string",
+      )
+      .slice(0, LEDGER_MAX);
+  } catch {
+    return [];
+  }
+}
+
+function writeLedger(entries: Casting[]) {
+  try {
+    window.localStorage.setItem(LEDGER_KEY, JSON.stringify(entries));
+  } catch {
+    /* private mode or full storage — the ledger is a convenience, not a need */
+  }
+}
+
 export function ReadingForm() {
   const [fullName, setFullName] = useState("");
+  const [currentName, setCurrentName] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [yAsVowel, setYAsVowel] = useState(false);
   const [reading, setReading] = useState<Reading | null>(null);
+  const [shownCurrentName, setShownCurrentName] = useState<string | undefined>();
   const [error, setError] = useState<string | null>(null);
+  const [ledger, setLedger] = useState<Casting[]>([]);
 
   // A shared link carries the reading in its query string; cast it on arrival.
   useEffect(() => {
+    setLedger(readLedger());
+
     const params = new URLSearchParams(window.location.search);
-    const name = params.get("name");
-    const dob = params.get("dob");
+    const name = params.get("name")?.slice(0, NAME_MAX);
+    const dob = params.get("dob")?.slice(0, 10);
     if (!name || !dob) return;
     const y = params.get("y") === "1";
+    const nowParam = params.get("now")?.slice(0, NAME_MAX) ?? "";
     const result = castReading(name, dob, y);
     if (result) {
       setFullName(name);
       setBirthDate(dob);
       setYAsVowel(y);
+      setCurrentName(nowParam);
+      setShownCurrentName(usableCurrentName(nowParam, name));
       setReading(result);
     }
   }, []);
+
+  function recordCasting(entry: Casting) {
+    const next = [
+      entry,
+      ...readLedger().filter(
+        (c) => !(c.name === entry.name && c.dob === entry.dob),
+      ),
+    ].slice(0, LEDGER_MAX);
+    writeLedger(next);
+    setLedger(next);
+  }
+
+  function cast(name: string, dob: string, y: boolean, now?: string) {
+    const result = castReading(name, dob, y);
+    if (!result) {
+      setError("That date could not be read.");
+      return;
+    }
+    const usableNow = now ? usableCurrentName(now, name) : undefined;
+    setReading(result);
+    setShownCurrentName(usableNow);
+    recordCasting({ name: result.fullName, dob, y: y || undefined, now: usableNow });
+
+    requestAnimationFrame(() => {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      document.getElementById("reading-results")?.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+  }
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -61,22 +171,26 @@ export function ReadingForm() {
       setError("Enter the date of birth.");
       return;
     }
-    const result = castReading(fullName, birthDate, yAsVowel);
-    if (!result) {
-      setError("That date could not be read.");
-      return;
-    }
-    setReading(result);
+    cast(fullName, birthDate, yAsVowel, currentName);
+  }
 
-    requestAnimationFrame(() => {
-      document
-        .getElementById("reading-results")
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+  function recall(c: Casting) {
+    setError(null);
+    setFullName(c.name);
+    setBirthDate(c.dob);
+    setYAsVowel(!!c.y);
+    setCurrentName(c.now ?? "");
+    cast(c.name, c.dob, !!c.y, c.now);
+  }
+
+  function strikeLedger() {
+    writeLedger([]);
+    setLedger([]);
   }
 
   function reset() {
     setReading(null);
+    setShownCurrentName(undefined);
     setError(null);
     if (window.location.search) {
       window.history.replaceState(null, "", window.location.pathname);
@@ -97,10 +211,13 @@ export function ReadingForm() {
             id="fullName"
             type="text"
             value={fullName}
+            maxLength={NAME_MAX}
             onChange={(e) => setFullName(e.target.value)}
             placeholder="as it was first written, e.g. Ada Augusta Byron"
             className="input-field"
             autoComplete="off"
+            aria-invalid={!!error}
+            aria-describedby={error ? "reading-error" : undefined}
           />
         </div>
 
@@ -119,6 +236,22 @@ export function ReadingForm() {
           />
         </div>
 
+        <div>
+          <label htmlFor="currentName" className="label-text">
+            The name you now bear, if it differs
+          </label>
+          <input
+            id="currentName"
+            type="text"
+            value={currentName}
+            maxLength={NAME_MAX}
+            onChange={(e) => setCurrentName(e.target.value)}
+            placeholder="a married, chosen or pen name — leave empty otherwise"
+            className="input-field"
+            autoComplete="off"
+          />
+        </div>
+
         <label className="flex cursor-pointer items-center gap-3 text-sm text-mystic-200/80">
           <input
             type="checkbox"
@@ -131,7 +264,11 @@ export function ReadingForm() {
         </label>
 
         {error && (
-          <p className="border-l-2 border-blood-500 bg-blood-600/10 px-4 py-2.5 text-sm text-rose-200">
+          <p
+            id="reading-error"
+            role="alert"
+            className="border-l-2 border-blood-500 bg-blood-600/10 px-4 py-2.5 text-sm text-rose-200"
+          >
             {error}
           </p>
         )}
@@ -146,10 +283,41 @@ export function ReadingForm() {
             </button>
           )}
         </div>
+
+        {ledger.length > 0 && (
+          <div className="border-t border-gold-500/15 pt-4">
+            <p className="term term-muted">The ledger of castings</p>
+            <ul className="mt-2 space-y-1.5">
+              {ledger.map((c) => (
+                <li key={`${c.name}|${c.dob}`}>
+                  <button
+                    type="button"
+                    onClick={() => recall(c)}
+                    className="action-quiet"
+                  >
+                    {c.name} · {c.dob}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button
+              type="button"
+              onClick={strikeLedger}
+              className="mt-3 text-xs italic text-mystic-300/85 hover:text-mystic-300"
+            >
+              strike the ledger clean
+            </button>
+            <p className="mt-1 text-xs italic text-mystic-300/80">
+              kept only in this browser; never sent anywhere
+            </p>
+          </div>
+        )}
       </form>
 
       <div id="reading-results">
-        {reading && <ReadingResults reading={reading} />}
+        {reading && (
+          <ReadingResults reading={reading} currentName={shownCurrentName} />
+        )}
       </div>
     </div>
   );

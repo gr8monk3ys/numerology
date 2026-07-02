@@ -8,11 +8,9 @@ import {
 } from "@/lib/numerology";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { Chip } from "@/components/ui/Chip";
-import {
-  compatibilityProfiles,
-  lifePathMeanings,
-  pick,
-} from "@/lib/content";
+import { compatibilityProfiles } from "@/lib/content/compat";
+import { lifePathMeanings } from "@/lib/content/lifepath";
+import { pick } from "@/lib/content/core";
 
 interface Person {
   name: string;
@@ -70,25 +68,34 @@ export function CompatibilityForm() {
             <div key={i} className="space-y-3">
               <h3 className="font-display text-xl text-gold-200">{title}</h3>
               <div>
-                <label className="label-text">Name, if you wish</label>
+                <label htmlFor={`person-${i}-name`} className="label-text">
+                  Name, if you wish
+                </label>
                 <input
+                  id={`person-${i}-name`}
                   type="text"
+                  maxLength={80}
                   value={p.name}
                   onChange={(e) => set({ ...p, name: e.target.value })}
                   placeholder="a name to write beside the number"
                   className="input-field"
                   autoComplete="off"
+                  aria-label={`${title} — name, if you wish`}
                 />
               </div>
               <div>
-                <label className="label-text">Date of birth</label>
+                <label htmlFor={`person-${i}-date`} className="label-text">
+                  Date of birth
+                </label>
                 <input
+                  id={`person-${i}-date`}
                   type="date"
                   value={p.date}
                   min="1900-01-01"
                   max="2099-12-31"
                   onChange={(e) => set({ ...p, date: e.target.value })}
                   className="input-field"
+                  aria-label={`${title} — date of birth`}
                 />
               </div>
             </div>
@@ -96,7 +103,10 @@ export function CompatibilityForm() {
         </div>
 
         {error && (
-          <p className="border-l-2 border-blood-500 bg-blood-600/10 px-4 py-2.5 text-center text-sm text-rose-200">
+          <p
+            role="alert"
+            className="border-l-2 border-blood-500 bg-blood-600/10 px-4 py-2.5 text-center text-sm text-rose-200"
+          >
             {error}
           </p>
         )}
