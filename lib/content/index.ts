@@ -19,7 +19,7 @@ import chineseData from "@/content/data/chinese_zodiac.json";
 import zodiacData from "@/content/data/zodiac_signs.json";
 import loShuData from "@/content/data/lo_shu.json";
 
-import type { ZodiacSign, ChineseZodiacSign, Plane } from "@/lib/numerology/esoteric";
+import type { ZodiacSign, ChineseZodiacSign } from "@/lib/numerology/esoteric";
 import type {
   NumberMeaning,
   BirthdayMeaning,
@@ -62,5 +62,3 @@ export const lifeCyclesContent = lifeCyclesData as unknown as LifeCyclesContent;
 export const chineseZodiacData = chineseData as unknown as ChineseZodiacSign[];
 export const zodiacSignsData = zodiacData as unknown as ZodiacSign[];
 export const loShuContent = loShuData as unknown as LoShuContent;
-
-export const planeKeyList: Plane[] = ["physical", "mental", "emotional", "intuitive"];
