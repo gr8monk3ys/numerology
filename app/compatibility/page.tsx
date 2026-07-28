@@ -12,6 +12,7 @@ export default function CompatibilityPage() {
   return (
     <div className="container-page py-16">
       <SectionHeading
+        as="h1"
         eyebrow="Two souls, two numbers"
         title="Numerology compatibility"
         subtitle="Enter two birth dates to compare Life Paths and reveal the harmony — and the growth — written between you."

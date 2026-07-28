@@ -21,6 +21,7 @@ export default function NumbersIndexPage() {
   return (
     <div className="container-page py-16">
       <SectionHeading
+        as="h1"
         eyebrow="The encyclopedia"
         title="Meanings of the numbers"
         subtitle="Every number is an archetype with its own personality, gifts and shadows. Explore the single digits and the sacred master numbers."

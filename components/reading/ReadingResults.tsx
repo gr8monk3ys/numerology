@@ -20,6 +20,8 @@ import { NumberOrb } from "@/components/ui/NumberOrb";
 import { Chip } from "@/components/ui/Chip";
 import { NumberCard } from "@/components/reading/NumberCard";
 import { CosmicProfile } from "@/components/reading/CosmicProfile";
+import { ShareButton } from "@/components/reading/ShareButton";
+import { buildReadingQuery } from "@/lib/share";
 import {
   lifePathMeanings,
   expressionMeanings,
@@ -61,11 +63,22 @@ const MONTHS = [
   "July", "August", "September", "October", "November", "December",
 ];
 
+function isoDate(birth: Reading["birth"]): string {
+  const mm = String(birth.month).padStart(2, "0");
+  const dd = String(birth.day).padStart(2, "0");
+  return `${birth.year}-${mm}-${dd}`;
+}
+
 export function ReadingResults({ reading }: { reading: Reading }) {
   const { core, advanced, forecast, chaldean, name, birth } = reading;
   const lifePathMeaning = pick(lifePathMeanings, core.lifePath.value);
   const corr = pick(correspondences, core.lifePath.value);
   const py = pick(personalYearMeanings, forecast.personal.year.value);
+  const shareQuery = buildReadingQuery({
+    name: reading.fullName,
+    dob: isoDate(birth),
+    yAsVowel: reading.yAsVowel,
+  });
 
   return (
     <div className="mt-12 space-y-16">
@@ -86,9 +99,9 @@ export function ReadingResults({ reading }: { reading: Reading }) {
               Life Path {core.lifePath.value}
               {core.lifePath.karmicDebt ? ` · Karmic ${core.lifePath.karmicDebt}` : ""}
             </span>
-            <h1 className="mt-2 font-display text-3xl text-mystic-50 sm:text-4xl">
+            <h2 className="mt-2 font-display text-3xl text-mystic-50 sm:text-4xl">
               {lifePathMeaning?.title ?? `Life Path ${core.lifePath.value}`}
-            </h1>
+            </h2>
             <p className="mt-1 text-sm text-mystic-200/60">
               {name.all.join(" ")} · {MONTHS[birth.month - 1]} {birth.day},{" "}
               {birth.year}
@@ -108,6 +121,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
               ))}
             </div>
           )}
+          <ShareButton shareQuery={shareQuery} />
         </div>
       </div>
 

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Starfield } from "@/components/Starfield";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { SITE_URL, SITE_NAME, safeJsonLd } from "@/lib/site";
 
 // Gothic display for headings
 const gothic = Grenze_Gotisch({
@@ -31,7 +32,7 @@ const blackletter = UnifrakturMaguntia({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://numerology.example.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Numen · Esoteric Numerology Calculator",
     template: "%s · Numen Numerology",
@@ -54,7 +55,20 @@ export const metadata: Metadata = {
     description:
       "Reveal the hidden numbers of your name and birth date with a complete esoteric numerology suite.",
     type: "website",
+    siteName: SITE_NAME,
   },
+  twitter: {
+    card: "summary_large_image",
+  },
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description:
+    "A complete esoteric numerology suite — Life Path, Expression, Soul Urge, karmic debt, angel numbers, tarot and astrological correspondences.",
 };
 
 export default function RootLayout({
@@ -66,14 +80,20 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${gothic.variable} ${garamond.variable} ${blackletter.variable}`}
+      suppressHydrationWarning
     >
       <body className="grain min-h-screen">
         {/* Enable scroll-reveal only when JS is present, so no-JS visitors and
-            crawlers still see all content. Runs before below-fold paint. */}
+            crawlers still see all content. Runs before below-fold paint; the
+            class it adds is why <html> suppresses hydration warnings. */}
         <script
           dangerouslySetInnerHTML={{
             __html: "document.documentElement.classList.add('reveal-ready')",
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(websiteJsonLd) }}
         />
         <Starfield />
         <Navbar />

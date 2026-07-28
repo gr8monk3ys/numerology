@@ -10,12 +10,15 @@ export function SectionHeading({
   subtitle,
   align = "left",
   className,
+  as: Heading = "h2",
 }: {
   eyebrow?: string;
   title: React.ReactNode;
   subtitle?: React.ReactNode;
   align?: "left" | "center";
   className?: string;
+  /** Heading level — pages pass "h1" for their hero heading. */
+  as?: "h1" | "h2" | "h3";
 }) {
   return (
     <div
@@ -26,9 +29,9 @@ export function SectionHeading({
       )}
     >
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 className="text-3xl font-semibold leading-tight text-mystic-50 sm:text-4xl">
+      <Heading className="text-3xl font-semibold leading-tight text-mystic-50 sm:text-4xl">
         {title}
-      </h2>
+      </Heading>
       {align === "center" && (
         <div className="rule-ornament pt-1 text-sm">❧</div>
       )}

@@ -36,6 +36,7 @@ export default function AboutPage() {
   return (
     <div className="container-page max-w-4xl py-16">
       <SectionHeading
+        as="h1"
         eyebrow="How it works"
         title="The mathematics of meaning"
         subtitle="Numerology is the ancient practice of finding significance in numbers. Names and dates are reduced to their essential vibrations, each carrying an archetypal meaning."

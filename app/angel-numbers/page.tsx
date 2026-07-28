@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { AngelLookup } from "@/components/angel/AngelLookup";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -14,6 +16,7 @@ export default function AngelNumbersPage() {
   return (
     <div className="container-page py-16">
       <SectionHeading
+        as="h1"
         eyebrow="Synchronicity"
         title="Angel numbers"
         subtitle="Keep seeing the same number everywhere? Repeating sequences are read as nudges from the universe. Decode yours below, or browse the library."
@@ -29,27 +32,25 @@ export default function AngelNumbersPage() {
         </h2>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {angelNumbers.map((a) => (
-            <div key={a.number} className="glass flex flex-col gap-3 p-6">
+            <Link
+              key={a.number}
+              href={`/angel-numbers/${a.number}`}
+              className="glass card-hover group relative flex flex-col gap-3 p-6"
+            >
+              <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-mystic-300/40 transition-colors group-hover:text-gold-300" />
               <div className="flex items-center gap-3">
                 <NumberOrb value={a.number} size="sm" />
-                <h3 className="font-display text-lg text-mystic-50">
+                <h3 className="font-display text-lg text-mystic-50 group-hover:text-gold-200">
                   {a.title}
                 </h3>
               </div>
-              <p className="text-sm leading-relaxed text-mystic-200/70">
+              <p className="line-clamp-3 text-sm leading-relaxed text-mystic-200/70">
                 {a.meaning}
               </p>
-              <div className="mt-auto space-y-1.5 border-t border-white/5 pt-3 text-xs text-mystic-200/60">
-                <p>
-                  <span className="text-gold-300/80">Love · </span>
-                  {a.love}
-                </p>
-                <p>
-                  <span className="text-gold-300/80">Career · </span>
-                  {a.career}
-                </p>
-              </div>
-            </div>
+              <span className="mt-auto border-t border-white/5 pt-3 text-xs text-gold-300/70">
+                Read the full meaning of {a.number}
+              </span>
+            </Link>
           ))}
         </div>
       </div>

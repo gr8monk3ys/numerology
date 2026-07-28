@@ -1,16 +1,53 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import { Sparkles, RotateCcw } from "lucide-react";
 import { buildReading, type Reading } from "@/lib/numerology";
 import { ReadingResults } from "@/components/reading/ReadingResults";
+import { buildReadingQuery, type ReadingLinkState } from "@/lib/share";
 
-export function ReadingForm() {
-  const [fullName, setFullName] = useState("");
-  const [birthDate, setBirthDate] = useState("");
-  const [yAsVowel, setYAsVowel] = useState(false);
+function castReading(state: ReadingLinkState): Reading {
+  const [y, m, d] = state.dob.split("-").map(Number);
+  const now = new Date();
+  return buildReading({
+    fullName: state.name,
+    birth: { year: y, month: m, day: d },
+    yAsVowel: state.yAsVowel,
+    today: {
+      year: now.getFullYear(),
+      month: now.getMonth() + 1,
+      day: now.getDate(),
+    },
+  });
+}
+
+function scrollToResults(smooth: boolean) {
+  requestAnimationFrame(() => {
+    document
+      .getElementById("reading-results")
+      ?.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+  });
+}
+
+export function ReadingForm({ initial }: { initial: ReadingLinkState | null }) {
+  const router = useRouter();
+  const [fullName, setFullName] = useState(initial?.name ?? "");
+  const [birthDate, setBirthDate] = useState(initial?.dob ?? "");
+  const [yAsVowel, setYAsVowel] = useState(initial?.yAsVowel ?? false);
   const [reading, setReading] = useState<Reading | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const autoCast = useRef(initial);
+
+  // A shared link arrives with valid params — cast it immediately so the
+  // recipient lands on the reading, not an empty form. Client-only so the
+  // "today"-dependent forecast never risks a server/client mismatch.
+  useEffect(() => {
+    if (!autoCast.current) return;
+    setReading(castReading(autoCast.current));
+    scrollToResults(false);
+    autoCast.current = null;
+  }, []);
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -31,30 +68,21 @@ export function ReadingForm() {
       return;
     }
 
-    const now = new Date();
-    const result = buildReading({
-      fullName: cleanName,
-      birth: { year: y, month: m, day: d },
+    const state: ReadingLinkState = {
+      name: cleanName,
+      dob: birthDate,
       yAsVowel,
-      today: {
-        year: now.getFullYear(),
-        month: now.getMonth() + 1,
-        day: now.getDate(),
-      },
-    });
-    setReading(result);
-
-    // Reveal results
-    requestAnimationFrame(() => {
-      document
-        .getElementById("reading-results")
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+    };
+    setReading(castReading(state));
+    // Keep the URL in sync so the address bar is always a shareable link.
+    router.replace(`/reading?${buildReadingQuery(state)}`, { scroll: false });
+    scrollToResults(true);
   }
 
   function reset() {
     setReading(null);
     setError(null);
+    router.replace("/reading", { scroll: false });
   }
 
   return (
@@ -89,7 +117,7 @@ export function ReadingForm() {
             id="birthDate"
             type="date"
             value={birthDate}
-            min="1900-01-01"
+            min="1200-01-01"
             max="2099-12-31"
             onChange={(e) => setBirthDate(e.target.value)}
             className="input-field [color-scheme:dark]"

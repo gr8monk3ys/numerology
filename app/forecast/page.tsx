@@ -12,6 +12,7 @@ export default function ForecastPage() {
   return (
     <div className="container-page py-16">
       <SectionHeading
+        as="h1"
         eyebrow="Timing & cycles"
         title="Where you are in your cycle"
         subtitle="Numerology moves in rhythms. See the energy of your current Personal Year, and map the great Pinnacles and Challenges across your lifetime."

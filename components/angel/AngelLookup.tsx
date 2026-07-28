@@ -106,6 +106,14 @@ export function AngelLookup() {
                 <MiniCard label="In Career" value={entry.career} />
                 <MiniCard label="Spiritual" value={entry.spiritual} />
               </div>
+              <p className="text-center">
+                <Link
+                  href={`/angel-numbers/${entry.number}`}
+                  className="link-underline text-sm text-gold-200"
+                >
+                  Read the full {entry.number} page →
+                </Link>
+              </p>
             </div>
           ) : (
             <p className="mt-6 text-center text-sm text-mystic-200/70">
