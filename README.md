@@ -1,5 +1,9 @@
 # Numen · Esoteric Numerology
 
+<p align="center">
+  <img src="docs/assets/hero.png" alt="numerology preview" width="640">
+</p>
+
 A fun little calculator site for esoteric numerology calculations — the numbers
 written into your name and birth date, read across the Pythagorean and Chaldean
 systems with a full layer of esoteric correspondences, styled as a dark gothic
