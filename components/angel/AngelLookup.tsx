@@ -109,12 +109,12 @@ export function AngelLookup() {
             </div>
           ) : (
             <p className="mt-6 text-center text-sm text-mystic-200/70">
-              This exact sequence isn't in our library yet, but its energy flows
+              This exact sequence isn&rsquo;t in our library yet, but its energy flows
               from the root number{" "}
               <Link href={`/numbers/${analysis.root}`} className="text-gold-200">
                 {analysis.root}
               </Link>
-              . Explore that number's meaning for guidance.
+              . Explore that number&rsquo;s meaning for guidance.
             </p>
           )}
         </div>

@@ -70,7 +70,7 @@ export default function AboutPage() {
             Karmic Debt · 13, 14, 16, 19
           </h2>
           <p className="text-mystic-200/80">
-            If a core number's running total lands on 13, 14, 16 or 19 before its
+            If a core number&rsquo;s running total lands on 13, 14, 16 or 19 before its
             final reduction, it carries a <em>karmic debt</em> — an inherited
             lesson from past cycles. 13/4 asks for disciplined work, 14/5 for
             moderation, 16/7 for humility in love, and 19/1 for balanced
