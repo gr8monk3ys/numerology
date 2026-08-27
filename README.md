@@ -1,5 +1,7 @@
 # Numen
 
+Live at https://numerology-sigma-vert.vercel.app.
+
 A numerology calculator: type a name and a birth date, get the Pythagorean and
 Chaldean numbers written into them, rendered as a dark grimoire. Everything is
 computed in the browser; nothing is sent anywhere.
