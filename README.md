@@ -1,9 +1,17 @@
 # Numen
 
-A numerology calculator, built as a small Next.js site. Enter a name and a
-birth date and it works out the Pythagorean and Chaldean numbers written into
-them, then dresses the result up as a dark grimoire. Everything is computed in
-the browser; nothing is sent anywhere.
+A numerology calculator: type a name and a birth date, get the Pythagorean and
+Chaldean numbers written into them, rendered as a dark grimoire. Everything is
+computed in the browser; nothing is sent anywhere.
+
+The engine is pure TypeScript with no framework imports
+([`lib/numerology`](lib/numerology)), and it is tested against worked examples
+from published method guides rather than against its own output. The cases in
+[`content/data/methods_*.json`](content/data) carry the arithmetic by hand;
+the tests assert the same numbers. "Thomas John Hancock", for instance, must
+come out as Expression 70 -> 7, Soul Urge 20 -> 2, Personality 50 -> 5, Karmic
+Lessons [7, 9], Hidden Passion 1, Subconscious Self 7, Balance 2, and a Life
+Path of 3 for 1990-05-15. 59 tests across 2 files, ~13 ms.
 
 <p align="center">
   <img src="docs/screenshot.png" alt="A full reading for a sample name: Life Path 3, The Communicator, with the core-number cards below" width="720">
