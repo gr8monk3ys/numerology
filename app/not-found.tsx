@@ -10,7 +10,7 @@ export default function NotFound() {
       <h1 className="font-display text-3xl text-mystic-50">
         This path isn&apos;t written in the stars
       </h1>
-      <p className="max-w-md text-mystic-200/70">
+      <p className="max-w-md text-mystic-200/85">
         The page you seek has drifted beyond the veil. Let the numbers guide you
         home.
       </p>

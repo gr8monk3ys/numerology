@@ -50,7 +50,7 @@ export default function HomePage() {
             The numbers written into
             <span className="block gold-text">your name &amp; birth</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-xl animate-fade-up text-lg leading-relaxed text-mystic-200/75">
+          <p className="mx-auto mt-6 max-w-xl animate-fade-up text-lg leading-relaxed text-mystic-200/85">
             Numen is a complete esoteric numerology suite. Enter your name and
             birth date to reveal your Life Path, Soul Urge, karmic debts, tarot
             birth card, life-cycle forecasts, and the astrological energies woven
@@ -89,7 +89,7 @@ export default function HomePage() {
             <div key={n} className="glass card-hover p-6">
               <Icon className="h-7 w-7 text-gold-300" />
               <h3 className="mt-4 font-display text-xl text-mystic-50">{n}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-mystic-200/70">{desc}</p>
+              <p className="mt-2 text-sm leading-relaxed text-mystic-200/85">{desc}</p>
             </div>
           ))}
         </div>
@@ -113,7 +113,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h3 className="font-display text-lg text-mystic-50">{title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-mystic-200/70">{desc}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-mystic-200/85">{desc}</p>
                   </div>
                 </div>
               ))}
@@ -134,7 +134,7 @@ export default function HomePage() {
             <Reveal key={step} delay={i * 120}>
               <span className="gold-text font-display text-4xl font-bold">{step}</span>
               <h3 className="mt-3 font-display text-xl text-mystic-50">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-mystic-200/70">{body}</p>
+              <p className="mt-2 text-sm leading-relaxed text-mystic-200/85">{body}</p>
             </Reveal>
           ))}
         </div>
@@ -147,7 +147,7 @@ export default function HomePage() {
           <h2 className="max-w-xl font-display text-3xl font-semibold text-mystic-50 sm:text-4xl">
             Your chart is waiting to be read
           </h2>
-          <p className="max-w-md text-mystic-200/70">
+          <p className="max-w-md text-mystic-200/85">
             It takes less than a minute. Discover the numbers that have been with
             you since the moment you were named.
           </p>

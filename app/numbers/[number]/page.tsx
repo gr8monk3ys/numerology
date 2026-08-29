@@ -52,7 +52,7 @@ export default async function NumberDetailPage({
     <div className="container-page py-16">
       <Link
         href="/numbers"
-        className="inline-flex items-center gap-2 text-sm text-mystic-200/70 hover:text-gold-200"
+        className="inline-flex items-center gap-2 text-sm text-mystic-200/85 hover:text-gold-200"
       >
         <ArrowLeft className="h-4 w-4" /> All numbers
       </Link>
@@ -86,7 +86,7 @@ export default async function NumberDetailPage({
               <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-aura-400">
                 Gifts
               </h4>
-              <ul className="space-y-1 text-sm text-mystic-200/80">
+              <ul className="space-y-1 text-sm text-mystic-200/85">
                 {master.gifts.map((g) => (
                   <li key={g} className="flex gap-2">
                     <span className="text-aura-400">✦</span>
@@ -96,13 +96,13 @@ export default async function NumberDetailPage({
               </ul>
             </div>
             <div>
-              <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-rose-300/80">
+              <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-rose-300/85">
                 Challenges
               </h4>
-              <ul className="space-y-1 text-sm text-mystic-200/80">
+              <ul className="space-y-1 text-sm text-mystic-200/85">
                 {master.challenges.map((c) => (
                   <li key={c} className="flex gap-2">
-                    <span className="text-rose-300/70">◇</span>
+                    <span className="text-rose-300/85">◇</span>
                     {c}
                   </li>
                 ))}

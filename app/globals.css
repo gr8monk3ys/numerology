@@ -43,7 +43,7 @@
   --color-rose-300: #c6887b;
   --color-rose-400: #a8443b;
   --color-rose-500: #8a2f28;
-  --color-blood-400: #a8342e;
+  --color-blood-400: #dc5f52;
   --color-blood-500: #8a2c26;
   --color-blood-600: #6d211d;
 
@@ -125,7 +125,11 @@
     font-weight: 500;
     color: var(--color-mystic-50);
   }
-  input[type="date"] {
+  /* Native controls must inherit the grimoire, not the browser's chrome. */
+  input,
+  select,
+  textarea,
+  button {
     color-scheme: dark;
   }
 }
@@ -279,12 +283,102 @@
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   .input-field::placeholder {
-    color: rgba(195, 168, 112, 0.4);
+    color: rgba(195, 168, 112, 0.75);
   }
   .input-field:focus {
     outline: none;
     border-color: var(--color-gold-400);
     box-shadow: 0 0 0 1px rgba(198, 158, 74, 0.4);
+  }
+
+  /* ---------------------------------------------------------------- */
+  /*  Date field — the native control, dressed for the grimoire        */
+  /*  We keep <input type="date"> for its behaviour (keyboard entry,   */
+  /*  the mobile wheel picker, locale-correct segments) and restyle    */
+  /*  every part the browser exposes. `color-scheme: dark` is what     */
+  /*  forces the popup calendar itself to render dark.                 */
+  /* ---------------------------------------------------------------- */
+  .date-field {
+    color-scheme: dark;
+    font-family: var(--font-serif);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.03em;
+    padding-right: 0.75rem;
+    cursor: text;
+  }
+  .date-field::-webkit-datetime-edit {
+    padding: 0;
+    color: var(--color-mystic-50);
+  }
+  /* Until a date is chosen the mm/dd/yyyy skeleton is a hint, not a value */
+  .date-field.is-empty::-webkit-datetime-edit {
+    color: rgba(195, 168, 112, 0.75);
+  }
+  .date-field::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  .date-field::-webkit-datetime-edit-text {
+    color: rgba(198, 158, 74, 0.7);
+    padding: 0 0.15em;
+  }
+  /* Replace the browser's grey glyph with a gilt one */
+  .date-field::-webkit-calendar-picker-indicator {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    opacity: 0.9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d6b566' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='1.5'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3Ccircle cx='8.5' cy='14.5' r='1.1' fill='%23d6b566' stroke='none'/%3E%3Ccircle cx='12' cy='14.5' r='1.1' fill='%23d6b566' stroke='none'/%3E%3Ccircle cx='15.5' cy='14.5' r='1.1' fill='%23d6b566' stroke='none'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 0.2s ease, filter 0.2s ease;
+  }
+  .date-field::-webkit-calendar-picker-indicator:hover,
+  .date-field:focus::-webkit-calendar-picker-indicator {
+    opacity: 1;
+    filter: drop-shadow(0 0 4px rgba(198, 158, 74, 0.55));
+  }
+  /* Firefox exposes no indicator pseudo-element; color-scheme carries it. */
+
+  /* Gilt checkbox — replaces the stock white square */
+  .checkbox-field {
+    appearance: none;
+    -webkit-appearance: none;
+    display: inline-grid;
+    place-content: center;
+    height: 1.05rem;
+    width: 1.05rem;
+    flex-shrink: 0;
+    margin: 0;
+    border-radius: 2px;
+    border: 1px solid rgba(198, 158, 74, 0.45);
+    background: rgba(8, 6, 4, 0.7);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .checkbox-field::before {
+    content: "";
+    height: 0.66rem;
+    width: 0.66rem;
+    transform: scale(0);
+    transition: transform 0.15s cubic-bezier(0.2, 0.7, 0.2, 1);
+    background-image: linear-gradient(165deg, #efdca0 0%, #cba04a 48%, #8a6122 100%);
+    clip-path: polygon(14% 46%, 0 62%, 38% 100%, 100% 18%, 85% 4%, 37% 68%);
+  }
+  .checkbox-field:hover {
+    border-color: rgba(214, 181, 102, 0.75);
+  }
+  .checkbox-field:checked {
+    border-color: var(--color-gold-400);
+    background: rgba(198, 158, 74, 0.12);
+  }
+  .checkbox-field:checked::before {
+    transform: scale(1);
+  }
+  .checkbox-field:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(198, 158, 74, 0.55);
   }
 
   .label-text {

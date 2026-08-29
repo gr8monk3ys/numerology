@@ -89,7 +89,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
             <h1 className="mt-2 font-display text-3xl text-mystic-50 sm:text-4xl">
               {lifePathMeaning?.title ?? `Life Path ${core.lifePath.value}`}
             </h1>
-            <p className="mt-1 text-sm text-mystic-200/60">
+            <p className="mt-1 text-sm text-mystic-200/85">
               {name.all.join(" ")} · {MONTHS[birth.month - 1]} {birth.day},{" "}
               {birth.year}
             </p>
@@ -137,7 +137,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
                   Born on the {birth.day}
                   {ordinal(birth.day)} — {bday.title}
                 </h3>
-                <p className="mt-1 text-sm text-mystic-200/75">{bday.summary}</p>
+                <p className="mt-1 text-sm text-mystic-200/85">{bday.summary}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {bday.traits.map((t) => (
                     <Chip key={t} tone="muted">
@@ -162,7 +162,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
                   <div className="flex items-center gap-3">
                     <NumberOrb value={hit.debt} size="sm" isKarmic />
                     <div>
-                      <span className="text-xs font-semibold uppercase tracking-widest text-rose-300/80">
+                      <span className="text-xs font-semibold uppercase tracking-widest text-rose-300/85">
                         {hit.source} · Karmic Debt {hit.debt}
                       </span>
                       <h3 className="font-display text-lg text-mystic-50">
@@ -171,7 +171,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
                     </div>
                   </div>
                   {km?.summary && (
-                    <p className="mt-3 text-sm text-mystic-200/75">{km.summary}</p>
+                    <p className="mt-3 text-sm text-mystic-200/85">{km.summary}</p>
                   )}
                   {km?.lesson && (
                     <p className="mt-2 text-sm text-mystic-100/85">
@@ -184,7 +184,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
             })}
           </div>
         ) : (
-          <p className="glass p-5 text-sm text-mystic-200/70">
+          <p className="glass p-5 text-sm text-mystic-200/85">
             You carry no karmic debt numbers (13, 14, 16, 19) in your core chart —
             a lighter cosmic ledger to work with in this lifetime.
           </p>
@@ -195,7 +195,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
             <h3 className="text-xs font-semibold uppercase tracking-widest text-gold-300/80">
               Karmic Lessons
             </h3>
-            <p className="mt-2 text-sm text-mystic-200/70">
+            <p className="mt-2 text-sm text-mystic-200/85">
               Numbers absent from your name — energies to consciously develop.
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -212,7 +212,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
             <h3 className="text-xs font-semibold uppercase tracking-widest text-gold-300/80">
               Hidden Passion
             </h3>
-            <p className="mt-2 text-sm text-mystic-200/70">
+            <p className="mt-2 text-sm text-mystic-200/85">
               The number appearing most in your name — your instinctive talent.
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -225,7 +225,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
             <h3 className="text-xs font-semibold uppercase tracking-widest text-gold-300/80">
               Subconscious Self
             </h3>
-            <p className="mt-2 text-sm text-mystic-200/70">
+            <p className="mt-2 text-sm text-mystic-200/85">
               Your capacity to respond well under pressure.
             </p>
             <div className="mt-3">
@@ -247,7 +247,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
             </span>
             <div className="mt-2 flex items-center gap-3">
               <NumberOrb value={advanced.rationalThought.value} size="sm" isMaster={advanced.rationalThought.isMaster} />
-              <p className="text-sm text-mystic-200/70">How you naturally think & solve.</p>
+              <p className="text-sm text-mystic-200/85">How you naturally think & solve.</p>
             </div>
           </div>
         </div>
@@ -258,7 +258,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
         <div className="glass flex flex-col items-center gap-6 p-8 text-center sm:flex-row sm:text-left">
           <NumberOrb value={chaldean.root} size="lg" />
           <div>
-            <p className="text-sm text-mystic-200/75">
+            <p className="text-sm text-mystic-200/85">
               In the ancient Chaldean system, the vibration of{" "}
               <span className="text-gold-200">{name.all.join(" ")}</span> sums to a
               compound{" "}
@@ -266,7 +266,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
               rooting into the number{" "}
               <span className="font-display text-gold-200">{chaldean.root}</span>.
             </p>
-            <p className="mt-2 text-xs text-mystic-300/50">
+            <p className="mt-2 text-xs text-mystic-300/85">
               Chaldean numerology (values 1–8, the sacred 9 unassigned) reads the
               name as it is spoken and lived, complementing the Pythagorean chart
               above.
@@ -278,7 +278,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
       {/* Correspondences */}
       {corr && (
         <Panel icon={Star} title="Esoteric Correspondences">
-          <p className="text-sm text-mystic-200/70">
+          <p className="text-sm text-mystic-200/85">
             The symbols that resonate with your Life Path {core.lifePath.value}.
           </p>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -313,7 +313,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
               </span>
             </div>
             <p className="mt-2 text-sm text-mystic-100/85">{py.summary}</p>
-            <p className="mt-2 text-sm text-mystic-200/70">
+            <p className="mt-2 text-sm text-mystic-200/85">
               <span className="text-gold-300">Guidance: </span>
               {py.advice}
             </p>
@@ -346,7 +346,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
                       <Chip tone="muted">ages {p.label}</Chip>
                     </div>
                     {pm?.summary && (
-                      <p className="mt-1 text-sm text-mystic-200/70">{pm.summary}</p>
+                      <p className="mt-1 text-sm text-mystic-200/85">{pm.summary}</p>
                     )}
                   </div>
                 </div>
@@ -371,7 +371,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
                       <Chip tone="muted">ages {c.label}</Chip>
                     </div>
                     {cm?.summary && (
-                      <p className="mt-1 text-sm text-mystic-200/70">{cm.summary}</p>
+                      <p className="mt-1 text-sm text-mystic-200/85">{cm.summary}</p>
                     )}
                   </div>
                 </div>
@@ -381,7 +381,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
         </div>
       </Panel>
 
-      <p className="border-t border-white/5 pt-6 text-center text-xs text-mystic-300/40">
+      <p className="border-t border-white/5 pt-6 text-center text-xs text-mystic-300/85">
         Numerology is offered for reflection and inspiration. May these numbers
         illuminate, never confine. ✦
       </p>
@@ -411,7 +411,7 @@ function LetterStat({
       </span>
       <div className="mt-2 flex items-center gap-3">
         <span className="font-display text-3xl gold-text">{trait?.letter ?? "—"}</span>
-        <p className="text-sm text-mystic-200/70">{note}</p>
+        <p className="text-sm text-mystic-200/85">{note}</p>
       </div>
     </div>
   );
@@ -445,7 +445,7 @@ function ForecastStat({
         <span className="text-xs font-semibold uppercase tracking-widest text-gold-300/80">
           {label}
         </span>
-        <p className="text-sm text-mystic-200/60">Cycle vibration</p>
+        <p className="text-sm text-mystic-200/85">Cycle vibration</p>
       </div>
     </div>
   );

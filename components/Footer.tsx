@@ -13,7 +13,7 @@ export function Footer() {
             <Sparkles className="h-5 w-5 text-gold-300" />
             <span className="gold-text">Numen</span>
           </Link>
-          <p className="max-w-xs text-sm text-mystic-200/60">
+          <p className="max-w-xs text-sm text-mystic-200/85">
             An esoteric numerology suite. Reveal the hidden architecture of your
             name and birth date.
           </p>
@@ -23,7 +23,7 @@ export function Footer() {
           <h4 className="mb-3 text-sm font-semibold uppercase tracking-widest text-gold-200/80">
             Calculators
           </h4>
-          <ul className="space-y-2 text-sm text-mystic-200/70">
+          <ul className="space-y-2 text-sm text-mystic-200/85">
             <li>
               <Link href="/reading" className="link-underline">
                 Full Reading
@@ -51,7 +51,7 @@ export function Footer() {
           <h4 className="mb-3 text-sm font-semibold uppercase tracking-widest text-gold-200/80">
             Explore
           </h4>
-          <ul className="space-y-2 text-sm text-mystic-200/70">
+          <ul className="space-y-2 text-sm text-mystic-200/85">
             <li>
               <Link href="/numbers" className="link-underline">
                 Number Meanings
@@ -74,13 +74,13 @@ export function Footer() {
           <h4 className="mb-3 text-sm font-semibold uppercase tracking-widest text-gold-200/80">
             The Fine Print
           </h4>
-          <p className="text-sm text-mystic-200/60">
+          <p className="text-sm text-mystic-200/85">
             Numerology is offered for reflection, inspiration, and
             entertainment. Trust your own intuition above all.
           </p>
         </div>
       </div>
-      <div className="border-t border-white/5 py-6 text-center text-xs text-mystic-200/50">
+      <div className="border-t border-white/5 py-6 text-center text-xs text-mystic-200/85">
         © {new Date().getFullYear()} Numen. Crafted under a waxing moon. ✦
       </div>
     </footer>

@@ -52,7 +52,7 @@ export function NumberCard({
         </div>
         <ChevronDown
           className={clsx(
-            "h-5 w-5 shrink-0 text-mystic-300/60 transition-transform",
+            "h-5 w-5 shrink-0 text-mystic-300/70 transition-transform",
             open && "rotate-180",
           )}
         />
@@ -73,7 +73,7 @@ export function NumberCard({
             </p>
           )}
           {meaning?.detailed && (
-            <p className="whitespace-pre-line text-sm leading-relaxed text-mystic-200/70">
+            <p className="whitespace-pre-line text-sm leading-relaxed text-mystic-200/85">
               {meaning.detailed}
             </p>
           )}
@@ -84,7 +84,7 @@ export function NumberCard({
                   <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-aura-400">
                     Strengths
                   </h4>
-                  <ul className="space-y-1 text-sm text-mystic-200/80">
+                  <ul className="space-y-1 text-sm text-mystic-200/85">
                     {meaning.strengths.map((s) => (
                       <li key={s} className="flex gap-2">
                         <span className="text-aura-400">✦</span>
@@ -96,13 +96,13 @@ export function NumberCard({
               )}
               {meaning?.challenges && (
                 <div>
-                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-rose-300/80">
+                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-rose-300/85">
                     Challenges
                   </h4>
-                  <ul className="space-y-1 text-sm text-mystic-200/80">
+                  <ul className="space-y-1 text-sm text-mystic-200/85">
                     {meaning.challenges.map((c) => (
                       <li key={c} className="flex gap-2">
-                        <span className="text-rose-300/70">◇</span>
+                        <span className="text-rose-300/85">◇</span>
                         {c}
                       </li>
                     ))}
@@ -111,7 +111,7 @@ export function NumberCard({
               )}
             </div>
           )}
-          <p className="pt-1 text-xs text-mystic-300/40">
+          <p className="pt-1 text-xs text-mystic-300/85">
             Reduction: {insight.steps.join(" → ")}
             {insight.karmicDebt ? `  ·  carries karmic debt ${insight.karmicDebt}` : ""}
           </p>

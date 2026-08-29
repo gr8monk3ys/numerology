@@ -33,7 +33,7 @@ export function SectionHeading({
         <div className="rule-ornament pt-1 text-sm">❧</div>
       )}
       {subtitle && (
-        <p className="text-base leading-relaxed text-mystic-200/70">{subtitle}</p>
+        <p className="text-base leading-relaxed text-mystic-200/85">{subtitle}</p>
       )}
     </div>
   );

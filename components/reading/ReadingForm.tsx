@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import clsx from "clsx";
 import { Sparkles, RotateCcw } from "lucide-react";
 import { buildReading, type Reading } from "@/lib/numerology";
 import { ReadingResults } from "@/components/reading/ReadingResults";
@@ -75,8 +76,9 @@ export function ReadingForm() {
             placeholder="e.g. Ada Augusta Byron"
             className="input-field"
             autoComplete="off"
+            aria-describedby="fullName-hint"
           />
-          <p className="mt-1.5 text-xs text-mystic-300/50">
+          <p id="fullName-hint" className="mt-1.5 text-xs text-mystic-300/85">
             Use the full name given at birth for the most accurate reading.
           </p>
         </div>
@@ -92,16 +94,21 @@ export function ReadingForm() {
             min="1900-01-01"
             max="2099-12-31"
             onChange={(e) => setBirthDate(e.target.value)}
-            className="input-field [color-scheme:dark]"
+            className={clsx("input-field date-field", !birthDate && "is-empty")}
+            autoComplete="bday"
+            aria-describedby="birthDate-hint"
           />
+          <p id="birthDate-hint" className="mt-1.5 text-xs text-mystic-300/85">
+            Day, month and year of birth — type it, or open the almanac.
+          </p>
         </div>
 
-        <label className="flex cursor-pointer items-center gap-3 text-sm text-mystic-200/80">
+        <label className="flex cursor-pointer items-center gap-3 text-sm text-mystic-200/85">
           <input
             type="checkbox"
             checked={yAsVowel}
             onChange={(e) => setYAsVowel(e.target.checked)}
-            className="h-4 w-4 rounded border-white/20 bg-void-900 accent-mystic-500"
+            className="checkbox-field"
           />
           Treat “Y” as a vowel (affects Soul Urge &amp; Personality)
         </label>

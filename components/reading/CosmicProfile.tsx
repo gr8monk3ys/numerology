@@ -103,7 +103,7 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
           <div className="flex-1 space-y-3">
             <p className="text-mystic-100/90">{p.tarot.personality?.birthCard}</p>
             {!p.tarot.card.same && p.tarot.soul && (
-              <p className="text-sm text-mystic-200/70">
+              <p className="text-sm text-mystic-200/85">
                 <span className="text-gold-300">{p.tarot.soul.name} (soul card): </span>
                 {p.tarot.soul.numerology}
               </p>
@@ -129,7 +129,7 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
                 <Chip tone="muted">{p.sun.modality}</Chip>
                 <Chip tone="muted">Ruled by {p.sun.rulingPlanet}</Chip>
               </div>
-              <p className="mt-3 text-sm text-mystic-200/70">{p.sun.numerologyNote}</p>
+              <p className="mt-3 text-sm text-mystic-200/85">{p.sun.numerologyNote}</p>
             </div>
           )}
           <div className="glass p-6">
@@ -149,7 +149,7 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
                 </Chip>
               ))}
             </div>
-            <p className="mt-3 text-sm text-mystic-200/70">{p.chinese.summary}</p>
+            <p className="mt-3 text-sm text-mystic-200/85">{p.chinese.summary}</p>
           </div>
         </div>
       </Section>
@@ -171,11 +171,11 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
                   <h3 className="font-display text-lg text-mystic-50">{c.title}</h3>
                 </div>
               </div>
-              <p className="mt-3 text-xs uppercase tracking-widest text-mystic-300/50">
+              <p className="mt-3 text-xs uppercase tracking-widest text-mystic-300/85">
                 Ruled by your birth {c.ruler}
               </p>
               {c.meaning && (
-                <p className="mt-2 text-sm text-mystic-200/70">{c.meaning}</p>
+                <p className="mt-2 text-sm text-mystic-200/85">{c.meaning}</p>
               )}
             </div>
           ))}
@@ -196,7 +196,7 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
                   </h3>
                 </div>
               </div>
-              <p className="mt-3 text-sm text-mystic-200/70">
+              <p className="mt-3 text-sm text-mystic-200/85">
                 Bridging {b.between}. {b.meaning?.summary}
               </p>
               {b.meaning?.advice && (

@@ -44,7 +44,7 @@ export default function AboutPage() {
       <div className="mt-12 space-y-14">
         <section className="space-y-4">
           <h2 className="font-display text-2xl text-mystic-50">Reduction</h2>
-          <p className="text-mystic-200/80">
+          <p className="text-mystic-200/85">
             Almost every number in numerology is <em>reduced</em> — its digits
             are added together repeatedly until a single digit (1–9) remains. For
             example, a total of 58 becomes 5 + 8 = 13, then 1 + 3 = 4. The single
@@ -56,7 +56,7 @@ export default function AboutPage() {
           <h2 className="font-display text-2xl text-mystic-50">
             Master Numbers · 11, 22, 33
           </h2>
-          <p className="text-mystic-200/80">
+          <p className="text-mystic-200/85">
             When 11, 22 or 33 appear, they are left un-reduced. These are numbers
             of heightened potential and heightened challenge: the 11 the intuitive
             Illuminator, the 22 the Master Builder, the 33 the Master Teacher. They
@@ -69,7 +69,7 @@ export default function AboutPage() {
           <h2 className="font-display text-2xl text-mystic-50">
             Karmic Debt · 13, 14, 16, 19
           </h2>
-          <p className="text-mystic-200/80">
+          <p className="text-mystic-200/85">
             If a core number&rsquo;s running total lands on 13, 14, 16 or 19 before its
             final reduction, it carries a <em>karmic debt</em> — an inherited
             lesson from past cycles. 13/4 asks for disciplined work, 14/5 for
@@ -87,7 +87,7 @@ export default function AboutPage() {
               <h3 className="font-display text-lg text-gold-200">
                 Pythagorean
               </h3>
-              <p className="text-sm text-mystic-200/75">
+              <p className="text-sm text-mystic-200/85">
                 The modern Western system. Letters A–Z map to 1–9 in order,
                 cycling three times. It is the default for the core chart.
               </p>
@@ -95,7 +95,7 @@ export default function AboutPage() {
             </div>
             <div className="space-y-4">
               <h3 className="font-display text-lg text-gold-200">Chaldean</h3>
-              <p className="text-sm text-mystic-200/75">
+              <p className="text-sm text-mystic-200/85">
                 The older Babylonian system. Letters map to 1–8 by sound; the
                 number 9 is held sacred and never assigned. Its compound numbers
                 carry their own layered meanings.
@@ -107,7 +107,7 @@ export default function AboutPage() {
 
         <section className="space-y-4">
           <h2 className="font-display text-2xl text-mystic-50">The Core Numbers</h2>
-          <ul className="space-y-3 text-mystic-200/80">
+          <ul className="space-y-3 text-mystic-200/85">
             <li>
               <strong className="text-mystic-50">Life Path</strong> — from your
               birth date; the overarching journey and purpose of your life.
@@ -141,7 +141,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <p className="mt-10 text-center text-xs text-mystic-300/40">
+      <p className="mt-10 text-center text-xs text-mystic-300/85">
         Numen is offered for reflection, inspiration and entertainment.
       </p>
     </div>

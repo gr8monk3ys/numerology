@@ -36,10 +36,10 @@ export default function AngelNumbersPage() {
                   {a.title}
                 </h3>
               </div>
-              <p className="text-sm leading-relaxed text-mystic-200/70">
+              <p className="text-sm leading-relaxed text-mystic-200/85">
                 {a.meaning}
               </p>
-              <div className="mt-auto space-y-1.5 border-t border-white/5 pt-3 text-xs text-mystic-200/60">
+              <div className="mt-auto space-y-1.5 border-t border-white/5 pt-3 text-xs text-mystic-200/85">
                 <p>
                   <span className="text-gold-300/80">Love · </span>
                   {a.love}

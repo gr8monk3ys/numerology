@@ -21,7 +21,7 @@ export function PlanesChart({
 
   return (
     <div className="glass p-6">
-      <p className="text-sm leading-relaxed text-mystic-200/75">{content._intro}</p>
+      <p className="text-sm leading-relaxed text-mystic-200/85">{content._intro}</p>
       <div className="mt-6 space-y-4">
         {ORDER.map((plane) => {
           const count = result[plane];
@@ -39,8 +39,8 @@ export function PlanesChart({
                     </span>
                   )}
                 </span>
-                <span className="tabular-nums text-mystic-200/70">
-                  {count} <span className="text-mystic-300/50">· {pct}%</span>
+                <span className="tabular-nums text-mystic-200/85">
+                  {count} <span className="text-mystic-300/85">· {pct}%</span>
                 </span>
               </div>
               <div className="h-2.5 w-full overflow-hidden rounded-full bg-white/[0.06]">
@@ -59,7 +59,7 @@ export function PlanesChart({
           );
         })}
       </div>
-      <p className="mt-5 text-sm text-mystic-200/70">
+      <p className="mt-5 text-sm text-mystic-200/85">
         <span className="text-gold-300">{content[result.dominant].title} plane · </span>
         {content[result.dominant].meaning}
       </p>

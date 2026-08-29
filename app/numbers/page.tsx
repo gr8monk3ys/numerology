@@ -39,7 +39,7 @@ export default function NumbersIndexPage() {
               href={`/numbers/${key}`}
               className="glass group relative flex flex-col gap-4 p-6 transition-colors hover:border-mystic-400/30"
             >
-              <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-mystic-300/40 transition-colors group-hover:text-gold-300" />
+              <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-mystic-300/70 transition-colors group-hover:text-gold-300" />
               <div className="flex items-center gap-4">
                 <NumberOrb value={key} size="md" isMaster={isMaster} />
                 <div>
@@ -50,12 +50,12 @@ export default function NumbersIndexPage() {
                 </div>
               </div>
               {meaning?.summary && (
-                <p className="line-clamp-3 text-sm leading-relaxed text-mystic-200/70">
+                <p className="line-clamp-3 text-sm leading-relaxed text-mystic-200/85">
                   {meaning.summary}
                 </p>
               )}
               {corr?.tarot && (
-                <span className="mt-auto text-xs text-mystic-300/50">
+                <span className="mt-auto text-xs text-mystic-300/85">
                   Tarot · {corr.tarot}
                 </span>
               )}

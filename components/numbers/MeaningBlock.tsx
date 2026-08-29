@@ -21,7 +21,7 @@ export function MeaningBlock({
         {meaning.summary}
       </p>
       {meaning.detailed && (
-        <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-mystic-200/70">
+        <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-mystic-200/85">
           {meaning.detailed}
         </p>
       )}
@@ -30,7 +30,7 @@ export function MeaningBlock({
           <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-aura-400">
             Strengths
           </h4>
-          <ul className="space-y-1 text-sm text-mystic-200/80">
+          <ul className="space-y-1 text-sm text-mystic-200/85">
             {meaning.strengths.map((s) => (
               <li key={s} className="flex gap-2">
                 <span className="text-aura-400">✦</span>
@@ -40,13 +40,13 @@ export function MeaningBlock({
           </ul>
         </div>
         <div>
-          <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-rose-300/80">
+          <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-rose-300/85">
             Challenges
           </h4>
-          <ul className="space-y-1 text-sm text-mystic-200/80">
+          <ul className="space-y-1 text-sm text-mystic-200/85">
             {meaning.challenges.map((c) => (
               <li key={c} className="flex gap-2">
-                <span className="text-rose-300/70">◇</span>
+                <span className="text-rose-300/85">◇</span>
                 {c}
               </li>
             ))}

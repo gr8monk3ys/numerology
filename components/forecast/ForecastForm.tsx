@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import clsx from "clsx";
 import { CalendarClock, Mountain, Swords } from "lucide-react";
 import {
   personalCycles,
@@ -93,7 +94,8 @@ export function ForecastForm() {
             min="1900-01-01"
             max="2099-12-31"
             onChange={(e) => setBirthDate(e.target.value)}
-            className="input-field [color-scheme:dark]"
+            className={clsx("input-field date-field", !birthDate && "is-empty")}
+            autoComplete="bday"
           />
         </div>
         <button type="submit" className="btn-primary shrink-0">
@@ -123,7 +125,7 @@ export function ForecastForm() {
                     <span className="text-xs font-semibold uppercase tracking-widest text-gold-300/80">
                       {label}
                     </span>
-                    <p className="text-sm text-mystic-200/60">
+                    <p className="text-sm text-mystic-200/85">
                       Current vibration
                     </p>
                   </div>
@@ -136,7 +138,7 @@ export function ForecastForm() {
                   A {py.theme} Year
                 </span>
                 <p className="mt-2 text-sm text-mystic-100/85">{py.summary}</p>
-                <p className="mt-2 text-sm text-mystic-200/70">
+                <p className="mt-2 text-sm text-mystic-200/85">
                   <span className="text-gold-300">Guidance: </span>
                   {py.advice}
                 </p>
@@ -176,7 +178,7 @@ export function ForecastForm() {
                         {active && <Chip tone="gold">Now</Chip>}
                       </div>
                       {pm?.summary && (
-                        <p className="mt-1 text-sm text-mystic-200/70">
+                        <p className="mt-1 text-sm text-mystic-200/85">
                           {pm.summary}
                         </p>
                       )}
@@ -210,7 +212,7 @@ export function ForecastForm() {
                         {active && <Chip tone="gold">Now</Chip>}
                       </div>
                       {cm?.summary && (
-                        <p className="mt-1 text-sm text-mystic-200/70">
+                        <p className="mt-1 text-sm text-mystic-200/85">
                           {cm.summary}
                         </p>
                       )}

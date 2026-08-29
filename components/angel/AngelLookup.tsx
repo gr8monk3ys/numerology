@@ -48,6 +48,7 @@ export function AngelLookup() {
       <form onSubmit={handleSubmit} className="glass-strong flex gap-3 p-4">
         <input
           type="text"
+          aria-label="Angel number to decode"
           inputMode="numeric"
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -74,7 +75,7 @@ export function AngelLookup() {
               <h3 className="font-display text-2xl text-mystic-50">
                 {entry?.title ?? `The message of ${analysis.input}`}
               </h3>
-              <p className="mt-1 text-sm text-mystic-200/60">
+              <p className="mt-1 text-sm text-mystic-200/85">
                 Root vibration{" "}
                 <Link
                   href={`/numbers/${analysis.root}`}
@@ -108,7 +109,7 @@ export function AngelLookup() {
               </div>
             </div>
           ) : (
-            <p className="mt-6 text-center text-sm text-mystic-200/70">
+            <p className="mt-6 text-center text-sm text-mystic-200/85">
               This exact sequence isn&rsquo;t in our library yet, but its energy flows
               from the root number{" "}
               <Link href={`/numbers/${analysis.root}`} className="text-gold-200">
@@ -129,7 +130,7 @@ function MiniCard({ label, value }: { label: string; value: string }) {
       <span className="text-xs font-semibold uppercase tracking-widest text-gold-300/70">
         {label}
       </span>
-      <p className="mt-1 text-sm text-mystic-200/80">{value}</p>
+      <p className="mt-1 text-sm text-mystic-200/85">{value}</p>
     </div>
   );
 }
