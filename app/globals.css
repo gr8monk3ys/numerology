@@ -1,4 +1,51 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+/* ~/code/ui theme (tokens, type scale, motion, paper-grain overlay),
+ * adopted per W7. Two notes on scope:
+ *
+ * 1. Fonts are NOT swapped to the registry's Fraunces / Instrument Sans /
+ *    IBM Plex Mono. Numen's whole premise is an illuminated-manuscript
+ *    register: gothic display type, an old-style serif body, a blackletter
+ *    wordmark. That typography is the product's differentiation, not
+ *    incidental styling, so app/layout.tsx and the font tokens below are
+ *    untouched. lib/fonts.ts (the registry's font loaders) is added to the
+ *    repo but not wired in, so it is available if a future reviewer wants
+ *    fleet-standard type here. identity.css declares its own font-display
+ *    token, but Numen's own token below is declared later in this file, so
+ *    Tailwind's last-write-wins @theme merge keeps Numen's gothic display
+ *    font in force without any extra overriding.
+ * 2. No permanent dark class is forced onto html. This app has no light or
+ *    dark toggle, and none of its own CSS reads the identity background,
+ *    foreground or primary tokens -- Numen uses its own void, mystic and
+ *    gold token namespace throughout with zero collisions against the
+ *    identity tokens -- so the light or dark default is inert today. If
+ *    identity's own utilities such as cta-primary or surface-card are ever
+ *    adopted, add a dark class to html first, or they will render in the
+ *    light warm-paper palette instead of Numen's dark register.
+ *
+ * Full reasoning: W7-report.md in the fleet consolidation workstream. */
+@import "./identity.css";
+
+/* The two knobs identity.css allows an app to set. --primary is Numen's
+ * own existing gilt/gold accent (gold-400 in light, gold-300 in dark) --
+ * the color already used everywhere via .btn-primary, .gold-text and the
+ * CTA gradients -- converted to HSL so identity's hsl(var(--primary))
+ * utilities resolve, even though none of Numen's own components currently
+ * consume them directly. --radius is small (0.5rem, a 2/4/6/10/14px
+ * scale) to stay close to the app's existing sharp, ruled-manuscript
+ * corners (.glass: 3px, .btn-primary: 2px) rather than identity's softer
+ * 0.75rem default -- used by Tailwind's rounded-lg/xl utilities in 5
+ * files: app/page.tsx and four components under components/reading and
+ * components/angel. */
+:root {
+  --primary: 41 51% 52%; /* gold-400 #c39c47 */
+  --radius: 0.5rem;
+}
+.dark {
+  --primary: 42 58% 62%; /* gold-300 #d6b566 */
+}
+
 
 /* ================================================================== */
 /*  NUMEN — dark gothic-manuscript / grimoire design tokens           */
