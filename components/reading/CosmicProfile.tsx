@@ -1,10 +1,10 @@
 "use client";
 
-import { Sparkles, Sun, Layers, Hourglass, Link2, Clover } from "lucide-react";
 import type { Reading } from "@/lib/numerology";
 import { buildCosmicProfile } from "@/lib/content/cosmic";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { Chip } from "@/components/ui/Chip";
+import { SectionRow } from "@/components/ui/SectionHeading";
 import { PlanesChart } from "@/components/reading/PlanesChart";
 
 const ROMAN: Record<number, string> = {
@@ -25,26 +25,19 @@ function TarotCard({
   role: string;
 }) {
   return (
-    <div className="flex flex-col items-center gap-3">
-      <div className="relative aspect-[2/3] w-40 overflow-hidden rounded-xl border border-gold-300/30 bg-gradient-to-b from-void-800 to-void-950 p-4 shadow-glow-gold">
-        <div className="absolute inset-1.5 rounded-lg border border-gold-300/20" />
-        <div className="relative flex h-full flex-col items-center justify-between text-center">
-          <span className="font-display text-sm tracking-widest text-gold-200/80">
-            {ROMAN[index]}
-          </span>
-          <Sparkles className="h-9 w-9 text-gold-300/90" />
-          <span className="font-display text-base leading-tight text-mystic-50">
-            {name}
-          </span>
+    <div className="flex w-40 flex-col gap-3">
+      <div className="ticks relative aspect-[2/3] rounded-[3px] border border-gold-400/50 bg-ink-900 p-3">
+        <div className="flex h-full flex-col justify-between">
+          <span className="font-mono text-[11px] tracking-[0.2em] text-gold-300">{ROMAN[index]}</span>
+          <span className="font-display text-3xl leading-none text-gold-200/40">✦</span>
+          <span className="font-display text-xl leading-tight text-bone-50">{name}</span>
         </div>
       </div>
-      <div className="text-center">
-        <span className="eyebrow">{role}</span>
-        <div className="mt-1.5 flex max-w-[10rem] flex-wrap justify-center gap-1">
+      <div>
+        <span className="mono-label">{role}</span>
+        <div className="mt-1.5 flex flex-wrap gap-1">
           {keywords.slice(0, 3).map((k) => (
-            <Chip key={k} tone="muted">
-              {k}
-            </Chip>
+            <Chip key={k} tone="muted">{k}</Chip>
           ))}
         </div>
       </div>
@@ -52,43 +45,31 @@ function TarotCard({
   );
 }
 
-function Section({
-  icon: Icon,
-  title,
-  children,
+const idx = (n: number) => String(n).padStart(2, "0");
+
+export function CosmicProfile({
+  reading,
+  startIndex = 1,
 }: {
-  icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  children: React.ReactNode;
+  reading: Reading;
+  startIndex?: number;
 }) {
-  return (
-    <section className="space-y-5">
-      <div className="flex items-center gap-3">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-mystic-500/15 text-gold-300">
-          <Icon className="h-5 w-5" />
-        </div>
-        <h2 className="font-display text-2xl text-mystic-50">{title}</h2>
-      </div>
-      {children}
-    </section>
-  );
-}
-
-export function CosmicProfile({ reading }: { reading: Reading }) {
   const p = buildCosmicProfile(reading);
+  let n = startIndex;
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-20">
       {/* Tarot Birth Card */}
-      <Section icon={Sparkles} title="Your Tarot Birth Card">
-        <div className="glass flex flex-col items-center gap-8 p-8 md:flex-row md:items-start">
+      <section className="space-y-6">
+        <SectionRow index={idx(n++)} title="Tarot birth card" meta="Major arcana" />
+        <div className="frame flex flex-col gap-8 p-6 md:flex-row md:items-start sm:p-8">
           <div className="flex gap-5">
             {p.tarot.personality && (
               <TarotCard
                 index={p.tarot.card.personality}
                 name={p.tarot.personality.name}
                 keywords={p.tarot.personality.keywords}
-                role={p.tarot.card.same ? "Birth Card" : "Personality"}
+                role={p.tarot.card.same ? "Birth card" : "Personality"}
               />
             )}
             {!p.tarot.card.same && p.tarot.soul && (
@@ -101,152 +82,143 @@ export function CosmicProfile({ reading }: { reading: Reading }) {
             )}
           </div>
           <div className="flex-1 space-y-3">
-            <p className="text-mystic-100/90">{p.tarot.personality?.birthCard}</p>
+            <p className="text-[15px] leading-relaxed text-bone-100">{p.tarot.personality?.birthCard}</p>
             {!p.tarot.card.same && p.tarot.soul && (
-              <p className="text-sm text-mystic-200/70">
-                <span className="text-gold-300">{p.tarot.soul.name} (soul card): </span>
+              <p className="text-sm text-bone-300">
+                <span className="text-gold-200">{p.tarot.soul.name} (soul card) · </span>
                 {p.tarot.soul.numerology}
               </p>
             )}
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Astrology row */}
-      <Section icon={Sun} title="Written in the Stars">
-        <div className="grid gap-4 md:grid-cols-2">
+      {/* Astrology */}
+      <section className="space-y-6">
+        <SectionRow index={idx(n++)} title="Written in the stars" />
+        <div className="divided md:grid-cols-2">
           {p.sun && (
-            <div className="glass p-6">
-              <div className="flex items-center gap-3">
-                <span className="text-4xl">{p.sun.symbol}</span>
+            <div className="p-6">
+              <div className="flex items-center gap-4">
+                <span className="flex h-12 w-12 items-center justify-center rounded-[3px] border hairline text-2xl">{p.sun.symbol}</span>
                 <div>
-                  <span className="eyebrow">Sun Sign</span>
-                  <h3 className="font-display text-xl text-mystic-50">{p.sun.sign}</h3>
+                  <span className="mono-label">Sun sign</span>
+                  <h3 className="text-xl">{p.sun.sign}</h3>
                 </div>
               </div>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-wrap gap-1.5">
                 <Chip tone="muted">{p.sun.element}</Chip>
                 <Chip tone="muted">{p.sun.modality}</Chip>
                 <Chip tone="muted">Ruled by {p.sun.rulingPlanet}</Chip>
               </div>
-              <p className="mt-3 text-sm text-mystic-200/70">{p.sun.numerologyNote}</p>
+              <p className="mt-4 text-sm text-bone-300">{p.sun.numerologyNote}</p>
             </div>
           )}
-          <div className="glass p-6">
-            <div className="flex items-center gap-3">
-              <span className="text-4xl">{p.chinese.emoji}</span>
+          <div className="p-6">
+            <div className="flex items-center gap-4">
+              <span className="flex h-12 w-12 items-center justify-center rounded-[3px] border hairline text-2xl">{p.chinese.emoji}</span>
               <div>
-                <span className="eyebrow">Chinese Zodiac</span>
-                <h3 className="font-display text-xl text-mystic-50">
-                  {p.chinese.animal}
-                </h3>
+                <span className="mono-label">Chinese zodiac</span>
+                <h3 className="text-xl">{p.chinese.animal}</h3>
               </div>
             </div>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-wrap gap-1.5">
               {p.chinese.traits.slice(0, 4).map((t) => (
-                <Chip key={t} tone="muted">
-                  {t}
-                </Chip>
+                <Chip key={t} tone="muted">{t}</Chip>
               ))}
             </div>
-            <p className="mt-3 text-sm text-mystic-200/70">{p.chinese.summary}</p>
+            <p className="mt-4 text-sm text-bone-300">{p.chinese.summary}</p>
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* Planes of Expression */}
-      <Section icon={Layers} title="Planes of Expression">
+      <section className="space-y-6">
+        <SectionRow index={idx(n++)} title="Planes of expression" meta={`${p.planes.result.dominant} dominant`} />
         <PlanesChart result={p.planes.result} content={p.planes.content} />
-      </Section>
+      </section>
 
       {/* Life Cycles */}
-      <Section icon={Hourglass} title="Your Three Life Cycles">
-        <div className="grid gap-4 md:grid-cols-3">
+      <section className="space-y-6">
+        <SectionRow index={idx(n++)} title="Three life cycles" />
+        <div className="divided md:grid-cols-3">
           {p.cycles.map((c) => (
-            <div key={c.index} className="glass p-6">
-              <div className="flex items-center gap-3">
+            <div key={c.index} className="p-6">
+              <div className="flex items-center gap-4">
                 <NumberOrb value={c.value} size="sm" isMaster={c.isMaster} />
                 <div>
-                  <span className="eyebrow">Ages {c.label}</span>
-                  <h3 className="font-display text-lg text-mystic-50">{c.title}</h3>
+                  <span className="mono-label">Ages {c.label}</span>
+                  <h3 className="text-lg">{c.title}</h3>
                 </div>
               </div>
-              <p className="mt-3 text-xs uppercase tracking-widest text-mystic-300/50">
+              <p className="mt-4 font-mono text-[11px] uppercase tracking-wider text-bone-500">
                 Ruled by your birth {c.ruler}
               </p>
-              {c.meaning && (
-                <p className="mt-2 text-sm text-mystic-200/70">{c.meaning}</p>
-              )}
+              {c.meaning && <p className="mt-2 text-sm text-bone-300">{c.meaning}</p>}
             </div>
           ))}
         </div>
-      </Section>
+      </section>
 
-      {/* Bridge numbers */}
-      <Section icon={Link2} title="Bridge Numbers">
-        <div className="grid gap-4 md:grid-cols-2">
+      {/* Bridges */}
+      <section className="space-y-6">
+        <SectionRow index={idx(n++)} title="Bridge numbers" />
+        <div className="divided md:grid-cols-2">
           {p.bridges.map((b) => (
-            <div key={b.key} className="glass p-6">
-              <div className="flex items-center gap-3">
+            <div key={b.key} className="p-6">
+              <div className="flex items-center gap-4">
                 <NumberOrb value={b.value} size="sm" />
                 <div>
-                  <span className="eyebrow">{b.label}</span>
-                  <h3 className="font-display text-base text-mystic-50">
-                    {b.meaning?.title ?? `Bridge ${b.value}`}
-                  </h3>
+                  <span className="mono-label">{b.label}</span>
+                  <h3 className="text-lg">{b.meaning?.title ?? `Bridge ${b.value}`}</h3>
                 </div>
               </div>
-              <p className="mt-3 text-sm text-mystic-200/70">
+              <p className="mt-4 text-sm text-bone-300">
                 Bridging {b.between}. {b.meaning?.summary}
               </p>
               {b.meaning?.advice && (
-                <p className="mt-2 text-sm text-mystic-100/80">
-                  <span className="text-gold-300">Tip: </span>
+                <p className="mt-2 text-sm text-bone-100">
+                  <span className="text-gold-200">Tip · </span>
                   {b.meaning.advice}
                 </p>
               )}
             </div>
           ))}
         </div>
-      </Section>
+      </section>
 
       {/* Lucky */}
-      <Section icon={Clover} title="Your Fortunate Signatures">
-        <div className="glass grid gap-6 p-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <span className="eyebrow">Lucky Numbers</span>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {p.lucky.numbers.map((n) => (
-                <NumberOrb key={n} value={n} size="xs" />
+      <section className="space-y-6">
+        <SectionRow index={idx(n++)} title="Fortunate signatures" />
+        <div className="divided sm:grid-cols-2 lg:grid-cols-4">
+          <div className="p-5">
+            <span className="mono-label">Lucky numbers</span>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {p.lucky.numbers.map((num) => (
+                <NumberOrb key={num} value={num} size="xs" />
               ))}
             </div>
           </div>
           {p.lucky.day && (
-            <div>
-              <span className="eyebrow">Lucky Day</span>
-              <p className="mt-2 font-display text-lg text-mystic-50">{p.lucky.day}</p>
+            <div className="p-5">
+              <span className="mono-label">Lucky day</span>
+              <p className="mt-3 text-lg text-bone-50">{p.lucky.day}</p>
             </div>
           )}
           {p.lucky.colors && (
-            <div>
-              <span className="eyebrow">Lucky Colors</span>
-              <div className="mt-2 flex items-center gap-2">
-                {p.lucky.colors.map((c) => (
-                  <span key={c} className="text-sm text-mystic-100">
-                    {c}
-                  </span>
-                ))}
-              </div>
+            <div className="p-5">
+              <span className="mono-label">Lucky colors</span>
+              <p className="mt-3 text-lg text-bone-50">{p.lucky.colors.join(", ")}</p>
             </div>
           )}
           {p.lucky.gem && (
-            <div>
-              <span className="eyebrow">Talisman Stone</span>
-              <p className="mt-2 font-display text-lg text-mystic-50">{p.lucky.gem}</p>
+            <div className="p-5">
+              <span className="mono-label">Talisman stone</span>
+              <p className="mt-3 text-lg text-bone-50">{p.lucky.gem}</p>
             </div>
           )}
         </div>
-      </Section>
+      </section>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { Plus } from "lucide-react";
 import clsx from "clsx";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { Chip } from "@/components/ui/Chip";
@@ -26,11 +26,12 @@ export function NumberCard({
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div className="glass overflow-hidden">
+    <div className={clsx("frame transition-colors", open && "hairline-strong")}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center gap-4 p-5 text-left transition-colors hover:bg-white/[0.02]"
+        aria-expanded={open}
+        className="flex w-full items-center gap-4 p-4 text-left transition-colors hover:bg-surface-raised sm:p-5"
       >
         <NumberOrb
           value={insight.value}
@@ -39,55 +40,52 @@ export function NumberCard({
           isKarmic={insight.karmicDebt !== null}
         />
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-widest text-gold-300/80">
-              {label}
-            </span>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="mono-label">{label}</span>
             {insight.isMaster && <Chip tone="gold">Master</Chip>}
-            {insight.karmicDebt && <Chip tone="muted">Karmic {insight.karmicDebt}</Chip>}
+            {insight.karmicDebt && <Chip tone="rubric">Karmic {insight.karmicDebt}</Chip>}
           </div>
-          <h3 className="mt-0.5 truncate font-display text-lg text-mystic-50">
+          <h3 className="mt-0.5 truncate text-lg">
             {meaning?.title ?? blurb ?? `Number ${insight.value}`}
           </h3>
         </div>
-        <ChevronDown
+        <span className="hidden font-mono text-[11px] text-bone-500 sm:inline">
+          {insight.steps.join(" → ")}
+        </span>
+        <Plus
           className={clsx(
-            "h-5 w-5 shrink-0 text-mystic-300/60 transition-transform",
-            open && "rotate-180",
+            "h-4 w-4 shrink-0 text-bone-400 transition-transform duration-200",
+            open && "rotate-45 text-gold-300",
           )}
         />
       </button>
 
       {open && (
-        <div className="space-y-4 border-t border-white/5 px-5 pb-6 pt-4">
+        <div className="space-y-5 border-t hairline px-4 pb-5 pt-4 sm:px-5">
           {meaning?.keywords && (
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {meaning.keywords.map((k) => (
-                <Chip key={k}>{k}</Chip>
+                <Chip key={k} tone="muted">{k}</Chip>
               ))}
             </div>
           )}
           {meaning?.summary && (
-            <p className="text-sm leading-relaxed text-mystic-100/90">
-              {meaning.summary}
-            </p>
+            <p className="text-[15px] leading-relaxed text-bone-50">{meaning.summary}</p>
           )}
           {meaning?.detailed && (
-            <p className="whitespace-pre-line text-sm leading-relaxed text-mystic-200/70">
+            <p className="whitespace-pre-line text-sm leading-relaxed text-bone-300">
               {meaning.detailed}
             </p>
           )}
           {(meaning?.strengths || meaning?.challenges) && (
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="divided sm:grid-cols-2">
               {meaning?.strengths && (
-                <div>
-                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-aura-400">
-                    Strengths
-                  </h4>
-                  <ul className="space-y-1 text-sm text-mystic-200/80">
+                <div className="p-4">
+                  <h4 className="mono-label mb-3 text-sage-400">Strengths</h4>
+                  <ul className="space-y-1.5 text-sm text-bone-200">
                     {meaning.strengths.map((s) => (
-                      <li key={s} className="flex gap-2">
-                        <span className="text-aura-400">✦</span>
+                      <li key={s} className="flex gap-2.5">
+                        <span className="font-mono text-sage-400">+</span>
                         {s}
                       </li>
                     ))}
@@ -95,14 +93,12 @@ export function NumberCard({
                 </div>
               )}
               {meaning?.challenges && (
-                <div>
-                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-widest text-rose-300/80">
-                    Challenges
-                  </h4>
-                  <ul className="space-y-1 text-sm text-mystic-200/80">
+                <div className="p-4">
+                  <h4 className="mono-label mb-3 text-rubric-300">Challenges</h4>
+                  <ul className="space-y-1.5 text-sm text-bone-200">
                     {meaning.challenges.map((c) => (
-                      <li key={c} className="flex gap-2">
-                        <span className="text-rose-300/70">◇</span>
+                      <li key={c} className="flex gap-2.5">
+                        <span className="font-mono text-rubric-300">−</span>
                         {c}
                       </li>
                     ))}
@@ -111,9 +107,9 @@ export function NumberCard({
               )}
             </div>
           )}
-          <p className="pt-1 text-xs text-mystic-300/40">
-            Reduction: {insight.steps.join(" → ")}
-            {insight.karmicDebt ? `  ·  carries karmic debt ${insight.karmicDebt}` : ""}
+          <p className="font-mono text-[11px] tracking-wider text-bone-500">
+            REDUCTION {insight.steps.join(" → ")}
+            {insight.karmicDebt ? ` · CARRIES KARMIC DEBT ${insight.karmicDebt}` : ""}
           </p>
         </div>
       )}

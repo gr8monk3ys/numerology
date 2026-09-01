@@ -3,8 +3,9 @@
 Live at https://numerology-sigma-vert.vercel.app.
 
 A numerology calculator: type a name and a birth date, get the Pythagorean and
-Chaldean numbers written into them, rendered as a dark grimoire. Everything is
-computed in the browser; nothing is sent anywhere.
+Chaldean numbers written into them, laid out as a dark, gilt drafting sheet:
+hairline-divided grids, monospace labels, and every reduction shown in full.
+Everything is computed in the browser; nothing is sent anywhere.
 
 The engine is pure TypeScript with no framework imports
 ([`lib/numerology`](lib/numerology)), and it is tested against worked examples

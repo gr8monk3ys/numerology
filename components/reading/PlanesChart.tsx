@@ -3,9 +3,8 @@ import type { PlanesContent } from "@/lib/content";
 
 /**
  * Planes of Expression distribution — a single-series magnitude chart.
- * Per the dataviz method: fixed category order, one hue (identity carried by the
- * row label, not colour), direct value labels, recessive track, values also
- * present as text so it reads without colour.
+ * Fixed category order, one hue (identity carried by the row label, not
+ * colour), direct value labels, recessive track.
  */
 
 const ORDER: Plane[] = ["physical", "mental", "emotional", "intuitive"];
@@ -20,9 +19,11 @@ export function PlanesChart({
   const max = Math.max(1, ...ORDER.map((p) => result[p]));
 
   return (
-    <div className="glass p-6">
-      <p className="text-sm leading-relaxed text-mystic-200/75">{content._intro}</p>
-      <div className="mt-6 space-y-4">
+    <div className="frame">
+      <p className="border-b hairline p-5 text-sm leading-relaxed text-bone-300 sm:p-6">
+        {content._intro}
+      </p>
+      <div className="space-y-5 p-5 sm:p-6">
         {ORDER.map((plane) => {
           const count = result[plane];
           const pct = result.percentages[plane];
@@ -30,27 +31,20 @@ export function PlanesChart({
           const isDominant = plane === result.dominant && count > 0;
           return (
             <div key={plane}>
-              <div className="mb-1.5 flex items-baseline justify-between text-sm">
-                <span className="flex items-center gap-2 text-mystic-100">
+              <div className="mb-2 flex items-baseline justify-between">
+                <span className="flex items-center gap-2 text-sm text-bone-50">
                   {content[plane].title}
-                  {isDominant && (
-                    <span className="rounded-full bg-gold-500/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-gold-200">
-                      Dominant
-                    </span>
-                  )}
+                  {isDominant && <span className="tag tag-accent">Dominant</span>}
                 </span>
-                <span className="tabular-nums text-mystic-200/70">
-                  {count} <span className="text-mystic-300/50">· {pct}%</span>
+                <span className="font-mono text-xs text-bone-300 tabular">
+                  {count} <span className="text-bone-500">· {pct}%</span>
                 </span>
               </div>
-              <div className="h-2.5 w-full overflow-hidden rounded-full bg-white/[0.06]">
-                <div
-                  className="h-full rounded-full transition-all duration-700"
+              <div className="meter">
+                <span
                   style={{
-                    width: `${Math.max(width, count > 0 ? 4 : 0)}%`,
-                    background: isDominant
-                      ? "linear-gradient(90deg, #a67e33, #edd694)"
-                      : "linear-gradient(90deg, #4a3517, #a67e33)",
+                    width: `${Math.max(width, count > 0 ? 3 : 0)}%`,
+                    backgroundColor: isDominant ? "var(--color-gold-300)" : "var(--color-gold-600)",
                   }}
                   title={`${content[plane].title}: ${count} letters (${pct}%)`}
                 />
@@ -59,8 +53,8 @@ export function PlanesChart({
           );
         })}
       </div>
-      <p className="mt-5 text-sm text-mystic-200/70">
-        <span className="text-gold-300">{content[result.dominant].title} plane · </span>
+      <p className="border-t hairline p-5 text-sm text-bone-300 sm:p-6">
+        <span className="text-gold-200">{content[result.dominant].title} plane · </span>
         {content[result.dominant].meaning}
       </p>
     </div>

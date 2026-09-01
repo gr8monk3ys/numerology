@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { CompatibilityForm } from "@/components/compatibility/CompatibilityForm";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PageHeader, StatusBadge } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
   title: "Numerology Compatibility",
@@ -10,13 +10,14 @@ export const metadata: Metadata = {
 
 export default function CompatibilityPage() {
   return (
-    <div className="container-page py-16">
-      <SectionHeading
-        eyebrow="Two souls, two numbers"
-        title="Numerology compatibility"
-        subtitle="Enter two birth dates to compare Life Paths and reveal the harmony — and the growth — written between you."
-        align="center"
-        className="mb-12"
+    <div className="container-page py-14 sm:py-20">
+      <PageHeader
+        index="02"
+        eyebrow="Compatibility"
+        title={<>Two souls, <em>two</em> numbers</>}
+        subtitle="Enter two birth dates to compare Life Paths and reveal the harmony, and the growth, written between you."
+        meta={<StatusBadge>Runs locally</StatusBadge>}
+        className="mb-10"
       />
       <CompatibilityForm />
     </div>
