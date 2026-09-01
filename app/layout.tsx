@@ -1,40 +1,38 @@
 import type { Metadata } from "next";
-import { Grenze_Gotisch, EB_Garamond, UnifrakturMaguntia } from "next/font/google";
+import { Instrument_Serif, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Starfield } from "@/components/Starfield";
+import { Backdrop } from "@/components/Backdrop";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
-// Gothic display for headings
-const gothic = Grenze_Gotisch({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-gothic",
-  display: "swap",
-});
-
-// Old-style serif for body — an illuminated-manuscript hand
-const garamond = EB_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-garamond",
-  display: "swap",
-});
-
-// Blackletter for the wordmark, drop-caps and initials
-const blackletter = UnifrakturMaguntia({
+// Editorial serif for headlines (italic used for the accent word)
+const instrument = Instrument_Serif({
   subsets: ["latin"],
   weight: ["400"],
-  variable: "--font-blackletter",
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
+  display: "swap",
+});
+
+// Neutral sans for body copy
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
+
+// Monospace for labels, numerals and the terminal
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://numerology.example.com"),
+  metadataBase: new URL("https://numerology-sigma-vert.vercel.app"),
   title: {
     default: "Numen · Esoteric Numerology Calculator",
-    template: "%s · Numen Numerology",
+    template: "%s · Numen",
   },
   description:
     "Reveal the hidden numbers of your name and birth date. A complete esoteric numerology suite — Life Path, Expression, Soul Urge, Karmic Debt, Pinnacles, angel numbers, tarot & astrological correspondences, and more.",
@@ -65,9 +63,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${gothic.variable} ${garamond.variable} ${blackletter.variable}`}
+      className={`${instrument.variable} ${geist.variable} ${geistMono.variable}`}
     >
-      <body className="grain min-h-screen">
+      <body className="min-h-screen">
         {/* Enable scroll-reveal only when JS is present, so no-JS visitors and
             crawlers still see all content. Runs before below-fold paint. */}
         <script
@@ -75,9 +73,9 @@ export default function RootLayout({
             __html: "document.documentElement.classList.add('reveal-ready')",
           }}
         />
-        <Starfield />
+        <Backdrop />
         <Navbar />
-        <main className="relative">{children}</main>
+        <main className="rails relative">{children}</main>
         <Footer />
       </body>
     </html>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { AngelLookup } from "@/components/angel/AngelLookup";
 import { NumberOrb } from "@/components/ui/NumberOrb";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PageHeader, SectionRow } from "@/components/ui/SectionHeading";
 import { angelNumbers } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -12,47 +12,41 @@ export const metadata: Metadata = {
 
 export default function AngelNumbersPage() {
   return (
-    <div className="container-page py-16">
-      <SectionHeading
+    <div className="container-page py-14 sm:py-20">
+      <PageHeader
+        index="04"
         eyebrow="Synchronicity"
-        title="Angel numbers"
-        subtitle="Keep seeing the same number everywhere? Repeating sequences are read as nudges from the universe. Decode yours below, or browse the library."
-        align="center"
-        className="mb-12"
+        title={<>Angel <em>numbers</em></>}
+        subtitle="Keep seeing the same number everywhere? Repeating sequences are read as nudges from the universe. Decode yours, or browse the library."
+        className="mb-10"
       />
 
       <AngelLookup />
 
-      <div className="mt-20">
-        <h2 className="mb-8 text-center font-display text-2xl text-mystic-50">
-          The angel number library
-        </h2>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="mt-24 space-y-6">
+        <SectionRow index="02" title="The library" meta={`${angelNumbers.length} sequences`} />
+        <div className="divided sm:grid-cols-2 lg:grid-cols-3">
           {angelNumbers.map((a) => (
-            <div key={a.number} className="glass flex flex-col gap-3 p-6">
+            <div key={a.number} className="cell-hover flex flex-col gap-3 p-5">
               <div className="flex items-center gap-3">
                 <NumberOrb value={a.number} size="sm" />
-                <h3 className="font-display text-lg text-mystic-50">
-                  {a.title}
-                </h3>
+                <h3 className="text-lg">{a.title}</h3>
               </div>
-              <p className="text-sm leading-relaxed text-mystic-200/70">
-                {a.meaning}
-              </p>
-              <div className="mt-auto space-y-1.5 border-t border-white/5 pt-3 text-xs text-mystic-200/60">
-                <p>
-                  <span className="text-gold-300/80">Love · </span>
-                  {a.love}
-                </p>
-                <p>
-                  <span className="text-gold-300/80">Career · </span>
-                  {a.career}
-                </p>
-              </div>
+              <p className="text-sm leading-relaxed text-bone-300">{a.meaning}</p>
+              <dl className="mt-auto space-y-1.5 border-t hairline pt-3 text-xs text-bone-300">
+                <div className="flex gap-2">
+                  <dt className="mono-label w-14 shrink-0">Love</dt>
+                  <dd>{a.love}</dd>
+                </div>
+                <div className="flex gap-2">
+                  <dt className="mono-label w-14 shrink-0">Career</dt>
+                  <dd>{a.career}</dd>
+                </div>
+              </dl>
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </div>
   );
 }

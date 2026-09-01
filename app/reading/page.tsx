@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ReadingForm } from "@/components/reading/ReadingForm";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PageHeader, StatusBadge } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
   title: "Full Numerology Reading",
@@ -10,13 +10,14 @@ export const metadata: Metadata = {
 
 export default function ReadingPage() {
   return (
-    <div className="container-page py-16">
-      <SectionHeading
-        eyebrow="Your complete chart"
-        title="Cast your numerology reading"
-        subtitle="Everything is calculated privately in your browser — nothing you enter ever leaves your device."
-        align="center"
-        className="mb-12"
+    <div className="container-page py-14 sm:py-20">
+      <PageHeader
+        index="01"
+        eyebrow="Full reading"
+        title={<>Cast your <em>numerology</em> reading</>}
+        subtitle="Core numbers, karmic signature, letters, Chaldean vibration, tarot, cycles and correspondences. Every reduction is shown in full."
+        meta={<StatusBadge>Runs locally</StatusBadge>}
+        className="mb-10"
       />
       <ReadingForm />
     </div>

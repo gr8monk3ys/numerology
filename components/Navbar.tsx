@@ -2,80 +2,115 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import clsx from "clsx";
 
 const NAV_LINKS = [
-  { href: "/reading", label: "Full Reading" },
+  { href: "/reading", label: "Reading" },
   { href: "/compatibility", label: "Compatibility" },
-  { href: "/numbers", label: "Numbers" },
-  { href: "/angel-numbers", label: "Angel Numbers" },
   { href: "/forecast", label: "Forecast" },
-  { href: "/about", label: "About" },
+  { href: "/angel-numbers", label: "Angel numbers" },
+  { href: "/numbers", label: "Numbers" },
+  { href: "/about", label: "Method" },
 ];
+
+export function Wordmark({ onClick }: { onClick?: () => void }) {
+  return (
+    <Link href="/" className="flex items-center gap-2.5" onClick={onClick}>
+      <span className="ticks flex h-7 w-7 items-center justify-center rounded-[3px] border border-gold-400/60 font-mono text-[13px] font-medium text-gold-200 [--tick-size:5px]">
+        N
+      </span>
+      <span className="font-display text-[1.35rem] leading-none tracking-tight text-bone-50">
+        Numen
+      </span>
+    </Link>
+  );
+}
 
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  return (
-    <header className="sticky top-0 z-50 border-b border-gold-500/20 bg-void-950/95">
-      <nav className="container-page flex h-16 items-center justify-between">
-        <Link
-          href="/"
-          className="flex items-center gap-2 font-blackletter text-2xl tracking-wide"
-          onClick={() => setOpen(false)}
-        >
-          <Sparkles className="h-5 w-5 text-gold-300" />
-          <span className="gold-text">Numen</span>
-        </Link>
+  // Close the sheet on route change.
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
-        <div className="hidden items-center gap-7 md:flex">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={clsx(
-                "link-underline text-sm tracking-wide transition-colors",
-                pathname.startsWith(link.href)
-                  ? "text-gold-200"
-                  : "text-mystic-100/80 hover:text-white",
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+  return (
+    <header className="sticky top-0 z-50 border-b hairline bg-ink-950/80 backdrop-blur-md">
+      <nav className="container-page flex h-14 items-center justify-between">
+        <Wordmark />
+
+        <div className="hidden items-center gap-1 md:flex">
+          {NAV_LINKS.map((link) => {
+            const active = pathname.startsWith(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={clsx(
+                  "relative rounded-[3px] px-3 py-1.5 text-[13px] transition-colors",
+                  active
+                    ? "text-bone-50"
+                    : "text-bone-300 hover:bg-gold-300/[0.06] hover:text-bone-50",
+                )}
+              >
+                {link.label}
+                {active && (
+                  <span className="absolute inset-x-3 -bottom-[15px] h-px bg-gold-300" />
+                )}
+              </Link>
+            );
+          })}
         </div>
 
-        <button
-          type="button"
-          className="md:hidden text-mystic-100"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <Link href="/reading" className="btn btn-primary btn-sm hidden sm:inline-flex">
+            Start reading
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </Link>
+          <button
+            type="button"
+            className="flex h-9 w-9 items-center justify-center rounded-[3px] border hairline text-bone-100 md:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
+        </div>
       </nav>
 
       {open && (
-        <div className="border-t border-white/5 bg-void-900/95 md:hidden">
-          <div className="container-page flex flex-col py-3">
-            {NAV_LINKS.map((link) => (
+        <div className="border-t hairline bg-ink-950/95 md:hidden">
+          <div className="container-page divide-y divide-(--line) py-1">
+            {NAV_LINKS.map((link, i) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className={clsx(
-                  "py-2.5 text-sm tracking-wide",
-                  pathname.startsWith(link.href)
-                    ? "text-gold-200"
-                    : "text-mystic-100/80",
+                  "flex items-center justify-between py-3.5 text-[15px]",
+                  pathname.startsWith(link.href) ? "text-gold-200" : "text-bone-100",
                 )}
               >
-                {link.label}
+                <span className="flex items-center gap-4">
+                  <span className="font-mono text-[11px] text-bone-500">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {link.label}
+                </span>
+                <ArrowUpRight className="h-4 w-4 text-bone-500" />
               </Link>
             ))}
+            <Link
+              href="/reading"
+              onClick={() => setOpen(false)}
+              className="btn btn-primary my-3 w-full"
+            >
+              Start reading
+            </Link>
           </div>
         </div>
       )}
