@@ -92,6 +92,7 @@ export function ForecastForm() {
               max="2099-12-31"
               onChange={(e) => setBirthDate(e.target.value)}
               className="field field-mono"
+              autoComplete="bday"
             />
           </div>
           <button type="submit" className="btn btn-primary shrink-0">

@@ -89,6 +89,7 @@ export function CompatibilityForm() {
                   max="2099-12-31"
                   onChange={(e) => set({ ...p, date: e.target.value })}
                   className="field field-mono"
+                  autoComplete="bday"
                 />
               </div>
             </div>

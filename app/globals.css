@@ -19,7 +19,7 @@
   --color-bone-200: #d3c7ab;
   --color-bone-300: #b3a68a;
   --color-bone-400: #8c806a;
-  --color-bone-500: #6b6152;
+  --color-bone-500: #877c64;
   --color-bone-600: #4d463b;
 
   /* Gilt accent */
@@ -341,6 +341,22 @@
     font-family: var(--font-mono);
     font-size: 0.875rem;
     letter-spacing: 0.02em;
+  }
+  /* Native date field: gilt calendar glyph (WebKit/Blink). Firefox has no
+     indicator pseudo-element and is carried by color-scheme: dark alone. */
+  .field[type="date"]::-webkit-calendar-picker-indicator {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    opacity: 0.85;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d6b566' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='1'/%3E%3Cpath d='M16 3v4M8 3v4M3 10h18'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+  .field[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+  }
+  .field[type="date"]::-webkit-datetime-edit-text {
+    color: var(--color-bone-500);
+    padding: 0 0.15em;
   }
   .field-label {
     display: block;

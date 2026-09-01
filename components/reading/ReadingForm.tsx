@@ -72,8 +72,9 @@ export function ReadingForm() {
               placeholder="Ada Augusta Byron"
               className="field"
               autoComplete="off"
+              aria-describedby="fullName-hint"
             />
-            <p className="field-hint">
+            <p id="fullName-hint" className="field-hint">
               Use the full name given at birth for the most accurate reading.
             </p>
           </div>
@@ -90,6 +91,7 @@ export function ReadingForm() {
               max="2099-12-31"
               onChange={(e) => setBirthDate(e.target.value)}
               className="field field-mono"
+              autoComplete="bday"
             />
           </div>
         </div>
