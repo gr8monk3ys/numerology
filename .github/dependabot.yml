@@ -1,12 +1,18 @@
+# Dependabot retune 2026-09-10: this repo is deployed, so version updates stay on,
+# but monthly with a small PR cap. Security updates are a repo setting and unaffected.
 version: 2
 updates:
-  - package-ecosystem: bun
-    directory: /
-    schedule:
-      interval: weekly
-    labels: [automated]
-  - package-ecosystem: github-actions
-    directory: /
-    schedule:
-      interval: weekly
-    labels: [automated]
+- package-ecosystem: bun
+  directory: /
+  schedule:
+    interval: monthly
+  labels:
+  - automated
+  open-pull-requests-limit: 3
+- package-ecosystem: github-actions
+  directory: /
+  schedule:
+    interval: monthly
+  labels:
+  - automated
+  open-pull-requests-limit: 3
