@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import clsx from "clsx";
 
@@ -30,12 +30,12 @@ export function Wordmark({ onClick }: { onClick?: () => void }) {
 
 export function Navbar() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-
-  // Close the sheet on route change.
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  // The sheet remembers the route it was opened on, so it is open only while
+  // that route is still current. Any navigation (link tap, back/forward) closes
+  // it without needing an effect that writes state on route change.
+  const [openedAt, setOpenedAt] = useState<string | null>(null);
+  const open = openedAt === pathname;
+  const setOpen = (next: boolean) => setOpenedAt(next ? pathname : null);
 
   return (
     <header className="sticky top-0 z-50 border-b hairline bg-ink-950/80 backdrop-blur-md">
@@ -73,7 +73,7 @@ export function Navbar() {
           <button
             type="button"
             className="flex h-9 w-9 items-center justify-center rounded-[3px] border hairline text-bone-100 md:hidden"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
             aria-expanded={open}
           >
