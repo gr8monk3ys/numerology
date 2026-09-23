@@ -6,6 +6,7 @@ import { Chip } from "@/components/ui/Chip";
 import { SectionRow } from "@/components/ui/SectionHeading";
 import { NumberCard } from "@/components/reading/NumberCard";
 import { CosmicProfile } from "@/components/reading/CosmicProfile";
+import { CycleList } from "@/components/reading/CycleList";
 import {
   lifePathMeanings,
   expressionMeanings,
@@ -20,10 +21,14 @@ import {
   pick,
 } from "@/lib/content";
 
-const MONTHS = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
-];
+// Intl, not a hand-kept month table. UTC on both sides so the calendar date
+// the visitor typed is the one printed, whatever their time zone.
+const BIRTH_DATE = new Intl.DateTimeFormat("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+});
 
 export function ReadingResults({ reading }: { reading: Reading }) {
   const { core, advanced, forecast, chaldean, name, birth } = reading;
@@ -49,11 +54,13 @@ export function ReadingResults({ reading }: { reading: Reading }) {
               {core.lifePath.isMaster && <Chip tone="gold">Master</Chip>}
               {core.lifePath.karmicDebt && <Chip tone="rubric">Karmic {core.lifePath.karmicDebt}</Chip>}
             </div>
-            <h1 className="mt-2 text-4xl sm:text-5xl">
+            {/* h2: the page's h1 is "Cast your numerology reading" above. */}
+            <h2 className="mt-2 text-4xl sm:text-5xl">
               {lifePathMeaning?.title ?? `Life Path ${core.lifePath.value}`}
-            </h1>
+            </h2>
             <p className="mt-2 font-mono text-xs tracking-wider text-bone-400">
-              {name.all.join(" ").toUpperCase()} · {MONTHS[birth.month - 1].toUpperCase()} {birth.day}, {birth.year}
+              {name.all.join(" ").toUpperCase()} ·{" "}
+              {BIRTH_DATE.format(Date.UTC(birth.year, birth.month - 1, birth.day)).toUpperCase()}
               {" · "}
               {core.lifePath.steps.join(" → ")}
             </p>
@@ -194,7 +201,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
         <div className="frame flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-8">
           <div className="flex items-center gap-3">
             <NumberOrb value={chaldean.compound} size="md" />
-            <span className="font-mono text-bone-500">→</span>
+            <span aria-hidden="true" className="font-mono text-bone-500">→</span>
             <NumberOrb value={chaldean.root} size="md" />
           </div>
           <div>
@@ -343,46 +350,6 @@ function ForecastStat({
       <div>
         <span className="mono-label">{label}</span>
         <p className="text-sm text-bone-300">Cycle vibration</p>
-      </div>
-    </div>
-  );
-}
-
-export function CycleList({
-  title,
-  items,
-}: {
-  title: string;
-  items: {
-    key: number;
-    value: number;
-    isMaster: boolean;
-    name: string;
-    ages: string;
-    summary?: string;
-    active?: boolean;
-  }[];
-}) {
-  return (
-    <div>
-      <h3 className="mono-label mb-3">{title}</h3>
-      <div className="divided">
-        {items.map((it) => (
-          <div
-            key={it.key}
-            className={it.active ? "flex items-start gap-4 bg-gold-300/[0.05] p-4" : "flex items-start gap-4 p-4"}
-          >
-            <NumberOrb value={it.value} size="sm" isMaster={it.isMaster} />
-            <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-sm text-bone-50">{it.name}</span>
-                <Chip tone="muted">ages {it.ages}</Chip>
-                {it.active && <Chip tone="gold">Now</Chip>}
-              </div>
-              {it.summary && <p className="mt-1 text-sm text-bone-300">{it.summary}</p>}
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Backdrop } from "@/components/Backdrop";
@@ -55,6 +55,12 @@ export const metadata: Metadata = {
   },
 };
 
+// The browser chrome matches the page: the ink-950 background.
+export const viewport: Viewport = {
+  themeColor: "#0a0807",
+  colorScheme: "dark",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -73,9 +79,12 @@ export default function RootLayout({
             __html: "document.documentElement.classList.add('reveal-ready')",
           }}
         />
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <Backdrop />
         <Navbar />
-        <main className="rails relative">{children}</main>
+        <main id="main" className="rails relative">{children}</main>
         <Footer />
       </body>
     </html>
