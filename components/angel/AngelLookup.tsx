@@ -1,17 +1,13 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useMemo, useRef, type FormEvent } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import {
-  analyzeAngelNumber,
-  findAngelEntry,
-  type AngelAnalysis,
-  type AngelEntry,
-} from "@/lib/numerology";
+import { analyzeAngelNumber, findAngelEntry } from "@/lib/numerology";
 import { NumberOrb } from "@/components/ui/NumberOrb";
 import { Chip } from "@/components/ui/Chip";
-import { angelNumbers } from "@/lib/content";
+import { angelNumbers } from "@/lib/content/angel-numbers";
+import { useQueryParam } from "@/lib/hooks/use-query-param";
 
 const PATTERN_LABELS: Record<string, string> = {
   triple: "Triple · amplified, urgent message",
@@ -26,42 +22,52 @@ const PATTERN_LABELS: Record<string, string> = {
 const QUICK = ["111", "222", "333", "444", "1111", "1234"];
 
 export function AngelLookup() {
-  const [value, setValue] = useState("");
-  const [analysis, setAnalysis] = useState<AngelAnalysis | null>(null);
-  const [entry, setEntry] = useState<AngelEntry | null>(null);
-  const [searched, setSearched] = useState(false);
+  // The decoded sequence lives in the URL (?n=1111), so a lookup survives a
+  // reload and can be shared. The analysis and the library entry are derived
+  // from it during render; they used to be three pieces of state set side by
+  // side (rerender-derived-state).
+  const [query, setQuery] = useQueryParam("n");
+  const inputRef = useRef<HTMLInputElement>(null);
+  const analysis = useMemo(() => {
+    if (query === null) return null;
+    const a = analyzeAngelNumber(query);
+    return a.digits.length ? a : null;
+  }, [query]);
+  const entry = analysis ? (findAngelEntry(analysis.input, angelNumbers) ?? null) : null;
+  const searched = query !== null;
+
+  // A deep link fills the field it came from. The field is uncontrolled, so
+  // this writes the DOM value rather than holding a copy in state.
+  useEffect(() => {
+    if (query !== null && inputRef.current && inputRef.current.value === "") {
+      inputRef.current.value = query;
+    }
+  }, [query]);
 
   function decode(input: string) {
-    const a = analyzeAngelNumber(input);
-    if (!a.digits.length) {
-      setAnalysis(null);
-      setEntry(null);
-      setSearched(true);
-      return;
-    }
-    setAnalysis(a);
-    setEntry(findAngelEntry(a.input, angelNumbers) ?? null);
-    setSearched(true);
+    setQuery(input);
   }
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    decode(value);
+    decode(inputRef.current?.value ?? "");
   }
 
   return (
     <div className="mx-auto max-w-3xl">
-      <form onSubmit={handleSubmit} className="frame ticks">
+      <form onSubmit={handleSubmit} className="frame ticks transition-colors focus-within:border-gold-300">
         <div className="flex items-center gap-3 p-3 sm:p-4">
           <span className="hidden pl-2 font-mono text-gold-300 sm:inline" aria-hidden>
             $
           </span>
           <input
+            ref={inputRef}
             type="text"
+            name="n"
             inputMode="numeric"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder="1111, 444, 12:12 …"
+            autoComplete="off"
+            spellCheck={false}
+            placeholder="1111, 444, 12:12…"
             className="field field-mono border-0 bg-transparent px-1 focus:shadow-none"
             aria-label="Number sequence"
           />
@@ -77,7 +83,7 @@ export function AngelLookup() {
               key={q}
               type="button"
               onClick={() => {
-                setValue(q);
+                if (inputRef.current) inputRef.current.value = q;
                 decode(q);
               }}
               className="tag transition-colors hover:border-gold-400/50 hover:text-gold-200"
@@ -88,11 +94,13 @@ export function AngelLookup() {
         </div>
       </form>
 
-      {searched && !analysis && (
-        <p className="mt-4 font-mono text-xs tracking-wider text-rubric-300">
-          ! Enter a number sequence to decode.
-        </p>
-      )}
+      {/* Mounted empty and filled on a failed decode, so the message is
+          announced (a live region that appears with its text says nothing). */}
+      <p role="alert" className="font-mono text-xs tracking-wider text-rubric-300">
+        {searched && !analysis ? (
+          <span className="mt-4 block">! Enter a number sequence to decode, like 111 or 12:12.</span>
+        ) : null}
+      </p>
 
       {analysis && (
         <div className="frame mt-6">
