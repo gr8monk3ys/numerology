@@ -34,7 +34,7 @@ export function MeaningBlock({
           <ul className="space-y-1.5 text-sm text-bone-200">
             {meaning.strengths.map((s) => (
               <li key={s} className="flex gap-2.5">
-                <span className="font-mono text-sage-400">+</span>
+                <span aria-hidden="true" className="font-mono text-sage-400">+</span>
                 {s}
               </li>
             ))}
@@ -45,7 +45,7 @@ export function MeaningBlock({
           <ul className="space-y-1.5 text-sm text-bone-200">
             {meaning.challenges.map((c) => (
               <li key={c} className="flex gap-2.5">
-                <span className="font-mono text-rubric-300">−</span>
+                <span aria-hidden="true" className="font-mono text-rubric-300">−</span>
                 {c}
               </li>
             ))}

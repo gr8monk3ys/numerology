@@ -29,7 +29,7 @@ function TarotCard({
       <div className="ticks relative aspect-[2/3] rounded-[3px] border border-gold-400/50 bg-ink-900 p-3">
         <div className="flex h-full flex-col justify-between">
           <span className="font-mono text-[11px] tracking-[0.2em] text-gold-300">{ROMAN[index]}</span>
-          <span className="font-display text-3xl leading-none text-gold-200/40">✦</span>
+          <span aria-hidden="true" className="font-display text-3xl leading-none text-gold-200/40">✦</span>
           <span className="font-display text-xl leading-tight text-bone-50">{name}</span>
         </div>
       </div>
@@ -100,7 +100,7 @@ export function CosmicProfile({
           {p.sun && (
             <div className="p-6">
               <div className="flex items-center gap-4">
-                <span className="flex h-12 w-12 items-center justify-center rounded-[3px] border hairline text-2xl">{p.sun.symbol}</span>
+                <span aria-hidden="true" className="flex h-12 w-12 items-center justify-center rounded-[3px] border hairline text-2xl">{p.sun.symbol}</span>
                 <div>
                   <span className="mono-label">Sun sign</span>
                   <h3 className="text-xl">{p.sun.sign}</h3>
@@ -116,7 +116,7 @@ export function CosmicProfile({
           )}
           <div className="p-6">
             <div className="flex items-center gap-4">
-              <span className="flex h-12 w-12 items-center justify-center rounded-[3px] border hairline text-2xl">{p.chinese.emoji}</span>
+              <span aria-hidden="true" className="flex h-12 w-12 items-center justify-center rounded-[3px] border hairline text-2xl">{p.chinese.emoji}</span>
               <div>
                 <span className="mono-label">Chinese zodiac</span>
                 <h3 className="text-xl">{p.chinese.animal}</h3>
