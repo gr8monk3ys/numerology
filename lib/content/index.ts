@@ -11,8 +11,6 @@ import personalYearData from "@/content/data/meanings_personalyear.json";
 import pinnacleChallengeData from "@/content/data/meanings_pinnacle_challenge.json";
 import masterKarmicData from "@/content/data/meanings_master_karmic.json";
 import correspondenceData from "@/content/data/correspondences.json";
-import angelData from "@/content/data/angel_numbers.json";
-import compatibilityData from "@/content/data/compatibility.json";
 import tarotData from "@/content/data/tarot_major.json";
 import bridgeData from "@/content/data/bridge_numbers.json";
 import planesData from "@/content/data/planes_of_expression.json";
@@ -20,8 +18,6 @@ import lifeCyclesData from "@/content/data/life_cycles.json";
 import chineseData from "@/content/data/chinese_zodiac.json";
 import zodiacData from "@/content/data/zodiac_signs.json";
 
-import type { AngelEntry } from "@/lib/numerology/angel";
-import type { CompatibilityData } from "@/lib/numerology/compatibility";
 import type { ZodiacSign, ChineseZodiacSign, Plane } from "@/lib/numerology/esoteric";
 
 export interface NumberMeaning {
@@ -93,8 +89,8 @@ export const personalityMeanings = personalityData as unknown as NumberMap;
 export const birthdayMeanings = birthdayData as unknown as Record<string, BirthdayMeaning>;
 export const personalYearMeanings = personalYearData as unknown as Record<string, PersonalYearMeaning>;
 export const correspondences = correspondenceData as unknown as Record<string, Correspondence>;
-export const angelNumbers = angelData as unknown as AngelEntry[];
-export const compatibilityProfiles = compatibilityData as unknown as CompatibilityData;
+export { angelNumbers } from "./angel-numbers";
+export { compatibilityProfiles } from "./compatibility-profiles";
 
 export const pinnacleMeanings = (
   pinnacleChallengeData as { pinnacles: Record<string, PinnacleMeaning> }
