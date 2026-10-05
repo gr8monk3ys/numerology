@@ -127,7 +127,7 @@ export default function HomePage() {
             </span>
             {"\n\n"}
             <span className="dim">✓ computed locally in 0.4 ms · nothing sent</span>
-            <span className="prompt animate-caret"> ▍</span>
+            <span aria-hidden="true" className="prompt animate-caret"> ▍</span>
           </Terminal>
         </div>
       </section>
@@ -159,7 +159,7 @@ export default function HomePage() {
             subtitle="Numerology distills a person into a handful of vibrations. These are the pillars of a chart. The rest of the reading builds on them."
           />
           <Link href="/about" className="link text-sm">
-            Read the method →
+            Read the method <span aria-hidden="true">→</span>
           </Link>
         </div>
         <div className="divided mt-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -239,7 +239,7 @@ export default function HomePage() {
             <h2 className="mt-2 text-2xl sm:text-3xl">Twelve archetypes</h2>
           </div>
           <Link href="/numbers" className="link text-sm">
-            All meanings →
+            All meanings <span aria-hidden="true">→</span>
           </Link>
         </div>
         <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">

@@ -43,7 +43,7 @@ export function PlanesChart({
               <div className="meter">
                 <span
                   style={{
-                    width: `${Math.max(width, count > 0 ? 3 : 0)}%`,
+                    transform: `scaleX(${Math.max(width, count > 0 ? 3 : 0) / 100})`,
                     backgroundColor: isDominant ? "var(--color-gold-300)" : "var(--color-gold-600)",
                   }}
                   title={`${content[plane].title}: ${count} letters (${pct}%)`}

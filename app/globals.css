@@ -81,7 +81,26 @@
     color-scheme: dark;
   }
   html {
-    scroll-behavior: smooth;
+    /* Anchor jumps and focus scrolling clear the 56px sticky header, so a
+       heading or a focused control never lands underneath it. */
+    scroll-padding-top: 4.5rem;
+    /* Tap feedback in the site's gold rather than the platform grey. */
+    -webkit-tap-highlight-color: rgba(214, 181, 102, 0.18);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  /* No double-tap-to-zoom delay on anything you press. */
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  label,
+  summary {
+    touch-action: manipulation;
   }
   body {
     background-color: var(--color-ink-950);
@@ -532,11 +551,16 @@
     border-radius: 1px;
     overflow: hidden;
   }
+  /* The fill is full width and scaled from the left: `transform` animates on
+     the compositor, where `width` re-ran layout (Web Interface Guidelines).
+     Components set `transform: scaleX(fraction)`. */
   .meter > span {
     display: block;
+    width: 100%;
     height: 100%;
     background-color: var(--color-gold-300);
-    transition: width 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transform-origin: left;
+    transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
 }
 
@@ -598,7 +622,29 @@
     transition: none;
   }
   .dot,
-  .animate-fade-up {
+  .animate-fade-up,
+  .animate-caret {
     animation: none !important;
   }
+}
+
+/* Skip link: off-screen until focused, then the first thing on the page. */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  background-color: var(--color-ink-950);
+  color: var(--color-bone-50);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
 }

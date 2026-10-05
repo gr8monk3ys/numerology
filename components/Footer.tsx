@@ -36,7 +36,7 @@ export function Footer() {
 
         {COLUMNS.map((col) => (
           <div key={col.heading}>
-            <h4 className="mono-label mb-4 font-sans">{col.heading}</h4>
+            <h2 className="mono-label mb-4 font-sans">{col.heading}</h2>
             <ul className="space-y-2.5 text-sm">
               {col.links.map((l) => (
                 <li key={l.href}>
@@ -50,7 +50,7 @@ export function Footer() {
         ))}
 
         <div>
-          <h4 className="mono-label mb-4 font-sans">The fine print</h4>
+          <h2 className="mono-label mb-4 font-sans">The fine print</h2>
           <p className="text-sm leading-relaxed text-bone-300">
             Numerology is offered for reflection, inspiration and entertainment.
             Trust your own intuition above all.
