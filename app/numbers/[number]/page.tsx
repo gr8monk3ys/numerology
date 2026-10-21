@@ -110,22 +110,22 @@ export default async function NumberDetailPage({
           </div>
           <div className="divided rounded-none border-x-0 border-b-0 sm:grid-cols-2">
             <div className="p-5 sm:p-6">
-              <h4 className="mono-label mb-3 text-sage-400">Gifts</h4>
+              <h3 className="mono-label mb-3 text-sage-400">Gifts</h3>
               <ul className="space-y-1.5 text-sm text-bone-200">
                 {master.gifts.map((g) => (
                   <li key={g} className="flex gap-2.5">
-                    <span className="font-mono text-sage-400">+</span>
+                    <span aria-hidden="true" className="font-mono text-sage-400">+</span>
                     {g}
                   </li>
                 ))}
               </ul>
             </div>
             <div className="p-5 sm:p-6">
-              <h4 className="mono-label mb-3 text-rubric-300">Challenges</h4>
+              <h3 className="mono-label mb-3 text-rubric-300">Challenges</h3>
               <ul className="space-y-1.5 text-sm text-bone-200">
                 {master.challenges.map((c) => (
                   <li key={c} className="flex gap-2.5">
-                    <span className="font-mono text-rubric-300">−</span>
+                    <span aria-hidden="true" className="font-mono text-rubric-300">−</span>
                     {c}
                   </li>
                 ))}
