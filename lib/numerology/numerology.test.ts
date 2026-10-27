@@ -38,6 +38,7 @@ import {
 } from "./esoteric";
 import zodiacSignsData from "../../content/data/zodiac_signs.json";
 import chineseZodiacData from "../../content/data/chinese_zodiac.json";
+import chaldeanMethods from "../../content/data/methods_chaldean.json";
 
 // --- Reduction -------------------------------------------------------------
 describe("reduceNumber", () => {
@@ -254,6 +255,36 @@ describe("Chaldean", () => {
     expect(r.total).toBe(16);
     expect(r.root).toBe(7);
     expect(r.compound).toBe(16);
+  });
+});
+
+// Every worked example in methods_chaldean.json, including the master-number
+// cases (Abel 11, Hannah 22, Leo John 33) that the method keeps unreduced.
+describe("Chaldean (methods_chaldean)", () => {
+  type ChaldeanCase = {
+    description: string;
+    input: { name: string };
+    expected: {
+      compound: number;
+      root: number;
+      isMaster: boolean;
+      wordCompounds?: Record<string, number>;
+    };
+  };
+  const cases = chaldeanMethods.testCases as ChaldeanCase[];
+
+  it("covers all nine recorded cases", () => {
+    expect(cases).toHaveLength(9);
+  });
+
+  it.each(cases.map((c) => [c.input.name, c] as const))("%s", (_name, c) => {
+    const r = chaldeanNumber(c.input.name);
+    expect(r.compound).toBe(c.expected.compound);
+    expect(r.root).toBe(c.expected.root);
+    expect(r.isMaster).toBe(c.expected.isMaster);
+    for (const [word, compound] of Object.entries(c.expected.wordCompounds ?? {})) {
+      expect(chaldeanNumber(word).total).toBe(compound);
+    }
   });
 });
 

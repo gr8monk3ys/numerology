@@ -202,7 +202,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
           <div className="flex items-center gap-3">
             <NumberOrb value={chaldean.compound} size="md" />
             <span aria-hidden="true" className="font-mono text-bone-500">→</span>
-            <NumberOrb value={chaldean.root} size="md" />
+            <NumberOrb value={chaldean.root} size="md" isMaster={chaldean.isMaster} />
           </div>
           <div>
             <p className="text-sm leading-relaxed text-bone-200">
