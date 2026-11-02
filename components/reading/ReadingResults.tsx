@@ -7,6 +7,7 @@ import { SectionRow } from "@/components/ui/SectionHeading";
 import { NumberCard } from "@/components/reading/NumberCard";
 import { CosmicProfile } from "@/components/reading/CosmicProfile";
 import { CycleList } from "@/components/reading/CycleList";
+import { InclusionTable } from "@/components/reading/InclusionTable";
 import {
   lifePathMeanings,
   expressionMeanings,
@@ -176,6 +177,8 @@ export function ReadingResults({ reading }: { reading: Reading }) {
             </div>
           </div>
         </div>
+
+        <InclusionTable counts={advanced.letterCounts} passion={advanced.hiddenPassion} />
       </section>
 
       {/* Letters */}
