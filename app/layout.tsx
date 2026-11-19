@@ -23,7 +23,7 @@ const texturina = Texturina({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://numerology-sigma-vert.vercel.app"),
+  metadataBase: new URL("https://numen.lscaturchio.xyz"),
   title: {
     default: "Numen · Esoteric Numerology Calculator",
     template: "%s · Numen",
