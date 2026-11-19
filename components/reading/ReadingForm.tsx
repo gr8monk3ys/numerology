@@ -1,9 +1,15 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import dynamic from "next/dynamic";
 import { ArrowRight, RotateCcw } from "lucide-react";
-import { buildReading, type Reading } from "@/lib/numerology";
+import type { Reading } from "@/lib/numerology";
+import {
+  castReading,
+  carriedReadingInput,
+  clearCarriedReadingInput,
+  type ReadingField,
+} from "@/lib/reading-input";
 
 // The results pull in every meaning, tarot and zodiac dataset. They are only
 // needed once a reading is cast, so they load then — and start loading as soon
@@ -11,17 +17,23 @@ import { buildReading, type Reading } from "@/lib/numerology";
 const loadResults = () => import("@/components/reading/ReadingResults");
 const ReadingResults = dynamic(() => loadResults().then((m) => m.ReadingResults));
 
-type Field = "fullName" | "birthDate";
+type Field = ReadingField;
 
 function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
 export function ReadingForm() {
-  const [fullName, setFullName] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  // A reading set on the home dial arrives here already filled in and cast.
+  const [fullName, setFullName] = useState(() => carriedReadingInput()?.fullName ?? "");
+  const [birthDate, setBirthDate] = useState(() => carriedReadingInput()?.birthDate ?? "");
   const [yAsVowel, setYAsVowel] = useState(false);
-  const [reading, setReading] = useState<Reading | null>(null);
+  const [reading, setReading] = useState<Reading | null>(() => {
+    const carried = carriedReadingInput();
+    const result = carried && castReading(carried.fullName, carried.birthDate);
+    return result && result.ok ? result.reading : null;
+  });
+  useEffect(clearCarriedReadingInput, []);
   const [error, setError] = useState<{ field: Field; message: string } | null>(null);
   const fullNameRef = useRef<HTMLInputElement>(null);
   const birthDateRef = useRef<HTMLInputElement>(null);
@@ -36,33 +48,12 @@ export function ReadingForm() {
     e.preventDefault();
     setError(null);
 
-    const cleanName = fullName.trim();
-    if (cleanName.replace(/[^a-zA-Z]/g, "").length < 2) {
-      fail("fullName", "Please enter your full birth name.");
+    const result = castReading(fullName, birthDate, yAsVowel);
+    if (!result.ok) {
+      fail(result.field, result.message);
       return;
     }
-    if (!birthDate) {
-      fail("birthDate", "Please enter your date of birth.");
-      return;
-    }
-    const [y, m, d] = birthDate.split("-").map(Number);
-    if (!y || !m || !d) {
-      fail("birthDate", "That date doesn’t look right. Use the date picker, or type it as YYYY-MM-DD.");
-      return;
-    }
-
-    const now = new Date();
-    const result = buildReading({
-      fullName: cleanName,
-      birth: { year: y, month: m, day: d },
-      yAsVowel,
-      today: {
-        year: now.getFullYear(),
-        month: now.getMonth() + 1,
-        day: now.getDate(),
-      },
-    });
-    setReading(result);
+    setReading(result.reading);
 
     requestAnimationFrame(() => {
       document
@@ -84,7 +75,7 @@ export function ReadingForm() {
         onSubmit={handleSubmit}
         onFocus={() => void loadResults()}
         onPointerEnter={() => void loadResults()}
-        className="frame ticks mx-auto max-w-3xl"
+        className="frame mx-auto max-w-3xl"
       >
         <div className="grid gap-6 p-6 sm:grid-cols-[1.5fr_1fr] sm:p-8">
           <div>
@@ -108,8 +99,8 @@ export function ReadingForm() {
               Use the full name given at birth for the most accurate reading.
             </p>
             {errorFor("fullName") && (
-              <p id="fullName-error" className="mt-2 font-mono text-xs tracking-wider text-rubric-300">
-                ! {errorFor("fullName")}
+              <p id="fullName-error" className="field-error">
+                {errorFor("fullName")}
               </p>
             )}
           </div>
@@ -127,21 +118,21 @@ export function ReadingForm() {
               min="1900-01-01"
               max="2099-12-31"
               onChange={(e) => setBirthDate(e.target.value)}
-              className="field field-mono"
+              className="field tabular"
               autoComplete="bday"
               aria-invalid={errorFor("birthDate") ? true : undefined}
               aria-describedby={errorFor("birthDate") ? "birthDate-error" : undefined}
             />
             {errorFor("birthDate") && (
-              <p id="birthDate-error" className="mt-2 font-mono text-xs tracking-wider text-rubric-300">
-                ! {errorFor("birthDate")}
+              <p id="birthDate-error" className="field-error">
+                {errorFor("birthDate")}
               </p>
             )}
           </div>
         </div>
 
         <div className="flex flex-col gap-4 border-t hairline px-6 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <label className="flex cursor-pointer items-center gap-3 text-sm text-bone-200">
+          <label className="flex cursor-pointer items-center gap-3 text-base text-bone-200">
             <input
               type="checkbox"
               name="yAsVowel"
@@ -150,7 +141,7 @@ export function ReadingForm() {
               className="checkbox"
             />
             <span>
-              Treat <span className="font-mono text-bone-50">Y</span> as a vowel
+              Treat <span className="font-figures text-bone-50">Y</span> as a vowel
               <span className="hidden text-bone-500 sm:inline"> · affects Soul Urge &amp; Personality</span>
             </span>
           </label>

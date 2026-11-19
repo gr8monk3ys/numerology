@@ -2,11 +2,11 @@ import clsx from "clsx";
 
 export function Chip({
   children,
-  tone = "mystic",
+  tone = "plain",
   className,
 }: {
   children: React.ReactNode;
-  tone?: "mystic" | "gold" | "muted" | "rubric";
+  tone?: "plain" | "gold" | "muted" | "rubric";
   className?: string;
 }) {
   return (

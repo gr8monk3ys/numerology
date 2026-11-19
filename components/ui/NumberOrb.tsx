@@ -1,19 +1,19 @@
 import clsx from "clsx";
 
-type TileSize = "xs" | "sm" | "md" | "lg" | "xl";
+type MedallionSize = "xs" | "sm" | "md" | "lg" | "xl";
 
-const SIZES: Record<TileSize, string> = {
-  xs: "h-8 min-w-8 px-1.5 text-sm",
-  sm: "h-11 min-w-11 px-2 text-lg",
-  md: "h-14 min-w-14 px-2.5 text-2xl",
-  lg: "h-20 min-w-20 px-3 text-4xl",
-  xl: "h-28 min-w-28 px-4 text-6xl",
+const SIZES: Record<MedallionSize, string> = {
+  xs: "w-8 text-base",
+  sm: "w-11 text-2xl",
+  md: "w-14 text-3xl",
+  lg: "w-20 text-5xl",
+  xl: "w-28 text-7xl",
 };
 
-/* Figures for three or more digits step down one size so the tile stays square-ish. */
-const COMPACT: Record<TileSize, string> = {
-  xs: "text-xs",
-  sm: "text-sm",
+/* Figures of three or more digits step down so they stay inside the ring. */
+const COMPACT: Record<MedallionSize, string> = {
+  xs: "text-sm",
+  sm: "text-base",
   md: "text-lg",
   lg: "text-2xl",
   xl: "text-4xl",
@@ -21,15 +21,15 @@ const COMPACT: Record<TileSize, string> = {
 
 export interface NumberOrbProps {
   value: number | string;
-  size?: TileSize;
+  size?: MedallionSize;
   isMaster?: boolean;
   isKarmic?: boolean;
   className?: string;
 }
 
 /**
- * A numeral tile: square, hairline-bordered, monospace figure. Master numbers
- * get gilt corner ticks; karmic numbers get a rubric border.
+ * A number medallion: a small dial face with a blackletter numeral. Master
+ * numbers sit on the sky field; karmic numbers take the twilight ring.
  */
 export function NumberOrb({
   value,
@@ -41,21 +41,12 @@ export function NumberOrb({
   return (
     <div
       className={clsx(
-        "relative flex shrink-0 select-none items-center justify-center rounded-[3px] border font-mono font-medium tabular",
+        "medallion",
         SIZES[size],
         String(value).length >= 3 && COMPACT[size],
-        isMaster
-          ? "ticks border-gold-400/60 bg-gold-300/[0.07] text-gold-200"
-          : isKarmic
-            ? "border-rubric-400/60 bg-rubric-400/[0.06] text-rubric-300"
-            : "border-(--line-strong) bg-surface text-bone-50",
+        isMaster ? "medallion-master" : isKarmic && "medallion-karmic",
         className,
       )}
-      style={
-        size === "xs" || size === "sm"
-          ? ({ "--tick-size": "5px" } as React.CSSProperties)
-          : undefined
-      }
     >
       {value}
     </div>

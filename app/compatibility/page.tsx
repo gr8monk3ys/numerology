@@ -12,8 +12,6 @@ export default function CompatibilityPage() {
   return (
     <div className="container-page py-14 sm:py-20">
       <PageHeader
-        index="02"
-        eyebrow="Compatibility"
         title={<>Two souls, <em>two</em> numbers</>}
         subtitle="Enter two birth dates to compare Life Paths and reveal the harmony, and the growth, written between you."
         meta={<StatusBadge>Runs locally</StatusBadge>}

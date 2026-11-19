@@ -24,11 +24,11 @@ const COLUMNS = [
 
 export function Footer() {
   return (
-    <footer className="mt-28 border-t hairline">
+    <footer className="mt-28 border-t-[3px] border-double hairline-strong">
       <div className="container-page grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="space-y-4">
           <Wordmark />
-          <p className="max-w-xs text-sm leading-relaxed text-bone-300">
+          <p className="max-w-xs text-base text-bone-300">
             An esoteric numerology suite. Pythagorean and Chaldean charts,
             cycles and correspondences, computed entirely in your browser.
           </p>
@@ -36,8 +36,8 @@ export function Footer() {
 
         {COLUMNS.map((col) => (
           <div key={col.heading}>
-            <h2 className="mono-label mb-4 font-sans">{col.heading}</h2>
-            <ul className="space-y-2.5 text-sm">
+            <h2 className="label mb-3 font-sans">{col.heading}</h2>
+            <ul className="space-y-2 text-base">
               {col.links.map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-bone-200 transition-colors hover:text-gold-200">
@@ -50,8 +50,8 @@ export function Footer() {
         ))}
 
         <div>
-          <h2 className="mono-label mb-4 font-sans">The fine print</h2>
-          <p className="text-sm leading-relaxed text-bone-300">
+          <h2 className="label mb-3 font-sans">The fine print</h2>
+          <p className="text-base text-bone-300">
             Numerology is offered for reflection, inspiration and entertainment.
             Trust your own intuition above all.
           </p>
@@ -59,12 +59,9 @@ export function Footer() {
       </div>
 
       <div className="border-t hairline">
-        <div className="container-page flex flex-col gap-2 py-5 font-mono text-[11px] tracking-wider text-bone-500 sm:flex-row sm:items-center sm:justify-between">
-          <span>© {new Date().getFullYear()} NUMEN</span>
-          <span className="flex items-center gap-2">
-            <span className="dot" />
-            ALL CALCULATIONS RUN LOCALLY · NOTHING IS SENT
-          </span>
+        <div className="container-page flex flex-col gap-2 py-5 text-base text-bone-400 sm:flex-row sm:items-center sm:justify-between">
+          <span>© {new Date().getFullYear()} Numen</span>
+          <span>Every calculation runs on your device. Your name and birth date are never sent.</span>
         </div>
       </div>
     </footer>

@@ -23,7 +23,7 @@ export function CycleList({
 }) {
   return (
     <div>
-      <h3 className="mono-label mb-3">{title}</h3>
+      <h3 className="label mb-3">{title}</h3>
       <div className="divided">
         {items.map((it) => (
           <div
@@ -33,11 +33,11 @@ export function CycleList({
             <NumberOrb value={it.value} size="sm" isMaster={it.isMaster} />
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-sm text-bone-50">{it.name}</span>
+                <span className="text-base text-bone-50">{it.name}</span>
                 <Chip tone="muted">ages {it.ages}</Chip>
                 {it.active && <Chip tone="gold">Now</Chip>}
               </div>
-              {it.summary && <p className="mt-1 text-sm text-bone-300">{it.summary}</p>}
+              {it.summary && <p className="mt-1 text-base text-bone-300">{it.summary}</p>}
             </div>
           </div>
         ))}

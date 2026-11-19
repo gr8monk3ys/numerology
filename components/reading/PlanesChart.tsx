@@ -20,7 +20,7 @@ export function PlanesChart({
 
   return (
     <div className="frame">
-      <p className="border-b hairline p-5 text-sm leading-relaxed text-bone-300 sm:p-6">
+      <p className="border-b hairline p-5 text-base leading-relaxed text-bone-300 sm:p-6">
         {content._intro}
       </p>
       <div className="space-y-5 p-5 sm:p-6">
@@ -32,11 +32,11 @@ export function PlanesChart({
           return (
             <div key={plane}>
               <div className="mb-2 flex items-baseline justify-between">
-                <span className="flex items-center gap-2 text-sm text-bone-50">
+                <span className="flex items-center gap-2 text-base text-bone-50">
                   {content[plane].title}
                   {isDominant && <span className="tag tag-accent">Dominant</span>}
                 </span>
-                <span className="font-mono text-xs text-bone-300 tabular">
+                <span className="font-figures text-sm text-bone-300 tabular">
                   {count} <span className="text-bone-500">· {pct}%</span>
                 </span>
               </div>
@@ -53,7 +53,7 @@ export function PlanesChart({
           );
         })}
       </div>
-      <p className="border-t hairline p-5 text-sm text-bone-300 sm:p-6">
+      <p className="border-t hairline p-5 text-base text-bone-300 sm:p-6">
         <span className="text-gold-200">{content[result.dominant].title} plane · </span>
         {content[result.dominant].meaning}
       </p>

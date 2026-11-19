@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import clsx from "clsx";
 
 const NAV_LINKS = [
@@ -17,13 +17,8 @@ const NAV_LINKS = [
 
 export function Wordmark({ onClick }: { onClick?: () => void }) {
   return (
-    <Link href="/" className="flex items-center gap-2.5" onClick={onClick}>
-      <span className="ticks flex h-7 w-7 items-center justify-center rounded-[3px] border border-gold-400/60 font-mono text-[13px] font-medium text-gold-200 [--tick-size:5px]">
-        N
-      </span>
-      <span className="font-display text-[1.35rem] leading-none tracking-tight text-bone-50">
-        Numen
-      </span>
+    <Link href="/" className="font-display text-[2rem] font-bold leading-none text-bone-50" onClick={onClick}>
+      Numen
     </Link>
   );
 }
@@ -38,79 +33,59 @@ export function Navbar() {
   const setOpen = (next: boolean) => setOpenedAt(next ? pathname : null);
 
   return (
-    <header className="sticky top-0 z-50 border-b hairline bg-ink-950/80 backdrop-blur-md">
-      <nav className="container-page flex h-14 items-center justify-between">
+    <header className="sticky top-0 z-50 border-b hairline bg-ink-950">
+      <nav className="container-page flex h-16 items-center justify-between gap-6">
         <Wordmark />
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {NAV_LINKS.map((link) => {
             const active = pathname.startsWith(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={active ? "page" : undefined}
                 className={clsx(
-                  "relative rounded-[3px] px-3 py-1.5 text-[13px] transition-colors",
+                  "border-b py-1 transition-colors",
                   active
-                    ? "text-bone-50"
-                    : "text-bone-300 hover:bg-gold-300/[0.06] hover:text-bone-50",
+                    ? "border-gold-300 text-gold-200"
+                    : "border-transparent text-bone-200 hover:text-gold-200",
                 )}
               >
                 {link.label}
-                {active && (
-                  <span className="absolute inset-x-3 -bottom-[15px] h-px bg-gold-300" />
-                )}
               </Link>
             );
           })}
         </div>
 
-        <div className="flex items-center gap-2">
-          <Link href="/reading" className="btn btn-primary btn-sm hidden sm:inline-flex">
-            Start reading
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </Link>
-          <button
-            type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-[3px] border hairline text-bone-100 md:hidden"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-            aria-expanded={open}
-          >
-            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </button>
-        </div>
+        <button
+          type="button"
+          className="flex h-11 w-11 items-center justify-center rounded-full border hairline-strong text-bone-100 md:hidden"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+          aria-expanded={open}
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </nav>
 
       {open && (
-        <div className="border-t hairline bg-ink-950/95 md:hidden">
-          <div className="container-page divide-y divide-(--line) py-1">
-            {NAV_LINKS.map((link, i) => (
+        <div className="border-t hairline bg-ink-950 md:hidden">
+          <div className="container-page divide-y divide-(--iron) py-1">
+            {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
+                aria-current={pathname.startsWith(link.href) ? "page" : undefined}
                 className={clsx(
-                  "flex items-center justify-between py-3.5 text-[15px]",
+                  "block py-3.5 text-lg",
                   pathname.startsWith(link.href) ? "text-gold-200" : "text-bone-100",
                 )}
               >
-                <span className="flex items-center gap-4">
-                  <span className="font-mono text-[11px] text-bone-500">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  {link.label}
-                </span>
-                <ArrowUpRight className="h-4 w-4 text-bone-500" />
+                {link.label}
               </Link>
             ))}
-            <Link
-              href="/reading"
-              onClick={() => setOpen(false)}
-              className="btn btn-primary my-3 w-full"
-            >
-              Start reading
-            </Link>
           </div>
         </div>
       )}

@@ -1,0 +1,689 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-19T00:00:00Z",
+  "title": "Design System: Numen",
+  "extensions": {
+    "colorMeta": {
+      "gold-300": {
+        "role": "primary",
+        "displayName": "Gilt",
+        "canonical": "#d9a441",
+        "tonalRamp": [
+          "#3f2b0e",
+          "#74501a",
+          "#9a6c1f",
+          "#c08a2c",
+          "#d9a441",
+          "#ecc978",
+          "#f6e3b0",
+          "#fbf2d8"
+        ]
+      },
+      "gold-200": {
+        "role": "primary",
+        "displayName": "Pale Gilt",
+        "canonical": "#ecc978",
+        "tonalRamp": [
+          "#3f2b0e",
+          "#74501a",
+          "#9a6c1f",
+          "#c08a2c",
+          "#d9a441",
+          "#ecc978",
+          "#f6e3b0",
+          "#fbf2d8"
+        ]
+      },
+      "gold-100": {
+        "role": "primary",
+        "displayName": "Leaf Highlight",
+        "canonical": "#f6e3b0",
+        "tonalRamp": [
+          "#3f2b0e",
+          "#74501a",
+          "#9a6c1f",
+          "#c08a2c",
+          "#d9a441",
+          "#ecc978",
+          "#f6e3b0",
+          "#fbf2d8"
+        ]
+      },
+      "gold-400": {
+        "role": "primary",
+        "displayName": "Worn Gilt",
+        "canonical": "#c08a2c",
+        "tonalRamp": [
+          "#3f2b0e",
+          "#74501a",
+          "#9a6c1f",
+          "#c08a2c",
+          "#d9a441",
+          "#ecc978",
+          "#f6e3b0",
+          "#fbf2d8"
+        ]
+      },
+      "gold-600": {
+        "role": "primary",
+        "displayName": "Tarnish",
+        "canonical": "#74501a",
+        "tonalRamp": [
+          "#3f2b0e",
+          "#74501a",
+          "#9a6c1f",
+          "#c08a2c",
+          "#d9a441",
+          "#ecc978",
+          "#f6e3b0",
+          "#fbf2d8"
+        ]
+      },
+      "sky-700": {
+        "role": "secondary",
+        "displayName": "Ultramarine Field",
+        "canonical": "#16255c",
+        "tonalRamp": [
+          "#0b1330",
+          "#111d4a",
+          "#16255c",
+          "#1b2c6e",
+          "#2a3f8f",
+          "#4a5fb0",
+          "#8494d0",
+          "#cdd4ee"
+        ]
+      },
+      "sky-600": {
+        "role": "secondary",
+        "displayName": "Day Sky",
+        "canonical": "#1b2c6e",
+        "tonalRamp": [
+          "#0b1330",
+          "#111d4a",
+          "#16255c",
+          "#1b2c6e",
+          "#2a3f8f",
+          "#4a5fb0",
+          "#8494d0",
+          "#cdd4ee"
+        ]
+      },
+      "sky-800": {
+        "role": "secondary",
+        "displayName": "Deep Sky",
+        "canonical": "#111d4a",
+        "tonalRamp": [
+          "#0b1330",
+          "#111d4a",
+          "#16255c",
+          "#1b2c6e",
+          "#2a3f8f",
+          "#4a5fb0",
+          "#8494d0",
+          "#cdd4ee"
+        ]
+      },
+      "sky-500": {
+        "role": "secondary",
+        "displayName": "Selection Blue",
+        "canonical": "#2a3f8f",
+        "tonalRamp": [
+          "#0b1330",
+          "#111d4a",
+          "#16255c",
+          "#1b2c6e",
+          "#2a3f8f",
+          "#4a5fb0",
+          "#8494d0",
+          "#cdd4ee"
+        ]
+      },
+      "rubric-400": {
+        "role": "tertiary",
+        "displayName": "Twilight Vermilion",
+        "canonical": "#c45a34",
+        "tonalRamp": [
+          "#3a170d",
+          "#6b2c19",
+          "#a8482a",
+          "#c45a34",
+          "#d6764f",
+          "#e89270",
+          "#f2b9a2",
+          "#fae1d6"
+        ]
+      },
+      "rubric-300": {
+        "role": "tertiary",
+        "displayName": "Pale Vermilion",
+        "canonical": "#e89270",
+        "tonalRamp": [
+          "#3a170d",
+          "#6b2c19",
+          "#a8482a",
+          "#c45a34",
+          "#d6764f",
+          "#e89270",
+          "#f2b9a2",
+          "#fae1d6"
+        ]
+      },
+      "rubric-500": {
+        "role": "tertiary",
+        "displayName": "Twilight Band",
+        "canonical": "#a8482a",
+        "tonalRamp": [
+          "#3a170d",
+          "#6b2c19",
+          "#a8482a",
+          "#c45a34",
+          "#d6764f",
+          "#e89270",
+          "#f2b9a2",
+          "#fae1d6"
+        ]
+      },
+      "sage-400": {
+        "role": "tertiary",
+        "displayName": "Verdigris",
+        "canonical": "#78ad96",
+        "tonalRamp": [
+          "#1f3229",
+          "#35574a",
+          "#4f8270",
+          "#78ad96",
+          "#a9cdbb",
+          "#c6dfd3",
+          "#dfeee7",
+          "#f0f7f3"
+        ]
+      },
+      "ink-950": {
+        "role": "neutral",
+        "displayName": "Night",
+        "canonical": "#0a0911",
+        "tonalRamp": [
+          "#0a0911",
+          "#0f0e1a",
+          "#141326",
+          "#1a1934",
+          "#262548",
+          "#3a3a66",
+          "#6b6883",
+          "#b9b8d6"
+        ]
+      },
+      "ink-900": {
+        "role": "neutral",
+        "displayName": "Well",
+        "canonical": "#0f0e1a",
+        "tonalRamp": [
+          "#0a0911",
+          "#0f0e1a",
+          "#141326",
+          "#1a1934",
+          "#262548",
+          "#3a3a66",
+          "#6b6883",
+          "#b9b8d6"
+        ]
+      },
+      "ink-850": {
+        "role": "neutral",
+        "displayName": "Lamp-lit Night",
+        "canonical": "#141326",
+        "tonalRamp": [
+          "#0a0911",
+          "#0f0e1a",
+          "#141326",
+          "#1a1934",
+          "#262548",
+          "#3a3a66",
+          "#6b6883",
+          "#b9b8d6"
+        ]
+      },
+      "bone-50": {
+        "role": "neutral",
+        "displayName": "Bone",
+        "canonical": "#f3e9d2",
+        "tonalRamp": [
+          "#3d3a33",
+          "#6b6558",
+          "#888070",
+          "#9a907d",
+          "#b9ad95",
+          "#d6c9ad",
+          "#e9dcc0",
+          "#f3e9d2"
+        ]
+      },
+      "bone-100": {
+        "role": "neutral",
+        "displayName": "Bone Body",
+        "canonical": "#e9dcc0",
+        "tonalRamp": [
+          "#3d3a33",
+          "#6b6558",
+          "#888070",
+          "#9a907d",
+          "#b9ad95",
+          "#d6c9ad",
+          "#e9dcc0",
+          "#f3e9d2"
+        ]
+      },
+      "bone-200": {
+        "role": "neutral",
+        "displayName": "Bone Lead",
+        "canonical": "#d6c9ad",
+        "tonalRamp": [
+          "#3d3a33",
+          "#6b6558",
+          "#888070",
+          "#9a907d",
+          "#b9ad95",
+          "#d6c9ad",
+          "#e9dcc0",
+          "#f3e9d2"
+        ]
+      },
+      "bone-300": {
+        "role": "neutral",
+        "displayName": "Faded Bone",
+        "canonical": "#b9ad95",
+        "tonalRamp": [
+          "#3d3a33",
+          "#6b6558",
+          "#888070",
+          "#9a907d",
+          "#b9ad95",
+          "#d6c9ad",
+          "#e9dcc0",
+          "#f3e9d2"
+        ]
+      },
+      "bone-400": {
+        "role": "neutral",
+        "displayName": "Faded Bone Label",
+        "canonical": "#9a907d",
+        "tonalRamp": [
+          "#3d3a33",
+          "#6b6558",
+          "#888070",
+          "#9a907d",
+          "#b9ad95",
+          "#d6c9ad",
+          "#e9dcc0",
+          "#f3e9d2"
+        ]
+      },
+      "bone-500": {
+        "role": "neutral",
+        "displayName": "Faded Bone Placeholder",
+        "canonical": "#888070",
+        "tonalRamp": [
+          "#3d3a33",
+          "#6b6558",
+          "#888070",
+          "#9a907d",
+          "#b9ad95",
+          "#d6c9ad",
+          "#e9dcc0",
+          "#f3e9d2"
+        ]
+      },
+      "bone-600": {
+        "role": "neutral",
+        "displayName": "Iron Numeral",
+        "canonical": "#6b6883",
+        "tonalRamp": [
+          "#0a0911",
+          "#0f0e1a",
+          "#141326",
+          "#1a1934",
+          "#262548",
+          "#3a3a66",
+          "#6b6883",
+          "#b9b8d6"
+        ]
+      },
+      "bone-300-on-sky": {
+        "role": "neutral",
+        "displayName": "Faded Bone on Sky",
+        "canonical": "#cfcbe0",
+        "tonalRamp": [
+          "#0a0911",
+          "#0f0e1a",
+          "#141326",
+          "#1a1934",
+          "#262548",
+          "#3a3a66",
+          "#6b6883",
+          "#b9b8d6"
+        ]
+      },
+      "bone-400-on-sky": {
+        "role": "neutral",
+        "displayName": "Label on Sky",
+        "canonical": "#b9b8d6",
+        "tonalRamp": [
+          "#0a0911",
+          "#0f0e1a",
+          "#141326",
+          "#1a1934",
+          "#262548",
+          "#3a3a66",
+          "#6b6883",
+          "#b9b8d6"
+        ]
+      },
+      "bone-500-on-sky": {
+        "role": "neutral",
+        "displayName": "Placeholder on Sky",
+        "canonical": "#a9aad0",
+        "tonalRamp": [
+          "#0a0911",
+          "#0f0e1a",
+          "#141326",
+          "#1a1934",
+          "#262548",
+          "#3a3a66",
+          "#6b6883",
+          "#b9b8d6"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Gilt Hairline",
+        "canonical": "rgba(217, 164, 65, 0.2)",
+        "tonalRamp": [
+          "#3f2b0e",
+          "#74501a",
+          "#9a6c1f",
+          "#c08a2c",
+          "#d9a441",
+          "#ecc978",
+          "#f6e3b0",
+          "#fbf2d8"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Gilt Rule",
+        "canonical": "rgba(217, 164, 65, 0.45)",
+        "tonalRamp": [
+          "#3f2b0e",
+          "#74501a",
+          "#9a6c1f",
+          "#c08a2c",
+          "#d9a441",
+          "#ecc978",
+          "#f6e3b0",
+          "#fbf2d8"
+        ]
+      },
+      "iron": {
+        "role": "neutral",
+        "displayName": "Iron Rule",
+        "canonical": "rgba(233, 220, 192, 0.13)",
+        "tonalRamp": [
+          "#3d3a33",
+          "#6b6558",
+          "#888070",
+          "#9a907d",
+          "#b9ad95",
+          "#d6c9ad",
+          "#e9dcc0",
+          "#f3e9d2"
+        ]
+      },
+      "iron-on-sky": {
+        "role": "neutral",
+        "displayName": "Iron Rule on Sky",
+        "canonical": "rgba(233, 220, 192, 0.22)",
+        "tonalRamp": [
+          "#3d3a33",
+          "#6b6558",
+          "#888070",
+          "#9a907d",
+          "#b9ad95",
+          "#d6c9ad",
+          "#e9dcc0",
+          "#f3e9d2"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The home h1; page-header h1s sit at 3rem to 3.75rem."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section h2s in blackletter, 2.25rem rising to 3rem."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Every numeral in a medallion and on the dial."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "h3 and h4, row names, definition terms, in the text face."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Everything read; paragraphs cap at 72ch."
+      },
+      "figures": {
+        "displayName": "Figures",
+        "purpose": "Sums, reduction chains, dates and scores in tabular lining figures."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Small-caps meta, captions and list terms (font-variant-caps: all-small-caps). Never above a heading."
+      }
+    },
+    "shadows": [
+      {
+        "name": "cell-rule",
+        "value": "0 0 0 1px var(--iron)",
+        "purpose": "Draws the shared iron rules between cells of a ruled grid. A line, not a shadow; the system has no elevation shadows."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-settle",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The one easing curve: the dial settling and the hand swinging."
+      },
+      {
+        "name": "dial-settle",
+        "value": "1.6s var(--ease-settle) backwards, 90ms stagger per ring, outer first",
+        "purpose": "On load each body leaves twelve o'clock and settles on its numeral. Off under prefers-reduced-motion."
+      },
+      {
+        "name": "dial-turn",
+        "value": "transform 1.1s var(--ease-settle)",
+        "purpose": "Hand and bodies turning to a pressed row or a new reading. Off under prefers-reduced-motion."
+      },
+      {
+        "name": "numeral-light",
+        "value": "fill 0.5s ease",
+        "purpose": "A rim numeral changing between iron and gilt."
+      },
+      {
+        "name": "state",
+        "value": "0.15s ease",
+        "purpose": "Colour, border and background changes on hover, focus and press."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The gilt plate: the one action a plate or form exists for.",
+      "html": "<button class=\"ds-btn-primary\">Set the dial</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 2.75rem; padding: 0 1.25rem; font-family: var(--font-sans, Texturina, Georgia, serif); font-size: 1rem; font-weight: 600; white-space: nowrap; border-radius: 0; cursor: pointer; transition: background-color .15s ease, border-color .15s ease, color .15s ease, transform .15s ease; color: var(--color-ink-950, #0a0911); background: var(--color-gold-300, #d9a441); border: 1px solid var(--color-gold-300, #d9a441); } .ds-btn-primary:hover { background: var(--color-gold-200, #ecc978); border-color: var(--color-gold-200, #ecc978); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-gold-200, #ecc978); outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A ruled outline for the follow-on action; may carry a line arrow.",
+      "html": "<button class=\"ds-btn-secondary\">Cast a full reading <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 2.75rem; padding: 0 1.25rem; font-family: var(--font-sans, Texturina, Georgia, serif); font-size: 1rem; font-weight: 600; white-space: nowrap; border-radius: 0; cursor: pointer; transition: background-color .15s ease, border-color .15s ease, color .15s ease, transform .15s ease; color: var(--color-bone-50, #f3e9d2); background: transparent; border: 1px solid var(--line-strong, rgba(217,164,65,.45)); } .ds-btn-secondary:hover { border-color: var(--color-gold-300, #d9a441); color: var(--color-gold-200, #ecc978); } .ds-btn-secondary:active { transform: translateY(1px); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--color-gold-200, #ecc978); outline-offset: 3px; }"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "A dark well with a gilt rule, a pale gilt label above and a hint below.",
+      "html": "<div class=\"ds-field-wrap\"><label class=\"ds-field-label\" for=\"ds-name\">Full name at birth</label><input id=\"ds-name\" class=\"ds-field\" type=\"text\" placeholder=\"Ada Augusta Byron…\"><p class=\"ds-field-hint\">Worked out on your device. Your name and birth date are never sent.</p></div>",
+      "css": ".ds-field-wrap { max-width: 28rem; font-family: var(--font-sans, Texturina, Georgia, serif); } .ds-field-label { display: block; margin-bottom: .375rem; font-size: .9375rem; font-weight: 600; color: var(--color-gold-200, #ecc978); } .ds-field { width: 100%; height: 3rem; padding: 0 .875rem; border: 1px solid var(--line-strong, rgba(217,164,65,.45)); border-radius: 0; background: var(--color-ink-900, #0f0e1a); color: var(--color-bone-50, #f3e9d2); font-family: var(--font-sans, Texturina, Georgia, serif); font-size: 1.0625rem; transition: border-color .15s ease, background-color .15s ease; } .ds-field::placeholder { color: var(--color-bone-500, #888070); } .ds-field:hover { border-color: var(--color-gold-400, #c08a2c); } .ds-field:focus { outline: none; border-color: var(--color-gold-200, #ecc978); background: var(--color-ink-850, #141326); } .ds-field[aria-invalid='true'] { border-color: var(--color-rubric-400, #c45a34); } .ds-field-hint { margin: .5rem 0 0; font-size: .875rem; color: var(--color-bone-400, #9a907d); }"
+    },
+    {
+      "name": "Tags",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "A word between thin rules. Rubric is for Master and Karmic only.",
+      "html": "<span class=\"ds-tag\">Fire</span> <span class=\"ds-tag ds-tag-accent\">Computed locally</span> <span class=\"ds-tag ds-tag-rubric\">Master</span> <span class=\"ds-tag ds-tag-muted\">The Magician</span>",
+      "css": ".ds-tag { display: inline-flex; align-items: center; padding: .0625rem .5rem; border: 1px solid var(--iron, rgba(233,220,192,.13)); font-family: var(--font-sans, Texturina, Georgia, serif); font-size: 1rem; line-height: 1.3; font-variant-caps: all-small-caps; letter-spacing: .05em; color: var(--color-bone-200, #d6c9ad); white-space: nowrap; } .ds-tag-accent { border-color: var(--line-strong, rgba(217,164,65,.45)); color: var(--color-gold-200, #ecc978); } .ds-tag-rubric { border-color: var(--color-rubric-400, #c45a34); color: var(--color-rubric-300, #e89270); } .ds-tag-muted { color: var(--color-bone-400, #9a907d); }"
+    },
+    {
+      "name": "Medallion",
+      "kind": "custom",
+      "refersTo": "medallion",
+      "description": "Every number is a small dial face: ordinary, master (sky face, vermilion ring) and karmic (vermilion ring and numeral).",
+      "html": "<div class=\"ds-medallion-row\"><div class=\"ds-medallion\">7</div><div class=\"ds-medallion ds-medallion-master\">11</div><div class=\"ds-medallion ds-medallion-karmic\">13</div></div>",
+      "css": ".ds-medallion-row { display: flex; gap: 1.5rem; align-items: center; } .ds-medallion { position: relative; display: flex; align-items: center; justify-content: center; aspect-ratio: 1; border-radius: 9999px; border: 1px solid var(--color-gold-400, #c08a2c); background: var(--color-ink-900, #0f0e1a); color: var(--color-bone-50, #f3e9d2); font-family: var(--font-display, UnifrakturCook, 'Old English Text MT', serif); font-weight: 700; line-height: 1; width: 5rem; font-size: 3rem; } .ds-medallion::before { content: ''; position: absolute; inset: 9%; border-radius: inherit; border: 1px solid var(--iron, rgba(233,220,192,.13)); } .ds-medallion-master { background: var(--color-sky-600, #1b2c6e); border-color: var(--color-rubric-400, #c45a34); color: var(--color-gold-100, #f6e3b0); } .ds-medallion-master::before { border-color: var(--color-gold-300, #d9a441); } .ds-medallion-karmic { border-color: var(--color-rubric-400, #c45a34); color: var(--color-rubric-300, #e89270); } .ds-medallion-karmic::before { border-color: var(--color-rubric-500, #a8482a); }"
+    },
+    {
+      "name": "Plate",
+      "kind": "card",
+      "refersTo": "plate-row",
+      "description": "The replacement for a card: content between a gilt double rule and a hairline, no box and no fill.",
+      "html": "<div class=\"ds-plate\"><h3 class=\"ds-plate-title\">Born on the 10th</h3><p class=\"ds-plate-body\">Independent and original, a natural beginner of things.</p><p class=\"ds-plate-sum\">1 + 0 = <span>1</span></p></div>",
+      "css": ".ds-plate { border-top: 3px double var(--line-strong, rgba(217,164,65,.45)); border-bottom: 1px solid var(--line, rgba(217,164,65,.2)); padding: 1.25rem; font-family: var(--font-sans, Texturina, Georgia, serif); } .ds-plate-title { margin: 0; font-size: 1.25rem; font-weight: 600; line-height: 1.25; color: var(--color-bone-50, #f3e9d2); } .ds-plate-body { margin: .5rem 0 0; font-size: 1.0625rem; line-height: 1.6; color: var(--color-bone-300, #b9ad95); } .ds-plate-sum { margin: .75rem 0 0; font-size: 1.25rem; font-variant-numeric: tabular-nums lining-nums; color: var(--color-bone-100, #e9dcc0); } .ds-plate-sum span { color: var(--color-gold-200, #ecc978); }"
+    },
+    {
+      "name": "Sky Plate",
+      "kind": "card",
+      "refersTo": "sky-plate",
+      "description": "The one filled surface: the ultramarine field between solid gilt double rules, secondary text retinted toward the field.",
+      "html": "<div class=\"ds-sky\"><h2 class=\"ds-sky-title\">Beyond the six rings</h2><p class=\"ds-sky-body\">The debts you carry, the cycles you move through.</p></div>",
+      "css": ".ds-sky { background: var(--color-sky-700, #16255c); border-top: 3px double var(--color-gold-300, #d9a441); border-bottom: 3px double var(--color-gold-300, #d9a441); padding: 1.5rem; } .ds-sky-title { margin: 0; font-family: var(--font-display, UnifrakturCook, 'Old English Text MT', serif); font-weight: 700; font-size: 2.25rem; line-height: 1.02; color: var(--color-bone-50, #f3e9d2); } .ds-sky-body { margin: .75rem 0 0; font-family: var(--font-sans, Texturina, Georgia, serif); font-size: 1.0625rem; line-height: 1.6; color: #cfcbe0; }"
+    },
+    {
+      "name": "Number Plate Row",
+      "kind": "custom",
+      "refersTo": "plate-row-pressed",
+      "description": "The dial's controls: one row per ring. The pressed row takes the sky field and writes out its working.",
+      "html": "<div class=\"ds-rows\"><button class=\"ds-row\" aria-pressed=\"true\"><span class=\"ds-row-med\">1</span><span><span class=\"ds-row-name\">Life Path</span><span class=\"ds-row-work\">12 → 3, 10 → 1, 1815 → 15 → 6</span><span class=\"ds-row-work\">3 + 1 + 6 = 10 → 1</span><span class=\"ds-row-src\">The direction of your life, summed from your birth date.</span></span></button><button class=\"ds-row\" aria-pressed=\"false\"><span class=\"ds-row-med\">9</span><span><span class=\"ds-row-name\">Expression</span><span class=\"ds-row-src\">Your natural talents, summed from every letter of your name.</span></span><span class=\"ds-row-chain\">63 → 9</span></button></div>",
+      "css": ".ds-rows { border-top: 1px solid var(--line-strong, rgba(217,164,65,.45)); } .ds-row { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr) auto; align-items: center; gap: .25rem 1rem; width: 100%; padding: .75rem; text-align: left; background: transparent; border: 0; border-bottom: 1px solid var(--iron, rgba(233,220,192,.13)); border-radius: 0; cursor: pointer; font-family: var(--font-sans, Texturina, Georgia, serif); transition: background-color .15s ease; } .ds-row:hover { background: var(--color-ink-850, #141326); } .ds-row[aria-pressed='true'] { background: var(--color-sky-700, #16255c); } .ds-row:focus-visible { outline: 2px solid var(--color-gold-200, #ecc978); outline-offset: 3px; } .ds-row-med { position: relative; display: flex; align-items: center; justify-content: center; aspect-ratio: 1; border-radius: 9999px; border: 1px solid var(--color-gold-400, #c08a2c); background: var(--color-ink-900, #0f0e1a); color: var(--color-bone-50, #f3e9d2); font-family: var(--font-display, UnifrakturCook, 'Old English Text MT', serif); font-weight: 700; line-height: 1; width: 2.75rem; font-size: 1.5rem; } .ds-row-name { display: block; font-size: 1.125rem; font-weight: 600; color: var(--color-bone-50, #f3e9d2); } .ds-row-work { display: block; font-size: 1.125rem; font-variant-numeric: tabular-nums lining-nums; color: var(--color-gold-200, #ecc978); } .ds-row-src { display: block; font-size: 1rem; color: var(--color-bone-300, #b9ad95); } .ds-row[aria-pressed='true'] .ds-row-src { color: #cfcbe0; } .ds-row-chain { font-size: 1.125rem; font-variant-numeric: tabular-nums lining-nums; color: var(--color-gold-200, #ecc978); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Night header with a hairline below: blackletter wordmark, text-face links, the current page in pale gilt with a gilt underline.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-mark\" href=\"#\">Numen</a><div class=\"ds-nav-links\"><a class=\"ds-nav-link\" aria-current=\"page\" href=\"#\">Reading</a><a class=\"ds-nav-link\" href=\"#\">Compatibility</a><a class=\"ds-nav-link\" href=\"#\">Forecast</a><a class=\"ds-nav-link\" href=\"#\">Method</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 4rem; padding: 0 1.25rem; background: var(--color-ink-950, #0a0911); border-bottom: 1px solid var(--line, rgba(217,164,65,.2)); } .ds-nav-mark { font-family: var(--font-display, UnifrakturCook, 'Old English Text MT', serif); font-weight: 700; font-size: 2rem; line-height: 1; color: var(--color-bone-50, #f3e9d2); text-decoration: none; } .ds-nav-links { display: flex; gap: 1.5rem; } .ds-nav-link { font-family: var(--font-sans, Texturina, Georgia, serif); font-size: 1.0625rem; padding: .25rem 0; border-bottom: 1px solid transparent; color: var(--color-bone-200, #d6c9ad); text-decoration: none; transition: color .15s ease; } .ds-nav-link:hover { color: var(--color-gold-200, #ecc978); } .ds-nav-link[aria-current='page'] { color: var(--color-gold-200, #ecc978); border-bottom-color: var(--color-gold-300, #d9a441); } .ds-nav-link:focus-visible, .ds-nav-mark:focus-visible { outline: 2px solid var(--color-gold-200, #ecc978); outline-offset: 3px; }"
+    },
+    {
+      "name": "The Dial",
+      "kind": "custom",
+      "refersTo": "medallion",
+      "description": "The signature: nine rim numerals (gilt where a ring points, iron elsewhere), a sky plate crossed by the twilight band, six rings with their bodies, the hand and the centre numeral. Shown static; in the product it settles once on load.",
+      "html": "<svg class=\"ds-dial\" viewBox=\"-500 -500 1000 1000\" role=\"img\" aria-label=\"Dial set to Life Path 1, Expression 9, Soul Urge 1\"><defs><clipPath id=\"ds-dial-sky\"><circle r=\"400\"/></clipPath></defs><circle r=\"488\" class=\"ds-dial-night ds-dial-gilt\" stroke-width=\"3\"/><circle r=\"412\" fill=\"none\" class=\"ds-dial-gilt\" stroke-width=\"1.5\"/><text x=\"0.0\" y=\"-450.0\" font-size=\"62\" class=\"ds-dial-num ds-dial-lit\">1</text><text x=\"289.3\" y=\"-344.7\" font-size=\"62\" class=\"ds-dial-num\">2</text><text x=\"443.2\" y=\"-78.1\" font-size=\"62\" class=\"ds-dial-num\">3</text><text x=\"389.7\" y=\"225.0\" font-size=\"62\" class=\"ds-dial-num\">4</text><text x=\"153.9\" y=\"422.9\" font-size=\"62\" class=\"ds-dial-num\">5</text><text x=\"-153.9\" y=\"422.9\" font-size=\"62\" class=\"ds-dial-num\">6</text><text x=\"-389.7\" y=\"225.0\" font-size=\"62\" class=\"ds-dial-num ds-dial-lit\">7</text><text x=\"-443.2\" y=\"-78.1\" font-size=\"62\" class=\"ds-dial-num\">8</text><text x=\"-289.3\" y=\"-344.7\" font-size=\"62\" class=\"ds-dial-num ds-dial-lit\">9</text><g clip-path=\"url(#ds-dial-sky)\"><circle r=\"400\" class=\"ds-dial-day\"/><circle cy=\"462\" r=\"540\" class=\"ds-dial-twilight\"/><circle cy=\"506\" r=\"540\" class=\"ds-dial-nightfill\"/></g><circle r=\"400\" fill=\"none\" class=\"ds-dial-gilt\" stroke-width=\"3\"/><circle r=\"372\" fill=\"none\" class=\"ds-dial-gilt\" stroke-opacity=\"1\" stroke-width=\"3\"/><g transform=\"rotate(0)\"><circle cy=\"-372\" r=\"19\" class=\"ds-dial-body\" stroke=\"#f3e9d2\" stroke-width=\"4\"/></g><circle r=\"330\" fill=\"none\" class=\"ds-dial-gilt\" stroke-opacity=\"0.38\" stroke-width=\"1.5\"/><g transform=\"rotate(320)\"><circle cy=\"-330\" r=\"13\" class=\"ds-dial-body\" stroke=\"#0a0911\" stroke-width=\"2\"/></g><circle r=\"288\" fill=\"none\" class=\"ds-dial-gilt\" stroke-opacity=\"0.38\" stroke-width=\"1.5\"/><g transform=\"rotate(0)\"><circle cy=\"-288\" r=\"13\" class=\"ds-dial-body\" stroke=\"#0a0911\" stroke-width=\"2\"/></g><circle r=\"246\" fill=\"none\" class=\"ds-dial-gilt\" stroke-opacity=\"0.38\" stroke-width=\"1.5\"/><g transform=\"rotate(0)\"><circle cy=\"-246\" r=\"13\" class=\"ds-dial-body\" stroke=\"#0a0911\" stroke-width=\"2\"/></g><circle r=\"204\" fill=\"none\" class=\"ds-dial-gilt\" stroke-opacity=\"0.38\" stroke-width=\"1.5\"/><g transform=\"rotate(0)\"><circle cy=\"-204\" r=\"13\" class=\"ds-dial-body\" stroke=\"#0a0911\" stroke-width=\"2\"/></g><circle r=\"162\" fill=\"none\" class=\"ds-dial-gilt\" stroke-opacity=\"0.38\" stroke-width=\"1.5\"/><g transform=\"rotate(240)\"><circle cy=\"-162\" r=\"13\" class=\"ds-dial-flag\" stroke=\"#0a0911\" stroke-width=\"2\"/></g><g class=\"ds-dial-hand\"><line y1=\"-112\" y2=\"-402\" stroke-width=\"5\"/><polygon points=\"0,-440 -14,-400 14,-400\"/></g><circle r=\"118\" class=\"ds-dial-night ds-dial-gilt\" stroke-width=\"3\"/><text y=\"4\" font-size=\"150\" class=\"ds-dial-centre\">1</text></svg>",
+      "css": ".ds-dial { display: block; width: 100%; max-width: 22rem; height: auto; } .ds-dial text { font-family: var(--font-display, UnifrakturCook, 'Old English Text MT', serif); font-weight: 700; text-anchor: middle; dominant-baseline: central; } .ds-dial-night { fill: var(--color-ink-950, #0a0911); } .ds-dial-gilt { stroke: var(--color-gold-300, #d9a441); } .ds-dial-num { fill: var(--color-bone-600, #6b6883); } .ds-dial-lit { fill: var(--color-gold-300, #d9a441); } .ds-dial-day { fill: var(--color-sky-600, #1b2c6e); } .ds-dial-twilight { fill: var(--color-rubric-500, #a8482a); } .ds-dial-nightfill { fill: var(--color-ink-900, #0f0e1a); } .ds-dial-body { fill: var(--color-gold-300, #d9a441); } .ds-dial-flag { fill: var(--color-rubric-400, #c45a34); } .ds-dial-hand { stroke: var(--color-gold-200, #ecc978); fill: var(--color-gold-200, #ecc978); } .ds-dial-centre { fill: var(--color-bone-50, #f3e9d2); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Astronomical Clock",
+    "overview": "Numen is drawn as a gothic astronomical clock read at night. A name and a birth date turn its rings; a hand points at the number being read; the sums that produced each number are written out beside it. The ground is night, the one coloured field is an ultramarine sky, a thin vermilion band of twilight crosses the dial, and everything that is drawn rather than read is a gilt line. The system is flat and ruled: nothing floats, nothing glows, nothing sits in a box.\n\nDensity is that of a reference plate, not a landing page. Text is set at a generous reading size in a pen-cut text face, figures line up in columns, and blackletter is saved for the few things that deserve to be carved: the wordmark, the two top heading levels and the numerals. The instrument does the persuading, so the page around it stays quiet.\n\nThe system rejects the category's starfield-and-glow hero and the centred headline over a card form. It also rejects card chrome of any kind: content sits between rules.",
+    "keyCharacteristics": [
+      "Night ground, one ultramarine sky field, gilt lines, bone lettering.",
+      "Two shapes only: the circle (dial, medallion) and the rule (plates, grids).",
+      "Blackletter for h1, h2, the wordmark and numerals; a text face for everything read.",
+      "Vermilion is rationed; gilt is structural; unlit things are drawn in iron, not hidden.",
+      "Every sum is shown in tabular figures next to the number it produced.",
+      "One authored motion: the dial settling."
+    ],
+    "rules": [
+      {
+        "name": "The Rubric Rule",
+        "body": "Among numbers and tags, vermilion marks a master number or a karmic debt and nothing else. Its two other standing places are fixed: the twilight band on the dial, and a field in error. It is never decoration, emphasis or a call to action.",
+        "section": "colors"
+      },
+      {
+        "name": "The Gilt Is Drawn Rule",
+        "body": "Gilt belongs to what is drawn or pressed: rings, rules, numerals and figures, links, field labels, and the one primary button. It is never used to emphasise a word inside a heading; an `em` in a heading stays upright and in the heading's own bone.",
+        "section": "colors"
+      },
+      {
+        "name": "The Iron Rule",
+        "body": "A position that is not lit is still drawn. Numerals no ring points at stay on the rim in iron; inactive rings stay at 38% gilt. Nothing is hidden to show that it is off.",
+        "section": "colors"
+      },
+      {
+        "name": "The Carved Letters Rule",
+        "body": "Blackletter is for h1, h2, the wordmark and numerals. h3 and below, labels, buttons, nav and every sentence are Texturina: below the top two levels blackletter is too dense to scan.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Label Above A Heading Rule",
+        "body": "A heading opens its own section. A small-caps label may sit beside a heading as meta, or under a medallion as its caption, or as a term in a list; it never sits on the line above a heading to introduce it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shown Sum Rule",
+        "body": "A number never appears without a route to its working. Sums are set in tabular lining figures in pale gilt, one sum to a line, with `→` between reductions.",
+        "section": "typography"
+      },
+      {
+        "name": "The Three Grounds Rule",
+        "body": "A surface is night, a well, or sky. Lift is never shown; a thing is separated from its neighbour by a rule or by changing ground.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do put every number in a round medallion with a blackletter numeral, and use the master and karmic variants whenever the number is one.",
+      "Do separate things with rules: gilt double rule to open, hairline to close, iron between cells.",
+      "Do keep unlit positions on the page in iron (`bone-600` numerals, `iron` rules, rings at 38%).",
+      "Do show the working next to the number, in tabular lining figures, one sum to a line.",
+      "Do keep the six rings in one order everywhere: Life Path, Expression, Soul Urge, Personality, Birthday, Maturity.",
+      "Do give every focusable thing the 2px `gold-200` outline offset 3px, and keep touch targets at 2.75rem.",
+      "Do keep the privacy promise visible beside any field that takes a name or a birth date.",
+      "Do turn the dial off under `prefers-reduced-motion: reduce` and gate any new movement the same way."
+    ],
+    "donts": [
+      "Don't use vermilion for anything but master numbers, karmic debts, the dial's twilight band and a field in error.",
+      "Don't colour a word in a heading gilt, or italicise it; heading emphasis stays in the heading's ink.",
+      "Don't set blackletter below h2, in buttons, labels, nav or running text.",
+      "Don't place a small-caps label on the line above a heading.",
+      "Don't draw a card: no rounded box, no four-sided border around a block of content, no shadow, no fill other than the sky field.",
+      "Don't add shadows, glows, blur, gradients or starfields.",
+      "Don't round a corner. A thing is square or it is a circle.",
+      "Don't add a second authored animation. State changes are 150ms to 200ms colour transitions; the dial settling is the only choreography.",
+      "Don't style an advertisement to resemble a plate of content, or place one where it interrupts the dial."
+    ]
+  }
+}

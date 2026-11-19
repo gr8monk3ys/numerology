@@ -1,30 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Geist, Geist_Mono } from "next/font/google";
+import { UnifrakturCook, Texturina } from "next/font/google";
 import "./globals.css";
-import { Backdrop } from "@/components/Backdrop";
+import { AdSenseScript } from "@/components/AdSense";
+import { ADSENSE_PUBLISHER_ID } from "@/lib/adsense";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
-// Editorial serif for headlines (italic used for the accent word)
-const instrument = Instrument_Serif({
+// Blackletter for the wordmark, the two top heading levels and every numeral.
+const fraktur = UnifrakturCook({
   subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-instrument",
+  weight: "700",
+  variable: "--font-fraktur",
   display: "swap",
 });
 
-// Neutral sans for body copy
-const geist = Geist({
+// A text face cut from the same pen as the blackletter, for everything read.
+const texturina = Texturina({
   subsets: ["latin"],
-  variable: "--font-geist",
-  display: "swap",
-});
-
-// Monospace for labels, numerals and the terminal
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
+  axes: ["opsz"],
+  variable: "--font-texturina",
   display: "swap",
 });
 
@@ -53,11 +47,13 @@ export const metadata: Metadata = {
       "Reveal the hidden numbers of your name and birth date with a complete esoteric numerology suite.",
     type: "website",
   },
+  // Lets AdSense verify the site without waiting for its script to load.
+  other: { "google-adsense-account": ADSENSE_PUBLISHER_ID },
 };
 
-// The browser chrome matches the page: the ink-950 background.
+// The browser chrome matches the page: the ink-950 night ground.
 export const viewport: Viewport = {
-  themeColor: "#0a0807",
+  themeColor: "#0a0911",
   colorScheme: "dark",
 };
 
@@ -69,23 +65,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${instrument.variable} ${geist.variable} ${geistMono.variable}`}
+      className={`${fraktur.variable} ${texturina.variable}`}
     >
       <body className="min-h-screen">
-        {/* Enable scroll-reveal only when JS is present, so no-JS visitors and
-            crawlers still see all content. Runs before below-fold paint. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('reveal-ready')",
-          }}
-        />
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        <Backdrop />
         <Navbar />
-        <main id="main" className="rails relative">{children}</main>
+        <main id="main">{children}</main>
         <Footer />
+        <AdSenseScript />
       </body>
     </html>
   );

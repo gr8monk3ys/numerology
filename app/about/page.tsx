@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { NumberOrb } from "@/components/ui/NumberOrb";
 import { ArrowRight } from "lucide-react";
 import { PageHeader, SectionRow } from "@/components/ui/SectionHeading";
-import { Terminal } from "@/components/ui/Terminal";
 import { PYTHAGOREAN, CHALDEAN } from "@/lib/numerology";
 
 export const metadata: Metadata = {
@@ -22,10 +22,8 @@ function LetterGrid({ table }: { table: Record<string, number> }) {
         .sort((a, b) => Number(a[0]) - Number(b[0]))
         .map(([num, letters]) => (
           <div key={num} className="flex items-center gap-3 p-3">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] border border-(--line-strong) font-mono text-sm text-gold-200">
-              {num}
-            </span>
-            <span className="font-mono text-xs tracking-[0.3em] text-bone-200">
+            <NumberOrb value={num} size="xs" />
+            <span className="font-figures text-base text-bone-200">
               {letters.join("")}
             </span>
           </div>
@@ -46,8 +44,6 @@ export default function AboutPage() {
   return (
     <div className="container-page py-14 sm:py-20">
       <PageHeader
-        index="06"
-        eyebrow="Method"
         title={<>The mathematics of <em>meaning</em></>}
         subtitle="Numerology is the practice of finding significance in numbers. Names and dates are reduced to their essential vibrations, each carrying an archetypal meaning."
       />
@@ -55,14 +51,14 @@ export default function AboutPage() {
       <div className="mt-14 grid gap-14 lg:grid-cols-[1fr_20rem] lg:gap-16">
         <div className="space-y-16">
           <section className="space-y-5" id="reduction">
-            <SectionRow index="01" title="Reduction" />
-            <p className="text-[15px] leading-relaxed text-bone-200">
+            <SectionRow title="Reduction" />
+            <p className="text-base leading-relaxed text-bone-200">
               Almost every number in numerology is <em>reduced</em>: its digits
               are added together repeatedly until a single digit (1–9) remains.
               The single exception is the{" "}
               <Link href="#master-numbers" className="link">master numbers</Link>.
             </p>
-            <Terminal title="reduce.ts">
+            <pre className="sum">
               <span className="key">total</span> <span className="val">58</span>
               {"\n"}
               <span className="key">step </span> <span className="val">5 + 8 = 13</span>
@@ -72,12 +68,12 @@ export default function AboutPage() {
               {"\n"}
               <span className="key">value</span> <span className="hi">4</span>
               {"  "}<span className="dim">(13/4)</span>
-            </Terminal>
+            </pre>
           </section>
 
           <section className="space-y-5" id="master-numbers">
-            <SectionRow index="02" title="Master numbers" meta="11 · 22 · 33" />
-            <p className="text-[15px] leading-relaxed text-bone-200">
+            <SectionRow title="Master numbers" meta="11 · 22 · 33" />
+            <p className="text-base leading-relaxed text-bone-200">
               When 11, 22 or 33 appear, they are left un-reduced. These are
               numbers of heightened potential and heightened challenge: the 11
               the intuitive Illuminator, the 22 the Master Builder, the 33 the
@@ -87,8 +83,8 @@ export default function AboutPage() {
           </section>
 
           <section className="space-y-5" id="karmic">
-            <SectionRow index="03" title="Karmic debt" meta="13 · 14 · 16 · 19" />
-            <p className="text-[15px] leading-relaxed text-bone-200">
+            <SectionRow title="Karmic debt" meta="13 · 14 · 16 · 19" />
+            <p className="text-base leading-relaxed text-bone-200">
               If a core number’s running total lands on 13, 14, 16 or 19 before
               its final reduction, it carries a <em>karmic debt</em>, an
               inherited lesson from past cycles. 13/4 asks for disciplined work,
@@ -98,12 +94,12 @@ export default function AboutPage() {
           </section>
 
           <section className="space-y-6" id="systems">
-            <SectionRow index="04" title="Two systems, two alphabets" />
+            <SectionRow title="Two systems, two alphabets" />
             <div className="grid gap-8 lg:grid-cols-2">
               <div className="space-y-4">
                 <div>
-                  <span className="mono-label-accent">Pythagorean</span>
-                  <p className="mt-2 text-sm leading-relaxed text-bone-300">
+                  <span className="label-accent">Pythagorean</span>
+                  <p className="mt-2 text-base leading-relaxed text-bone-300">
                     The modern Western system. Letters A–Z map to 1–9 in order,
                     cycling three times. It is the default for the core chart.
                   </p>
@@ -112,8 +108,8 @@ export default function AboutPage() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <span className="mono-label-accent">Chaldean</span>
-                  <p className="mt-2 text-sm leading-relaxed text-bone-300">
+                  <span className="label-accent">Chaldean</span>
+                  <p className="mt-2 text-base leading-relaxed text-bone-300">
                     The older Babylonian system. Letters map to 1–8 by sound;
                     the number 9 is held sacred and never assigned. Its
                     compound numbers carry their own layered meanings.
@@ -125,12 +121,12 @@ export default function AboutPage() {
           </section>
 
           <section className="space-y-6">
-            <SectionRow index="05" title="The core numbers" />
+            <SectionRow title="The core numbers" />
             <dl className="divided">
               {CORE.map((c) => (
                 <div key={c.k} className="grid gap-1 p-4 sm:grid-cols-[12rem_1fr] sm:gap-6">
-                  <dt className="mono-label pt-0.5">{c.k}</dt>
-                  <dd className="text-sm text-bone-200">{c.v}</dd>
+                  <dt className="label pt-0.5">{c.k}</dt>
+                  <dd className="text-base text-bone-200">{c.v}</dd>
                 </div>
               ))}
             </dl>
@@ -140,8 +136,8 @@ export default function AboutPage() {
         {/* Sticky aside */}
         <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
           <div className="frame p-5">
-            <span className="mono-label">On this page</span>
-            <ul className="mt-3 space-y-2 text-sm">
+            <span className="label">On this page</span>
+            <ul className="mt-3 space-y-2 text-base">
               {[
                 ["#reduction", "Reduction"],
                 ["#master-numbers", "Master numbers"],
@@ -156,9 +152,9 @@ export default function AboutPage() {
               ))}
             </ul>
           </div>
-          <div className="frame-raised ticks p-5">
-            <span className="mono-label-accent">Ready to see yours?</span>
-            <p className="mt-2 text-sm text-bone-300">
+          <div className="frame-raised p-5">
+            <span className="label-accent">Ready to see yours?</span>
+            <p className="mt-2 text-base text-bone-300">
               A complete chart, every reduction shown, computed locally.
             </p>
             <Link href="/reading" className="btn btn-primary mt-4 w-full">
@@ -166,7 +162,7 @@ export default function AboutPage() {
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
-          <p className="px-1 font-mono text-[10px] leading-relaxed tracking-wider text-bone-500">
+          <p className="px-1 font-figures text-base leading-relaxed text-bone-500">
             OFFERED FOR REFLECTION, INSPIRATION AND ENTERTAINMENT.
           </p>
         </aside>
