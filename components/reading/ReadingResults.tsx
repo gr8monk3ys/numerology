@@ -2,6 +2,9 @@
 
 import type { Reading } from "@/lib/numerology";
 import { NumberOrb } from "@/components/ui/NumberOrb";
+import { Dial, coreRings } from "@/components/ui/Dial";
+import { AdSlot } from "@/components/AdSense";
+import { AD_SLOTS } from "@/lib/adsense";
 import { Chip } from "@/components/ui/Chip";
 import { SectionRow } from "@/components/ui/SectionHeading";
 import { NumberCard } from "@/components/reading/NumberCard";
@@ -41,32 +44,27 @@ export function ReadingResults({ reading }: { reading: Reading }) {
   return (
     <div className="mt-16 space-y-20">
       {/* Header */}
-      <div className="frame-raised ticks p-6 sm:p-10">
+      <div className="frame-raised p-6 sm:p-10">
         <div className="flex flex-col gap-8 md:flex-row md:items-start">
-          <NumberOrb
-            value={core.lifePath.value}
-            size="xl"
-            isMaster={core.lifePath.isMaster}
-            isKarmic={core.lifePath.karmicDebt !== null}
-          />
+          <Dial numbers={coreRings(reading)} className="w-52 shrink-0 self-center md:w-60 md:self-start" />
           <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="mono-label-accent">Life Path {core.lifePath.value}</span>
-              {core.lifePath.isMaster && <Chip tone="gold">Master</Chip>}
-              {core.lifePath.karmicDebt && <Chip tone="rubric">Karmic {core.lifePath.karmicDebt}</Chip>}
-            </div>
             {/* h2: the page's h1 is "Cast your numerology reading" above. */}
-            <h2 className="mt-2 text-4xl sm:text-5xl">
+            <h2 className="text-4xl sm:text-5xl">
               {lifePathMeaning?.title ?? `Life Path ${core.lifePath.value}`}
             </h2>
-            <p className="mt-2 font-mono text-xs tracking-wider text-bone-400">
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              <span className="label-accent">Life Path {core.lifePath.value}</span>
+              {core.lifePath.isMaster && <Chip tone="rubric">Master</Chip>}
+              {core.lifePath.karmicDebt && <Chip tone="rubric">Karmic {core.lifePath.karmicDebt}</Chip>}
+            </div>
+            <p className="mt-2 font-figures text-base text-bone-400">
               {name.all.join(" ").toUpperCase()} ·{" "}
               {BIRTH_DATE.format(Date.UTC(birth.year, birth.month - 1, birth.day)).toUpperCase()}
               {" · "}
               {core.lifePath.steps.join(" → ")}
             </p>
             {lifePathMeaning?.summary && (
-              <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-bone-100">
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-bone-100">
                 {lifePathMeaning.summary}
               </p>
             )}
@@ -83,7 +81,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
 
       {/* Core numbers */}
       <section className="space-y-6">
-        <SectionRow index="01" title="Core numbers" meta="Pythagorean" />
+        <SectionRow title="Core numbers" meta="Pythagorean" />
         <div className="grid gap-3 lg:grid-cols-2">
           <NumberCard label="Life Path" insight={core.lifePath} meaning={lifePathMeaning} defaultOpen />
           <NumberCard label="Expression / Destiny" insight={core.expression} meaning={pick(expressionMeanings, core.expression.value)} />
@@ -97,9 +95,9 @@ export function ReadingResults({ reading }: { reading: Reading }) {
           <div className="frame flex flex-col gap-4 p-5 sm:flex-row sm:items-start">
             <NumberOrb value={birth.day} size="sm" />
             <div>
-              <span className="mono-label">Born on the {birth.day}{ordinal(birth.day)}</span>
-              <h3 className="mt-0.5 text-lg">{bday.title}</h3>
-              <p className="mt-2 text-sm text-bone-300">{bday.summary}</p>
+              <h3 className="text-xl">{bday.title}</h3>
+              <span className="label">Born on the {birth.day}{ordinal(birth.day)}</span>
+              <p className="mt-2 text-base text-bone-300">{bday.summary}</p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {bday.traits.map((t) => (
                   <Chip key={t} tone="muted">{t}</Chip>
@@ -110,9 +108,11 @@ export function ReadingResults({ reading }: { reading: Reading }) {
         )}
       </section>
 
+      <AdSlot slot={AD_SLOTS.reading} />
+
       {/* Karmic & hidden */}
       <section className="space-y-6">
-        <SectionRow index="02" title="Karmic signature" meta={`${advanced.karmicDebts.length} debt${advanced.karmicDebts.length === 1 ? "" : "s"}`} />
+        <SectionRow title="Karmic signature" meta={`${advanced.karmicDebts.length} debt${advanced.karmicDebts.length === 1 ? "" : "s"}`} />
         {advanced.karmicDebts.length > 0 ? (
           <div className="grid gap-3">
             {advanced.karmicDebts.map((hit) => {
@@ -122,15 +122,15 @@ export function ReadingResults({ reading }: { reading: Reading }) {
                   <div className="flex items-center gap-4">
                     <NumberOrb value={hit.debt} size="sm" isKarmic />
                     <div>
-                      <span className="mono-label text-rubric-300">
+                      <h3 className="text-xl">{km?.title ?? `Karmic Debt ${hit.debt}`}</h3>
+                      <span className="label text-rubric-300">
                         {hit.source} · Karmic debt {hit.debt}
                       </span>
-                      <h3 className="text-lg">{km?.title ?? `Karmic Debt ${hit.debt}`}</h3>
                     </div>
                   </div>
-                  {km?.summary && <p className="mt-4 text-sm text-bone-300">{km.summary}</p>}
+                  {km?.summary && <p className="mt-4 text-base text-bone-300">{km.summary}</p>}
                   {km?.lesson && (
-                    <p className="mt-2 text-sm text-bone-100">
+                    <p className="mt-2 text-base text-bone-100">
                       <span className="text-gold-200">The lesson · </span>
                       {km.lesson}
                     </p>
@@ -140,7 +140,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
             })}
           </div>
         ) : (
-          <p className="frame p-5 text-sm text-bone-300">
+          <p className="frame p-5 text-base text-bone-300">
             No karmic debt numbers (13, 14, 16, 19) appear in your core chart. A
             lighter ledger to work with in this lifetime.
           </p>
@@ -148,21 +148,21 @@ export function ReadingResults({ reading }: { reading: Reading }) {
 
         <div className="divided sm:grid-cols-3">
           <div className="p-5">
-            <h3 className="mono-label">Karmic lessons</h3>
-            <p className="mt-2 text-sm text-bone-300">
+            <h3 className="label">Karmic lessons</h3>
+            <p className="mt-2 text-base text-bone-300">
               Numbers absent from your name. Energies to consciously develop.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {advanced.karmicLessons.length ? (
                 advanced.karmicLessons.map((n) => <NumberOrb key={n} value={n} size="xs" />)
               ) : (
-                <span className="font-mono text-xs text-sage-400">NONE · ALL PRESENT</span>
+                <span className="font-figures text-base text-sage-400">NONE · ALL PRESENT</span>
               )}
             </div>
           </div>
           <div className="p-5">
-            <h3 className="mono-label">Hidden passion</h3>
-            <p className="mt-2 text-sm text-bone-300">
+            <h3 className="label">Hidden passion</h3>
+            <p className="mt-2 text-base text-bone-300">
               The number appearing most in your name. Your instinctive talent.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -170,8 +170,8 @@ export function ReadingResults({ reading }: { reading: Reading }) {
             </div>
           </div>
           <div className="p-5">
-            <h3 className="mono-label">Subconscious self</h3>
-            <p className="mt-2 text-sm text-bone-300">Your capacity to respond well under pressure.</p>
+            <h3 className="label">Subconscious self</h3>
+            <p className="mt-2 text-base text-bone-300">Your capacity to respond well under pressure.</p>
             <div className="mt-4">
               <NumberOrb value={advanced.subconsciousSelf} size="xs" />
             </div>
@@ -183,16 +183,16 @@ export function ReadingResults({ reading }: { reading: Reading }) {
 
       {/* Letters */}
       <section className="space-y-6">
-        <SectionRow index="03" title="The letters of your name" />
+        <SectionRow title="The letters of your name" />
         <div className="divided sm:grid-cols-2 lg:grid-cols-4">
           <LetterStat label="Cornerstone" trait={advanced.cornerstone} note="How you approach life" />
           <LetterStat label="Capstone" trait={advanced.capstone} note="How you finish things" />
           <LetterStat label="First vowel" trait={advanced.firstVowel} note="Your inner self" />
           <div className="p-5">
-            <span className="mono-label">Rational thought</span>
+            <span className="label">Rational thought</span>
             <div className="mt-3 flex items-center gap-3">
               <NumberOrb value={advanced.rationalThought.value} size="sm" isMaster={advanced.rationalThought.isMaster} />
-              <p className="text-sm text-bone-300">How you naturally think and solve.</p>
+              <p className="text-base text-bone-300">How you naturally think and solve.</p>
             </div>
           </div>
         </div>
@@ -200,21 +200,21 @@ export function ReadingResults({ reading }: { reading: Reading }) {
 
       {/* Chaldean */}
       <section className="space-y-6">
-        <SectionRow index="04" title="Chaldean name vibration" meta="Chaldean" />
+        <SectionRow title="Chaldean name vibration" meta="Chaldean" />
         <div className="frame flex flex-col gap-6 p-6 sm:flex-row sm:items-center sm:p-8">
           <div className="flex items-center gap-3">
             <NumberOrb value={chaldean.compound} size="md" />
-            <span aria-hidden="true" className="font-mono text-bone-500">→</span>
+            <span aria-hidden="true" className="font-figures text-bone-500">→</span>
             <NumberOrb value={chaldean.root} size="md" isMaster={chaldean.isMaster} />
           </div>
           <div>
-            <p className="text-sm leading-relaxed text-bone-200">
+            <p className="text-base leading-relaxed text-bone-200">
               In the Chaldean system, the vibration of{" "}
               <span className="text-gold-200">{name.all.join(" ")}</span> sums to
-              compound <span className="font-mono text-bone-50">{chaldean.compound}</span>,
-              rooting into <span className="font-mono text-bone-50">{chaldean.root}</span>.
+              compound <span className="font-figures text-bone-50">{chaldean.compound}</span>,
+              rooting into <span className="font-figures text-bone-50">{chaldean.root}</span>.
             </p>
-            <p className="mt-2 text-xs text-bone-400">
+            <p className="mt-2 text-sm text-bone-400">
               Chaldean numerology (values 1–8, the sacred 9 unassigned) reads the
               name as it is spoken and lived, complementing the Pythagorean chart above.
             </p>
@@ -225,7 +225,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
       {/* Correspondences */}
       {corr && (
         <section className="space-y-6">
-          <SectionRow index="05" title="Esoteric correspondences" meta={`Life Path ${core.lifePath.value}`} />
+          <SectionRow title="Esoteric correspondences" meta={`Life Path ${core.lifePath.value}`} />
           <div className="divided grid-cols-2 lg:grid-cols-3">
             <Corr label="Tarot" value={corr.tarot} />
             <Corr label="Ruling planet" value={corr.rulingPlanet} />
@@ -241,11 +241,11 @@ export function ReadingResults({ reading }: { reading: Reading }) {
       )}
 
       {/* Cosmic profile — tarot, astrology, planes, cycles, bridges, lucky */}
-      <CosmicProfile reading={reading} startIndex={6} />
+      <CosmicProfile reading={reading} />
 
       {/* Forecast */}
       <section className="space-y-6">
-        <SectionRow index="12" title="Your forecast" meta="Today" />
+        <SectionRow title="Your forecast" meta="Today" />
         <div className="divided sm:grid-cols-3">
           <ForecastStat label="Personal year" value={forecast.personal.year.value} accent />
           <ForecastStat label="Personal month" value={forecast.personal.month.value} />
@@ -253,9 +253,9 @@ export function ReadingResults({ reading }: { reading: Reading }) {
         </div>
         {py && (
           <div className="frame p-5 sm:p-6">
-            <span className="mono-label-accent">A {py.theme} year</span>
-            <p className="mt-3 text-[15px] text-bone-100">{py.summary}</p>
-            <p className="mt-2 text-sm text-bone-300">
+            <span className="label-accent">A {py.theme} year</span>
+            <p className="mt-3 text-base text-bone-100">{py.summary}</p>
+            <p className="mt-2 text-base text-bone-300">
               <span className="text-gold-200">Guidance · </span>
               {py.advice}
             </p>
@@ -293,7 +293,7 @@ export function ReadingResults({ reading }: { reading: Reading }) {
         </div>
       </section>
 
-      <p className="border-t hairline pt-6 text-center font-mono text-[11px] tracking-wider text-bone-500">
+      <p className="mx-auto border-t hairline pt-6 text-center font-figures text-base text-bone-500">
         OFFERED FOR REFLECTION AND INSPIRATION · MAY THESE NUMBERS ILLUMINATE, NEVER CONFINE
       </p>
     </div>
@@ -317,12 +317,10 @@ function LetterStat({
 }) {
   return (
     <div className="p-5">
-      <span className="mono-label">{label}</span>
+      <span className="label">{label}</span>
       <div className="mt-3 flex items-center gap-3">
-        <span className="flex h-11 w-11 items-center justify-center rounded-[3px] border border-(--line-strong) font-display text-2xl text-gold-200">
-          {trait?.letter ?? "—"}
-        </span>
-        <p className="text-sm text-bone-300">{note}</p>
+        <NumberOrb value={trait?.letter ?? "—"} size="sm" />
+        <p className="text-base text-bone-300">{note}</p>
       </div>
     </div>
   );
@@ -332,8 +330,8 @@ function Corr({ label, value }: { label: string; value?: string }) {
   if (!value) return null;
   return (
     <div className="p-4">
-      <span className="mono-label">{label}</span>
-      <p className="mt-1 text-[15px] text-bone-50">{value}</p>
+      <span className="label">{label}</span>
+      <p className="mt-1 text-base text-bone-50">{value}</p>
     </div>
   );
 }
@@ -351,8 +349,8 @@ function ForecastStat({
     <div className="flex items-center gap-4 p-5">
       <NumberOrb value={value} size="sm" isMaster={accent && (value === 11 || value === 22)} />
       <div>
-        <span className="mono-label">{label}</span>
-        <p className="text-sm text-bone-300">Cycle vibration</p>
+        <span className="label">{label}</span>
+        <p className="text-base text-bone-300">Cycle vibration</p>
       </div>
     </div>
   );

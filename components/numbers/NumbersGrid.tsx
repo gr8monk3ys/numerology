@@ -57,7 +57,7 @@ export function NumbersGrid({ numbers }: { numbers: NumberCardData[] }) {
             </button>
           ))}
         </div>
-        <span className="mono-label">{visible.length} entries</span>
+        <span className="label">{visible.length} entries</span>
       </div>
 
       <div className="divided sm:grid-cols-2 lg:grid-cols-3">
@@ -71,12 +71,12 @@ export function NumbersGrid({ numbers }: { numbers: NumberCardData[] }) {
             <div className="flex items-center gap-4">
               <NumberOrb value={n.key} size="md" isMaster={n.isMaster} />
               <div>
-                <span className="mono-label">{n.isMaster ? "Master number" : "Root number"}</span>
                 <h3 className="text-xl">{n.title}</h3>
+                <span className="label">{n.isMaster ? "Master number" : "Root number"}</span>
               </div>
             </div>
             {n.summary && (
-              <p className="line-clamp-3 text-sm leading-relaxed text-bone-300">{n.summary}</p>
+              <p className="line-clamp-3 text-base leading-relaxed text-bone-300">{n.summary}</p>
             )}
             <div className="mt-auto flex flex-wrap items-center gap-1.5">
               {n.tarot && <Chip tone="muted">{n.tarot}</Chip>}

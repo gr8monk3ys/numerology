@@ -12,8 +12,6 @@ export default function ForecastPage() {
   return (
     <div className="container-page py-14 sm:py-20">
       <PageHeader
-        index="03"
-        eyebrow="Timing & cycles"
         title={<>Where you are in <em>your</em> cycle</>}
         subtitle="Numerology moves in rhythms. See the energy of your current Personal Year, and map the Pinnacles and Challenges across your lifetime."
         meta={<StatusBadge>Runs locally</StatusBadge>}

@@ -40,21 +40,21 @@ export function NumberCard({
           isKarmic={insight.karmicDebt !== null}
         />
         <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="mono-label">{label}</span>
-            {insight.isMaster && <Chip tone="gold">Master</Chip>}
-            {insight.karmicDebt && <Chip tone="rubric">Karmic {insight.karmicDebt}</Chip>}
-          </div>
-          <h3 className="mt-0.5 truncate text-lg">
+          <h3 className="truncate text-xl">
             {meaning?.title ?? blurb ?? `Number ${insight.value}`}
           </h3>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="label">{label}</span>
+            {insight.isMaster && <Chip tone="rubric">Master</Chip>}
+            {insight.karmicDebt && <Chip tone="rubric">Karmic {insight.karmicDebt}</Chip>}
+          </div>
         </div>
-        <span className="hidden font-mono text-[11px] text-bone-500 sm:inline">
+        <span className="hidden font-figures text-base text-bone-500 sm:inline">
           {insight.steps.join(" → ")}
         </span>
         <Plus
           className={clsx(
-            "h-4 w-4 shrink-0 text-bone-400 transition-transform duration-200",
+            "h-4 w-4 shrink-0 text-bone-400 transition-transform duration-200 motion-reduce:transition-none",
             open && "rotate-45 text-gold-300",
           )}
         />
@@ -70,10 +70,10 @@ export function NumberCard({
             </div>
           )}
           {meaning?.summary && (
-            <p className="text-[15px] leading-relaxed text-bone-50">{meaning.summary}</p>
+            <p className="text-base leading-relaxed text-bone-50">{meaning.summary}</p>
           )}
           {meaning?.detailed && (
-            <p className="whitespace-pre-line text-sm leading-relaxed text-bone-300">
+            <p className="whitespace-pre-line text-base leading-relaxed text-bone-300">
               {meaning.detailed}
             </p>
           )}
@@ -81,11 +81,11 @@ export function NumberCard({
             <div className="divided sm:grid-cols-2">
               {meaning?.strengths && (
                 <div className="p-4">
-                  <h4 className="mono-label mb-3 text-sage-400">Strengths</h4>
-                  <ul className="space-y-1.5 text-sm text-bone-200">
+                  <h4 className="label mb-3 text-sage-400">Strengths</h4>
+                  <ul className="space-y-1.5 text-base text-bone-200">
                     {meaning.strengths.map((s) => (
                       <li key={s} className="flex gap-2.5">
-                        <span aria-hidden="true" className="font-mono text-sage-400">+</span>
+                        <span aria-hidden="true" className="font-figures text-sage-400">+</span>
                         {s}
                       </li>
                     ))}
@@ -94,11 +94,11 @@ export function NumberCard({
               )}
               {meaning?.challenges && (
                 <div className="p-4">
-                  <h4 className="mono-label mb-3 text-rubric-300">Challenges</h4>
-                  <ul className="space-y-1.5 text-sm text-bone-200">
+                  <h4 className="label mb-3 text-bone-200">Challenges</h4>
+                  <ul className="space-y-1.5 text-base text-bone-200">
                     {meaning.challenges.map((c) => (
                       <li key={c} className="flex gap-2.5">
-                        <span aria-hidden="true" className="font-mono text-rubric-300">−</span>
+                        <span aria-hidden="true" className="font-figures text-bone-400">−</span>
                         {c}
                       </li>
                     ))}
@@ -107,7 +107,7 @@ export function NumberCard({
               )}
             </div>
           )}
-          <p className="font-mono text-[11px] tracking-wider text-bone-500">
+          <p className="font-figures text-base text-bone-500">
             REDUCTION {insight.steps.join(" → ")}
             {insight.karmicDebt ? ` · CARRIES KARMIC DEBT ${insight.karmicDebt}` : ""}
           </p>

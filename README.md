@@ -3,9 +3,10 @@
 Live at https://numerology-sigma-vert.vercel.app.
 
 A numerology calculator: type a name and a birth date, get the Pythagorean and
-Chaldean numbers written into them, laid out as a dark, gilt drafting sheet:
-hairline-divided grids, monospace labels, and every reduction shown in full.
-Everything is computed in the browser; nothing is sent anywhere.
+Chaldean numbers written into them, set on a gothic astronomical clock: a
+dial whose rings turn to your numbers, blackletter numerals, and every
+reduction shown in full. Everything is computed in the browser; a name and a
+birth date are never sent anywhere.
 
 The engine is pure TypeScript with no framework imports
 ([`lib/numerology`](lib/numerology)), and it is tested against worked examples
@@ -17,7 +18,7 @@ Lessons [7, 9], Hidden Passion 1, Subconscious Self 7, Balance 2, and a Life
 Path of 3 for 1990-05-15. 59 tests across 2 files, ~13 ms.
 
 <p align="center">
-  <img src="docs/screenshot.png" alt="A full reading for a sample name: Life Path 3, The Communicator, with the core-number cards below" width="720">
+  <img src="docs/screenshot.png" alt="The home page: an astronomical dial set to a sample name, beside the form that sets it to yours" width="720">
 </p>
 
 ## What it calculates
@@ -52,6 +53,19 @@ own.
 
 The site has pages for a full reading, compatibility, forecast, angel numbers
 and a number-by-number encyclopedia.
+
+## Ads
+
+The site carries Google AdSense under the same publisher account as
+healthcalc.xyz ([`lib/adsense.ts`](lib/adsense.ts), [`public/ads.txt`](public/ads.txt)).
+No ad code loads until `NEXT_PUBLIC_ADSENSE_GOOGLE_CMP=1` is set, which is
+done once a consent message is published in AdSense under Privacy &
+messaging (Google's tag then asks for ad consent where the law requires it).
+With it set, the tag loads on every page in production and Auto ads work.
+Two in-page units stay hidden until their slot ids are also set:
+
+- `NEXT_PUBLIC_ADSENSE_SLOT_READING`: under the core numbers of a reading.
+- `NEXT_PUBLIC_ADSENSE_SLOT_CONTENT`: on the home page and each number's page.
 
 ## Running it
 

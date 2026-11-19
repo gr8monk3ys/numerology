@@ -74,7 +74,7 @@ export function ForecastForm() {
         onSubmit={handleSubmit}
         onFocus={() => void loadResults()}
         onPointerEnter={() => void loadResults()}
-        className="frame ticks mx-auto max-w-3xl"
+        className="frame mx-auto max-w-3xl"
       >
         <div className="flex flex-col gap-4 p-6 sm:flex-row sm:items-end sm:p-8">
           <div className="flex-1">
@@ -90,7 +90,7 @@ export function ForecastForm() {
               min="1900-01-01"
               max="2099-12-31"
               onChange={(e) => setBirthDate(e.target.value)}
-              className="field field-mono"
+              className="field tabular"
               autoComplete="bday"
             />
           </div>
@@ -104,9 +104,9 @@ export function ForecastForm() {
           {error && (
             <p
               id="fc-date-error"
-              className="border-t border-rubric-400/40 bg-rubric-400/[0.08] px-6 py-3 font-mono text-xs tracking-wider text-rubric-300 sm:px-8"
+              className="field-error mt-0 border-t hairline px-6 py-3 sm:px-8"
             >
-              ! {error}
+              {error}
             </p>
           )}
         </div>

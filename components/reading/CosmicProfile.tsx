@@ -26,15 +26,14 @@ function TarotCard({
 }) {
   return (
     <div className="flex w-40 flex-col gap-3">
-      <div className="ticks relative aspect-[2/3] rounded-[3px] border border-gold-400/50 bg-ink-900 p-3">
+      <div className="relative aspect-[2/3] rounded-t-full border border-gold-400 bg-sky-700 px-3 pt-10 pb-3">
         <div className="flex h-full flex-col justify-between">
-          <span className="font-mono text-[11px] tracking-[0.2em] text-gold-300">{ROMAN[index]}</span>
-          <span aria-hidden="true" className="font-display text-3xl leading-none text-gold-200/40">✦</span>
-          <span className="font-display text-xl leading-tight text-bone-50">{name}</span>
+          <span className="font-figures text-base text-gold-300">{ROMAN[index]}</span>
+          <span className="text-xl font-semibold leading-tight text-bone-50">{name}</span>
         </div>
       </div>
       <div>
-        <span className="mono-label">{role}</span>
+        <span className="label">{role}</span>
         <div className="mt-1.5 flex flex-wrap gap-1">
           {keywords.slice(0, 3).map((k) => (
             <Chip key={k} tone="muted">{k}</Chip>
@@ -45,23 +44,19 @@ function TarotCard({
   );
 }
 
-const idx = (n: number) => String(n).padStart(2, "0");
 
 export function CosmicProfile({
   reading,
-  startIndex = 1,
 }: {
   reading: Reading;
-  startIndex?: number;
 }) {
   const p = buildCosmicProfile(reading);
-  let n = startIndex;
 
   return (
     <div className="space-y-20">
       {/* Tarot Birth Card */}
       <section className="space-y-6">
-        <SectionRow index={idx(n++)} title="Tarot birth card" meta="Major arcana" />
+        <SectionRow title="Tarot birth card" meta="Major arcana" />
         <div className="frame flex flex-col gap-8 p-6 md:flex-row md:items-start sm:p-8">
           <div className="flex gap-5">
             {p.tarot.personality && (
@@ -82,9 +77,9 @@ export function CosmicProfile({
             )}
           </div>
           <div className="flex-1 space-y-3">
-            <p className="text-[15px] leading-relaxed text-bone-100">{p.tarot.personality?.birthCard}</p>
+            <p className="text-base leading-relaxed text-bone-100">{p.tarot.personality?.birthCard}</p>
             {!p.tarot.card.same && p.tarot.soul && (
-              <p className="text-sm text-bone-300">
+              <p className="text-base text-bone-300">
                 <span className="text-gold-200">{p.tarot.soul.name} (soul card) · </span>
                 {p.tarot.soul.numerology}
               </p>
@@ -95,66 +90,56 @@ export function CosmicProfile({
 
       {/* Astrology */}
       <section className="space-y-6">
-        <SectionRow index={idx(n++)} title="Written in the stars" />
+        <SectionRow title="Written in the stars" />
         <div className="divided md:grid-cols-2">
           {p.sun && (
             <div className="p-6">
-              <div className="flex items-center gap-4">
-                <span aria-hidden="true" className="flex h-12 w-12 items-center justify-center rounded-[3px] border hairline text-2xl">{p.sun.symbol}</span>
-                <div>
-                  <span className="mono-label">Sun sign</span>
-                  <h3 className="text-xl">{p.sun.sign}</h3>
-                </div>
-              </div>
+              <h3 className="text-xl">{p.sun.sign}</h3>
+              <span className="label">Sun sign</span>
               <div className="mt-4 flex flex-wrap gap-1.5">
                 <Chip tone="muted">{p.sun.element}</Chip>
                 <Chip tone="muted">{p.sun.modality}</Chip>
                 <Chip tone="muted">Ruled by {p.sun.rulingPlanet}</Chip>
               </div>
-              <p className="mt-4 text-sm text-bone-300">{p.sun.numerologyNote}</p>
+              <p className="mt-4 text-base text-bone-300">{p.sun.numerologyNote}</p>
             </div>
           )}
           <div className="p-6">
-            <div className="flex items-center gap-4">
-              <span aria-hidden="true" className="flex h-12 w-12 items-center justify-center rounded-[3px] border hairline text-2xl">{p.chinese.emoji}</span>
-              <div>
-                <span className="mono-label">Chinese zodiac</span>
-                <h3 className="text-xl">{p.chinese.animal}</h3>
-              </div>
-            </div>
+            <h3 className="text-xl">{p.chinese.animal}</h3>
+            <span className="label">Chinese zodiac</span>
             <div className="mt-4 flex flex-wrap gap-1.5">
               {p.chinese.traits.slice(0, 4).map((t) => (
                 <Chip key={t} tone="muted">{t}</Chip>
               ))}
             </div>
-            <p className="mt-4 text-sm text-bone-300">{p.chinese.summary}</p>
+            <p className="mt-4 text-base text-bone-300">{p.chinese.summary}</p>
           </div>
         </div>
       </section>
 
       {/* Planes of Expression */}
       <section className="space-y-6">
-        <SectionRow index={idx(n++)} title="Planes of expression" meta={`${p.planes.result.dominant} dominant`} />
+        <SectionRow title="Planes of expression" meta={`${p.planes.result.dominant} dominant`} />
         <PlanesChart result={p.planes.result} content={p.planes.content} />
       </section>
 
       {/* Life Cycles */}
       <section className="space-y-6">
-        <SectionRow index={idx(n++)} title="Three life cycles" />
+        <SectionRow title="Three life cycles" />
         <div className="divided md:grid-cols-3">
           {p.cycles.map((c) => (
             <div key={c.index} className="p-6">
               <div className="flex items-center gap-4">
                 <NumberOrb value={c.value} size="sm" isMaster={c.isMaster} />
                 <div>
-                  <span className="mono-label">Ages {c.label}</span>
-                  <h3 className="text-lg">{c.title}</h3>
+                  <h3 className="text-xl">{c.title}</h3>
+                  <span className="label">Ages {c.label}</span>
                 </div>
               </div>
-              <p className="mt-4 font-mono text-[11px] uppercase tracking-wider text-bone-500">
+              <p className="mt-4 font-figures text-base uppercase text-bone-500">
                 Ruled by your birth {c.ruler}
               </p>
-              {c.meaning && <p className="mt-2 text-sm text-bone-300">{c.meaning}</p>}
+              {c.meaning && <p className="mt-2 text-base text-bone-300">{c.meaning}</p>}
             </div>
           ))}
         </div>
@@ -162,22 +147,22 @@ export function CosmicProfile({
 
       {/* Bridges */}
       <section className="space-y-6">
-        <SectionRow index={idx(n++)} title="Bridge numbers" />
+        <SectionRow title="Bridge numbers" />
         <div className="divided md:grid-cols-2">
           {p.bridges.map((b) => (
             <div key={b.key} className="p-6">
               <div className="flex items-center gap-4">
                 <NumberOrb value={b.value} size="sm" />
                 <div>
-                  <span className="mono-label">{b.label}</span>
+                  <span className="label">{b.label}</span>
                   <h3 className="text-lg">{b.meaning?.title ?? `Bridge ${b.value}`}</h3>
                 </div>
               </div>
-              <p className="mt-4 text-sm text-bone-300">
+              <p className="mt-4 text-base text-bone-300">
                 Bridging {b.between}. {b.meaning?.summary}
               </p>
               {b.meaning?.advice && (
-                <p className="mt-2 text-sm text-bone-100">
+                <p className="mt-2 text-base text-bone-100">
                   <span className="text-gold-200">Tip · </span>
                   {b.meaning.advice}
                 </p>
@@ -189,10 +174,10 @@ export function CosmicProfile({
 
       {/* Lucky */}
       <section className="space-y-6">
-        <SectionRow index={idx(n++)} title="Fortunate signatures" />
+        <SectionRow title="Fortunate signatures" />
         <div className="divided sm:grid-cols-2 lg:grid-cols-4">
           <div className="p-5">
-            <span className="mono-label">Lucky numbers</span>
+            <span className="label">Lucky numbers</span>
             <div className="mt-3 flex flex-wrap gap-2">
               {p.lucky.numbers.map((num) => (
                 <NumberOrb key={num} value={num} size="xs" />
@@ -201,19 +186,19 @@ export function CosmicProfile({
           </div>
           {p.lucky.day && (
             <div className="p-5">
-              <span className="mono-label">Lucky day</span>
+              <span className="label">Lucky day</span>
               <p className="mt-3 text-lg text-bone-50">{p.lucky.day}</p>
             </div>
           )}
           {p.lucky.colors && (
             <div className="p-5">
-              <span className="mono-label">Lucky colors</span>
+              <span className="label">Lucky colors</span>
               <p className="mt-3 text-lg text-bone-50">{p.lucky.colors.join(", ")}</p>
             </div>
           )}
           {p.lucky.gem && (
             <div className="p-5">
-              <span className="mono-label">Talisman stone</span>
+              <span className="label">Talisman stone</span>
               <p className="mt-3 text-lg text-bone-50">{p.lucky.gem}</p>
             </div>
           )}

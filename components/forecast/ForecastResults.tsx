@@ -33,7 +33,7 @@ export function ForecastResults({ state }: { state: ForecastState }) {
   return (
     <div className="mt-16 space-y-16">
       <section className="space-y-6">
-        <SectionRow index="01" title="Personal cycles" meta={`Age ${state.age}`} />
+        <SectionRow title="Personal cycles" meta={`Age ${state.age}`} />
         <div className="divided sm:grid-cols-3">
           {[
             { label: "Personal year", ins: state.personal.year },
@@ -43,17 +43,17 @@ export function ForecastResults({ state }: { state: ForecastState }) {
             <div key={label} className="flex items-center gap-4 p-5">
               <NumberOrb value={ins.value} size="md" isMaster={ins.isMaster} />
               <div>
-                <span className="mono-label">{label}</span>
-                <p className="text-sm text-bone-300">Current vibration</p>
+                <span className="label">{label}</span>
+                <p className="text-base text-bone-300">Current vibration</p>
               </div>
             </div>
           ))}
         </div>
         {py && (
           <div className="frame p-5 sm:p-6">
-            <span className="mono-label-accent">A {py.theme} year</span>
-            <p className="mt-3 text-[15px] text-bone-100">{py.summary}</p>
-            <p className="mt-2 text-sm text-bone-300">
+            <span className="label-accent">A {py.theme} year</span>
+            <p className="mt-3 text-base text-bone-100">{py.summary}</p>
+            <p className="mt-2 text-base text-bone-300">
               <span className="text-gold-200">Guidance · </span>
               {py.advice}
             </p>
@@ -67,7 +67,7 @@ export function ForecastResults({ state }: { state: ForecastState }) {
       </section>
 
       <section className="space-y-6">
-        <SectionRow index="02" title="Pinnacles & challenges" meta="Lifetime" />
+        <SectionRow title="Pinnacles & challenges" meta="Lifetime" />
         <div className="grid gap-6 lg:grid-cols-2">
           <CycleList
             title="Pinnacles"

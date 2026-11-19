@@ -16,7 +16,7 @@ export function InclusionTable({
 }) {
   return (
     <div>
-      <h3 className="mono-label mb-3">Inclusion table</h3>
+      <h3 className="label mb-3">Inclusion table</h3>
       <dl className="divided grid-cols-3 sm:grid-cols-9">
         {VALUES.map((v) => {
           const count = counts[v] ?? 0;
@@ -29,22 +29,22 @@ export function InclusionTable({
               data-count={count}
               className={isPassion ? "bg-gold-300/[0.05] p-4 text-center" : "p-4 text-center"}
             >
-              <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-bone-400">
+              <dt className="font-figures text-base uppercase text-bone-400">
                 {v}s
               </dt>
               <dd
                 className={
                   isLesson
-                    ? "mt-1 font-mono text-2xl tabular text-bone-500"
+                    ? "mt-1 font-figures text-2xl tabular text-bone-500"
                     : isPassion
-                      ? "mt-1 font-mono text-2xl tabular text-gold-200"
-                      : "mt-1 font-mono text-2xl tabular text-bone-50"
+                      ? "mt-1 font-figures text-2xl tabular text-gold-200"
+                      : "mt-1 font-figures text-2xl tabular text-bone-50"
                 }
               >
                 {count}
               </dd>
-              {isLesson && <dd className="mt-1 font-mono text-[10px] uppercase text-bone-500">lesson</dd>}
-              {isPassion && <dd className="mt-1 font-mono text-[10px] uppercase text-gold-200">passion</dd>}
+              {isLesson && <dd className="mt-1 font-figures text-base uppercase text-bone-500">lesson</dd>}
+              {isPassion && <dd className="mt-1 font-figures text-base uppercase text-gold-200">passion</dd>}
             </div>
           );
         })}

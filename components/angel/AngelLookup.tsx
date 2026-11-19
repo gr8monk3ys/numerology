@@ -55,11 +55,8 @@ export function AngelLookup() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <form onSubmit={handleSubmit} className="frame ticks transition-colors focus-within:border-gold-300">
+      <form onSubmit={handleSubmit} className="frame transition-colors focus-within:border-gold-300">
         <div className="flex items-center gap-3 p-3 sm:p-4">
-          <span className="hidden pl-2 font-mono text-gold-300 sm:inline" aria-hidden>
-            $
-          </span>
           <input
             ref={inputRef}
             type="text"
@@ -68,7 +65,7 @@ export function AngelLookup() {
             autoComplete="off"
             spellCheck={false}
             placeholder="1111, 444, 12:12…"
-            className="field field-mono border-0 bg-transparent px-1 focus:shadow-none"
+            className="field tabular border-0 bg-transparent px-1 focus:shadow-none"
             aria-label="Number sequence"
           />
           <button type="submit" className="btn btn-primary shrink-0">
@@ -77,7 +74,7 @@ export function AngelLookup() {
           </button>
         </div>
         <div className="flex flex-wrap items-center gap-2 border-t hairline px-4 py-3">
-          <span className="mono-label mr-1">Try</span>
+          <span className="label mr-1">Try</span>
           {QUICK.map((q) => (
             <button
               key={q}
@@ -96,7 +93,7 @@ export function AngelLookup() {
 
       {/* Mounted empty and filled on a failed decode, so the message is
           announced (a live region that appears with its text says nothing). */}
-      <p role="alert" className="font-mono text-xs tracking-wider text-rubric-300">
+      <p role="alert" className="font-figures text-base text-rubric-300">
         {searched && !analysis ? (
           <span className="mt-4 block">! Enter a number sequence to decode, like 111 or 12:12.</span>
         ) : null}
@@ -107,11 +104,10 @@ export function AngelLookup() {
           <div className="flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:p-8">
             <NumberOrb value={analysis.input} size="lg" />
             <div className="min-w-0 flex-1">
-              <span className="mono-label-accent">Sequence {analysis.input}</span>
-              <h3 className="mt-1 text-2xl sm:text-3xl">
+              <h3 className="text-2xl sm:text-3xl">
                 {entry?.title ?? `The message of ${analysis.input}`}
               </h3>
-              <p className="mt-1 text-sm text-bone-300">
+              <p className="mt-1 text-base text-bone-300">
                 Root vibration{" "}
                 <Link href={`/numbers/${analysis.root}`} className="link">
                   {analysis.root}
@@ -130,7 +126,7 @@ export function AngelLookup() {
 
           {entry ? (
             <>
-              <p className="border-t hairline px-6 py-5 text-[15px] leading-relaxed text-bone-100 sm:px-8">
+              <p className="border-t hairline px-6 py-5 text-base leading-relaxed text-bone-100 sm:px-8">
                 {entry.meaning}
               </p>
               <div className="divided rounded-none border-x-0 border-b-0 sm:grid-cols-3">
@@ -140,7 +136,7 @@ export function AngelLookup() {
               </div>
             </>
           ) : (
-            <p className="border-t hairline px-6 py-5 text-sm text-bone-300 sm:px-8">
+            <p className="border-t hairline px-6 py-5 text-base text-bone-300 sm:px-8">
               This exact sequence isn’t in the library yet, but its energy flows
               from the root number{" "}
               <Link href={`/numbers/${analysis.root}`} className="link">
@@ -158,8 +154,8 @@ export function AngelLookup() {
 function MiniCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="p-5">
-      <span className="mono-label">{label}</span>
-      <p className="mt-2 text-sm text-bone-200">{value}</p>
+      <span className="label">{label}</span>
+      <p className="mt-2 text-base text-bone-200">{value}</p>
     </div>
   );
 }

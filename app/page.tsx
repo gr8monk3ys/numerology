@@ -1,44 +1,19 @@
 import Link from "next/link";
-import {
-  Star,
-  Moon,
-  Heart,
-  Compass,
-  Wand2,
-  Gem,
-  ArrowRight,
-  ArrowUpRight,
-  Calendar,
-  Sun,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { DialHero } from "@/components/home/DialHero";
 import { NumberOrb } from "@/components/ui/NumberOrb";
-import { SectionHeading, Eyebrow, StatusBadge } from "@/components/ui/SectionHeading";
-import { Terminal } from "@/components/ui/Terminal";
-import { Reveal } from "@/components/ui/Reveal";
-import { buildReading, type NumberInsight } from "@/lib/numerology";
+import { AdSlot } from "@/components/AdSense";
+import { AD_SLOTS } from "@/lib/adsense";
+import { buildReading, classifyLetters } from "@/lib/numerology";
 import { CORE_NUMBER_KEYS, lifePathMeanings, pick } from "@/lib/content";
 
-const CORE_NUMBERS = [
-  { n: "Life Path", desc: "The master lesson and direction of your life, drawn from your birth date.", icon: Compass },
-  { n: "Expression", desc: "Your natural talents and the destiny encoded in your full birth name.", icon: Star },
-  { n: "Soul Urge", desc: "Your heart’s deepest desire, read from the vowels of your name.", icon: Heart },
-  { n: "Personality", desc: "The self you show the world, read from the consonants.", icon: Moon },
-];
-
-const ESOTERIC = [
-  { title: "Tarot birth card", desc: "The Major Arcana card that carries the theme of your whole life.", icon: Sparkles },
-  { title: "Sun & Chinese zodiac", desc: "Your astrological signs, read in harmony with your numbers.", icon: Sun },
-  { title: "Karmic debt & lessons", desc: "The 13/14/16/19 debts and the numbers missing from your name.", icon: Wand2 },
-  { title: "Pinnacles & cycles", desc: "The four great cycles and three life periods that shape each era.", icon: Calendar },
-  { title: "Planes of expression", desc: "How physical, mental, emotional and intuitive energy divide in you.", icon: Gem },
-  { title: "Angel numbers", desc: "Decode 111, 222, 1234 and the synchronicities you keep noticing.", icon: Star },
-];
-
-const STEPS = [
-  { title: "Enter your details", body: "Your full birth name and date of birth are all the chart needs. Everything is computed in your browser and nothing is uploaded." },
-  { title: "The numbers reduce", body: "Letters map to digits, digits sum, and sums collapse to a single figure, preserving the master numbers 11, 22 and 33." },
-  { title: "The chart unfolds", body: "Core numbers, karmic patterns, cycles and symbolic correspondences, each with its reduction shown in full." },
+const BEYOND = [
+  { title: "Tarot birth card", desc: "The Major Arcana card that carries the theme of your whole life." },
+  { title: "Sun & Chinese zodiac", desc: "Your astrological signs, read in harmony with your numbers." },
+  { title: "Karmic debt & lessons", desc: "The 13/14/16/19 debts and the numbers missing from your name." },
+  { title: "Pinnacles & cycles", desc: "The four great cycles and three life periods that shape each era." },
+  { title: "Planes of expression", desc: "How physical, mental, emotional and intuitive energy divide in you." },
+  { title: "Angel numbers", desc: "Decode 111, 222, 1234 and the synchronicities you keep noticing." },
 ];
 
 const SAMPLE = buildReading({
@@ -47,242 +22,127 @@ const SAMPLE = buildReading({
   today: { year: 2026, month: 1, day: 1 },
 });
 
-function fmt(i: NumberInsight) {
-  return i.steps.join(" → ");
-}
-function flags(i: NumberInsight) {
-  const f: string[] = [];
-  if (i.isMaster) f.push("master");
-  if (i.karmicDebt) f.push(`karmic ${i.karmicDebt}`);
-  return f.join(" · ");
-}
-
-const SAMPLE_ROWS: { key: string; insight: NumberInsight }[] = [
-  { key: "life path", insight: SAMPLE.core.lifePath },
-  { key: "expression", insight: SAMPLE.core.expression },
-  { key: "soul urge", insight: SAMPLE.core.soulUrge },
-  { key: "personality", insight: SAMPLE.core.personality },
-  { key: "birthday", insight: SAMPLE.core.birthday },
-  { key: "maturity", insight: SAMPLE.core.maturity },
-];
+const SAMPLE_WORDS = SAMPLE.name.all.map((word) => classifyLetters(word));
+const EXPRESSION = SAMPLE.core.expression;
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="container-page relative pt-20 pb-16 sm:pt-28">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="animate-fade-up flex justify-center">
-            <StatusBadge>Pythagorean · Chaldean · Esoteric</StatusBadge>
-          </div>
-          <h1 className="mt-7 animate-fade-up text-[2.75rem] leading-[1.02] sm:text-6xl lg:text-[4.5rem]">
-            The numbers written into <em>your name</em> and birth date
-          </h1>
-          <p className="mx-auto mt-6 max-w-xl animate-fade-up text-base leading-relaxed text-bone-300 sm:text-[17px]">
-            Numen is a complete esoteric numerology suite. Enter a name and a
-            birth date to reveal the Life Path, Soul Urge, karmic debts, tarot
-            birth card, life-cycle forecasts and the correspondences woven
-            through every number.
-          </p>
-          <div className="mt-9 flex animate-fade-up flex-wrap items-center justify-center gap-3">
-            <Link href="/reading" className="btn btn-primary">
-              Cast my reading
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-            <Link href="/numbers" className="btn btn-secondary">
-              Explore the numbers
-            </Link>
-          </div>
-        </div>
+      <DialHero
+        sample={SAMPLE}
+        sampleCaption="A sample setting: Ada Augusta Byron, born 10 December 1815. Press a row to swing the hand to it."
+      />
 
-        {/* Sample computation */}
-        <div className="mx-auto mt-16 max-w-3xl animate-fade-up">
-          <Terminal title="reading.log" tabs={["pythagorean", "chaldean", "cycles"]}>
-            <span className="prompt">$</span>{" "}
-            <span className="cmd">numen read &quot;Ada Augusta Byron&quot; --born 1815-12-10</span>
-            {"\n\n"}
-            {SAMPLE_ROWS.map(({ key, insight }) => (
-              <span key={key}>
-                {"  "}
-                <span className="key">{key.padEnd(14)}</span>
-                <span className="val">{fmt(insight)}</span>
-                {flags(insight) && (
-                  <>
-                    {"   "}
-                    <span className={insight.karmicDebt ? "rub" : "hi"}>{flags(insight)}</span>
-                  </>
-                )}
-                {"\n"}
-              </span>
-            ))}
-            {"\n  "}
-            <span className="key">{"chaldean".padEnd(14)}</span>
-            <span className="val">
-              {SAMPLE.chaldean.compound} → {SAMPLE.chaldean.root}
-            </span>
-            {"\n  "}
-            <span className="key">{"tarot".padEnd(14)}</span>
-            <span className="val">
-              {pick(lifePathMeanings, SAMPLE.core.lifePath.value)?.title ?? ""}
-            </span>
-            {"\n\n"}
-            <span className="dim">✓ computed locally in 0.4 ms · nothing sent</span>
-            <span aria-hidden="true" className="prompt animate-caret"> ▍</span>
-          </Terminal>
-        </div>
-      </section>
-
-      {/* Stats strip */}
-      <section className="container-page">
-        <div className="divided grid-cols-2 lg:grid-cols-4">
-          {[
-            { v: "7", l: "core numbers" },
-            { v: "2", l: "letter systems" },
-            { v: "22", l: "major arcana" },
-            { v: "0", l: "bytes uploaded" },
-          ].map((s) => (
-            <div key={s.l} className="flex items-baseline gap-3 px-5 py-5">
-              <span className="font-mono text-2xl text-gold-200 tabular">{s.v}</span>
-              <span className="mono-label">{s.l}</span>
+      {/* Beyond the six rings: the one sky field on the page. */}
+      <section className="frame-raised mt-24">
+        <div className="container-page py-16 sm:py-20">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl sm:text-5xl">Beyond the six rings</h2>
+              <p className="mt-4 text-lg text-bone-100">
+                Numen reads the hidden architecture: the debts you carry, the
+                cycles you move through, and the symbols that resonate with
+                each vibration.
+              </p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Core numbers */}
-      <Reveal as="section" className="container-page pt-24">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading
-            index="01"
-            eyebrow="Your core chart"
-            title={<>Five numbers, <em>one</em> soul</>}
-            subtitle="Numerology distills a person into a handful of vibrations. These are the pillars of a chart. The rest of the reading builds on them."
-          />
-          <Link href="/about" className="link text-sm">
-            Read the method <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-        <div className="divided mt-10 sm:grid-cols-2 lg:grid-cols-4">
-          {CORE_NUMBERS.map(({ n, desc, icon: Icon }, i) => (
-            <div key={n} className="cell-hover group flex flex-col p-6">
-              <div className="flex items-center justify-between">
-                <span className="flex h-9 w-9 items-center justify-center rounded-[3px] border hairline text-gold-300">
-                  <Icon className="h-4 w-4" />
-                </span>
-                <span className="font-mono text-[11px] text-bone-500">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </div>
-              <h3 className="mt-8 text-xl">{n}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-bone-300">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </Reveal>
-
-      {/* Esoteric layer */}
-      <Reveal as="section" className="container-page pt-24">
-        <div className="frame ticks p-6 sm:p-10">
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <SectionHeading
-              index="02"
-              eyebrow="Beyond the basics"
-              title={<>The full <em>esoteric</em> toolkit</>}
-              subtitle="Numen reads the hidden architecture: the debts you carry, the cycles you move through, and the symbols that resonate with each vibration."
-            />
-            <Link href="/reading" className="btn btn-secondary btn-sm self-start lg:self-auto">
+            <Link href="/reading" className="btn btn-primary self-start lg:self-auto">
               See it in a reading
-              <ArrowUpRight className="h-3.5 w-3.5" />
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="divided mt-10 sm:grid-cols-2 lg:grid-cols-3">
-            {ESOTERIC.map(({ title, desc, icon: Icon }) => (
-              <div key={title} className="cell-hover flex gap-4 p-5">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[3px] border hairline text-gold-300">
-                  <Icon className="h-4 w-4" />
-                </span>
-                <div>
-                  <h3 className="text-lg">{title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-bone-300">{desc}</p>
-                </div>
+          <dl className="mt-12 grid gap-x-12 sm:grid-cols-2 lg:grid-cols-3">
+            {BEYOND.map(({ title, desc }) => (
+              <div key={title} className="border-t border-gold-300/40 py-5">
+                <dt className="text-xl font-semibold text-bone-50">{title}</dt>
+                <dd className="mt-1 text-bone-300">{desc}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* One sum, worked in full */}
+      <section className="container-page pt-24">
+        <h2 className="max-w-2xl text-4xl sm:text-5xl">Ancient arithmetic, shown in full</h2>
+        <p className="mt-4 text-lg text-bone-200">
+          Every letter has a digit. Here is the Expression number of Ada
+          Augusta Byron, exactly as Numen works it: letters to digits, digits
+          to a total, the total reduced to a single figure.
+        </p>
+        <div className="frame mt-10 py-8">
+          <div className="flex flex-wrap gap-x-10 gap-y-6">
+            {SAMPLE_WORDS.map((letters, w) => (
+              <div key={w} className="flex">
+                {letters.map((l, i) => (
+                  <div key={i} className="w-9 text-center">
+                    <div className="text-2xl font-semibold text-bone-50">{l.letter}</div>
+                    <div className="mt-1 border-t hairline pt-1 font-figures text-xl text-gold-200">{l.value}</div>
+                  </div>
+                ))}
               </div>
             ))}
           </div>
-        </div>
-      </Reveal>
-
-      {/* How it works */}
-      <Reveal as="section" className="container-page pt-24">
-        <SectionHeading
-          index="03"
-          eyebrow="How it works"
-          title={<>Ancient arithmetic, <em>instant</em> insight</>}
-        />
-        <div className="divided mt-10 sm:grid-cols-3">
-          {STEPS.map(({ title, body }, i) => (
-            <div key={title} className="p-6">
-              <span className="font-mono text-4xl text-gold-300/80 tabular">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className="mt-6 text-xl">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-bone-300">{body}</p>
-            </div>
+          <p className="mt-8 font-figures text-xl text-bone-100">
+            {SAMPLE_WORDS.map((letters) => letters.map((l) => l.value).join(" + ")).join(" + ")} = {EXPRESSION.total}
+          </p>
+          {EXPRESSION.steps.slice(1).map((next, i) => (
+            <p key={next} className="mt-2 font-figures text-xl text-bone-100">
+              {String(EXPRESSION.steps[i]).split("").join(" + ")} ={" "}
+              <span className={next === EXPRESSION.value ? "text-gold-200" : undefined}>{next}</span>
+            </p>
           ))}
+          <p className="mt-6 text-bone-300">
+            Master numbers 11, 22 and 33 are kept and not reduced further.{" "}
+            <Link href="/about" className="link">Read the whole method</Link>
+          </p>
         </div>
-      </Reveal>
+      </section>
 
-      {/* Encyclopedia teaser */}
-      <Reveal as="section" className="container-page pt-24">
+      <div className="container-page">
+        <AdSlot slot={AD_SLOTS.content} className="mt-20" />
+      </div>
+
+      {/* The twelve numbers */}
+      <section className="container-page pt-20">
         <div className="section-row">
-          <div>
-            <Eyebrow index="04">The encyclopedia</Eyebrow>
-            <h2 className="mt-2 text-2xl sm:text-3xl">Twelve archetypes</h2>
-          </div>
-          <Link href="/numbers" className="link text-sm">
-            All meanings <span aria-hidden="true">→</span>
-          </Link>
+          <h2 className="text-4xl sm:text-5xl">Twelve archetypes</h2>
+          <Link href="/numbers" className="link shrink-0">All meanings</Link>
         </div>
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {CORE_NUMBER_KEYS.map((key) => {
-            const isMaster = key === "11" || key === "22" || key === "33";
-            return (
-              <Link
-                key={key}
-                href={`/numbers/${key}`}
-                className="frame group flex items-center gap-3 p-3 transition-colors hover:border-gold-400/50"
-              >
-                <NumberOrb value={key} size="sm" isMaster={isMaster} />
-                <span className="min-w-0">
-                  <span className="mono-label block">{isMaster ? "Master" : "Root"}</span>
-                  <span className="block truncate text-sm text-bone-100 group-hover:text-gold-200">
-                    {pick(lifePathMeanings, key)?.title?.replace(/^The /, "") ?? key}
-                  </span>
+        <ul className="mt-10 grid grid-cols-3 gap-x-4 gap-y-8 sm:grid-cols-4 lg:grid-cols-6">
+          {CORE_NUMBER_KEYS.map((key) => (
+            <li key={key}>
+              <Link href={`/numbers/${key}`} className="group flex flex-col items-center gap-3 text-center">
+                <NumberOrb
+                  value={key}
+                  size="lg"
+                  isMaster={key === "11" || key === "22" || key === "33"}
+                  className="transition-colors group-hover:border-gold-200"
+                />
+                <span className="text-bone-100 group-hover:text-gold-200">
+                  {pick(lifePathMeanings, key)?.title?.replace(/^The /, "") ?? key}
                 </span>
               </Link>
-            );
-          })}
-        </div>
-      </Reveal>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-      {/* CTA */}
-      <Reveal as="section" className="container-page pt-24">
-        <div className="frame-raised ticks flex flex-col items-start gap-6 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-12">
+      {/* Close */}
+      <section className="container-page pt-24">
+        <div className="frame flex flex-col items-start gap-6 py-12 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-xl">
-            <Eyebrow accent>Ready when you are</Eyebrow>
-            <h2 className="mt-3 text-3xl sm:text-4xl">
-              Your chart is <em>waiting</em> to be read
-            </h2>
-            <p className="mt-3 text-[15px] text-bone-300">
+            <h2 className="text-4xl sm:text-5xl">Your chart is waiting to be read</h2>
+            <p className="mt-3 text-lg text-bone-300">
               It takes less than a minute. Discover the numbers that have been
               with you since the moment you were named.
             </p>
           </div>
           <Link href="/reading" className="btn btn-primary shrink-0">
             Begin your reading
-            <ArrowRight className="h-3.5 w-3.5" />
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-      </Reveal>
+      </section>
     </>
   );
 }

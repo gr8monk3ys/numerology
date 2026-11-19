@@ -58,18 +58,15 @@ export function CompatibilityForm() {
         onSubmit={handleSubmit}
         onFocus={() => void loadReport()}
         onPointerEnter={() => void loadReport()}
-        className="frame ticks mx-auto max-w-3xl"
+        className="frame mx-auto max-w-3xl"
       >
         <div className="divided rounded-none border-0 border-b sm:grid-cols-2">
           {[
             { p: a, set: setA, title: "First person", id: "a" },
             { p: b, set: setB, title: "Second person", id: "b" },
-          ].map(({ p, set, title, id }, i) => (
+          ].map(({ p, set, title, id }) => (
             <div key={id} className="space-y-5 p-6 sm:p-8">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs text-gold-300">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="text-lg">{title}</h3>
-              </div>
+              <h3 className="text-xl">{title}</h3>
               <div>
                 <label htmlFor={`${id}-name`} className="field-label">Name (optional)</label>
                 <input
@@ -102,7 +99,7 @@ export function CompatibilityForm() {
                     const { value } = e.target;
                     set((prev) => ({ ...prev, date: value }));
                   }}
-                  className="field field-mono"
+                  className="field tabular"
                   autoComplete="bday"
                 />
               </div>
@@ -111,7 +108,7 @@ export function CompatibilityForm() {
         </div>
 
         <div className="flex flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p className="font-mono text-[11px] tracking-wider text-bone-500">
+          <p className="font-figures text-base text-bone-500">
             LIFE PATHS COMPARED · 0–100 HARMONY
           </p>
           <button type="submit" className="btn btn-primary">
@@ -124,9 +121,9 @@ export function CompatibilityForm() {
           {error && (
             <p
               id="compat-error"
-              className="border-t border-rubric-400/40 bg-rubric-400/[0.08] px-6 py-3 font-mono text-xs tracking-wider text-rubric-300 sm:px-8"
+              className="field-error mt-0 border-t hairline px-6 py-3 sm:px-8"
             >
-              ! {error}
+              {error}
             </p>
           )}
         </div>

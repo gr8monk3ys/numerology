@@ -27,8 +27,6 @@ export default function NumbersIndexPage() {
   return (
     <div className="container-page py-14 sm:py-20">
       <PageHeader
-        index="05"
-        eyebrow="The encyclopedia"
         title={<>Meanings of the <em>numbers</em></>}
         subtitle="Every number is an archetype with its own personality, gifts and shadows. Explore the single digits and the master numbers."
         className="mb-8"
