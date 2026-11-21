@@ -84,6 +84,7 @@ bun run start    # serve the build
 bun run test     # vitest, lib/numerology/*.test.ts
 bun run lint     # eslint via next lint
 bunx tsc --noEmit
+bun run test:mutation  # Stryker on lib/numerology, report in reports/mutation/ (local only, ~1.5 min)
 ```
 
 The test cases are worked examples from published numerology method guides
