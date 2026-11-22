@@ -4,6 +4,7 @@
  */
 
 import {
+  at,
   tarotBirthCard,
   sunSign,
   chineseZodiac,
@@ -66,8 +67,8 @@ export function buildCosmicProfile(reading: Reading): CosmicProfile {
   ];
   const cycles: CosmicCycle[] = lifeCycles(birth).map((c, i) => ({
     ...c,
-    title: positions[i].title,
-    framing: positions[i].framing,
+    title: at(positions, i).title,
+    framing: at(positions, i).framing,
     meaning: pick(lifeCyclesContent.numbers, c.value)?.summary,
   }));
 

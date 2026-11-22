@@ -49,8 +49,8 @@ describe("buildCosmicProfile", () => {
         lifeCyclesContent.positions.second,
         lifeCyclesContent.positions.third,
       ];
-      expect(cycle.title).toBe(positions[i].title);
-      expect(cycle.framing).toBe(positions[i].framing);
+      expect(cycle.title).toBe(positions[i]?.title);
+      expect(cycle.framing).toBe(positions[i]?.framing);
       expect(cycle.meaning).toBe(pick(lifeCyclesContent.numbers, cycle.value)?.summary);
     });
   });
@@ -61,8 +61,8 @@ describe("buildCosmicProfile", () => {
     // Life Path 3 vs Expression 7 -> |3-7| = 4; Soul Urge 2 vs Personality 5 -> |2-5| = 3.
     expect(lpEx).toMatchObject({ key: "lp-ex", value: 4 });
     expect(suPe).toMatchObject({ key: "su-pe", value: 3 });
-    expect(lpEx.meaning).toBe(pick(bridgeMeanings, 4));
-    expect(suPe.meaning).toBe(pick(bridgeMeanings, 3));
+    expect(lpEx?.meaning).toBe(pick(bridgeMeanings, 4));
+    expect(suPe?.meaning).toBe(pick(bridgeMeanings, 3));
   });
 
   it("assembles deduplicated lucky numbers and the Life Path correspondence", () => {

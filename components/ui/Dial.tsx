@@ -46,6 +46,7 @@ export function Dial({
 }) {
   const skyClip = useId();
   const current = numbers[active];
+  if (!current) return null;
   const lit = new Set(numbers.map((n) => rootDigit(n.insight.value)));
   const summary = numbers.map((n) => `${n.label} ${n.insight.value}`).join(", ");
 
@@ -102,6 +103,7 @@ export function Dial({
       {/* Rings and their bodies */}
       {numbers.map((n, i) => {
         const r = RING_RADII[i];
+        if (r === undefined) return null;
         const isActive = i === active;
         const flagged = n.insight.isMaster || n.insight.karmicDebt !== null;
         return (

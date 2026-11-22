@@ -5,15 +5,17 @@ import { InclusionTable } from "./InclusionTable";
 
 type Props = { children?: ReactNode; className?: string; "data-value"?: number; "data-count"?: number };
 
+const isNodeArray = (node: ReactNode): node is ReactNode[] => Array.isArray(node);
+
 /** Every element in the tree InclusionTable returns, depth first. */
 function elements(node: ReactNode): Props[] {
-  if (Array.isArray(node)) return node.flatMap(elements);
+  if (isNodeArray(node)) return node.flatMap(elements);
   if (!isValidElement<Props>(node)) return [];
   return [node.props, ...elements(node.props.children)];
 }
 
 const text = (node: ReactNode): string =>
-  Array.isArray(node)
+  isNodeArray(node)
     ? node.map(text).join("")
     : isValidElement<Props>(node)
       ? text(node.props.children)

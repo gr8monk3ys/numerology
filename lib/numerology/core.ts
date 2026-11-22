@@ -23,18 +23,15 @@ export function parseName(fullName: string): NameParts {
     .split(/\s+/)
     .map((t) => t.trim())
     .filter((t) => normalizeName(t).length > 0);
-  if (tokens.length === 0) {
+  const [first, ...rest] = tokens;
+  if (first === undefined) {
     return { first: "", middle: [], last: "", all: [] };
   }
-  if (tokens.length === 1) {
-    return { first: tokens[0], middle: [], last: "", all: tokens };
+  const last = rest.pop();
+  if (last === undefined) {
+    return { first, middle: [], last: "", all: tokens };
   }
-  return {
-    first: tokens[0],
-    middle: tokens.slice(1, -1),
-    last: tokens[tokens.length - 1],
-    all: tokens,
-  };
+  return { first, middle: rest, last, all: tokens };
 }
 
 // ---------------------------------------------------------------------------

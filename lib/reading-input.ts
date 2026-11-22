@@ -19,10 +19,7 @@ export function castReading(fullName: string, birthDate: string, yAsVowel = fals
     return { ok: false, field: "birthDate", message: "Please enter your date of birth." };
   }
   const [year, month, day] = birthDate.split("-").map(Number);
-  // Round-trip through Date so 31 February is refused, not rolled into March.
-  const parsed = new Date(Date.UTC(year, month - 1, day));
-  const real = parsed.getUTCFullYear() === year && parsed.getUTCMonth() === month - 1 && parsed.getUTCDate() === day;
-  if (!real) {
+  if (year === undefined || month === undefined || day === undefined || !isRealDate(year, month, day)) {
     return {
       ok: false,
       field: "birthDate",
@@ -64,4 +61,10 @@ export function carriedReadingInput(): { fullName: string; birthDate: string } |
 /** Called once /reading has taken the hand-off, so it is used exactly once. */
 export function clearCarriedReadingInput(): void {
   carried = null;
+}
+
+// Round-trip through Date so 31 February is refused, not rolled into March.
+function isRealDate(year: number, month: number, day: number): boolean {
+  const parsed = new Date(Date.UTC(year, month - 1, day));
+  return parsed.getUTCFullYear() === year && parsed.getUTCMonth() === month - 1 && parsed.getUTCDate() === day;
 }

@@ -138,12 +138,12 @@ export default function AboutPage() {
           <div className="frame p-5">
             <span className="label">On this page</span>
             <ul className="mt-3 space-y-2 text-base">
-              {[
+              {([
                 ["#reduction", "Reduction"],
                 ["#master-numbers", "Master numbers"],
                 ["#karmic", "Karmic debt"],
                 ["#systems", "Two systems"],
-              ].map(([href, label]) => (
+              ] as const).map(([href, label]) => (
                 <li key={href}>
                   <Link href={href} className="text-bone-300 transition-colors hover:text-gold-200">
                     {label}

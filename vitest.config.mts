@@ -5,6 +5,7 @@ import path from "node:path";
 // lib/content (e.g. cosmic.ts) that import via "@/..." can be unit tested,
 // not just modules that stick to relative imports.
 export default defineConfig({
+  test: { exclude: ["e2e/**", "node_modules/**"] },
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "."),

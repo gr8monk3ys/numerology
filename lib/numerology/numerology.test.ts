@@ -229,9 +229,9 @@ describe("Pinnacles & Challenges (methods_cycles)", () => {
   });
   it("Pinnacle timing 1990-07-04 (endAge1 = 33)", () => {
     const p = pinnacles({ year: 1990, month: 7, day: 4 });
-    expect(p[0].endAge).toBe(33);
-    expect(p[1].startAge).toBe(34);
-    expect(p[3].endAge).toBeNull();
+    expect(p[0]?.endAge).toBe(33);
+    expect(p[1]?.startAge).toBe(34);
+    expect(p[3]?.endAge).toBeNull();
   });
   it("Challenges 1990-07-04 -> 3,3,0,6", () => {
     const c = challenges({ year: 1990, month: 7, day: 4 }).map((x) => x.value);
@@ -335,8 +335,8 @@ describe("Life Cycles", () => {
   it("1990-07-04 -> [7,4,1] with firstEnd 33", () => {
     const c = lifeCycles({ year: 1990, month: 7, day: 4 });
     expect(c.map((x) => x.value)).toEqual([7, 4, 1]);
-    expect(c[0].endAge).toBe(33);
-    expect(c[2].endAge).toBeNull();
+    expect(c[0]?.endAge).toBe(33);
+    expect(c[2]?.endAge).toBeNull();
   });
 });
 

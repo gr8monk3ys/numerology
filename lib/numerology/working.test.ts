@@ -4,7 +4,7 @@ import { coreWorkings } from "./working";
 
 /** Add up every digit group on the left of the last "=". */
 const leftSum = (working: string) =>
-  working.split(" = ")[0].split("; ").pop()!.split(/[+\s]+/).filter(Boolean).reduce((s, d) => s + Number(d), 0);
+  (working.split(" = ")[0] ?? "").split("; ").pop()!.split(/[+\s]+/).filter(Boolean).reduce((s, d) => s + Number(d), 0);
 
 // A small seeded generator: the same few hundred names and dates on every run.
 function* cases(count: number) {
