@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { fromAny } from "@total-typescript/shoehorn";
 import {
   lifePathNumber,
   birthdayNumber,
@@ -35,6 +36,7 @@ import {
   bridgeNumbers,
   sunSign,
   chineseZodiac,
+  type ChineseZodiacSign,
 } from "./esoteric";
 import zodiacSignsData from "../../content/data/zodiac_signs.json";
 import chineseZodiacData from "../../content/data/chinese_zodiac.json";
@@ -271,7 +273,7 @@ describe("Chaldean (methods_chaldean)", () => {
       wordCompounds?: Record<string, number>;
     };
   };
-  const cases = chaldeanMethods.testCases as ChaldeanCase[];
+  const cases = fromAny<typeof chaldeanMethods.testCases, ChaldeanCase[]>(chaldeanMethods.testCases);
 
   it("covers all nine recorded cases", () => {
     expect(cases).toHaveLength(9);
@@ -349,14 +351,15 @@ describe("Bridge numbers", () => {
 });
 
 describe("Zodiac lookups", () => {
+  const chineseSigns = fromAny<typeof chineseZodiacData, ChineseZodiacSign[]>(chineseZodiacData);
   it("sun sign for May 15 is Taurus", () => {
-    expect(sunSign(5, 15, zodiacSignsData as never)?.sign).toBe("Taurus");
+    expect(sunSign(5, 15, fromAny(zodiacSignsData))?.sign).toBe("Taurus");
   });
   it("sun sign wraps for Capricorn (Jan 5)", () => {
-    expect(sunSign(1, 5, zodiacSignsData as never)?.sign).toBe("Capricorn");
+    expect(sunSign(1, 5, fromAny(zodiacSignsData))?.sign).toBe("Capricorn");
   });
   it("Chinese zodiac 1990 is Horse, 2000 is Dragon", () => {
-    expect(chineseZodiac(1990, chineseZodiacData as never).animal).toBe("Horse");
-    expect(chineseZodiac(2000, chineseZodiacData as never).animal).toBe("Dragon");
+    expect(chineseZodiac(1990, chineseSigns).animal).toBe("Horse");
+    expect(chineseZodiac(2000, chineseSigns).animal).toBe("Dragon");
   });
 });
