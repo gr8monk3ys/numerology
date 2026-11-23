@@ -11,7 +11,12 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:mutation": "stryker run"
+    "test:mutation": "stryker run",
+    "typecheck": "tsc --noEmit",
+    "lint:boundaries": "depcruise lib components app",
+    "test:e2e": "playwright test",
+    "check": "bun run lint && bun run typecheck && bun run lint:boundaries && bun run test && bun run build",
+    "prepare": "simple-git-hooks"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -21,19 +26,31 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.1",
     "@stryker-mutator/core": "^10.1.1",
     "@stryker-mutator/vitest-runner": "^10.1.1",
     "@tailwindcss/postcss": "^4.3.3",
+    "@total-typescript/shoehorn": "^0.1.2",
+    "@total-typescript/ts-reset": "^0.6.1",
     "@types/node": "^26.6.6",
     "@types/react": "^19.2.18",
     "@types/react-dom": "19.3.0",
+    "dependency-cruiser": "^18.8.0",
     "eslint": "^10",
     "eslint-config-next": "^16.4.6",
+    "lint-staged": "^17.6.2",
+    "simple-git-hooks": "^2.14.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.7.3",
     "vitest": "^5"
   },
   "engines": {
     "node": ">=20"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "bunx lint-staged && bun run typecheck"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,mjs}": "eslint --max-warnings=0"
   }
 }

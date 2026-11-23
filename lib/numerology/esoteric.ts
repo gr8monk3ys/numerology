@@ -4,6 +4,7 @@
  * Chinese zodiac lookups.
  */
 
+import { at } from "./at";
 import { digitSum, reduceNumber, isMaster } from "./reduce";
 import { normalizeName } from "./letters";
 import { lifePathNumber, type BirthDate } from "./core";
@@ -182,5 +183,5 @@ export interface ChineseZodiacSign {
 
 export function chineseZodiac<T = ChineseZodiacSign>(year: number, animals: T[]): T {
   const index = (((year - 4) % 12) + 12) % 12;
-  return animals[index];
+  return at(animals, index);
 }

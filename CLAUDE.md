@@ -13,3 +13,7 @@ The five canonical roles, label string equal to role name. See `docs/agents/tria
 ### Domain docs
 
 Single-context: `GLOSSARY.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+
+## Checks
+
+`bun run check` runs lint, typecheck, dependency boundaries (`lint:boundaries`), unit tests and the build. `bun run test:e2e` runs the Playwright smoke spec. A pre-commit hook (simple-git-hooks) runs staged lint and typecheck; `bun install` installs it.

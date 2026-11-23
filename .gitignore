@@ -42,3 +42,7 @@ next-env.d.ts
 # mutation testing (Stryker)
 /reports/mutation
 /.stryker-tmp
+
+# playwright
+/test-results
+/playwright-report

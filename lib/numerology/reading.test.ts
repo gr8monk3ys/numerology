@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { fromAny } from "@total-typescript/shoehorn";
 import { buildReading } from "./report";
 import { computeCompatibility, type CompatibilityData } from "./compatibility";
 import compatibilityData from "../../content/data/compatibility.json";
@@ -39,7 +40,7 @@ describe("buildReading", () => {
 });
 
 describe("computeCompatibility", () => {
-  const data = compatibilityData as CompatibilityData;
+  const data = fromAny<typeof compatibilityData, CompatibilityData>(compatibilityData);
 
   it("scores a mutual best match as soulmates", () => {
     const mutual: CompatibilityData = {

@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { fromAny } from "@total-typescript/shoehorn";
 import {
   lifePathNumber,
   birthdayNumber,
@@ -35,6 +36,7 @@ import {
   bridgeNumbers,
   sunSign,
   chineseZodiac,
+  type ChineseZodiacSign,
 } from "./esoteric";
 import zodiacSignsData from "../../content/data/zodiac_signs.json";
 import chineseZodiacData from "../../content/data/chinese_zodiac.json";
@@ -229,9 +231,9 @@ describe("Pinnacles & Challenges (methods_cycles)", () => {
   });
   it("Pinnacle timing 1990-07-04 (endAge1 = 33)", () => {
     const p = pinnacles({ year: 1990, month: 7, day: 4 });
-    expect(p[0].endAge).toBe(33);
-    expect(p[1].startAge).toBe(34);
-    expect(p[3].endAge).toBeNull();
+    expect(p[0]?.endAge).toBe(33);
+    expect(p[1]?.startAge).toBe(34);
+    expect(p[3]?.endAge).toBeNull();
   });
   it("Challenges 1990-07-04 -> 3,3,0,6", () => {
     const c = challenges({ year: 1990, month: 7, day: 4 }).map((x) => x.value);
@@ -271,7 +273,7 @@ describe("Chaldean (methods_chaldean)", () => {
       wordCompounds?: Record<string, number>;
     };
   };
-  const cases = chaldeanMethods.testCases as ChaldeanCase[];
+  const cases = fromAny<typeof chaldeanMethods.testCases, ChaldeanCase[]>(chaldeanMethods.testCases);
 
   it("covers all nine recorded cases", () => {
     expect(cases).toHaveLength(9);
@@ -335,8 +337,8 @@ describe("Life Cycles", () => {
   it("1990-07-04 -> [7,4,1] with firstEnd 33", () => {
     const c = lifeCycles({ year: 1990, month: 7, day: 4 });
     expect(c.map((x) => x.value)).toEqual([7, 4, 1]);
-    expect(c[0].endAge).toBe(33);
-    expect(c[2].endAge).toBeNull();
+    expect(c[0]?.endAge).toBe(33);
+    expect(c[2]?.endAge).toBeNull();
   });
 });
 
@@ -349,14 +351,15 @@ describe("Bridge numbers", () => {
 });
 
 describe("Zodiac lookups", () => {
+  const chineseSigns = fromAny<typeof chineseZodiacData, ChineseZodiacSign[]>(chineseZodiacData);
   it("sun sign for May 15 is Taurus", () => {
-    expect(sunSign(5, 15, zodiacSignsData as never)?.sign).toBe("Taurus");
+    expect(sunSign(5, 15, fromAny(zodiacSignsData))?.sign).toBe("Taurus");
   });
   it("sun sign wraps for Capricorn (Jan 5)", () => {
-    expect(sunSign(1, 5, zodiacSignsData as never)?.sign).toBe("Capricorn");
+    expect(sunSign(1, 5, fromAny(zodiacSignsData))?.sign).toBe("Capricorn");
   });
   it("Chinese zodiac 1990 is Horse, 2000 is Dragon", () => {
-    expect(chineseZodiac(1990, chineseZodiacData as never).animal).toBe("Horse");
-    expect(chineseZodiac(2000, chineseZodiacData as never).animal).toBe("Dragon");
+    expect(chineseZodiac(1990, chineseSigns).animal).toBe("Horse");
+    expect(chineseZodiac(2000, chineseSigns).animal).toBe("Dragon");
   });
 });

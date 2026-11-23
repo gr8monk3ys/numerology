@@ -3,6 +3,7 @@
  * read as synchronistic messages.
  */
 
+import { at } from "./at";
 import { digitSum, reduceNumber } from "./reduce";
 
 export type AngelPattern =
@@ -43,8 +44,8 @@ function detectPatterns(digits: number[]): AngelPattern[] {
     const isMirror = digits.every((d, i) => d === digits[n - 1 - i]);
     if (isMirror) patterns.push("mirror");
   }
-  const ascending = digits.every((d, i) => i === 0 || d === digits[i - 1] + 1);
-  const descending = digits.every((d, i) => i === 0 || d === digits[i - 1] - 1);
+  const ascending = digits.every((d, i) => i === 0 || d === at(digits, i - 1) + 1);
+  const descending = digits.every((d, i) => i === 0 || d === at(digits, i - 1) - 1);
   if (ascending && n >= 3) patterns.push("ascending");
   if (descending && n >= 3) patterns.push("descending");
   if (patterns.length === 0 && n >= 3) patterns.push("sequence");

@@ -7,6 +7,7 @@
  *   - Challenges reduce to plain single digits (no masters) and may equal 0.
  */
 
+import { at } from "./at";
 import { reduceNumber, toInsight, type NumberInsight } from "./reduce";
 import { lifePathNumber, type BirthDate } from "./core";
 
@@ -118,9 +119,9 @@ export function pinnacles(date: BirthDate): CyclePeriod[] {
     index: (i + 1) as CyclePeriod["index"],
     value,
     isMaster: value === 11 || value === 22 || value === 33,
-    startAge: timing[i].start,
-    endAge: timing[i].end,
-    label: rangeLabel(timing[i].start, timing[i].end),
+    startAge: at(timing, i).start,
+    endAge: at(timing, i).end,
+    label: rangeLabel(at(timing, i).start, at(timing, i).end),
   }));
 }
 
@@ -143,8 +144,8 @@ export function challenges(date: BirthDate): CyclePeriod[] {
     index: (i + 1) as CyclePeriod["index"],
     value,
     isMaster: false,
-    startAge: timing[i].start,
-    endAge: timing[i].end,
-    label: rangeLabel(timing[i].start, timing[i].end),
+    startAge: at(timing, i).start,
+    endAge: at(timing, i).end,
+    label: rangeLabel(at(timing, i).start, at(timing, i).end),
   }));
 }
