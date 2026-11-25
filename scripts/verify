@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Fast gate that Claude Code runs before a session can finish: `bun run check`
+# minus the Next.js build. The full check before a PR is still `bun run check`
+# plus `bun run test:e2e`, which is what CI runs.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+bun install --frozen-lockfile
+bun run lint
+bun run typecheck
+bun run lint:boundaries
+bun run test
